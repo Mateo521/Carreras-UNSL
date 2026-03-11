@@ -7,7 +7,7 @@
 get_header();
 ?>
 
-<section class="relative h-screen min-h-[600px] w-full overflow-hidden bg-[#0b1f4a]"> <!-- [calc(100vh-73px)] -->
+<section class="relative h-[calc(100vh+73px)] min-h-[600px] w-full overflow-hidden bg-[#0b1f4a]"> <!--  -->
     <video class="absolute inset-0 w-full h-full object-cover z-0" autoplay muted loop playsinline src="<?php echo get_template_directory_uri(); ?>/videos/video-2.mp4"></video>
     <div class="absolute inset-0 bg-[#0b1f4a]/70 z-0 mix-blend-multiply"></div>
     <div class="absolute inset-0 bg-gradient-to-r from-[#0b1f4a] via-[#0b1f4a]/80 to-transparent w-full md:w-3/4 lg:w-2/3 z-0"></div>
