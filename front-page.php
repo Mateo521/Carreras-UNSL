@@ -1,27 +1,28 @@
 <?php
+
 /**
  * Plantilla principal (Front Page)
  * Diseño Institucional Limpio y Elegante
  */
-get_header(); 
+get_header();
 ?>
 
 <section class="relative h-[calc(100vh-73px)] min-h-[600px] w-full overflow-hidden bg-[#0b1f4a]">
-    <video class="absolute inset-0 w-full h-full object-cover z-0" autoplay muted loop playsinline src="<?php echo get_template_directory_uri(); ?>/videos/video-2.mp4"></video>
+    <video class="absolute inset-0 w-full h-[calc(100%+100px)] object-cover z-0" autoplay muted loop playsinline src="<?php echo get_template_directory_uri(); ?>/videos/video-2.mp4"></video>
     <div class="absolute inset-0 bg-[#0b1f4a]/70 z-0 mix-blend-multiply"></div>
     <div class="absolute inset-0 bg-gradient-to-r from-[#0b1f4a] via-[#0b1f4a]/80 to-transparent w-full md:w-3/4 lg:w-2/3 z-0"></div>
 
     <div class="relative z-10 h-full w-full max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 flex flex-col justify-center">
         <div class="w-full max-w-4xl">
-            <span class="inline-block py-1.5 px-4 rounded-full bg-white/10 backdrop-blur-md text-[#88CAFC] text-xs font-bold tracking-widest uppercase mb-6 border border-white/20">
+            <!--span class="inline-block py-1.5 px-4 rounded-full bg-white/10 backdrop-blur-md text-[#88CAFC] text-xs font-bold tracking-widest uppercase mb-6 border border-white/20">
                 Ingreso 2026
-            </span>
-            
+            </span-->
+
             <h1 class="text-white text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight mb-6 tracking-tight drop-shadow-lg">
                 Oferta
                 <em class="text-[#88CAFC] ">Académica 2026</em> <!-- font-['Libre_Baskerville',serif] italic   font-normal-->
             </h1>
-            
+
             <p class="text-slate-200 text-lg sm:text-xl mb-10 font-light leading-relaxed drop-shadow-md">
                 Explorá tu futuro en la Universidad Nacional de San Luis. Encontrá la carrera ideal para tu vocación profesional.
             </p>
@@ -34,7 +35,7 @@ get_header();
                     </svg>
                 </div>
                 <input type="search" name="q" placeholder="¿Qué te gustaría estudiar? Ej: Enfermería..." class="block w-full pl-14 pr-32 py-5 bg-white/95 backdrop-blur-sm text-slate-900 placeholder:text-slate-500  border border-white/20 focus:ring-4 focus:ring-[#88CAFC]/50 text-lg transition-all">
-                
+
                 <button type="submit" class="absolute inset-y-2 right-2 px-6 bg-[#0b1f4a] text-white  font-medium hover:bg-blue-900 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0b1f4a]">
                     Buscar
                 </button>
@@ -43,7 +44,9 @@ get_header();
     </div>
 </section>
 
-<section class="py-24 bg-white relative z-20 -mt-8 rounded-t-3xl shadow-[0_-10px_40px_rgba(0,0,0,0.1)]">
+    <section class="curved z-100 w-full bottom-0 "></section> <!-- shadow-[0_-10px_40px_rgba(0,0,0,0.1)] -->
+<section class="pb-24 bg-white relative z-20 -mt-10  "> <!-- rounded-t-3xl -->
+
     <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-16">
             <h2 class="text-3xl md:text-4xl font-bold text-[#0b1f4a] font-['Libre_Baskerville',serif] mb-4">Descubrí tu camino</h2>
@@ -58,7 +61,9 @@ get_header();
                 <h3 class="text-2xl font-bold text-[#0b1f4a] mb-3">Pregrado</h3>
                 <p class="text-slate-500 text-sm leading-relaxed mb-6">Carreras cortas y tecnicaturas enfocadas en la rápida inserción laboral y conocimientos prácticos.</p>
                 <span class="text-[#88CAFC] font-semibold text-sm group-hover:text-[#0b1f4a] flex items-center gap-2 mt-auto">
-                    Ver carreras <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+                    Ver carreras <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                    </svg>
                 </span>
             </a>
 
@@ -70,7 +75,9 @@ get_header();
                 <h3 class="text-2xl font-bold text-white mb-3 relative z-10">Grado</h3>
                 <p class="text-slate-300 text-sm leading-relaxed mb-6 relative z-10">Licenciaturas, ingenierías y profesorados. Formación profesional completa y especializada.</p>
                 <span class="text-[#88CAFC] font-semibold text-sm group-hover:text-white flex items-center gap-2 mt-auto relative z-10">
-                    Ver carreras <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+                    Ver carreras <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                    </svg>
                 </span>
             </a>
 
@@ -81,11 +88,13 @@ get_header();
                 <h3 class="text-2xl font-bold text-[#0b1f4a] mb-3">Posgrado</h3>
                 <p class="text-slate-500 text-sm leading-relaxed mb-6">Especializaciones, maestrías y doctorados para llevar tu carrera al más alto nivel académico.</p>
                 <span class="text-[#88CAFC] font-semibold text-sm group-hover:text-[#0b1f4a] flex items-center gap-2 mt-auto">
-                    Ver carreras <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+                    Ver carreras <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                    </svg>
                 </span>
             </a>
         </div>
-        
+
         <div class="text-center mt-12">
             <a href="<?php echo home_url('/carreras/'); ?>" class="inline-flex items-center gap-2 text-[#0b1f4a] font-semibold hover:text-[#88CAFC] transition-colors underline underline-offset-4">
                 Ver el catálogo completo de carreras (A-Z)
@@ -94,10 +103,30 @@ get_header();
     </div>
 </section>
 
+
+<style>
+    .curved {
+        position: absolute;
+        background: #2c3e5000;
+        height: 200px;
+    }
+
+    .curved::after {
+        content: '';
+        border-top-left-radius: 50% 100%;
+        border-top-right-radius: 50% 100%;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background: #fff;
+        height: 100%;
+    }
+</style>
+
 <section class="bg-[#0b1f4a] relative overflow-hidden py-16 lg:py-0">
     <div class="max-w-7xl mx-auto">
         <div class="relative grid grid-cols-1 items-center lg:grid-cols-2">
-            
+
             <div class="p-8 lg:p-20 flex flex-col justify-center z-10">
                 <p class="text-[#88CAFC] text-xs font-bold uppercase tracking-widest mb-4">Programa Gratuito</p>
                 <h2 class="text-white text-3xl lg:text-5xl font-bold leading-tight mb-6 font-['Libre_Baskerville',serif]">
@@ -122,7 +151,7 @@ get_header();
                 <div class="w-[300px] h-[300px] rounded-full border border-[#88CAFC]/20 absolute top-1/2 -translate-y-1/2 right-24"></div>
                 <img src="<?php echo get_template_directory_uri(); ?>/imagenes/estudiantes.png" alt="Estudiantes UNSL" class="relative z-10 w-full max-w-md object-cover rounded-2xl shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500" onerror="this.style.display='none'">
             </div>
-            
+
         </div>
     </div>
 </section>
@@ -138,7 +167,7 @@ get_header();
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            <?php 
+            <?php
             // Array para renderizar las facultades de forma limpia
             $facultades = [
                 ['sigla' => 'FQBYF', 'nombre' => 'Facultad de Química, Bioquímica y Farmacia', 'sede' => 'San Luis', 'color_bg' => 'bg-[#ecfdf5]', 'color_txt' => 'text-[#065f46]', 'img' => 'fqbyf.png'],
@@ -161,7 +190,10 @@ get_header();
                         <p class="<?php echo $fac['color_txt']; ?> text-[10px] font-black tracking-[0.2em] uppercase mb-1"><?php echo $fac['sigla']; ?></p>
                         <h3 class="text-[#1a1a2e] font-bold text-sm leading-snug group-hover:text-[#0b1f4a] transition-colors"><?php echo $fac['nombre']; ?></h3>
                         <p class="text-[#1a1a2e55] text-xs mt-2 flex items-center gap-1.5 font-medium">
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" /><path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0z" /></svg>
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                <path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0z" />
+                            </svg>
                             <?php echo $fac['sede']; ?>
                         </p>
                     </div>
@@ -177,7 +209,10 @@ get_header();
                     <p class="text-[#88CAFC] text-[10px] font-black tracking-[0.2em] uppercase mb-1">IPAU</p>
                     <h3 class="text-white font-bold text-sm leading-snug">Instituto Politécnico y Artístico Universitario</h3>
                     <p class="text-white/50 text-xs mt-2 flex items-center gap-1.5 font-medium">
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" /><path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0z" /></svg>
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                            <path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0z" />
+                        </svg>
                         San Luis
                     </p>
                 </div>
