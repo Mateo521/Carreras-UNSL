@@ -131,22 +131,22 @@ while (have_posts()) : the_post();
                     </section>
                 <?php endif; ?>
 
-                <?php 
+                <?php
                 $maximos_anios_posibles = 6;
                 $plan_de_estudios = array();
 
-                for ( $i = 1; $i <= $maximos_anios_posibles; $i++ ) {
+                for ($i = 1; $i <= $maximos_anios_posibles; $i++) {
                     $materias_brutas = get_field('materias_anio_' . $i);
-                    if ( !empty($materias_brutas) ) {
-                        $lista_materias = array_filter( array_map( 'trim', explode( "\n", $materias_brutas ) ) );
-                        if ( !empty($lista_materias) ) {
+                    if (!empty($materias_brutas)) {
+                        $lista_materias = array_filter(array_map('trim', explode("\n", $materias_brutas)));
+                        if (!empty($lista_materias)) {
                             $plan_de_estudios[$i] = $lista_materias;
                         }
                     }
                 }
 
-                if ( !empty($plan_de_estudios) ) : 
-                    $ultimo_anio = max( array_keys($plan_de_estudios) );
+                if (!empty($plan_de_estudios)) :
+                    $ultimo_anio = max(array_keys($plan_de_estudios));
                 ?>
                     <section class="bg-white border border-[#e5e0d8] overflow-hidden">
                         <div class="border-b border-[#f0ece4] px-7 py-5 flex items-center gap-3">
@@ -156,8 +156,8 @@ while (have_posts()) : the_post();
                         <div class="p-7">
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
-                                <?php foreach ( $plan_de_estudios as $numero_anio => $materias ) : 
-                                    $es_final = ( $numero_anio === $ultimo_anio );
+                                <?php foreach ($plan_de_estudios as $numero_anio => $materias) :
+                                    $es_final = ($numero_anio === $ultimo_anio);
                                     $col_span_class = $es_final ? 'sm:col-span-2' : '';
                                     $ul_class = $es_final ? 'grid grid-cols-2 sm:grid-cols-3 divide-x divide-y divide-[#f0ece4]' : 'divide-y divide-[#f0ece4]';
                                     $li_class = $es_final ? 'px-4 py-3 text-xs text-[#1a1a2e88] flex items-center gap-2' : 'px-4 py-2.5 text-xs text-[#1a1a2e88] flex items-center gap-2';
@@ -185,13 +185,17 @@ while (have_posts()) : the_post();
                                 <?php endforeach; ?>
 
                             </div>
-                            
-                            <?php if ( get_field('enlace_plan_estudios') ) : ?>
-                            <a href="<?php echo esc_url(get_field('enlace_plan_estudios')); ?>" target="_blank" class="mt-5 flex items-center gap-2 text-sm text-[#0b1f4a] font-semibold hover:text-[#88CAFC] transition-colors group w-fit">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"/></svg>
-                                Ver plan de estudios completo en PDF
-                                <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
-                            </a>
+
+                            <?php if (get_field('enlace_plan_estudios')) : ?>
+                                <a href="<?php echo esc_url(get_field('enlace_plan_estudios')); ?>" target="_blank" class="mt-5 flex items-center gap-2 text-sm text-[#0b1f4a] font-semibold hover:text-[#88CAFC] transition-colors group w-fit">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                                    </svg>
+                                    Ver plan de estudios completo en PDF
+                                    <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                                    </svg>
+                                </a>
                             <?php endif; ?>
 
                         </div>
@@ -218,6 +222,7 @@ while (have_posts()) : the_post();
                         </a>
                     </div>
                 </div>
+
 
                 <div class="bg-white border border-[#e5e0d8] overflow-hidden">
                     <div class="bg-[#0b1f4a] px-6 py-4">
@@ -256,8 +261,54 @@ while (have_posts()) : the_post();
                                 </div>
                             </div>
                         <?php endif; ?>
+
+                        <?php if (get_field('correo_contacto')) : ?>
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 bg-[#EEF1F5] flex items-center justify-center shrink-0 mt-0.5">
+                                    <svg class="w-4 h-4 text-[#0b1f4a]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-[#1a1a2e55] text-[11px] uppercase tracking-widest font-bold mb-0.5">Correo electrónico</p>
+                                    <?php $correo = get_field('correo_contacto'); ?>
+                                    <a href="mailto:<?php echo antispambot($correo); ?>" class="text-[#0b1f4a] text-sm font-semibold hover:text-[#88CAFC] transition-colors break-all"><?php echo antispambot($correo); ?></a>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if (get_field('instagram_contacto') || get_field('facebook_contacto')) : ?>
+                            <div class="pt-4 border-t border-[#f0ece4]">
+                                <p class="text-[#1a1a2e55] text-[11px] uppercase tracking-widest font-bold mb-3">Redes sociales</p>
+                                <div class="flex flex-col gap-2">
+                                    <?php if (get_field('instagram_contacto')) : ?>
+                                        <a href="<?php echo esc_url(get_field('instagram_contacto')); ?>" target="_blank" class="flex items-center gap-2 text-sm text-[#1a1a2e88] hover:text-[#E1306C] transition-colors">
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" />
+                                            </svg>
+                                            Instagram
+                                        </a>
+                                    <?php endif; ?>
+
+                                    <?php if (get_field('facebook_contacto')) : ?>
+                                        <a href="<?php echo esc_url(get_field('facebook_contacto')); ?>" target="_blank" class="flex items-center gap-2 text-sm text-[#1a1a2e88] hover:text-[#1877f2] transition-colors">
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                                            </svg>
+                                            Facebook
+                                        </a>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+
                     </div>
                 </div>
+
+
+
+
+
 
                 <div class="bg-[#0b1f4a] p-6 relative overflow-hidden">
                     <div class="absolute -top-8 -right-8 w-32 h-32 rounded-full bg-[#88CAFC] opacity-10 pointer-events-none"></div>

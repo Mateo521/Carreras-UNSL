@@ -1,4 +1,4 @@
-<footer class="bg-[#0b1f4a] py-10 px-6">
+<footer class="bg-[#0b1f4a] py-10 px-6 mt-12">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <div class="flex items-center gap-3">
             <div class="w-8 h-8 rounded bg-[#88CAFC] flex items-center justify-center">
@@ -12,3 +12,8 @@
         <p class="text-[#ffffff33] text-xs text-center">Ejército de los Andes 950 · San Luis · Argentina</p>
     </div>
 </footer>
+
+<?php wp_footer(); ?>
+
+</body>
+</html>
