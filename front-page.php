@@ -7,46 +7,44 @@
 get_header();
 ?>
 
-<section class="relative h-[calc(100vh-73px)] min-h-[600px] w-full overflow-hidden bg-[#0b1f4a]">
-    <video class="absolute inset-0 w-full h-[calc(100%+100px)] object-cover z-0" autoplay muted loop playsinline src="<?php echo get_template_directory_uri(); ?>/videos/video-2.mp4"></video>
+<section class="relative h-screen min-h-[600px] w-full overflow-hidden bg-[#0b1f4a]"> <!-- [calc(100vh-73px)] -->
+    <video class="absolute inset-0 w-full h-full object-cover z-0" autoplay muted loop playsinline src="<?php echo get_template_directory_uri(); ?>/videos/video-2.mp4"></video>
     <div class="absolute inset-0 bg-[#0b1f4a]/70 z-0 mix-blend-multiply"></div>
     <div class="absolute inset-0 bg-gradient-to-r from-[#0b1f4a] via-[#0b1f4a]/80 to-transparent w-full md:w-3/4 lg:w-2/3 z-0"></div>
 
-    <div class="relative z-10 h-full w-full max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 flex flex-col justify-center">
-        <div class="w-full max-w-4xl">
-            <!--span class="inline-block py-1.5 px-4 rounded-full bg-white/10 backdrop-blur-md text-[#88CAFC] text-xs font-bold tracking-widest uppercase mb-6 border border-white/20">
-                Ingreso 2026
-            </span-->
-
+    <div class="relative z-10 h-full w-full max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 flex flex-col justify-center pb-20"> <div class="w-full max-w-4xl">
             <h1 class="text-white text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight mb-6 tracking-tight drop-shadow-lg">
                 Oferta
-                <em class="text-[#88CAFC] ">Académica 2026</em> <!-- font-['Libre_Baskerville',serif] italic   font-normal-->
+                <em class="text-[#88CAFC]">Académica 2026</em>
             </h1>
 
             <p class="text-slate-200 text-lg sm:text-xl mb-10 font-light leading-relaxed drop-shadow-md">
                 Explorá tu futuro en la Universidad Nacional de San Luis. Encontrá la carrera ideal para tu vocación profesional.
             </p>
 
-            <form action="<?php echo home_url('/carreras/'); ?>" method="GET" class="relative shadow-2xl shadow-black/30  group">
+            <form action="<?php echo home_url('/carreras/'); ?>" method="GET" class="relative shadow-2xl shadow-black/30 group">
                 <div class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
                     <svg class="h-6 w-6 text-slate-400 group-focus-within:text-[#88CAFC] transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <circle cx="11" cy="11" r="8"></circle>
                         <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35"></path>
                     </svg>
                 </div>
-                <input type="search" name="q" placeholder="¿Qué te gustaría estudiar? Ej: Enfermería..." class="block w-full pl-14 pr-32 py-5 bg-white/95 backdrop-blur-sm text-slate-900 placeholder:text-slate-500  border border-white/20 focus:ring-4 focus:ring-[#88CAFC]/50 text-lg transition-all">
+                <input type="search" name="q" placeholder="¿Qué te gustaría estudiar? Ej: Enfermería..." class="block w-full pl-14 pr-32 py-5 bg-white/95 backdrop-blur-sm text-slate-900 placeholder:text-slate-500 border border-white/20 focus:ring-4 focus:ring-[#88CAFC]/50 text-lg transition-all">
 
-                <button type="submit" class="absolute inset-y-2 right-2 px-6 bg-[#0b1f4a] text-white  font-medium hover:bg-blue-900 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0b1f4a]">
+                <button type="submit" class="absolute inset-y-2 right-2 px-6 bg-[#0b1f4a] text-white font-medium hover:bg-blue-900 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0b1f4a]">
                     Buscar
                 </button>
             </form>
         </div>
     </div>
+
+    <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20 pointer-events-none" > <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-[80px] md:h-[150px]">
+            <path d="M0,120 C300,0 900,0 1200,120 L1200,120 L0,120 Z" fill="#ffffff"></path>
+        </svg>
+    </div>
 </section>
 
-    <section class="curved z-100 w-full bottom-0 "></section> <!-- shadow-[0_-10px_40px_rgba(0,0,0,0.1)] -->
-<section class="pb-24 bg-white relative z-20 -mt-10  "> <!-- rounded-t-3xl -->
-
+<section class="pb-24 pt-12 bg-white relative z-20"> 
     <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-16">
             <h2 class="text-3xl md:text-4xl font-bold text-[#0b1f4a] font-['Libre_Baskerville',serif] mb-4">Descubrí tu camino</h2>
@@ -54,12 +52,12 @@ get_header();
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <a href="<?php echo home_url('/carreras/?tipo=pregrado'); ?>" class="group flex flex-col items-center text-center p-10 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-white hover:border-[#88CAFC] hover:shadow-xl hover:shadow-[#0b1f4a0a] transition-all duration-300 transform hover:-translate-y-2">
+            <a href="<?php echo home_url('/carreras/?tipo=pregrado'); ?>" class="group flex flex-col items-center text-center p-10 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-white hover:border-[#88CAFC] hover:shadow-xl hover:shadow-[#0b1f4a0a] transition-all duration-300 transform "> <!-- hover:-translate-y-2 -->
                 <!--div class="w-20 h-20 rounded-full bg-[#e8f4f0] text-[#1a6b52] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                     <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" /></svg>
                 </div-->
                 <h3 class="text-2xl font-bold text-[#0b1f4a] mb-3">Pregrado</h3>
-                <p class="text-slate-500 text-sm leading-relaxed mb-6">Carreras cortas y tecnicaturas enfocadas en la rápida inserción laboral y conocimientos prácticos.</p>
+                <p class="text-slate-500 text-sm leading-relaxed mb-6">Carreras cortas y tecnicaturas...</p>
                 <span class="text-[#88CAFC] font-semibold text-sm group-hover:text-[#0b1f4a] flex items-center gap-2 mt-auto">
                     Ver carreras <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
@@ -67,13 +65,13 @@ get_header();
                 </span>
             </a>
 
-            <a href="<?php echo home_url('/carreras/?tipo=grado'); ?>" class="group flex flex-col items-center text-center p-10 rounded-2xl bg-[#0b1f4a] border border-[#0b1f4a] hover:shadow-2xl hover:shadow-[#0b1f4a33] transition-all duration-300 transform hover:-translate-y-2 relative overflow-hidden">
+            <a href="<?php echo home_url('/carreras/?tipo=grado'); ?>" class="group flex flex-col items-center text-center p-10 rounded-2xl bg-[#0b1f4a] border border-[#0b1f4a] hover:shadow-2xl hover:shadow-[#0b1f4a33] transition-all duration-300 transform relative overflow-hidden"> <!-- hover:-translate-y-2  -->
                 <div class="absolute -right-10 -top-10 w-32 h-32 bg-[#88CAFC] rounded-full opacity-10"></div>
                 <!--div class="w-20 h-20 rounded-full bg-white/10 text-[#88CAFC] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform relative z-10">
                     <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" /></svg>
                 </div-->
                 <h3 class="text-2xl font-bold text-white mb-3 relative z-10">Grado</h3>
-                <p class="text-slate-300 text-sm leading-relaxed mb-6 relative z-10">Licenciaturas, ingenierías y profesorados. Formación profesional completa y especializada.</p>
+                <p class="text-slate-300 text-sm leading-relaxed mb-6 relative z-10">Licenciaturas, ingenierías y profesorados...</p>
                 <span class="text-[#88CAFC] font-semibold text-sm group-hover:text-white flex items-center gap-2 mt-auto relative z-10">
                     Ver carreras <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
@@ -81,12 +79,12 @@ get_header();
                 </span>
             </a>
 
-            <a href="<?php echo home_url('/carreras/?tipo=posgrado'); ?>" class="group flex flex-col items-center text-center p-10 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-white hover:border-[#88CAFC] hover:shadow-xl hover:shadow-[#0b1f4a0a] transition-all duration-300 transform hover:-translate-y-2">
+            <a href="<?php echo home_url('/carreras/?tipo=posgrado'); ?>" class="group flex flex-col items-center text-center p-10 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-white hover:border-[#88CAFC] hover:shadow-xl hover:shadow-[#0b1f4a0a] transition-all duration-300 transform "> <!-- hover:-translate-y-2 -->
                 <!--div class="w-20 h-20 rounded-full bg-[#fff7ed] text-[#92400e] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                     <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z" /></svg>
                 </div-->
                 <h3 class="text-2xl font-bold text-[#0b1f4a] mb-3">Posgrado</h3>
-                <p class="text-slate-500 text-sm leading-relaxed mb-6">Especializaciones, maestrías y doctorados para llevar tu carrera al más alto nivel académico.</p>
+                <p class="text-slate-500 text-sm leading-relaxed mb-6">Especializaciones, maestrías y doctorados...</p>
                 <span class="text-[#88CAFC] font-semibold text-sm group-hover:text-[#0b1f4a] flex items-center gap-2 mt-auto">
                     Ver carreras <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
@@ -97,31 +95,13 @@ get_header();
 
         <div class="text-center mt-12">
             <a href="<?php echo home_url('/carreras/'); ?>" class="inline-flex items-center gap-2 text-[#0b1f4a] font-semibold hover:text-[#88CAFC] transition-colors underline underline-offset-4">
-                Ver el catálogo completo de carreras (A-Z)
+                Ver todas las carreras (A-Z)
             </a>
         </div>
     </div>
 </section>
 
 
-<style>
-    .curved {
-        position: absolute;
-        background: #2c3e5000;
-        height: 200px;
-    }
-
-    .curved::after {
-        content: '';
-        border-top-left-radius: 50% 100%;
-        border-top-right-radius: 50% 100%;
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        background: #fff;
-        height: 100%;
-    }
-</style>
 
 <section class="bg-[#0b1f4a] relative overflow-hidden py-16 lg:py-0">
     <div class="max-w-7xl mx-auto">
