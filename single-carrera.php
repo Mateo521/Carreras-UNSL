@@ -1,6 +1,22 @@
 <?php
 get_header();
 
+// Diccionario de Facultades en PHP
+$nombres_facultades = array(
+    'fqbyf'  => 'Facultad de Química, Bioquímica y Farmacia',
+    'fcfmyn' => 'Facultad de Ciencias Físico Matemáticas y Naturales',
+    'fica'   => 'Facultad de Ingeniería y Ciencias Agropecuarias',
+    'fcejs'  => 'Facultad de Ciencias Económicas, Jurídicas y Sociales',
+    'fch'    => 'Facultad de Ciencias Humanas',
+    'fapsi'  => 'Facultad de Psicología',
+    'fcs'    => 'Facultad de Ciencias de la Salud',
+    'ftu'    => 'Facultad de Turismo y Urbanismo',
+    'ipau'   => 'Instituto Politécnico y Artístico Universitario'
+);
+
+
+
+
 while (have_posts()) : the_post();
 
     // Taxonomías
@@ -8,7 +24,10 @@ while (have_posts()) : the_post();
     $nivel_nombre = ($terms_nivel && !is_wp_error($terms_nivel)) ? $terms_nivel[0]->name : 'Grado';
 
     $terms_facultad = get_the_terms(get_the_ID(), 'facultad');
-    $facultad_nombre = ($terms_facultad && !is_wp_error($terms_facultad)) ? $terms_facultad[0]->name : 'UNSL';
+    $facultad_slug = ($terms_facultad && !is_wp_error($terms_facultad)) ? strtolower($terms_facultad[0]->slug) : '';
+
+
+    $facultad_nombre_completo = isset($nombres_facultades[$facultad_slug]) ? $nombres_facultades[$facultad_slug] : (($terms_facultad && !is_wp_error($terms_facultad)) ? $terms_facultad[0]->name : 'UNSL');
 
     $terms_sede = get_the_terms(get_the_ID(), 'sede');
     $sede_nombre = ($terms_sede && !is_wp_error($terms_sede)) ? $terms_sede[0]->name : 'San Luis';
@@ -63,9 +82,8 @@ while (have_posts()) : the_post();
                 </div>
 
                 <div class="flex items-center gap-2.5 mb-4">
-                    <p class="text-[#88CAFC] text-sm font-semibold"><?php echo esc_html($facultad_nombre); ?></p>
+                    <p class="text-[#88CAFC] text-sm font-semibold"><?php echo esc_html($facultad_nombre_completo); ?></p>
                 </div>
-
                 <h1 class="text-white text-4xl lg:text-5xl font-bold leading-tight mb-3">
                     <?php the_title(); ?>
                 </h1>
@@ -112,7 +130,7 @@ while (have_posts()) : the_post();
                 <?php if (get_field('objetivos_carrera')) : ?>
                     <section class="bg-white border border-[#e5e0d8] overflow-hidden">
                         <div class="border-b border-[#f0ece4] px-7 py-5 flex items-center gap-3">
-                            <h2 class="font-['Libre_Baskerville',serif] text-[#0b1f4a] font-bold text-lg">Objetivos de la carrera</h2>
+                            <h2 class=" text-[#0b1f4a] font-bold text-lg">Objetivos de la carrera</h2> <!-- font-['Libre_Baskerville',serif] -->
                         </div>
                         <div class="px-7 py-6 text-[#1a1a2e88] text-sm leading-relaxed wp-content-format">
                             <?php echo get_field('objetivos_carrera'); ?>
@@ -123,7 +141,7 @@ while (have_posts()) : the_post();
                 <?php if (get_field('alcances_titulo')) : ?>
                     <section class="bg-white border border-[#e5e0d8] overflow-hidden">
                         <div class="border-b border-[#f0ece4] px-7 py-5 flex items-center gap-3">
-                            <h2 class="font-['Libre_Baskerville',serif] text-[#0b1f4a] font-bold text-lg">Alcances e incumbencias del título</h2>
+                            <h2 class=" text-[#0b1f4a] font-bold text-lg">Alcances e incumbencias del título</h2> <!-- font-['Libre_Baskerville',serif] -->
                         </div>
                         <div class="px-7 py-6 text-[#1a1a2e88] text-sm leading-relaxed wp-content-format">
                             <?php echo get_field('alcances_titulo'); ?>
@@ -150,7 +168,7 @@ while (have_posts()) : the_post();
                 ?>
                     <section class="bg-white border border-[#e5e0d8] overflow-hidden">
                         <div class="border-b border-[#f0ece4] px-7 py-5 flex items-center gap-3">
-                            <h2 class="font-['Libre_Baskerville',serif] text-[#0b1f4a] font-bold text-lg">Organización Curricular</h2>
+                            <h2 class=" text-[#0b1f4a] font-bold text-lg">Organización Curricular</h2> <!-- font-['Libre_Baskerville',serif] -->
                         </div>
 
                         <div class="p-7">
@@ -207,7 +225,7 @@ while (have_posts()) : the_post();
             <aside class="flex flex-col gap-6">
 
                 <div class="bg-white border border-[#e5e0d8] p-6">
-                    <h3 class="font-['Libre_Baskerville',serif] text-[#0b1f4a] font-bold text-base mb-4">Compartí esta carrera</h3>
+                    <h3 class=" text-[#0b1f4a] font-bold text-base mb-4">Compartí esta carrera</h3> <!-- font-['Libre_Baskerville',serif] -->
                     <div class="flex gap-3">
                         <?php $url_actual = urlencode(get_permalink()); ?>
                         <a href="http://www.facebook.com/sharer.php?u=<?php echo $url_actual; ?>" target="_blank" class="w-10 h-10 bg-[#EEF1F5] hover:bg-[#1877f2] group flex items-center justify-center transition-all">
@@ -226,8 +244,8 @@ while (have_posts()) : the_post();
 
                 <div class="bg-white border border-[#e5e0d8] overflow-hidden">
                     <div class="bg-[#0b1f4a] px-6 py-4">
-                        <h3 class="font-['Libre_Baskerville',serif] text-white font-bold text-base">Contacto</h3>
-                        <p class="text-[#88CAFC] text-xs mt-0.5"><?php echo esc_html($facultad_nombre); ?></p>
+                        <h3 class=" text-white font-bold text-base">Contacto</h3> <!-- font-['Libre_Baskerville',serif] -->
+                        <p class="text-[#88CAFC] text-xs mt-0.5"><?php echo esc_html($facultad_nombre_completo); ?></p>
                     </div>
                     <div class="p-6 flex flex-col gap-4">
 
@@ -312,7 +330,7 @@ while (have_posts()) : the_post();
 
                 <div class="bg-[#0b1f4a] p-6 relative overflow-hidden">
                     <div class="absolute -top-8 -right-8 w-32 h-32 rounded-full bg-[#88CAFC] opacity-10 pointer-events-none"></div>
-                    <h3 class="font-['Libre_Baskerville',serif] text-white font-bold text-base mb-2 relative">¿Te interesa esta carrera?</h3>
+                    <h3 class="  text-white font-bold text-base mb-2 relative">¿Te interesa esta carrera?</h3> <!-- font-['Libre_Baskerville',serif] -->
                     <p class="text-[#ffffff77] text-sm mb-5 relative">Realizá tu preinscripción y comenzá tu camino en la UNSL.</p>
                     <a href="/preinscripcion" class="relative flex items-center justify-center gap-2 bg-[#88CAFC] hover:bg-white text-[#0b1f4a] font-bold text-sm px-5 py-3.5 transition-all">
                         Preinscripción 2026

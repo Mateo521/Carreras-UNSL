@@ -23,7 +23,7 @@
         <div class="flex-shrink-0 flex items-center">
           <a href="<?php echo home_url(); ?>" class="focus:outline-none focus:ring-2 focus:ring-[#88CAFC] rounded-sm">
             <span class="sr-only">Inicio UNSL</span>
-            <img class="h-12 w-auto object-contain" src="<?php echo get_template_directory_uri(); ?>/logo-unsl-negativo2.png" alt="Logo Universidad Nacional de San Luis" />
+            <img class="h-12 w-auto object-contain" src="<?php echo get_template_directory_uri(); ?>/logo-unsl-negativo2.svg" alt="Logo Universidad Nacional de San Luis" />
           </a>
         </div>
 
@@ -39,7 +39,7 @@
             Campus Virtual
           </a>
           <a href="<?php echo home_url('/preinscripcion/'); ?>" class="bg-[#88CAFC] hover:bg-[#6ab3ea] text-[#0b1f4a] px-6 py-2 rounded-lg font-bold transition-all text-sm focus:outline-none focus:ring-2 focus:ring-[#88CAFC] focus:ring-offset-2 focus:ring-offset-[#0b1f4a]">
-            Ingreso 2026
+            Preinscripción
           </a>
         </div>
 

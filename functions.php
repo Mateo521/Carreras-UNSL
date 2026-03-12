@@ -1,5 +1,6 @@
 <?php
-function unsl_registrar_cpt_taxonomias() {
+function unsl_registrar_cpt_taxonomias()
+{
 
 
     $labels_carrera = array(
@@ -25,18 +26,18 @@ function unsl_registrar_cpt_taxonomias() {
         'show_ui'            => true,
         'show_in_menu'       => true,
         'query_var'          => true,
-        'rewrite'            => array( 'slug' => 'carreras' ), 
+        'rewrite'            => array('slug' => 'carreras'),
         'capability_type'    => 'post',
-        'has_archive'        => true, 
+        'has_archive'        => true,
         'hierarchical'       => false,
-        'menu_position'      => 5, 
-        'menu_icon'          => 'dashicons-welcome-learn-more', 
+        'menu_position'      => 5,
+        'menu_icon'          => 'dashicons-welcome-learn-more',
 
-        'supports'           => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
-        'show_in_rest'       => true 
+        'supports'           => array('title', 'editor', 'thumbnail', 'excerpt'),
+        'show_in_rest'       => true
     );
 
-    register_post_type( 'carrera', $args_carrera );
+    register_post_type('carrera', $args_carrera);
 
 
     $labels_nivel = array(
@@ -50,13 +51,13 @@ function unsl_registrar_cpt_taxonomias() {
         'new_item_name'     => 'Nuevo Nombre de Nivel',
         'menu_name'         => 'Niveles',
     );
-    register_taxonomy( 'nivel', array( 'carrera' ), array(
+    register_taxonomy('nivel', array('carrera'), array(
         'hierarchical'      => true,
         'labels'            => $labels_nivel,
         'show_ui'           => true,
-        'show_admin_column' => true, 
+        'show_admin_column' => true,
         'query_var'         => true,
-        'rewrite'           => array( 'slug' => 'nivel' ),
+        'rewrite'           => array('slug' => 'nivel'),
         'show_in_rest'      => true
     ));
 
@@ -66,12 +67,12 @@ function unsl_registrar_cpt_taxonomias() {
         'singular_name'     => 'Facultad',
         'menu_name'         => 'Facultades',
     );
-    register_taxonomy( 'facultad', array( 'carrera' ), array(
+    register_taxonomy('facultad', array('carrera'), array(
         'hierarchical'      => true,
         'labels'            => $labels_facultad,
         'show_ui'           => true,
         'show_admin_column' => true,
-        'rewrite'           => array( 'slug' => 'facultad' ),
+        'rewrite'           => array('slug' => 'facultad'),
         'show_in_rest'      => true
     ));
 
@@ -80,12 +81,12 @@ function unsl_registrar_cpt_taxonomias() {
         'singular_name'     => 'Sede',
         'menu_name'         => 'Sedes',
     );
-    register_taxonomy( 'sede', array( 'carrera' ), array(
+    register_taxonomy('sede', array('carrera'), array(
         'hierarchical'      => true,
         'labels'            => $labels_sede,
         'show_ui'           => true,
         'show_admin_column' => true,
-        'rewrite'           => array( 'slug' => 'sede' ),
+        'rewrite'           => array('slug' => 'sede'),
         'show_in_rest'      => true
     ));
 
@@ -95,17 +96,17 @@ function unsl_registrar_cpt_taxonomias() {
         'singular_name'     => 'Modalidad',
         'menu_name'         => 'Modalidades',
     );
-    register_taxonomy( 'modalidad', array( 'carrera' ), array(
+    register_taxonomy('modalidad', array('carrera'), array(
         'hierarchical'      => true,
         'labels'            => $labels_modalidad,
         'show_ui'           => true,
         'show_admin_column' => true,
-        'rewrite'           => array( 'slug' => 'modalidad' ),
+        'rewrite'           => array('slug' => 'modalidad'),
         'show_in_rest'      => true
     ));
 }
 
-add_action( 'init', 'unsl_registrar_cpt_taxonomias', 0 );
+add_action('init', 'unsl_registrar_cpt_taxonomias', 0);
 
 
 
@@ -120,25 +121,27 @@ add_action( 'init', 'unsl_registrar_cpt_taxonomias', 0 );
  */
 add_action('init', 'unsl_scraping_e_importacion_directa');
 
-function unsl_scraping_e_importacion_directa() {
-    if ( !isset($_GET['ejecutar_scraping']) || $_GET['ejecutar_scraping'] !== 'unsl' ) {
+function unsl_scraping_e_importacion_directa()
+{
+    if (!isset($_GET['ejecutar_scraping']) || $_GET['ejecutar_scraping'] !== 'unsl') {
         return;
     }
-    if ( !current_user_can('manage_options') ) {
+    if (!current_user_can('manage_options')) {
         wp_die('Acceso denegado.');
     }
 
     set_time_limit(0);
-    libxml_use_internal_errors(true); 
+    libxml_use_internal_errors(true);
 
     echo '<div style="font-family: sans-serif; padding: 20px;">';
     echo "<h2>Iniciando Limpieza e Importación...</h2>";
-    flush(); ob_flush(); 
+    flush();
+    ob_flush();
 
     $url_base = 'https://carreras.unsl.edu.ar/carreras?limit=9999';
     $response_base = wp_remote_get($url_base, array('timeout' => 60));
-    
-    if ( is_wp_error($response_base) ) wp_die('Error al conectar.');
+
+    if (is_wp_error($response_base)) wp_die('Error al conectar.');
 
     $html_base = wp_remote_retrieve_body($response_base);
     $dom = new DOMDocument();
@@ -147,7 +150,7 @@ function unsl_scraping_e_importacion_directa() {
 
     $nodos_enlaces = $xpath->query("//div[contains(@class, 'tarjeta-carrera')]/parent::a");
     $enlaces_carreras = [];
-    
+
     foreach ($nodos_enlaces as $nodo) {
         $enlaces_carreras[] = 'https://carreras.unsl.edu.ar' . $nodo->getAttribute('href');
     }
@@ -155,11 +158,11 @@ function unsl_scraping_e_importacion_directa() {
     $contador_creadas = 0;
     $contador_actualizadas = 0;
 
-    foreach ( $enlaces_carreras as $enlace ) {
-        
+    foreach ($enlaces_carreras as $enlace) {
+
         $response_carrera = wp_remote_get($enlace, array('timeout' => 30));
-        if ( is_wp_error($response_carrera) ) continue; 
-        
+        if (is_wp_error($response_carrera)) continue;
+
         $html_carrera = wp_remote_retrieve_body($response_carrera);
         $dom_c = new DOMDocument();
         $dom_c->loadHTML('<?xml encoding="utf-8" ?>' . $html_carrera);
@@ -210,18 +213,18 @@ function unsl_scraping_e_importacion_directa() {
         $nodo_contenido_titulo = $xpath_c->query("//h6[contains(text(), 'Contenido')]")->item(0);
         if ($nodo_contenido_titulo && $nodo_contenido_titulo->parentNode) {
             $hermano = $nodo_contenido_titulo->nextSibling;
-            
+
             while ($hermano) {
                 if ($hermano->nodeName !== 'hr') {
                     $texto_plano = trim($hermano->nodeValue);
-                    
+
                     // Detectamos si el párrafo es un título de "Alcances" o "Perfil"
                     if (stripos($texto_plano, 'alcance') !== false || stripos($texto_plano, 'perfil del egresado') !== false) {
                         $seccion_actual = 'alcances';
                         $hermano = $hermano->nextSibling;
                         continue; // Saltamos este nodo para no imprimir el título basura
                     }
-                    
+
                     // Detectamos si es el título "Objetivos" (para borrarlo)
                     if (stripos($texto_plano, 'objetivo') !== false && strlen($texto_plano) < 60) {
                         $seccion_actual = 'objetivos';
@@ -231,7 +234,7 @@ function unsl_scraping_e_importacion_directa() {
 
                     // Obtenemos el HTML del nodo
                     $raw_html = $dom_c->saveHTML($hermano);
-                    
+
                     // MAGIA: Borramos todos los estilos raros y dejamos solo etiquetas básicas
                     $clean_html = strip_tags($raw_html, '<p><ul><li><ol><br><strong><b><em><i>');
                     // Por si quedó algún atributo style o class pegado en las etiquetas permitidas
@@ -272,58 +275,74 @@ function unsl_scraping_e_importacion_directa() {
         }
 
         // --- INSERCIÓN EN WORDPRESS ---
-        $post_existente = get_page_by_title( $nombre, OBJECT, 'carrera' );
-        
-        if ( !$post_existente ) {
+        $post_existente = get_page_by_title($nombre, OBJECT, 'carrera');
+
+        if (!$post_existente) {
             $post_id = wp_insert_post(array(
                 'post_title'  => $nombre,
                 'post_type'   => 'carrera',
                 'post_status' => 'publish',
             ));
             $contador_creadas++;
-            echo "<p style='color:green;'>➕ Creada: {$nombre}</p>";
+            echo "<p style='color:green;'> Creada: {$nombre}</p>";
         } else {
             $post_id = $post_existente->ID;
             $contador_actualizadas++;
-            echo "<p style='color:blue;'>🔄 Actualizada y Limpiada: {$nombre}</p>";
+            echo "<p style='color:blue;'> Actualizada y Limpiada: {$nombre}</p>";
         }
-        flush(); ob_flush();
+        flush();
+        ob_flush();
 
-        if ( !is_wp_error($post_id) ) {
-            
-            if (!empty($tipo)) wp_set_object_terms( $post_id, str_replace(['licenciaturas', 'ingenierías', 'tecnicaturas'], ['grado', 'grado', 'pregrado'], $tipo), 'nivel', false );
-            preg_match('/facultades\/([a-z]+)/', $html_carrera, $matches_facu);
-            if(isset($matches_facu[1])) wp_set_object_terms( $post_id, strtoupper($matches_facu[1]), 'facultad', false );
-            if (!empty($sede)) wp_set_object_terms( $post_id, str_replace('Villa de Merlo', 'Merlo', $sede), 'sede', false );
+        if (!is_wp_error($post_id)) {
 
-            update_field( 'titulo_otorgado', $titulo_otorgado, $post_id );
-            update_field( 'duracion_carrera', $duracion, $post_id );
-            update_field( 'enlace_plan_estudios', $plan_estudios, $post_id );
-            update_field( 'telefono_contacto', $telefono, $post_id );
-            update_field( 'interno_contacto', $interno, $post_id );
-            update_field( 'sitio_web_contacto', $sitio_web, $post_id );
-            update_field( 'instagram_contacto', $instagram, $post_id );
-            update_field( 'facebook_contacto', $facebook, $post_id );
-            
+            if (!empty($tipo)) wp_set_object_terms($post_id, str_replace(['licenciaturas', 'ingenierías', 'tecnicaturas'], ['grado', 'grado', 'pregrado'], $tipo), 'nivel', false);
+
+
+            // Extraer la facultad directamente desde la ruta de la imagen en el título (h1)
+            $nodo_img_facu = $xpath_c->query("//h1//img")->item(0);
+            if ($nodo_img_facu) {
+                $src_facu = $nodo_img_facu->getAttribute('src');
+                // Busca algo como "/static/facultades/fch.png" y extrae "fch"
+                preg_match('/facultades\/([a-z]+)\.(png|jpg|jpeg)/i', $src_facu, $matches_facu);
+                if (isset($matches_facu[1])) {
+                    wp_set_object_terms($post_id, strtoupper($matches_facu[1]), 'facultad', false);
+                }
+            }
+
+
+
+
+
+            if (!empty($sede)) wp_set_object_terms($post_id, str_replace('Villa de Merlo', 'Merlo', $sede), 'sede', false);
+
+            update_field('titulo_otorgado', $titulo_otorgado, $post_id);
+            update_field('duracion_carrera', $duracion, $post_id);
+            update_field('enlace_plan_estudios', $plan_estudios, $post_id);
+            update_field('telefono_contacto', $telefono, $post_id);
+            update_field('interno_contacto', $interno, $post_id);
+            update_field('sitio_web_contacto', $sitio_web, $post_id);
+            update_field('instagram_contacto', $instagram, $post_id);
+            update_field('facebook_contacto', $facebook, $post_id);
+
             // Asignamos las variables limpias a sus respectivos campos
-            update_field( 'objetivos_carrera', $html_objetivos, $post_id );
-            update_field( 'alcances_titulo', $html_alcances, $post_id );
+            update_field('objetivos_carrera', $html_objetivos, $post_id);
+            update_field('alcances_titulo', $html_alcances, $post_id);
 
             for ($i = 1; $i <= 6; $i++) {
                 $key = "materias_anio_" . $i;
-                if ( isset($materias_por_ano[$key]) ) {
-                    update_field( $key, $materias_por_ano[$key], $post_id );
+                if (isset($materias_por_ano[$key])) {
+                    update_field($key, $materias_por_ano[$key], $post_id);
                 } else {
-                    update_field( $key, '', $post_id ); 
+                    update_field($key, '', $post_id);
                 }
             }
         }
-        usleep(200000); 
+        usleep(200000);
     }
 
     echo "<hr>";
     echo "<h3>¡Proceso de limpieza finalizado con éxito!</h3>";
-    echo '<a href="'.admin_url('edit.php?post_type=carrera').'" style="display:inline-block; padding:10px 20px; background:#0b1f4a; color:white; text-decoration:none; border-radius:5px;">Ir a ver las Carreras</a>';
+    echo '<a href="' . admin_url('edit.php?post_type=carrera') . '" style="display:inline-block; padding:10px 20px; background:#0b1f4a; color:white; text-decoration:none; border-radius:5px;">Ir a ver las Carreras</a>';
     echo '</div>';
     exit;
 }
@@ -339,12 +358,13 @@ function unsl_scraping_e_importacion_directa() {
  */
 add_action('init', 'unsl_importar_carreras_desde_json');
 
-function unsl_importar_carreras_desde_json() {
+function unsl_importar_carreras_desde_json()
+{
     // 1. Medidas de seguridad: Solo corre si se llama por URL y si eres administrador
-    if ( !isset($_GET['importar_carreras']) || $_GET['importar_carreras'] !== 'secreto' ) {
+    if (!isset($_GET['importar_carreras']) || $_GET['importar_carreras'] !== 'secreto') {
         return;
     }
-    if ( !current_user_can('manage_options') ) {
+    if (!current_user_can('manage_options')) {
         wp_die('No tienes permisos para ejecutar este script.');
     }
 
@@ -354,19 +374,19 @@ function unsl_importar_carreras_desde_json() {
         {"nombre":"Doctorado en Ciencias de la Computación","facultad":"FCFMYN","duracion":"5 años","tipo":"posgrado","modalidad":"presencial","sede":"San Luis"},
         {"nombre":"Licenciatura en Psicología","facultad":"FAPSI","duracion":"5 años","tipo":"grado","modalidad":"presencial","sede":"San Luis"}
     ]';
-    
+
     // (Nota: asegúrate de que tu CodeIgniter incluya los campos "tipo", "modalidad" y "sede" en el array antes de generar el JSON).
 
     $carreras = json_decode($json_crudo, true);
     $contador_creadas = 0;
 
-    foreach ( $carreras as $carrera ) {
-        
+    foreach ($carreras as $carrera) {
+
         // 3. Comprobar si la carrera ya existe para no duplicarla
-        $existe = get_page_by_title( $carrera['nombre'], OBJECT, 'carrera' );
-        
-        if ( !$existe ) {
-            
+        $existe = get_page_by_title($carrera['nombre'], OBJECT, 'carrera');
+
+        if (!$existe) {
+
             // A. Crear el Post (La Carrera)
             $post_id = wp_insert_post(array(
                 'post_title'  => $carrera['nombre'],
@@ -374,20 +394,20 @@ function unsl_importar_carreras_desde_json() {
                 'post_status' => 'publish', // Publicar directamente
             ));
 
-            if ( !is_wp_error($post_id) ) {
-                
+            if (!is_wp_error($post_id)) {
+
                 // B. Asignar Taxonomías (Filtros)
                 // wp_set_object_terms( ID, nombre_o_array, taxonomía, append )
-                wp_set_object_terms( $post_id, $carrera['tipo'], 'nivel', false );
-                wp_set_object_terms( $post_id, $carrera['facultad'], 'facultad', false );
-                
+                wp_set_object_terms($post_id, $carrera['tipo'], 'nivel', false);
+                wp_set_object_terms($post_id, $carrera['facultad'], 'facultad', false);
+
                 // Si tu JSON incluye sede y modalidad, descomenta estas líneas:
                 // wp_set_object_terms( $post_id, $carrera['sede'], 'sede', false );
                 // wp_set_object_terms( $post_id, $carrera['modalidad'], 'modalidad', false );
 
                 // C. Guardar campos de ACF (update_field es mágico, busca el ID del campo por ti)
-                update_field( 'duracion_carrera', $carrera['duracion'], $post_id );
-                
+                update_field('duracion_carrera', $carrera['duracion'], $post_id);
+
                 // Si en el scraping también obtienes el título que otorga:
                 // update_field( 'titulo_otorgado', $carrera['titulo_que_otorga'], $post_id );
 
