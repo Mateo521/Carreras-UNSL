@@ -136,13 +136,13 @@ if ($query_carreras->have_posts()) {
 
 <main class="max-w-7xl mx-auto px-6 py-10 bg-[#EEF1F5]">
 
-    <div class="bg-white p-6 rounded-2xl shadow-sm border border-[#e5e0d8] mb-8">
+    <div class="bg-white p-6 rounded shadow-sm border border-[#e5e0d8] mb-8">
         <div class="relative w-full">
             <svg class="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-[#0b1f4a] opacity-50 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <circle cx="11" cy="11" r="8" />
                 <path d="m21 21-4.35-4.35" />
             </svg>
-            <input id="searchInput" type="search" placeholder="Búsqueda rápida por nombre..." class="w-full bg-[#f5f3ee] pl-14 pr-5 py-3.5 rounded-xl text-[#1a1a2e] text-base placeholder:text-[#1a1a2e66] outline-none focus:ring-2 focus:ring-[#88CAFC] focus:bg-white transition-all" />
+            <input id="searchInput" type="search" placeholder="Búsqueda rápida por nombre..." class="w-full bg-[#f5f3ee] pl-14 pr-5 py-3.5 rounded text-[#1a1a2e] text-base placeholder:text-[#1a1a2e66] outline-none focus:ring-2 focus:ring-[#88CAFC] focus:bg-white transition-all" />
         </div>
     </div>
 
@@ -153,7 +153,7 @@ if ($query_carreras->have_posts()) {
 
     <div id="carrerasGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
 
-    <div id="emptyState" class="hidden text-center py-24 bg-white rounded-2xl border border-[#e5e0d8]">
+    <div id="emptyState" class="hidden text-center py-24 bg-white rounded border border-[#e5e0d8]">
         <svg class="w-16 h-16 mx-auto text-[#1a1a2e22] mb-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
         </svg>
@@ -191,31 +191,31 @@ if ($query_carreras->have_posts()) {
 
     const FACU_CONFIG = {
         'fqbyf': {
-            bg: 'bg-[#ecfdf5]'
+            bg: 'bg-[#f5fef9]'
         },
         'fcfmyn': {
-            bg: 'bg-[#eff6ff]'
+            bg: 'bg-[#fef9f8]'
         },
-        'fica': {
-            bg: 'bg-[#fff7ed]'
+        'fica': {       
+            bg: 'bg-[#f7fbfd]'
         },
         'fcejs': {
-            bg: 'bg-[#eef2ff]'
+            bg: 'bg-[#faf8fc]'
         },
         'fch': {
-            bg: 'bg-[#fdf4ff]'
+            bg: 'bg-[#fdf5f1]'
         },
         'fapsi': {
-            bg: 'bg-[#fff1f2]'
+            bg: 'bg-[#fffbf7]'
         },
         'fcs': {
-            bg: 'bg-[#f0fdfa]'
+            bg: 'bg-[#fdfff5]'
         },
         'ftu': {
-            bg: 'bg-[#f0fdf4]'
+            bg: 'bg-[#fffef9]'
         },
         'ipau': {
-            bg: 'bg-[#0b1f4a]'
+            bg: 'bg-[#fff9fc]'
         }
     };
 
@@ -246,8 +246,10 @@ if ($query_carreras->have_posts()) {
             text: "text-gray-700",
             dot: "bg-gray-700"
         };
+
+
         const fc = FACU_CONFIG[c.facultad_slug] || {
-            bg: 'bg-[#f5f3ee]'
+            bg: 'bg-white'
         };
 
         const nombreFacultad = NOMBRES_FACULTADES[c.facultad_slug] || c.facultad;
@@ -256,11 +258,10 @@ if ($query_carreras->have_posts()) {
         const modalidadIcon = modalidadText === "Virtual" ? '<path d="M9.75 17 9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/>' : '<path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0z"/>';
         const modalidadClass = modalidadText === "Virtual" ? "text-[#0b1f4a] bg-[#0b1f4a14]" : "text-[#1a6b52] bg-[#1a6b5214]";
 
-
-        const facuImgUrl = c.facultad_slug ? `${THEME_URL}/imagenes/${c.facultad_slug}.png` : `${THEME_URL}/logo-unsl-negativo2.svg`;
-
+        // INCORPORACIÓN DE LA CLASE DE FONDO DINÁMICA:
+        // Hemos quitado "bg-white" y colocado "${fc.bg}" en las clases de la etiqueta <a>
         return `
-            <a href="${c.link}" class="group bg-white rounded-xl overflow-hidden border border-[#e5e0d8] hover:border-[#88CAFC] hover:-translate-y-1 hover:shadow-xl hover:shadow-[#0b1f4a1a] transition-all duration-300 flex flex-col cursor-pointer">
+            <a href="${c.link}" class="group ${fc.bg} rounded overflow-hidden border border-[#e5e0d8] hover:border-[#88CAFC] hover:-translate-y-1 hover:shadow-xl hover:shadow-[#0b1f4a1a] transition-all duration-300 flex flex-col cursor-pointer">
                 <div class="p-6 flex flex-col gap-4 flex-1">
                     
                     <div class="flex items-start justify-between gap-2">
@@ -275,10 +276,6 @@ if ($query_carreras->have_posts()) {
                     </div>
 
                     <div class="flex items-start gap-4 mt-2">
-                        <div class="w-10 h-10 rounded-full ${fc.bg} flex items-center justify-center shrink-0 border border-[#e5e0d8] overflow-hidden">
-                            <img src="${facuImgUrl}" alt="${c.facultad}" class="w-6 h-6 object-contain" onerror="this.src='${THEME_URL}/logo-unsl-negativo2.svg'; this.classList.add('opacity-30', 'invert');" />
-                        </div>
-                        
                         <h3 class="text-[#1a1a2e] text-base font-bold leading-snug group-hover:text-[#0b1f4a] transition-colors flex-1 mt-1">
                             ${c.nombre}
                         </h3>
@@ -287,7 +284,7 @@ if ($query_carreras->have_posts()) {
                     <div class="flex flex-col gap-2 mt-auto pt-4 border-t border-dashed border-[#e5e0d8]">
                         <div class="flex items-center justify-between text-xs">
                             <span class="text-[#1a1a2e66] font-medium">Facultad</span>
-                            <span class="font-bold text-[#0b1f4a] bg-[#EEF1F5] px-2 py-0.5 rounded text-right max-w-[65%] truncate" title="${nombreFacultad}">${nombreFacultad}</span>
+                            <span class="font-bold text-[#0b1f4a] bg-white border border-[#e5e0d8] px-2 py-0.5 rounded text-right max-w-[65%] truncate" title="${nombreFacultad}">${nombreFacultad}</span>
                         </div>
                         <div class="flex items-center justify-between text-xs">
                             <span class="text-[#1a1a2e66] font-medium">Sede</span>

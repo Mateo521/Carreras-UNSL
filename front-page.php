@@ -15,8 +15,8 @@ get_header();
     <div class="relative z-10 h-full w-full max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 flex flex-col justify-center text-center items-center pb-20">
         <div class="w-full max-w-4xl">
             <h1 class="text-white text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight mb-6 tracking-tight drop-shadow-lg">
-                Oferta
-                <em class="text-[#88CAFC]">Académica 2026</em>
+                Carreras
+                <b class="text-[#88CAFC]">UNSL 2026</b>
             </h1>
 
             <p class="text-slate-200 text-lg sm:text-xl mb-10 font-light leading-relaxed drop-shadow-md">
