@@ -11,12 +11,27 @@ $nombres_facultades = array(
     'ftu'    => 'Facultad de Turismo y Urbanismo',
     'ipau'   => 'Instituto Politécnico y Artístico Universitario'
 );
+$colores_facultades = array(
+    'fqbyf'  => array('bg' => 'bg-[#ecfdf5]', 'text' => 'text-[#065f46]'),
+    'fcfmyn' => array('bg' => 'bg-[#eff6ff]', 'text' => 'text-[#1e40af]'),
+    'fica'   => array('bg' => 'bg-[#fff7ed]', 'text' => 'text-[#92400e]'),
+    'fcejs'  => array('bg' => 'bg-[#eef2ff]', 'text' => 'text-[#3730a3]'),
+    'fch'    => array('bg' => 'bg-[#fdf4ff]', 'text' => 'text-[#6b21a8]'),
+    'fapsi'  => array('bg' => 'bg-[#fff1f2]', 'text' => 'text-[#9f1239]'),
+    'fcs'    => array('bg' => 'bg-[#f0fdfa]', 'text' => 'text-[#0f766e]'),
+    'ftu'    => array('bg' => 'bg-[#f0fdf4]', 'text' => 'text-[#166534]'),
+    'ipau'   => array('bg' => 'bg-[#f0f4f8]', 'text' => 'text-[#0b1f4a]')
+);
 while (have_posts()) : the_post();
+
     $terms_nivel = get_the_terms(get_the_ID(), 'nivel');
     $nivel_nombre = ($terms_nivel && !is_wp_error($terms_nivel)) ? $terms_nivel[0]->name : 'Grado';
     $terms_facultad = get_the_terms(get_the_ID(), 'facultad');
     $facultad_slug = ($terms_facultad && !is_wp_error($terms_facultad)) ? strtolower($terms_facultad[0]->slug) : '';
     $facultad_nombre_completo = isset($nombres_facultades[$facultad_slug]) ? $nombres_facultades[$facultad_slug] : (($terms_facultad && !is_wp_error($terms_facultad)) ? $terms_facultad[0]->name : 'UNSL');
+    $color_bg = isset($colores_facultades[$facultad_slug]) ? $colores_facultades[$facultad_slug]['bg'] : 'bg-white';
+    $color_text = isset($colores_facultades[$facultad_slug]) ? $colores_facultades[$facultad_slug]['text'] : 'text-[#0b1f4a]';
+    $logo_facu = $facultad_slug ? get_template_directory_uri() . '/imagenes/' . $facultad_slug . '.png' : get_template_directory_uri() . '/logo-unsl-negativo2.png';
     $terms_sede = get_the_terms(get_the_ID(), 'sede');
     $sede_nombre = ($terms_sede && !is_wp_error($terms_sede)) ? $terms_sede[0]->name : 'San Luis';
     $terms_modalidad = get_the_terms(get_the_ID(), 'modalidad');
@@ -28,6 +43,10 @@ while (have_posts()) : the_post();
     $imagen_fondo = get_field('imagen_fondo_hero');
     $url_fondo = $imagen_fondo ? esc_url($imagen_fondo) : get_template_directory_uri() . '/imagenes/default-hero.jpg';
 ?>
+
+
+
+
     <div class="bg-white border-b border-[#e5e0d8]">
         <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-xs text-[#1a1a2e55]">
             <a href="<?php echo home_url(); ?>" class="hover:text-[#0b1f4a] transition-colors">Inicio</a>
@@ -41,13 +60,17 @@ while (have_posts()) : the_post();
             <span class="text-[#1a1a2e]"><?php the_title(); ?></span>
         </div>
     </div>
+
+
     <div class="relative bg-[#0b1f4a] overflow-hidden">
         <div class="absolute inset-0">
             <img src="<?php echo $url_fondo; ?>" alt="Fondo de <?php the_title(); ?>" class="w-full h-full object-cover opacity-100" />
             <div class="absolute inset-0 bg-gradient-to-r from-[#0b1f4a] via-[#0b1f4acc] to-[#0b1f4a55]"></div>
         </div>
+
         <div class="relative max-w-7xl mx-auto px-6 py-16 lg:py-24">
             <div class="max-w-3xl">
+
                 <div class="flex flex-wrap items-center gap-2 mb-6">
                     <span class="inline-flex items-center gap-1.5 bg-[#eef2ff] text-[#3730a3] text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded">
                         <span class="w-1.5 h-1.5 rounded-full bg-[#3730a3]"></span>
@@ -59,45 +82,57 @@ while (have_posts()) : the_post();
                         </span>
                     <?php endif; ?>
                 </div>
-                <div class="flex items-center gap-2.5 mb-4">
-                    <p class="text-[#88CAFC] text-sm font-semibold"><?php echo esc_html($facultad_nombre_completo); ?></p>
+
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-14 h-14 rounded-xl <?php echo esc_attr($color_bg); ?> flex items-center justify-center shrink-0 shadow-lg">
+                        <img src="<?php echo esc_url($logo_facu); ?>" alt="Logo <?php echo esc_attr($facultad_slug); ?>" class="w-9 h-9 object-contain" onerror="this.src='<?php echo get_template_directory_uri(); ?>/logo-unsl-negativo2.svg'; this.classList.add('opacity-40', 'invert');" />
+                    </div>
+                    <p class="<?php echo esc_attr($color_bg); ?> <?php echo esc_attr($color_text); ?> px-3 py-1.5 rounded text-sm font-bold shadow-md">
+                        <?php echo esc_html($facultad_nombre_completo); ?>
+                    </p>
                 </div>
+
                 <h1 class="text-white text-4xl lg:text-5xl font-bold leading-tight mb-3">
                     <?php the_title(); ?>
                 </h1>
                 <p class="text-[#ffffff88] text-base">Te egresas como: <strong class="text-white font-semibold"><?php echo esc_html($titulo_otorgado); ?></strong></p>
+
                 <div class="flex flex-wrap gap-3 mt-8">
-                    <div class="flex items-center gap-2 bg-[#ffffff0d] border border-[#ffffff12] px-4 py-2.5">
+                    <div class="flex items-center gap-2 bg-[#ffffff0d] border border-[#ffffff12] px-4 py-2.5 rounded-lg backdrop-blur-sm">
                         <svg class="w-4 h-4 text-[#88CAFC] shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <circle cx="12" cy="12" r="10" />
                             <polyline points="12 6 12 12 16 14" />
                         </svg>
                         <span class="text-white text-sm font-medium"><?php echo esc_html($duracion); ?></span>
                     </div>
-                    <div class="flex items-center gap-2 bg-[#ffffff0d] border border-[#ffffff12] px-4 py-2.5">
+                    <div class="flex items-center gap-2 bg-[#ffffff0d] border border-[#ffffff12] px-4 py-2.5 rounded-lg backdrop-blur-sm">
                         <svg class="w-4 h-4 text-[#88CAFC] shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
                             <path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0z" />
                         </svg>
                         <span class="text-white text-sm font-medium"><?php echo esc_html($sede_nombre); ?></span>
                     </div>
-                    <div class="flex items-center gap-2 bg-[#ffffff0d] border border-[#ffffff12] px-4 py-2.5">
+                    <div class="flex items-center gap-2 bg-[#ffffff0d] border border-[#ffffff12] px-4 py-2.5 rounded-lg backdrop-blur-sm">
                         <svg class="w-4 h-4 text-[#88CAFC] shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                            <path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
                         <span class="text-white text-sm font-medium"><?php echo esc_html($modalidad_nombre); ?></span>
                     </div>
-                    <div class="flex items-center gap-2 bg-[#ffffff0d] border border-[#ffffff12] px-4 py-2.5">
-                        <svg class="w-4 h-4 text-[#88CAFC] shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-                        </svg>
-                        <a href="<?php echo esc_url($enlace_plan); ?>" target="_blank" class="text-[#88CAFC] text-sm font-medium hover:text-white transition-colors">Plan de estudios</a>
-                    </div>
+                    <?php if ($enlace_plan !== '#') : ?>
+                        <div class="flex items-center gap-2 bg-[#ffffff0d] border border-[#ffffff12] px-4 py-2.5 rounded-lg backdrop-blur-sm hover:bg-white/20 transition-colors">
+                            <svg class="w-4 h-4 text-[#88CAFC] shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                            </svg>
+                            <a href="<?php echo esc_url($enlace_plan); ?>" target="_blank" class="text-[#88CAFC] text-sm font-medium hover:text-white transition-colors">Plan de estudios</a>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
     </div>
+
+
+
     <div class="max-w-7xl mx-auto px-6 py-12">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div class="lg:col-span-2 flex flex-col gap-8">

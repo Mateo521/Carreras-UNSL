@@ -45,7 +45,7 @@ get_header();
             function imprimir_opciones_taxonomia_archivo($taxonomia, $placeholder)
             {
 
-                // Diccionario de facultades
+
                 $nombres_facultades = array(
                     'fqbyf'  => 'Facultad de Química, Bioquímica y Farmacia',
                     'fcfmyn' => 'Facultad de Ciencias Físico Matemáticas y Naturales',
@@ -83,6 +83,13 @@ get_header();
             <?php imprimir_opciones_taxonomia_archivo('sede', 'Sede'); ?>
             <?php imprimir_opciones_taxonomia_archivo('facultad', 'Unidad Académica'); ?>
 
+            <select id="filterProfesion" class="bg-[#f5f3ee] border-0 px-4 py-2.5 rounded-lg text-sm font-medium text-[#1a1a2e] outline-none focus:ring-2 focus:ring-[#88CAFC] cursor-pointer appearance-none pr-8">
+                <option value="">Tipo de Profesión</option>
+                <option value="licenciatura">Licenciaturas</option>
+                <option value="ingenieria">Ingenierías</option>
+                <option value="profesorado">Profesorados</option>
+                <option value="tecnicatura">Tecnicaturas</option>
+            </select>
             <button id="clearFilters" class="ml-auto text-xs text-[#1a1a2e55] hover:text-[#88CAFC] font-medium transition-colors underline underline-offset-2">
                 Limpiar filtros
             </button>
@@ -108,7 +115,6 @@ if ($query_carreras->have_posts()) {
 
         $terms_facultad = get_the_terms(get_the_ID(), 'facultad');
         $facultad_name = ($terms_facultad && !is_wp_error($terms_facultad)) ? $terms_facultad[0]->name : '';
-        // ¡NUEVA LÍNEA! Obtenemos la sigla (ej: fch, fcfmyn)
         $facultad_slug = ($terms_facultad && !is_wp_error($terms_facultad)) ? $terms_facultad[0]->slug : '';
 
         $terms_sede = get_the_terms(get_the_ID(), 'sede');
@@ -253,6 +259,7 @@ if ($query_carreras->have_posts()) {
         tipo: "",
         modalidad: "",
         sede: "",
+        profesion: "",
         facultad: "",
         search: ""
     };
@@ -321,6 +328,11 @@ if ($query_carreras->have_posts()) {
             if (state.modalidad && c.modalidad !== state.modalidad) return false;
             if (state.sede && c.sede !== state.sede) return false;
             if (state.facultad && c.facultad !== state.facultad) return false;
+            if (state.profesion) {
+                const prof = state.profesion.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                if (!name.includes(prof)) return false;
+            }
+
             if (q && !name.includes(q)) return false;
             return true;
         });
@@ -342,6 +354,8 @@ if ($query_carreras->have_posts()) {
 
 
     document.addEventListener("DOMContentLoaded", () => {
+
+
 
 
         const urlParams = new URLSearchParams(window.location.search);
@@ -417,6 +431,14 @@ if ($query_carreras->have_posts()) {
             render();
         });
 
+        const filterProfesion = document.getElementById("filterProfesion");
+        if (filterProfesion) {
+            filterProfesion.addEventListener("change", e => {
+                state.profesion = e.target.value;
+                render();
+            });
+        }
+
         const clearFiltersBtn = document.getElementById("clearFilters");
         if (clearFiltersBtn) {
             clearFiltersBtn.addEventListener("click", () => {
@@ -424,6 +446,7 @@ if ($query_carreras->have_posts()) {
                     tipo: "",
                     modalidad: "",
                     sede: "",
+                    profesion: "",
                     facultad: "",
                     search: ""
                 };
@@ -432,8 +455,8 @@ if ($query_carreras->have_posts()) {
                 if (filterModalidad) filterModalidad.value = "";
                 if (filterSede) filterSede.value = "";
                 if (filterFacultad) filterFacultad.value = "";
+                if (document.getElementById("filterProfesion")) document.getElementById("filterProfesion").value = "";
 
-                
                 window.history.replaceState({}, document.title, window.location.pathname);
 
                 document.querySelectorAll("[data-filter='tipo']").forEach((b, i) => {
