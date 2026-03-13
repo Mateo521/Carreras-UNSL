@@ -1,7 +1,5 @@
 <?php
 get_header();
-
-// Diccionario de Facultades en PHP
 $nombres_facultades = array(
     'fqbyf'  => 'Facultad de Química, Bioquímica y Farmacia',
     'fcfmyn' => 'Facultad de Ciencias Físico Matemáticas y Naturales',
@@ -13,38 +11,23 @@ $nombres_facultades = array(
     'ftu'    => 'Facultad de Turismo y Urbanismo',
     'ipau'   => 'Instituto Politécnico y Artístico Universitario'
 );
-
-
-
-
 while (have_posts()) : the_post();
-
-    // Taxonomías
     $terms_nivel = get_the_terms(get_the_ID(), 'nivel');
     $nivel_nombre = ($terms_nivel && !is_wp_error($terms_nivel)) ? $terms_nivel[0]->name : 'Grado';
-
     $terms_facultad = get_the_terms(get_the_ID(), 'facultad');
     $facultad_slug = ($terms_facultad && !is_wp_error($terms_facultad)) ? strtolower($terms_facultad[0]->slug) : '';
-
-
     $facultad_nombre_completo = isset($nombres_facultades[$facultad_slug]) ? $nombres_facultades[$facultad_slug] : (($terms_facultad && !is_wp_error($terms_facultad)) ? $terms_facultad[0]->name : 'UNSL');
-
     $terms_sede = get_the_terms(get_the_ID(), 'sede');
     $sede_nombre = ($terms_sede && !is_wp_error($terms_sede)) ? $terms_sede[0]->name : 'San Luis';
-
     $terms_modalidad = get_the_terms(get_the_ID(), 'modalidad');
     $modalidad_nombre = ($terms_modalidad && !is_wp_error($terms_modalidad)) ? $terms_modalidad[0]->name : 'Presencial';
-
-    // Campos Personalizados (Generales)
     $titulo_otorgado = get_field('titulo_otorgado') ?: get_the_title();
     $duracion = get_field('duracion_carrera') ?: 'No especificada';
     $acreditada_coneau = get_field('acreditada_coneau');
     $enlace_plan = get_field('enlace_plan_estudios') ?: '#';
-
     $imagen_fondo = get_field('imagen_fondo_hero');
     $url_fondo = $imagen_fondo ? esc_url($imagen_fondo) : get_template_directory_uri() . '/imagenes/default-hero.jpg';
 ?>
-
     <div class="bg-white border-b border-[#e5e0d8]">
         <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-xs text-[#1a1a2e55]">
             <a href="<?php echo home_url(); ?>" class="hover:text-[#0b1f4a] transition-colors">Inicio</a>
@@ -58,29 +41,24 @@ while (have_posts()) : the_post();
             <span class="text-[#1a1a2e]"><?php the_title(); ?></span>
         </div>
     </div>
-
     <div class="relative bg-[#0b1f4a] overflow-hidden">
         <div class="absolute inset-0">
             <img src="<?php echo $url_fondo; ?>" alt="Fondo de <?php the_title(); ?>" class="w-full h-full object-cover opacity-100" />
             <div class="absolute inset-0 bg-gradient-to-r from-[#0b1f4a] via-[#0b1f4acc] to-[#0b1f4a55]"></div>
         </div>
-
         <div class="relative max-w-7xl mx-auto px-6 py-16 lg:py-24">
             <div class="max-w-3xl">
-
                 <div class="flex flex-wrap items-center gap-2 mb-6">
                     <span class="inline-flex items-center gap-1.5 bg-[#eef2ff] text-[#3730a3] text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded">
                         <span class="w-1.5 h-1.5 rounded-full bg-[#3730a3]"></span>
                         <?php echo esc_html($nivel_nombre); ?>
                     </span>
-
                     <?php if ($acreditada_coneau) : ?>
                         <span class="inline-flex items-center gap-1.5 bg-white border border-[#88CAFC30] text-black text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded">
                             Acreditada CONEAU
                         </span>
                     <?php endif; ?>
                 </div>
-
                 <div class="flex items-center gap-2.5 mb-4">
                     <p class="text-[#88CAFC] text-sm font-semibold"><?php echo esc_html($facultad_nombre_completo); ?></p>
                 </div>
@@ -88,7 +66,6 @@ while (have_posts()) : the_post();
                     <?php the_title(); ?>
                 </h1>
                 <p class="text-[#ffffff88] text-base">Te egresas como: <strong class="text-white font-semibold"><?php echo esc_html($titulo_otorgado); ?></strong></p>
-
                 <div class="flex flex-wrap gap-3 mt-8">
                     <div class="flex items-center gap-2 bg-[#ffffff0d] border border-[#ffffff12] px-4 py-2.5">
                         <svg class="w-4 h-4 text-[#88CAFC] shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -121,12 +98,9 @@ while (have_posts()) : the_post();
             </div>
         </div>
     </div>
-
     <div class="max-w-7xl mx-auto px-6 py-12">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-
             <div class="lg:col-span-2 flex flex-col gap-8">
-
                 <?php if (get_field('objetivos_carrera')) : ?>
                     <section class="bg-white border border-[#e5e0d8] overflow-hidden">
                         <div class="border-b border-[#f0ece4] px-7 py-5 flex items-center gap-3">
@@ -137,7 +111,6 @@ while (have_posts()) : the_post();
                         </div>
                     </section>
                 <?php endif; ?>
-
                 <?php if (get_field('alcances_titulo')) : ?>
                     <section class="bg-white border border-[#e5e0d8] overflow-hidden">
                         <div class="border-b border-[#f0ece4] px-7 py-5 flex items-center gap-3">
@@ -148,11 +121,9 @@ while (have_posts()) : the_post();
                         </div>
                     </section>
                 <?php endif; ?>
-
                 <?php
                 $maximos_anios_posibles = 6;
                 $plan_de_estudios = array();
-
                 for ($i = 1; $i <= $maximos_anios_posibles; $i++) {
                     $materias_brutas = get_field('materias_anio_' . $i);
                     if (!empty($materias_brutas)) {
@@ -162,7 +133,6 @@ while (have_posts()) : the_post();
                         }
                     }
                 }
-
                 if (!empty($plan_de_estudios)) :
                     $ultimo_anio = max(array_keys($plan_de_estudios));
                 ?>
@@ -170,10 +140,8 @@ while (have_posts()) : the_post();
                         <div class="border-b border-[#f0ece4] px-7 py-5 flex items-center gap-3">
                             <h2 class=" text-[#0b1f4a] font-bold text-lg">Organización Curricular</h2> <!-- font-['Libre_Baskerville',serif] -->
                         </div>
-
                         <div class="p-7">
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-
                                 <?php foreach ($plan_de_estudios as $numero_anio => $materias) :
                                     $es_final = ($numero_anio === $ultimo_anio);
                                     $col_span_class = $es_final ? 'sm:col-span-2' : '';
@@ -190,7 +158,6 @@ while (have_posts()) : the_post();
                                                 <span class="ml-auto text-[#88CAFC66] text-[10px] uppercase tracking-widest font-bold">Año final</span>
                                             <?php endif; ?>
                                         </div>
-
                                         <ul class="<?php echo esc_attr($ul_class); ?>">
                                             <?php foreach ($materias as $materia) : ?>
                                                 <li class="<?php echo esc_attr($li_class); ?>">
@@ -201,9 +168,7 @@ while (have_posts()) : the_post();
                                         </ul>
                                     </div>
                                 <?php endforeach; ?>
-
                             </div>
-
                             <?php if (get_field('enlace_plan_estudios')) : ?>
                                 <a href="<?php echo esc_url(get_field('enlace_plan_estudios')); ?>" target="_blank" class="mt-5 flex items-center gap-2 text-sm text-[#0b1f4a] font-semibold hover:text-[#88CAFC] transition-colors group w-fit">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -215,15 +180,11 @@ while (have_posts()) : the_post();
                                     </svg>
                                 </a>
                             <?php endif; ?>
-
                         </div>
                     </section>
                 <?php endif; ?>
-
             </div>
-
             <aside class="flex flex-col gap-6">
-
                 <div class="bg-white border border-[#e5e0d8] p-6">
                     <h3 class=" text-[#0b1f4a] font-bold text-base mb-4">Compartí esta carrera</h3> <!-- font-['Libre_Baskerville',serif] -->
                     <div class="flex gap-3">
@@ -240,15 +201,12 @@ while (have_posts()) : the_post();
                         </a>
                     </div>
                 </div>
-
-
                 <div class="bg-white border border-[#e5e0d8] overflow-hidden">
                     <div class="bg-[#0b1f4a] px-6 py-4">
                         <h3 class=" text-white font-bold text-base">Contacto</h3> <!-- font-['Libre_Baskerville',serif] -->
                         <p class="text-[#88CAFC] text-xs mt-0.5"><?php echo esc_html($facultad_nombre_completo); ?></p>
                     </div>
                     <div class="p-6 flex flex-col gap-4">
-
                         <?php if (get_field('telefono_contacto')) : ?>
                             <div class="flex items-start gap-3">
                                 <div class="w-8 h-8 bg-[#EEF1F5] flex items-center justify-center shrink-0 mt-0.5">
@@ -265,7 +223,6 @@ while (have_posts()) : the_post();
                                 </div>
                             </div>
                         <?php endif; ?>
-
                         <?php if (get_field('sitio_web_contacto')) : ?>
                             <div class="flex items-start gap-3">
                                 <div class="w-8 h-8 bg-[#EEF1F5] flex items-center justify-center shrink-0 mt-0.5">
@@ -279,7 +236,6 @@ while (have_posts()) : the_post();
                                 </div>
                             </div>
                         <?php endif; ?>
-
                         <?php if (get_field('correo_contacto')) : ?>
                             <div class="flex items-start gap-3">
                                 <div class="w-8 h-8 bg-[#EEF1F5] flex items-center justify-center shrink-0 mt-0.5">
@@ -294,7 +250,6 @@ while (have_posts()) : the_post();
                                 </div>
                             </div>
                         <?php endif; ?>
-
                         <?php if (get_field('instagram_contacto') || get_field('facebook_contacto')) : ?>
                             <div class="pt-4 border-t border-[#f0ece4]">
                                 <p class="text-[#1a1a2e55] text-[11px] uppercase tracking-widest font-bold mb-3">Redes sociales</p>
@@ -307,7 +262,6 @@ while (have_posts()) : the_post();
                                             Instagram
                                         </a>
                                     <?php endif; ?>
-
                                     <?php if (get_field('facebook_contacto')) : ?>
                                         <a href="<?php echo esc_url(get_field('facebook_contacto')); ?>" target="_blank" class="flex items-center gap-2 text-sm text-[#1a1a2e88] hover:text-[#1877f2] transition-colors">
                                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -319,15 +273,8 @@ while (have_posts()) : the_post();
                                 </div>
                             </div>
                         <?php endif; ?>
-
                     </div>
                 </div>
-
-
-
-
-
-
                 <div class="bg-[#0b1f4a] p-6 relative overflow-hidden">
                     <div class="absolute -top-8 -right-8 w-32 h-32 rounded-full bg-[#88CAFC] opacity-10 pointer-events-none"></div>
                     <h3 class="  text-white font-bold text-base mb-2 relative">¿Te interesa esta carrera?</h3> <!-- font-['Libre_Baskerville',serif] -->
@@ -336,11 +283,9 @@ while (have_posts()) : the_post();
                         Preinscripción 2026
                     </a>
                 </div>
-
             </aside>
         </div>
     </div>
-
 <?php
 endwhile;
 get_footer();
