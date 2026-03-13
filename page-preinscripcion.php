@@ -362,7 +362,7 @@ get_header();
                     <p class="text-[#1a1a2e88] text-sm leading-relaxed mb-5">
                         En el momento de la inscripción el postulante debe presentar la <strong class="text-[#1a1a2e]">ficha de
                             preinscripción impresa</strong> junto a toda la documentación respaldatoria, en las fechas que las
-                        Unidades Académicas dispongan.
+                        Facultades dispongan.
                     </p>
 
                     <!-- Steps -->

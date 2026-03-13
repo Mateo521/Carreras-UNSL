@@ -209,9 +209,9 @@ get_header();
     <div class="max-w-7xl mx-auto">
         <div class="text-center mb-16">
             <!--p class="text-[#88CAFC] text-xs font-bold uppercase tracking-widest mb-3">Estructura académica</p-->
-            <h2 class=" text-[#0b1f4a] text-3xl md:text-4xl font-bold">Unidades Académicas</h2> <!-- font-['Libre_Baskerville',serif] -->
+            <h2 class=" text-[#0b1f4a] text-3xl md:text-4xl font-bold">Facultades</h2> <!-- font-['Libre_Baskerville',serif] -->
             <p class="text-gray-700 text-base mt-4 max-w-2xl mx-auto leading-relaxed">
-                La Universidad Nacional de San Luis está organizada en nueve unidades académicas distribuidas en sus tres sedes.
+                La Universidad Nacional de San Luis está organizada en nueve Facultades distribuidas en sus tres sedes.
             </p>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">

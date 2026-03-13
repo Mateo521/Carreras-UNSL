@@ -1,7 +1,7 @@
 <?php
 /**
  * Template Name: Nuestras Facultades
- * Description: Plantilla para mostrar la grilla de Unidades Académicas de la UNSL.
+ * Description: Plantilla para mostrar la grilla de Facultades de la UNSL.
  */
 get_header(); 
 ?>
@@ -10,7 +10,7 @@ get_header();
     <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-xs text-[#1a1a2e55]">
         <a href="<?php echo home_url(); ?>" class="hover:text-[#0b1f4a] transition-colors">Inicio</a>
         <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
-        <span class="text-[#1a1a2e]">Unidades Académicas</span>
+        <span class="text-[#1a1a2e]">Facultades</span>
     </div>
 </div>
 
@@ -23,7 +23,7 @@ get_header();
             Estructura Institucional
         </span>
         <h1 class="text-white text-4xl md:text-5xl lg:text-6xl font-bold font-['Libre_Baskerville',serif] mb-6">
-            Unidades Académicas
+            Facultades
         </h1>
         <p class="text-slate-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-light">
             La Universidad Nacional de San Luis está organizada en ocho facultades y un instituto, distribuidos estratégicamente en nuestras tres sedes provinciales para garantizar el acceso a la educación superior.
