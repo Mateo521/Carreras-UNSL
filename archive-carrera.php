@@ -30,22 +30,32 @@ get_header();
 </header>
 
 <div class="bg-white border-b border-[#e5e0d8] sticky top-[80px] z-40 shadow-sm">
-    <div class="max-w-7xl mx-auto px-6 py-2">
-        <div class="flex flex-wrap gap-3 items-center">
+    <div class="max-w-7xl mx-auto px-6 py-3">
 
-            <div class="flex items-center gap-1.5 bg-[#f5f3ee] p-1 rounded-lg">
-                <button data-filter="tipo" data-value="" class="filter-btn active-tipo px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 bg-[#0b1f4a] text-white shadow-sm">Todos</button>
-                <button data-filter="tipo" data-value="pregrado" class="filter-btn px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 text-[#1a1a2e66] hover:text-[#1a1a2e]">Pregrado</button>
-                <button data-filter="tipo" data-value="grado" class="filter-btn px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 text-[#1a1a2e66] hover:text-[#1a1a2e]">Grado</button>
-                <button data-filter="tipo" data-value="posgrado" class="filter-btn px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 text-[#1a1a2e66] hover:text-[#1a1a2e]">Posgrado</button>
+        <div class="flex justify-between items-center lg:hidden">
+            <span class="text-sm font-bold text-[#0b1f4a] flex items-center gap-2">
+                <svg class="w-4 h-4 text-[#88CAFC]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z" />
+                </svg>
+                Filtros de búsqueda
+            </span>
+            <button id="toggleMobileFilters" class="bg-[#f5f3ee] hover:bg-[#e5e0d8] text-[#0b1f4a] px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition-colors">
+                Mostrar
+            </button>
+        </div>
+
+        <div id="filtersWrapper" class="hidden lg:flex flex-col lg:flex-row flex-wrap gap-3 items-stretch lg:items-center mt-4 lg:mt-0">
+
+            <div class="flex flex-wrap items-center gap-1.5 bg-[#f5f3ee] p-1 rounded-lg w-full lg:w-auto">
+                <button data-filter="tipo" data-value="" class="flex-1 lg:flex-none filter-btn active-tipo px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 bg-[#0b1f4a] text-white shadow-sm">Todos</button>
+                <button data-filter="tipo" data-value="pregrado" class="flex-1 lg:flex-none filter-btn px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 text-[#1a1a2e66] hover:text-[#1a1a2e]">Pregrado</button>
+                <button data-filter="tipo" data-value="grado" class="flex-1 lg:flex-none filter-btn px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 text-[#1a1a2e66] hover:text-[#1a1a2e]">Grado</button>
+                <button data-filter="tipo" data-value="posgrado" class="flex-1 lg:flex-none filter-btn px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 text-[#1a1a2e66] hover:text-[#1a1a2e]">Posgrado</button>
             </div>
 
             <?php
-
             function imprimir_opciones_taxonomia_archivo($taxonomia, $placeholder)
             {
-
-
                 $nombres_facultades = array(
                     'fqbyf'  => 'Facultad de Química, Bioquímica y Farmacia',
                     'fcfmyn' => 'Facultad de Ciencias Físico Matemáticas y Naturales',
@@ -60,42 +70,42 @@ get_header();
 
                 $terms = get_terms(array('taxonomy' => $taxonomia, 'hide_empty' => false));
 
-                echo '<select id="filter' . ucfirst($taxonomia) . '" class="bg-[#f5f3ee] border-0 px-4 py-2.5 rounded-lg text-sm font-medium text-[#1a1a2e] outline-none focus:ring-2 focus:ring-[#88CAFC] cursor-pointer appearance-none pr-8 max-w-xs truncate">';
+
+                echo '<select id="filter' . ucfirst($taxonomia) . '" class="w-full lg:w-auto bg-[#f5f3ee] border-0 px-4 py-2.5 rounded-lg text-sm font-medium text-[#1a1a2e] outline-none focus:ring-2 focus:ring-[#88CAFC] cursor-pointer appearance-none pr-8 lg:max-w-xs truncate">';
                 echo '<option value="">' . esc_html($placeholder) . '</option>';
 
                 foreach ($terms as $term) {
                     $texto_visible = esc_html($term->name);
-
                     if ($taxonomia === 'facultad' && isset($nombres_facultades[$term->slug])) {
                         $texto_visible = esc_html($term->name) . ' (' . esc_html($nombres_facultades[$term->slug]) . ')';
                     }
-
-
                     echo '<option value="' . esc_attr($term->name) . '" title="' . $texto_visible . '">' . $texto_visible . '</option>';
                 }
-
                 echo '</select>';
             }
             ?>
-
 
             <?php imprimir_opciones_taxonomia_archivo('modalidad', 'Modalidad'); ?>
             <?php imprimir_opciones_taxonomia_archivo('sede', 'Sede'); ?>
             <?php imprimir_opciones_taxonomia_archivo('facultad', 'Unidad Académica'); ?>
 
-            <select id="filterProfesion" class="bg-[#f5f3ee] border-0 px-4 py-2.5 rounded-lg text-sm font-medium text-[#1a1a2e] outline-none focus:ring-2 focus:ring-[#88CAFC] cursor-pointer appearance-none pr-8">
+            <select id="filterProfesion" class="w-full lg:w-auto bg-[#f5f3ee] border-0 px-4 py-2.5 rounded-lg text-sm font-medium text-[#1a1a2e] outline-none focus:ring-2 focus:ring-[#88CAFC] cursor-pointer appearance-none pr-8">
                 <option value="">Tipo de Profesión</option>
                 <option value="licenciatura">Licenciaturas</option>
                 <option value="ingenieria">Ingenierías</option>
                 <option value="profesorado">Profesorados</option>
                 <option value="tecnicatura">Tecnicaturas</option>
             </select>
-            <button id="clearFilters" class="ml-auto text-xs text-[#1a1a2e55] hover:text-[#88CAFC] font-medium transition-colors underline underline-offset-2">
+
+            <button id="clearFilters" class="mt-2 lg:mt-0 lg:ml-auto w-full lg:w-auto text-center text-xs text-[#1a1a2e55] hover:text-[#88CAFC] font-medium transition-colors underline underline-offset-2 py-2">
                 Limpiar filtros
             </button>
+
         </div>
     </div>
 </div>
+
+
 
 <?php
 $args = array(
@@ -399,6 +409,26 @@ if ($query_carreras->have_posts()) {
                 render();
             });
         }
+
+
+        const toggleMobileFilters = document.getElementById("toggleMobileFilters");
+        const filtersWrapper = document.getElementById("filtersWrapper");
+
+        if (toggleMobileFilters && filtersWrapper) {
+            toggleMobileFilters.addEventListener("click", () => {
+                
+                filtersWrapper.classList.toggle("hidden");
+                filtersWrapper.classList.toggle("flex");
+
+                
+                if (filtersWrapper.classList.contains("hidden")) {
+                    toggleMobileFilters.textContent = "Mostrar";
+                } else {
+                    toggleMobileFilters.textContent = "Ocultar";
+                }
+            });
+        }
+
 
         document.querySelectorAll("[data-filter='tipo']").forEach(btn => {
             btn.addEventListener("click", () => {
