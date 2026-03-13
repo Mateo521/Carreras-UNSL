@@ -219,19 +219,19 @@ get_header();
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             <?php
             $facultades = [
-                ['sigla' => 'FQBYF', 'nombre' => 'Facultad de Química, Bioquímica y Farmacia', 'sede' => 'San Luis', 'color_bg' => 'bg-[#ecfdf5]', 'color_txt' => 'text-[#065f46]', 'img' => 'fqbyf.png'],
-                ['sigla' => 'FCFMYN', 'nombre' => 'Facultad de Ciencias Físico Matemáticas y Naturales', 'sede' => 'San Luis', 'color_bg' => 'bg-[#eff6ff]', 'color_txt' => 'text-[#1e40af]', 'img' => 'fcfmyn.png'],
-                ['sigla' => 'FICA', 'nombre' => 'Facultad de Ingeniería y Ciencias Agropecuarias', 'sede' => 'Villa Mercedes', 'color_bg' => 'bg-[#fff7ed]', 'color_txt' => 'text-[#92400e]', 'img' => 'fica.png'],
-                ['sigla' => 'FCEJS', 'nombre' => 'Facultad de Ciencias Económicas, Jurídicas y Sociales', 'sede' => 'Villa Mercedes', 'color_bg' => 'bg-[#eef2ff]', 'color_txt' => 'text-[#3730a3]', 'img' => 'fcejs.png'],
-                ['sigla' => 'FCH', 'nombre' => 'Facultad de Ciencias Humanas', 'sede' => 'San Luis', 'color_bg' => 'bg-[#fdf4ff]', 'color_txt' => 'text-[#6b21a8]', 'img' => 'fch.png'],
-                ['sigla' => 'FAPSI', 'nombre' => 'Facultad de Psicología', 'sede' => 'San Luis', 'color_bg' => 'bg-[#fff1f2]', 'color_txt' => 'text-[#9f1239]', 'img' => 'fapsi.png'],
-                ['sigla' => 'FCS', 'nombre' => 'Facultad de Ciencias de la Salud', 'sede' => 'San Luis · Villa Mercedes', 'color_bg' => 'bg-[#f0fdfa]', 'color_txt' => 'text-[#0f766e]', 'img' => 'fcs.png'],
-                ['sigla' => 'FTU', 'nombre' => 'Facultad de Turismo y Urbanismo', 'sede' => 'Merlo', 'color_bg' => 'bg-[#f0fdf4]', 'color_txt' => 'text-[#166534]', 'img' => 'ftu.png'],
+                ['sigla' => 'FQBYF', 'nombre' => 'Facultad de Química, Bioquímica y Farmacia', 'sede' => 'San Luis', 'color_bg' => 'bg-[#dfffed]', 'color_txt' => 'text-[#008e3b]', 'img' => 'fqbyf.png'],
+                ['sigla' => 'FCFMYN', 'nombre' => 'Facultad de Ciencias Físico Matemáticas y Naturales', 'sede' => 'San Luis', 'color_bg' => 'bg-[#fff1f0]', 'color_txt' => 'text-[#d2231f]', 'img' => 'fcfmyn.png'],
+                ['sigla' => 'FICA', 'nombre' => 'Facultad de Ingeniería y Ciencias Agropecuarias', 'sede' => 'Villa Mercedes', 'color_bg' => 'bg-[#dcf0f8]', 'color_txt' => 'text-[#466876]', 'img' => 'fica.png'],
+                ['sigla' => 'FCEJS', 'nombre' => 'Facultad de Ciencias Económicas, Jurídicas y Sociales', 'sede' => 'Villa Mercedes', 'color_bg' => 'bg-[#f4e7ff]', 'color_txt' => 'text-[#4b256b]', 'img' => 'fcejs.png'],
+                ['sigla' => 'FCH', 'nombre' => 'Facultad de Ciencias Humanas', 'sede' => 'San Luis', 'color_bg' => 'bg-[#fbdac7]', 'color_txt' => 'text-[#e5641c]', 'img' => 'fch.png'],
+                ['sigla' => 'FAPSI', 'nombre' => 'Facultad de Psicología', 'sede' => 'San Luis', 'color_bg' => 'bg-[#fff4df]', 'color_txt' => 'text-[#F2BB52]', 'img' => 'fapsi.png'],
+                ['sigla' => 'FCS', 'nombre' => 'Facultad de Ciencias de la Salud', 'sede' => 'San Luis · Villa Mercedes', 'color_bg' => 'bg-[#f0ffca]', 'color_txt' => 'text-[#88ae2a]', 'img' => 'fcs.png'],
+                ['sigla' => 'FTU', 'nombre' => 'Facultad de Turismo y Urbanismo', 'sede' => 'Merlo', 'color_bg' => 'bg-[#fff9e5]', 'color_txt' => 'text-[#996b16]', 'img' => 'ftu.png'],
             ];
 
             foreach ($facultades as $fac) : ?>
                 <a href="<?php echo home_url('/carreras/?facultad=' . urlencode($fac['sigla'])); ?>" class="group bg-white rounded-xl border border-[#e5e0d8] hover:border-[#88CAFC] hover:shadow-lg hover:shadow-[#0b1f4a08] transition-all duration-300 p-6 flex items-center gap-5">
-                    <div class="w-16 h-16 rounded-xl <?php echo $fac['color_bg']; ?> flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300">
+                    <div class="w-16 h-16 rounded-xl <?php echo $fac['color_bg']; ?> flex items-center justify-center shrink-0  transition-transform duration-300">
                         <img src="<?php echo get_template_directory_uri() . '/imagenes/' . $fac['img']; ?>" alt="<?php echo $fac['sigla']; ?>" class="w-11 h-11 object-contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
                         <span class="hidden w-11 h-11 items-center justify-center font-['Libre_Baskerville',serif] font-bold text-sm <?php echo $fac['color_txt']; ?> leading-tight text-center"><?php echo substr($fac['sigla'], 0, 2); ?></span>
                     </div>
@@ -250,7 +250,7 @@ get_header();
             <?php endforeach; ?>
 
             <a href="<?php echo home_url('/carreras/?facultad=IPAU'); ?>" class="group col-span-1 sm:col-span-2 lg:col-span-1 bg-[#0b1f4a] rounded-xl border border-[#0b1f4a] hover:border-[#88CAFC] hover:shadow-xl transition-all duration-300 p-6 flex items-center gap-5">
-                <div class="w-16 h-16 rounded-xl bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-[#88CAFC20] transition-colors group-hover:scale-105 duration-300">
+                <div class="w-16 h-16 rounded-xl bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-[#88CAFC20] transition-colors  duration-300">
                     <img src="<?php echo get_template_directory_uri(); ?>/imagenes/ipau.png" alt="IPAU" class="w-11 h-11 object-contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
                     <span class="hidden w-11 h-11 items-center justify-center font-['Libre_Baskerville',serif] font-bold text-sm text-[#88CAFC] leading-tight text-center">IP</span>
                 </div>

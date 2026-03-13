@@ -116,8 +116,8 @@ get_header();
 
                         <a href="http://preingreso.unsl.edu.ar/fqbyf/" target="_blank"
                             class="group flex items-center gap-3 p-3.5 rounded border border-[#D8DEE5] hover:border-[#88CAFC] hover:bg-[#f8fbff] transition-all duration-200">
-                            <div class="w-9 h-9 rounded-lg bg-[#ecfdf5] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                                <img src="<?php echo get_template_directory_uri(); ?>/imagenes/fqbyf.png" alt="FQBYF" class="w-6 h-6 object-contain"
+                            <div class="w-9 h-9 rounded-lg  flex items-center justify-center shrink-0  transition-transform"> <!-- bg-[#ecfdf5] -->
+                                <img src="<?php echo get_template_directory_uri(); ?>/imagenes/fqbyf.png" alt="FQBYF" class="w-12 h-12 object-contain"
                                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
                                 <span class="hidden text-[#065f46] font-black text-[9px] leading-tight text-center">FQ</span>
                             </div>
@@ -135,8 +135,8 @@ get_header();
 
                         <a href="http://preingreso.unsl.edu.ar/fcfmyn/" target="_blank"
                             class="group flex items-center gap-3 p-3.5 rounded border border-[#D8DEE5] hover:border-[#88CAFC] hover:bg-[#f8fbff] transition-all duration-200">
-                            <div class="w-9 h-9 rounded-lg bg-[#eff6ff] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                                <img src="<?php echo get_template_directory_uri(); ?>/imagenes/fcfmyn.png" alt="FCFMYN" class="w-6 h-6 object-contain"
+                            <div class="w-9 h-9 rounded-lg  flex items-center justify-center shrink-0  transition-transform"> <!-- bg-[#eff6ff] -->
+                                <img src="<?php echo get_template_directory_uri(); ?>/imagenes/fcfmyn.png" alt="FCFMYN" class="w-12 h-12 object-contain"
                                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
                                 <span class="hidden text-[#1e40af] font-black text-[9px] leading-tight text-center">FC</span>
                             </div>
@@ -154,8 +154,8 @@ get_header();
 
                         <a href="http://preingreso.unsl.edu.ar/fica/" target="_blank"
                             class="group flex items-center gap-3 p-3.5 rounded border border-[#D8DEE5] hover:border-[#88CAFC] hover:bg-[#f8fbff] transition-all duration-200">
-                            <div class="w-9 h-9 rounded-lg bg-[#fff7ed] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                                <img src="<?php echo get_template_directory_uri(); ?>/imagenes/fica.png" alt="FICA" class="w-6 h-6 object-contain"
+                            <div class="w-9 h-9 rounded-lg  flex items-center justify-center shrink-0  transition-transform"> <!-- bg-[#fff7ed] -->
+                                <img src="<?php echo get_template_directory_uri(); ?>/imagenes/fica.png" alt="FICA" class="w-12 h-12 object-contain"
                                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
                                 <span class="hidden text-[#92400e] font-black text-[9px] leading-tight text-center">FI</span>
                             </div>
@@ -173,8 +173,8 @@ get_header();
 
                         <a href="http://preingreso.unsl.edu.ar/facejs/" target="_blank"
                             class="group flex items-center gap-3 p-3.5 rounded border border-[#D8DEE5] hover:border-[#88CAFC] hover:bg-[#f8fbff] transition-all duration-200">
-                            <div class="w-9 h-9 rounded-lg bg-[#eef2ff] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                                <img src="<?php echo get_template_directory_uri(); ?>/imagenes/fcejs.png" alt="FCEJS" class="w-6 h-6 object-contain"
+                            <div class="w-9 h-9 rounded-lg  flex items-center justify-center shrink-0  transition-transform"> <!-- bg-[#eef2ff] -->
+                                <img src="<?php echo get_template_directory_uri(); ?>/imagenes/fcejs.png" alt="FCEJS" class="w-12 h-12 object-contain"
                                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
                                 <span class="hidden text-[#3730a3] font-black text-[9px] leading-tight text-center">FC</span>
                             </div>
@@ -192,8 +192,8 @@ get_header();
 
                         <a href="http://preingreso.unsl.edu.ar/fch/" target="_blank"
                             class="group flex items-center gap-3 p-3.5 rounded border border-[#D8DEE5] hover:border-[#88CAFC] hover:bg-[#f8fbff] transition-all duration-200">
-                            <div class="w-9 h-9 rounded-lg bg-[#fdf4ff] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                                <img src="<?php echo get_template_directory_uri(); ?>/imagenes/fch.png" alt="FCH" class="w-6 h-6 object-contain"
+                            <div class="w-9 h-9 rounded-lg  flex items-center justify-center shrink-0  transition-transform"> <!-- bg-[#fdf4ff] -->
+                                <img src="<?php echo get_template_directory_uri(); ?>/imagenes/fch.png" alt="FCH" class="w-12 h-12 object-contain"
                                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
                                 <span class="hidden text-[#6b21a8] font-black text-[9px] leading-tight text-center">FC</span>
                             </div>
@@ -211,8 +211,8 @@ get_header();
 
                         <a href="http://preingreso.unsl.edu.ar/psico/" target="_blank"
                             class="group flex items-center gap-3 p-3.5 rounded border border-[#D8DEE5] hover:border-[#88CAFC] hover:bg-[#f8fbff] transition-all duration-200">
-                            <div class="w-9 h-9 rounded-lg bg-[#fff1f2] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                                <img src="<?php echo get_template_directory_uri(); ?>/imagenes/fapsi.png" alt="FAPSI" class="w-6 h-6 object-contain"
+                            <div class="w-9 h-9 rounded-lg  flex items-center justify-center shrink-0  transition-transform"> <!-- bg-[#fff1f2] -->
+                                <img src="<?php echo get_template_directory_uri(); ?>/imagenes/fapsi.png" alt="FAPSI" class="w-12 h-12 object-contain"
                                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
                                 <span class="hidden text-[#9f1239] font-black text-[9px] leading-tight text-center">FA</span>
                             </div>
@@ -230,8 +230,8 @@ get_header();
 
                         <a href="http://preingreso.unsl.edu.ar/fcs/" target="_blank"
                             class="group flex items-center gap-3 p-3.5 rounded border border-[#D8DEE5] hover:border-[#88CAFC] hover:bg-[#f8fbff] transition-all duration-200">
-                            <div class="w-9 h-9 rounded-lg bg-[#f0fdfa] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                                <img src="<?php echo get_template_directory_uri(); ?>/imagenes/fcs.png" alt="FCS" class="w-6 h-6 object-contain"
+                            <div class="w-9 h-9 rounded-lg  flex items-center justify-center shrink-0  transition-transform"> <!-- bg-[#f0fdfa] -->
+                                <img src="<?php echo get_template_directory_uri(); ?>/imagenes/fcs.png" alt="FCS" class="w-12 h-12 object-contain"
                                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
                                 <span class="hidden text-[#0f766e] font-black text-[9px] leading-tight text-center">FC</span>
                             </div>
@@ -249,8 +249,8 @@ get_header();
 
                         <a href="http://preingreso.unsl.edu.ar/ftu/" target="_blank"
                             class="group flex items-center gap-3 p-3.5 rounded border border-[#D8DEE5] hover:border-[#88CAFC] hover:bg-[#f8fbff] transition-all duration-200">
-                            <div class="w-9 h-9 rounded-lg bg-[#f0fdf4] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                                <img src="<?php echo get_template_directory_uri(); ?>/imagenes/ftu.png" alt="FTU" class="w-6 h-6 object-contain"
+                            <div class="w-9 h-9 rounded-lg  flex items-center justify-center shrink-0  transition-transform"> <!-- bg-[#f0fdf4] -->
+                                <img src="<?php echo get_template_directory_uri(); ?>/imagenes/ftu.png" alt="FTU" class="w-12 h-12 object-contain"
                                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
                                 <span class="hidden text-[#166534] font-black text-[9px] leading-tight text-center">FT</span>
                             </div>
@@ -268,8 +268,8 @@ get_header();
 
                         <a href="http://preingreso.unsl.edu.ar/ipau/" target="_blank"
                             class="group flex items-center gap-3 p-3.5 rounded border border-[#0b1f4a22] bg-[#0b1f4a05] hover:border-[#88CAFC] hover:bg-[#f8fbff] transition-all duration-200">
-                            <div class="w-9 h-9 rounded-lg bg-[#0b1f4a0d] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                                <img src="<?php echo get_template_directory_uri(); ?>/imagenes/ipau.png" alt="IPAU" class="w-6 h-6 object-contain"
+                            <div class="w-9 h-9 rounded-lg  flex items-center justify-center shrink-0  transition-transform"> <!-- bg-[#0b1f4a0d] -->
+                                <img src="<?php echo get_template_directory_uri(); ?>/imagenes/ipau.png" alt="IPAU" class="w-12 h-12 object-contain"
                                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
                                 <span class="hidden text-[#0b1f4a] font-black text-[9px] leading-tight text-center">IP</span>
                             </div>
@@ -369,18 +369,18 @@ get_header();
                     <div class="flex flex-col gap-3">
                         <div class="flex items-start gap-3 p-4 rounded bg-[#EEF1F5]">
                             <span
-                                class="w-6 h-6 rounded-full bg-[#0b1f4a] text-white text-[10px] font-black flex items-center justify-center shrink-0 mt-0.5">1</span>
+                                class="w-12 h-12 rounded-full bg-[#0b1f4a] text-white text-[10px] font-black flex items-center justify-center shrink-0 mt-0.5">1</span>
                             <p class="text-[#1a1a2e] text-sm leading-relaxed">Completá la preinscripción online y descargá la ficha
                                 impresa.</p>
                         </div>
                         <div class="flex items-start gap-3 p-4 rounded bg-[#EEF1F5]">
                             <span
-                                class="w-6 h-6 rounded-full bg-[#0b1f4a] text-white text-[10px] font-black flex items-center justify-center shrink-0 mt-0.5">2</span>
+                                class="w-12 h-12 rounded-full bg-[#0b1f4a] text-white text-[10px] font-black flex items-center justify-center shrink-0 mt-0.5">2</span>
                             <p class="text-[#1a1a2e] text-sm leading-relaxed">Reuní la documentación requerida.</p>
                         </div>
                         <div class="flex items-start gap-3 p-4 rounded bg-[#EEF1F5]">
                             <span
-                                class="w-6 h-6 rounded-full bg-[#0b1f4a] text-white text-[10px] font-black flex items-center justify-center shrink-0 mt-0.5">3</span>
+                                class="w-12 h-12 rounded-full bg-[#0b1f4a] text-white text-[10px] font-black flex items-center justify-center shrink-0 mt-0.5">3</span>
                             <p class="text-[#1a1a2e] text-sm leading-relaxed">Presentate en tu facultad en las fechas establecidas.
                             </p>
                         </div>

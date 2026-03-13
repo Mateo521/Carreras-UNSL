@@ -188,34 +188,51 @@ if ($query_carreras->have_posts()) {
         },
     };
 
-
     const FACU_CONFIG = {
         'fqbyf': {
-            bg: 'bg-[#f5fef9]'
+            border: 'border-b-[#008e3b]',
+            bgPill: 'bg-[#ecfdf5]',
+            textPill: 'text-[#065f46]'
         },
         'fcfmyn': {
-            bg: 'bg-[#fef9f8]'
+            border: 'border-b-[#d2231f]',
+            bgPill: 'bg-[#d2231f]',
+            textPill: 'text-[#fff]'
         },
-        'fica': {       
-            bg: 'bg-[#f7fbfd]'
+        'fica': {
+            border: 'border-b-[#466876]',
+            bgPill: 'bg-[#466876]',
+            textPill: 'text-[#fff]'
         },
         'fcejs': {
-            bg: 'bg-[#faf8fc]'
+            border: 'border-b-[#4b256b]',
+            bgPill: 'bg-[#4b256b]',
+            textPill: 'text-[#fff]'
         },
         'fch': {
-            bg: 'bg-[#fdf5f1]'
+            border: 'border-b-[#e5641c]',
+            bgPill: 'bg-[#e5641c]',
+            textPill: 'text-[#fff]'
         },
         'fapsi': {
-            bg: 'bg-[#fffbf7]'
+            border: 'border-b-[#f4ce85]',
+            bgPill: 'bg-[#F2BB52]',
+            textPill: 'text-[#fff]'
         },
         'fcs': {
-            bg: 'bg-[#fdfff5]'
+            border: 'border-b-[#88ae2a]',
+            bgPill: 'bg-[#f0fdfa]',
+            textPill: 'text-[#0f766e]'
         },
         'ftu': {
-            bg: 'bg-[#fffef9]'
+            border: 'border-b-[#996b16]',
+            bgPill: 'bg-[#996b16]',
+            textPill: 'text-[#fff]'
         },
         'ipau': {
-            bg: 'bg-[#fff9fc]'
+            border: 'border-b-[#983071]',
+            bgPill: 'bg-[#983071]',
+            textPill: 'text-[#fff]'
         }
     };
 
@@ -231,6 +248,7 @@ if ($query_carreras->have_posts()) {
         'ipau': 'Instituto Politécnico y Artístico Universitario'
     };
 
+
     let state = {
         tipo: "",
         modalidad: "",
@@ -239,6 +257,7 @@ if ($query_carreras->have_posts()) {
         search: ""
     };
 
+
     function buildCard(c) {
         const tc = TIPO_CONFIG[c.tipo] || {
             label: "General",
@@ -246,56 +265,50 @@ if ($query_carreras->have_posts()) {
             text: "text-gray-700",
             dot: "bg-gray-700"
         };
-
-
         const fc = FACU_CONFIG[c.facultad_slug] || {
-            bg: 'bg-white'
+            border: 'border-b-[#e5e0d8]',
+            bgPill: 'bg-[#EEF1F5]',
+            textPill: 'text-[#1a1a2e66]'
         };
-
         const nombreFacultad = NOMBRES_FACULTADES[c.facultad_slug] || c.facultad;
 
         const modalidadText = c.modalidad.toLowerCase().includes("virtual") ? "Virtual" : "Presencial";
         const modalidadIcon = modalidadText === "Virtual" ? '<path d="M9.75 17 9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/>' : '<path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0z"/>';
         const modalidadClass = modalidadText === "Virtual" ? "text-[#0b1f4a] bg-[#0b1f4a14]" : "text-[#1a6b52] bg-[#1a6b5214]";
 
-        // INCORPORACIÓN DE LA CLASE DE FONDO DINÁMICA:
-        // Hemos quitado "bg-white" y colocado "${fc.bg}" en las clases de la etiqueta <a>
         return `
-            <a href="${c.link}" class="group ${fc.bg} rounded overflow-hidden border border-[#e5e0d8] hover:border-[#88CAFC] hover:-translate-y-1 hover:shadow-xl hover:shadow-[#0b1f4a1a] transition-all duration-300 flex flex-col cursor-pointer">
+            <a href="${c.link}" class="group bg-white  overflow-hidden border-x border-b border-[#e5e0d8] border-b-4 ${fc.border} hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col cursor-pointer">
                 <div class="p-6 flex flex-col gap-4 flex-1">
-                    
                     <div class="flex items-start justify-between gap-2">
                         <span class="${tc.bg} ${tc.text} text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded flex items-center gap-1.5 shrink-0">
                             <span class="w-1.5 h-1.5 rounded ${tc.dot}"></span>${tc.label}
                         </span>
-                        
                         <span class="flex items-center gap-1 text-[10px] font-bold ${modalidadClass} rounded px-2 py-1 uppercase tracking-wide">
                             <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">${modalidadIcon}</svg>
                             ${modalidadText}
                         </span>
                     </div>
-
                     <div class="flex items-start gap-4 mt-2">
                         <h3 class="text-[#1a1a2e] text-base font-bold leading-snug group-hover:text-[#0b1f4a] transition-colors flex-1 mt-1">
                             ${c.nombre}
                         </h3>
                     </div>
-
-                    <div class="flex flex-col gap-2 mt-auto pt-4 border-t border-dashed border-[#e5e0d8]">
+                    <div class="flex flex-col gap-2 mt-auto pt-4 border-b border-dashed border-[#e5e0d8]">
                         <div class="flex items-center justify-between text-xs">
                             <span class="text-[#1a1a2e66] font-medium">Facultad</span>
-                            <span class="font-bold text-[#0b1f4a] bg-white border border-[#e5e0d8] px-2 py-0.5 rounded text-right max-w-[65%] truncate" title="${nombreFacultad}">${nombreFacultad}</span>
+                            <span class="font-bold ${fc.textPill} ${fc.bgPill} px-2 py-1 rounded text-right max-w-[65%] truncate" title="${nombreFacultad}">
+                                ${nombreFacultad}
+                            </span>
                         </div>
-                        <div class="flex items-center justify-between text-xs">
+                        <div class="flex items-center justify-between text-xs mt-1">
                             <span class="text-[#1a1a2e66] font-medium">Sede</span>
                             <span class="font-medium text-[#1a1a2e]">${c.sede}</span>
                         </div>
-                        <div class="flex items-center justify-between text-xs">
+                        <div class="flex items-center justify-between text-xs mt-1">
                             <span class="text-[#1a1a2e66] font-medium">Duración</span>
                             <span class="font-medium text-[#1a1a2e]">${c.duracion}</span>
                         </div>
                     </div>
-
                 </div>
             </a>`;
     }
@@ -314,84 +327,29 @@ if ($query_carreras->have_posts()) {
 
         const grid = document.getElementById("carrerasGrid");
         const empty = document.getElementById("emptyState");
-        document.getElementById("resultCount").textContent = filtered.length;
+        const resultCount = document.getElementById("resultCount");
+
+        if (resultCount) resultCount.textContent = filtered.length;
 
         if (filtered.length === 0) {
-            grid.innerHTML = "";
-            empty.classList.remove("hidden");
+            if (grid) grid.innerHTML = "";
+            if (empty) empty.classList.remove("hidden");
         } else {
-            empty.classList.add("hidden");
-            grid.innerHTML = filtered.map(buildCard).join("");
+            if (empty) empty.classList.add("hidden");
+            if (grid) grid.innerHTML = filtered.map(buildCard).join("");
         }
     }
 
 
-    document.getElementById("searchInput").addEventListener("input", e => {
-        state.search = e.target.value;
-        render();
-    });
-
-    document.querySelectorAll("[data-filter='tipo']").forEach(btn => {
-        btn.addEventListener("click", () => {
-            state.tipo = btn.dataset.value;
-            document.querySelectorAll("[data-filter='tipo']").forEach(b => {
-                b.classList.remove("bg-[#0b1f4a]", "text-white", "shadow-sm");
-                b.classList.add("text-[#1a1a2e66]");
-            });
-            btn.classList.add("bg-[#0b1f4a]", "text-white", "shadow-sm");
-            btn.classList.remove("text-[#1a1a2e66]");
-            render();
-        });
-    });
-
-    document.getElementById("filterModalidad").addEventListener("change", e => {
-        state.modalidad = e.target.value;
-        render();
-    });
-    document.getElementById("filterSede").addEventListener("change", e => {
-        state.sede = e.target.value;
-        render();
-    });
-    document.getElementById("filterFacultad").addEventListener("change", e => {
-        state.facultad = e.target.value;
-        render();
-    });
-
-    document.getElementById("clearFilters").addEventListener("click", () => {
-        state = {
-            tipo: "",
-            modalidad: "",
-            sede: "",
-            facultad: "",
-            search: ""
-        };
-        document.getElementById("searchInput").value = "";
-        document.getElementById("filterModalidad").value = "";
-        document.getElementById("filterSede").value = "";
-        document.getElementById("filterFacultad").value = "";
-
-
-        window.history.replaceState({}, document.title, window.location.pathname);
-
-        document.querySelectorAll("[data-filter='tipo']").forEach((b, i) => {
-            if (i === 0) {
-                b.classList.add("bg-[#0b1f4a]", "text-white", "shadow-sm");
-                b.classList.remove("text-[#1a1a2e66]");
-            } else {
-                b.classList.remove("bg-[#0b1f4a]", "text-white", "shadow-sm");
-                b.classList.add("text-[#1a1a2e66]");
-            }
-        });
-        render();
-    });
-
-
     document.addEventListener("DOMContentLoaded", () => {
+
+
         const urlParams = new URLSearchParams(window.location.search);
 
         if (urlParams.has('q')) {
             state.search = urlParams.get('q');
-            document.getElementById('searchInput').value = state.search;
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) searchInput.value = state.search;
         }
 
         if (urlParams.has('tipo')) {
@@ -410,9 +368,85 @@ if ($query_carreras->have_posts()) {
         if (urlParams.has('facultad')) {
             state.facultad = urlParams.get('facultad');
             const selectFacultad = document.getElementById('filterFacultad');
-            if (selectFacultad) {
-                selectFacultad.value = state.facultad;
-            }
+            if (selectFacultad) selectFacultad.value = state.facultad;
+        }
+
+        if (urlParams.has('sede')) {
+            state.sede = urlParams.get('sede');
+            const selectSede = document.getElementById('filterSede');
+            if (selectSede) selectSede.value = state.sede;
+        }
+
+
+        const searchInput = document.getElementById("searchInput");
+        if (searchInput) {
+            searchInput.addEventListener("input", e => {
+                state.search = e.target.value;
+                render();
+            });
+        }
+
+        document.querySelectorAll("[data-filter='tipo']").forEach(btn => {
+            btn.addEventListener("click", () => {
+                state.tipo = btn.dataset.value;
+                document.querySelectorAll("[data-filter='tipo']").forEach(b => {
+                    b.classList.remove("bg-[#0b1f4a]", "text-white", "shadow-sm");
+                    b.classList.add("text-[#1a1a2e66]");
+                });
+                btn.classList.add("bg-[#0b1f4a]", "text-white", "shadow-sm");
+                btn.classList.remove("text-[#1a1a2e66]");
+                render();
+            });
+        });
+
+        const filterModalidad = document.getElementById("filterModalidad");
+        if (filterModalidad) filterModalidad.addEventListener("change", e => {
+            state.modalidad = e.target.value;
+            render();
+        });
+
+        const filterSede = document.getElementById("filterSede");
+        if (filterSede) filterSede.addEventListener("change", e => {
+            state.sede = e.target.value;
+            render();
+        });
+
+        const filterFacultad = document.getElementById("filterFacultad");
+        if (filterFacultad) filterFacultad.addEventListener("change", e => {
+            state.facultad = e.target.value;
+            render();
+        });
+
+        const clearFiltersBtn = document.getElementById("clearFilters");
+        if (clearFiltersBtn) {
+            clearFiltersBtn.addEventListener("click", () => {
+                state = {
+                    tipo: "",
+                    modalidad: "",
+                    sede: "",
+                    facultad: "",
+                    search: ""
+                };
+
+                if (searchInput) searchInput.value = "";
+                if (filterModalidad) filterModalidad.value = "";
+                if (filterSede) filterSede.value = "";
+                if (filterFacultad) filterFacultad.value = "";
+
+                
+                window.history.replaceState({}, document.title, window.location.pathname);
+
+                document.querySelectorAll("[data-filter='tipo']").forEach((b, i) => {
+                    if (i === 0) {
+                        b.classList.add("bg-[#0b1f4a]", "text-white", "shadow-sm");
+                        b.classList.remove("text-[#1a1a2e66]");
+                    } else {
+                        b.classList.remove("bg-[#0b1f4a]", "text-white", "shadow-sm");
+                        b.classList.add("text-[#1a1a2e66]");
+                    }
+                });
+                render();
+            });
         }
 
 
