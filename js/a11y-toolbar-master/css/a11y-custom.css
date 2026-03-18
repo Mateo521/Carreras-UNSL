@@ -1,0 +1,135 @@
+
+:root{
+--a11y-font-scale: 1;
+--a11y-line-height: 1.6;
+--a11y-letter-spacing: 0px;
+--a11y-text-align: left;
+--a11y-saturation: 1;
+--a11y-contrast: 1;
+--a11y-invert: 0; /* 0 or 1 */
+}
+
+html{
+
+font-size: calc(1rem * var(--a11y-font-scale));
+
+filter: saturate(var(--a11y-saturation)) contrast(var(--a11y-contrast))
+invert(var(--a11y-invert));
+}
+body{
+line-height: var(--a11y-line-height);
+letter-spacing: var(--a11y-letter-spacing);
+text-align: var(--a11y-text-align);
+}
+
+.a11y-hide-media img,
+.a11y-hide-media picture,
+.a11y-hide-media video,
+.a11y-hide-media svg{
+display: none !important;
+visibility: hidden !important;
+}
+
+.a11y-highlight-links a,
+.a11y-highlight-links a:focus{
+outline: 3px solid rgba(255,200,0,0.95) !important;
+background: rgba(255,255,0,0.06) !important;
+}
+
+.cursor-large *{ cursor: url('https://saebuvz.unsl.edu.ar/wp-content/themes/SAEBU-v2/assets/archivos/cursor-large.cur'), auto !
+important; }
+.cursor-dot *{ cursor: url('https://saebuvz.unsl.edu.ar/wp-content/themes/SAEBU-v2/assets/archivos/cursor-dot.cur'), auto !
+important; }
+
+.a11y-custom-panel{ z-index: 9999; }
+.a11y-custom-panel .control-row{ display:flex; gap:.5rem; alignitems:center; margin: .45rem 0; }
+.a11y-custom-panel label{ display:block; font-size: .9rem; }
+
+:focus{ outline: 3px solid rgba(59,130,246,0.6); outline-offset: 2px; }
+
+
+
+
+
+.a11y-custom-panel {
+    position: fixed !important;
+    bottom: 120px !important;
+    left: 20px !important;
+    width: 320px !important;
+    max-width: 90vw !important;
+    background: white !important;
+    border: 1px solid #ccc !important;
+    border-radius: 8px !important;
+    padding: 16px !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+    z-index: 99998 !important;
+    font-family: Arial, sans-serif !important;
+    font-size: 14px !important;
+}
+
+.a11y-custom-panel.hidden {
+    display: none !important;
+}
+
+.a11y-custom-panel:not(.hidden) {
+    display: block !important;
+}
+
+
+@media (prefers-color-scheme: dark) {
+    .a11y-custom-panel {
+        background: #1f2937 !important;
+        color: white !important;
+        border-color: #374151 !important;
+    }
+}
+
+
+.control-row {
+    margin-bottom: 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+}
+
+.control-row label {
+    margin-right: 8px !important;
+    flex: 1 !important;
+}
+
+.control-row input[type="range"],
+.control-row select {
+    flex: 1 !important;
+    max-width: 120px !important;
+}
+
+.control-row input[type="checkbox"] {
+    margin-right: 8px !important;
+}
+
+#ci-a11y-toggle {
+    position: fixed !important;
+    bottom: 20px !important;
+    left: 20px !important;
+    z-index: 99999 !important;
+    background: #2563eb !important;
+    color: white !important;
+    border: none !important;
+    width: 56px !important;
+    height: 56px !important;
+    border-radius: 50% !important;
+    font-size: 20px !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+    transition: all 0.2s ease !important;
+}
+
+#ci-a11y-toggle:hover {
+    background: #1d4ed8 !important;
+    transform: scale(1.05) !important;
+}
+
+#ci-a11y-toggle:focus {
+    outline: 2px solid #60a5fa !important;
+    outline-offset: 2px !important;
+}

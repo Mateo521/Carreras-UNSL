@@ -2,241 +2,751 @@
 
 /**
  * Plantilla principal (Front Page)
- * Diseño Institucional Limpio y Elegante
+ * Diseño Editorial Institucional — UNSL Carreras 2026
  */
 get_header();
 ?>
 
-<section class="relative h-[calc(100vh+73px)] min-h-[600px] w-full overflow-hidden bg-[#0b1f4a]"> <!--  -->
-    <video class="absolute inset-0 w-full h-full object-cover z-0" autoplay muted loop playsinline src="<?php echo get_template_directory_uri(); ?>/videos/video-2.mp4"></video>
-    <div class="absolute inset-0 bg-[#0b1f4a]/70 z-0 mix-blend-multiply"></div>
-    <div class="absolute inset-0 bg-gradient-to-t from-[#0b1f4a] via-[#0b1f4a]/70 to-transparent w-full  z-0"></div>
-
-    <div class="relative z-10 h-full w-full max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 flex flex-col justify-center text-center items-center pb-20">
-        <div class="w-full max-w-4xl">
-            <h1 class="text-white text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight mb-6 tracking-tight drop-shadow-lg">
-                Carreras
-                <b class="text-[#88CAFC]">UNSL 2026</b>
-            </h1>
-
-            <p class="text-slate-200 text-lg sm:text-xl mb-10 font-light leading-relaxed drop-shadow-md">
-                Explorá tu futuro en la Universidad Nacional de San Luis. Encontrá la carrera ideal para tu vocación profesional.
-            </p>
-
-            <form action="<?php echo home_url('/carreras/'); ?>" method="GET" class="relative shadow-2xl shadow-black/30 group">
-                <div class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
-                    <svg class="h-6 w-6 text-slate-400 group-focus-within:text-[#88CAFC] transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35"></path>
-                    </svg>
-                </div>
-                <input type="search" name="q" placeholder="¿Qué te gustaría estudiar? Ej: Enfermería..." class="block w-full pl-14 pr-32 py-5 bg-white/95 backdrop-blur-sm text-slate-900 placeholder:text-slate-500 border border-white/20 focus:ring-4 focus:ring-[#88CAFC]/50 text-lg transition-all">
-
-                <button type="submit" class="absolute inset-y-2 right-2 px-6 bg-[#0b1f4a] text-white font-medium hover:bg-blue-900 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0b1f4a]">
-                    Buscar
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20 pointer-events-none"> <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-[80px] md:h-[150px]">
-            <path d="M0,120 C300,0 900,0 1200,120 L1200,120 L0,120 Z" fill="#ffffff"></path>
-        </svg>
-    </div>
-</section>
-
-<section class="pb-24 pt-12 bg-white relative z-20">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-[#0b1f4a]  mb-4">Descubrí tu camino</h2> <!-- font-['Libre_Baskerville',serif] -->
-            <p class="text-slate-500 text-lg max-w-2xl mx-auto">Seleccioná el nivel académico de tu interés para explorar las opciones que la UNSL tiene preparadas para vos.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <a href="<?php echo home_url('/carreras/?tipo=pregrado'); ?>" class="group flex flex-col items-center text-center p-10 rounded-2xl bg-[#0b1f4a] border border-[#0b1f4a] hover:shadow-2xl hover:shadow-[#0b1f4a33] transition-all duration-300 transform relative overflow-hidden"> <!-- hover:-translate-y-2  -->
-                <!--div class="w-20 h-20 rounded-full bg-[#e8f4f0] text-[#1a6b52] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                    <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" /></svg>
-                </div-->
-                <div class="absolute left-0 bottom-0 w-32 h-32 bg-[#88CAFC] rounded-full opacity-10"></div>
-                <h3 class="text-2xl font-bold text-white mb-3 relative z-10">Pregrado</h3>
-                <p class="text-slate-300 text-sm leading-relaxed mb-6 relative z-10">Carreras cortas y tecnicaturas...</p>
-                <span class="text-[#88CAFC] font-semibold text-sm group-hover:text-white flex items-center gap-2 mt-auto relative z-10">
-                    Ver carreras <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                    </svg>
-                </span>
-            </a>
-
-            <a href="<?php echo home_url('/carreras/?tipo=grado'); ?>" class="group flex flex-col items-center text-center p-10 rounded-2xl bg-[#0b1f4a] border border-[#0b1f4a] hover:shadow-2xl hover:shadow-[#0b1f4a33] transition-all duration-300 transform relative overflow-hidden"> <!-- hover:-translate-y-2  -->
-                <div class="absolute -right-10 -top-10 w-32 h-32 bg-[#88CAFC] rounded-full opacity-10"></div>
-                <!--div class="w-20 h-20 rounded-full bg-white/10 text-[#88CAFC] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform relative z-10">
-                    <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" /></svg>
-                </div-->
-                <h3 class="text-2xl font-bold text-white mb-3 relative z-10">Grado</h3>
-                <p class="text-slate-300 text-sm leading-relaxed mb-6 relative z-10">Licenciaturas, ingenierías y profesorados...</p>
-                <span class="text-[#88CAFC] font-semibold text-sm group-hover:text-white flex items-center gap-2 mt-auto relative z-10">
-                    Ver carreras <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                    </svg>
-                </span>
-            </a>
-
-            <a href="<?php echo home_url('/carreras/?tipo=posgrado'); ?>" class="group flex flex-col items-center text-center p-10 rounded-2xl bg-[#0b1f4a] border border-[#0b1f4a] hover:shadow-2xl hover:shadow-[#0b1f4a33] transition-all duration-300 transform relative overflow-hidden"> <!-- hover:-translate-y-2  -->
-                <!--div class="w-20 h-20 rounded-full bg-[#fff7ed] text-[#92400e] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                    <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z" /></svg>
-                </div-->
-                <div class="absolute -right-10 bottom-0 w-32 h-32 bg-[#88CAFC] rounded-full opacity-10"></div>
-
-                <h3 class="text-2xl font-bold text-white mb-3 relative z-10">Posgrado</h3>
-                <p class="text-slate-300 text-sm leading-relaxed mb-6 relative z-10">Especializaciones, maestrías y doctorados...</p>
-                <span class="text-[#88CAFC] font-semibold text-sm group-hover:text-white flex items-center gap-2 mt-auto relative z-10">
-                    Ver carreras <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                    </svg>
-                </span>
-            </a>
-        </div>
-
-        <div class="text-center mt-12">
-            <a href="<?php echo home_url('/carreras/'); ?>" class="inline-flex items-center gap-2 text-[#0b1f4a] font-semibold hover:text-[#88CAFC] transition-colors underline underline-offset-4">
-                Ver todas las carreras (A-Z)
-            </a>
-        </div>
-    </div>
-</section>
-
-
-<!--section class="spikes"></section>
+<?php /* ─── ESTILOS GLOBALES ─────────────────────────────────────────── */ ?>
 <style>
-    .spikes {
-        position: relative;
-        background: #ffffff;
-        height: 0px;
+    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
+    :root {
+        --navy: #08183A;
+        --navy-2: #0D2452;
+        --azulunsl: #1B93F5;
+        --cream: #F5FCFF;
+        --ice: #EAF2FF;
+        --blue: #4A82DC;
+        --blue-l: #A8C8F4;
+        --ink: #111827;
+        --mid: #6B7280;
+        --line: rgba(8, 24, 58, 0.12);
     }
 
-    .spikes::after {
+    /* Noise texture — grain sutil sobre fondos claros */
+    .grain::after {
         content: '';
         position: absolute;
-        right: 0;
-        left: -0%;
-        top: 100%;
-        z-index: 10;
-        display: block;
-        height: 50px;
-        background-size: 50px 100%;
-        background-image: linear-gradient(135deg, #ffffff 25%, transparent 25%), linear-gradient(225deg, #ffffff 25%, transparent 25%);
-        background-position: 0 0;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 1;
     }
-</style-->
-<section class="bg-[#0b1f4a] relative overflow-hidden pt-16">
-    <div class="max-w-7xl mx-auto">
-        <div class="relative grid grid-cols-1 items-center lg:grid-cols-2">
 
-            <div class="py-12 px-8 flex flex-col justify-center z-10">
-                <h2 class="text-white text-2xl lg:text-4xl font-bold mb-6">
-                    ¿No sabés qué estudiar?
-                </h2>
+    /* Reveal animado en scroll */
+    .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity .7s cubic-bezier(.22, 1, .36, 1), transform .7s cubic-bezier(.22, 1, .36, 1);
+    }
 
-                <p class="text-[#ffffffbb] text-lg leading-relaxed mb-8 max-w-md">
-                    Si todavía no te decidiste, te ayudamos a encontrar tu perfil. El Servicio de <strong class="text-white font-semibold">Orientación Vocacional Ocupacional (OVO)</strong> es gratuito, permanente y abierto, dependiente de la Secretaría Académica.
-                </p>
+    .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
 
-                <a href="https://secretariaacademica.unsl.edu.ar/categoria/ovo" target="_blank" class="group inline-flex items-center justify-center gap-3 bg-[#88CAFC] hover:bg-white text-[#0b1f4a] font-bold text-sm px-8 py-4 rounded-xl transition-all duration-300 w-fit">
-                    <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                    </svg>
-                    Ingresá al programa OVO
-                    <svg class="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                    </svg>
-                </a>
+    .reveal-d1 {
+        transition-delay: .1s;
+    }
 
-                <div class="mt-10 pt-6 border-t border-white/10 flex flex-wrap items-center gap-6">
-                    <p class="text-[#ffffff77] text-sm w-full sm:w-auto font-medium">Contacto:</p>
+    .reveal-d2 {
+        transition-delay: .2s;
+    }
 
-                    <a href="mailto:ovounsl@gmail.com" class="flex items-center gap-2.5 text-white hover:text-[#88CAFC] text-sm transition-colors group">
-                        <div class="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#88CAFC]/20 transition-colors">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-                            </svg>
-                        </div>
-                        ovounsl@gmail.com
-                    </a>
+    .reveal-d3 {
+        transition-delay: .3s;
+    }
 
-                    <a href="https://www.facebook.com/people/Orientaci%C3%B3n-Vocacional-Unsl/100054513097602/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 text-white hover:text-[#1877f2] text-sm transition-colors group">
-                        <div class="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#1877f2]/20 transition-colors">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                            </svg>
-                        </div>
-                        Facebook
-                    </a>
+    .reveal-d4 {
+        transition-delay: .4s;
+    }
 
-                    <a href="https://www.instagram.com/programa_ovo_unsl//" target="_blank" class="flex items-center gap-2.5 text-white hover:text-[#1877f2] text-sm transition-colors group">
-                        <div class="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#1877f2]/20 transition-colors">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm4.846-10.405c0 .795.645 1.44 1.44 1.44s1.44-.645 1.44-1.44-.645-1.44-1.44-1.44-1.44.645-1.44 1.44z" />
-                            </svg>
-                        </div>
-                        Instagram
-                    </a>
-                </div>
-            </div>
-
-            <div class="hidden lg:flex justify-end pr-12 relative">
-                <div class="w-[400px] h-[400px] rounded-full border border-white/10 absolute top-1/2 -translate-y-1/2 right-10"></div>
-                <div class="w-[300px] h-[300px] rounded-full border border-[#88CAFC]/20 absolute top-1/2 -translate-y-1/2 right-24"></div>
-                <!--img src="<?php echo get_template_directory_uri(); ?>/imagenes/ovo.jpeg" alt="Estudiantes UNSL" class="relative z-10 w-full max-w-md object-cover rounded-2xl shadow-2xl hover:rotate-3 rotate-0 transition-transform duration-500" onerror="this.style.display='none'"-->
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-<section class="curved"></section>
-<style>
-    .curved {
-        position: relative;
-        background: #0b1f4a;
-        height: 100px;
-        border-bottom-left-radius: 50% 28%;
-        border-bottom-right-radius: 50% 28%;
+    /* Línea decorativa diagonal */
+    .slash {
+        display: inline-block;
+        width: 2px;
+        height: 1em;
+        background: var(--azulunsl);
+        transform: rotate(20deg) translateY(2px);
+        margin: 0 .35em;
+        flex-shrink: 0;
     }
 </style>
 
-<section class="px-6 py-24 bg-[#EEF1F5]">
-    <div class="max-w-7xl mx-auto">
-        <div class="text-center mb-16">
-            <!--p class="text-[#88CAFC] text-xs font-bold uppercase tracking-widest mb-3">Estructura académica</p-->
-            <h2 class=" text-[#0b1f4a] text-3xl md:text-4xl font-bold">Facultades</h2> <!-- font-['Libre_Baskerville',serif] -->
-            <p class="text-gray-700 text-base mt-4 max-w-2xl mx-auto leading-relaxed">
-                La Universidad Nacional de San Luis está organizada en nueve Facultades distribuidas en sus tres sedes.
-            </p>
+<?php /* ─── SECCIÓN 1: HERO ─────────────────────────────────────────── */ ?>
+<section
+    class="relative min-h-screen flex flex-col justify-end overflow-hidden " 
+    style="background: var(--navy);">
+    <?php /* Video de fondo */ ?> <!-- grain -->
+    <video
+        class="absolute inset-0 w-full h-full object-cover"
+        style="z-index:0; opacity:.38;"
+        autoplay muted loop playsinline
+        src="<?php echo get_template_directory_uri(); ?>/videos/video-2.mp4"></video>
+
+    <?php /* Gradiente: más opaco abajo para legibilidad del texto */ ?>
+    <div
+        class="absolute inset-0"
+        style="z-index:1; background: linear-gradient(
+      to bottom,
+      rgba(8,24,58,.2) 0%,
+      rgba(8,24,58,.5) 40%,
+      rgba(8,24,58,.92) 80%,
+      rgba(8,24,58,1) 100%
+    );"></div>
+
+    <?php /* Año fantasma en esquina superior derecha — elemento editorial */ ?>
+    <span
+        class="absolute bottom-0 right-0 select-none pointer-events-none"
+        aria-hidden="true"
+        style="z-index:2;
+      
+      font-weight:800;
+      font-size:clamp(140px,20vw,280px);
+      line-height:0.7;
+      color:white;
+      opacity:.04;
+      letter-spacing:-.02em;
+      padding:.1em .15em 0 0;">2026</span>
+
+    <?php /* Contenido del hero */ ?> <!--  sm:px-12 lg:px-16 pb-20 -->
+    <div
+        class="absolute top-1/2 -translate-y-1/2 px-24 w-full max-w-7xl mx-auto "
+        style="z-index:3;">
+
+        <?php /* Eyebrow — etiqueta institucional */ ?>
+        <div
+            class="flex items-center gap-3 mb-7"
+            style="animation: fadeUp .8s .1s both cubic-bezier(.22,1,.36,1);">
+
+            <span
+                style="
+          font-size:.75rem;
+          font-weight:500;
+          letter-spacing:.2em;
+          text-transform:uppercase;
+          color:rgba(255,255,255,.6);">Universidad Nacional de San Luis</span>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        <?php /* Titular principal */ ?>
+        <h1
+            style="
+        font-weight:800;
+        font-size:clamp(44px,7vw,96px);
+        line-height:1.0;
+        letter-spacing:-.03em;
+        color:#fff;
+        margin-bottom:1.2rem;
+        animation: fadeUp .8s .2s both cubic-bezier(.22,1,.36,1);">
+            Carreras
+            <em style="font-style:normal; color:var(--blue-l);">UNSL</em>
+        </h1>
+
+        <?php /* Bajada */ ?>
+        <p
+            style="
+        font-weight:300;
+        font-size:clamp(16px,2vw,20px);
+        color:rgba(255,255,255,.65);
+        max-width:520px;
+        line-height:1.7;
+        margin-bottom:2.5rem;
+        animation: fadeUp .8s .3s both cubic-bezier(.22,1,.36,1);">
+            Explorá la oferta académica 2026 de la UNSL: pregrado, grado y posgrado en tres sedes de San Luis.
+        </p>
+
+        <?php /* Buscador */ ?>
+        <div style="animation: fadeUp .8s .4s both cubic-bezier(.22,1,.36,1);">
+            <form
+                action="<?php echo home_url('/carreras/'); ?>"
+                method="GET"
+                style="display:flex;
+        background:rgba(255,255,255,.07);
+        border:1px solid rgba(255,255,255,.18);
+        backdrop-filter:blur(16px);
+        -webkit-backdrop-filter:blur(16px);
+        max-width:580px;
+        overflow:hidden;">
+                <div style="position:relative;flex:1;">
+                    <svg
+                        style="position:absolute;left:18px;top:50%;transform:translateY(-50%);
+            width:18px;height:18px;color:rgba(255,255,255,.45);pointer-events:none;"
+                        fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <input
+                        type="search"
+                        name="q"
+                        placeholder="¿Qué te gustaría estudiar?"
+                        style="width:100%;
+            padding:1.1rem 1rem 1.1rem 3rem;
+            background:transparent;
+            border:none;
+            outline:none;
+            
+            font-size:15px;
+            color:#fff;">
+                    <style>
+                        input[name="q"]::placeholder {
+                            color: rgba(255, 255, 255, .4);
+                        }
+
+                        input[name="q"]:focus {
+                            outline: none;
+                        }
+                    </style>
+                </div>
+                <button
+                    type="submit"
+                    style="padding:.9rem 1.6rem;
+            background:var(--azulunsl);
+            border:none;
+            cursor:pointer;
+            
+            font-weight:500;
+            font-size:.85rem;
+            letter-spacing:.06em;
+            text-transform:uppercase;
+            color:#fff;
+            transition:background .2s;
+            white-space:nowrap;"
+                    onmouseover="this.style.background='#145596'"
+                    onmouseout="this.style.background='var(--azulunsl)'">Buscar</button>
+            </form>
+        </div>
+
+        <?php /* Badges de acceso rápido */ ?>
+        <div
+            class="flex flex-wrap gap-3 mt-6"
+            style="animation: fadeUp .8s .5s both cubic-bezier(.22,1,.36,1);">
+            <?php
+            $quick = [
+                ['Pregrado', '/carreras/?tipo=pregrado'],
+                ['Grado',    '/carreras/?tipo=grado'],
+                ['Posgrado', '/carreras/?tipo=posgrado'],
+                ['Ver todas A–Z', '/carreras/'],
+            ];
+            foreach ($quick as $q) : ?>
+                <a
+                    href="<?php echo home_url($q[1]); ?>"
+                    style="
+            font-size:.78rem;
+            font-weight:500;
+            letter-spacing:.05em;
+            color:rgba(255,255,255,.7);
+            border:1px solid rgba(255,255,255,.2);
+            padding:.4rem 1rem;
+            text-decoration:none;
+            transition:all .2s;"
+                    onmouseover="this.style.background='rgba(255,255,255,.1)';this.style.color='#fff'"
+                    onmouseout="this.style.background='transparent';this.style.color='rgba(255,255,255,.7)'"><?php echo $q[0]; ?></a>
+            <?php endforeach; ?>
+        </div>
+
+    </div>
+
+    <?php /* Indicador de scroll */ ?>
+    <div
+        class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        style="z-index:3; animation: fadeUp .8s .8s both cubic-bezier(.22,1,.36,1);"
+        aria-hidden="true">
+        <span
+            style="
+        font-size:.7rem;
+        letter-spacing:.2em;
+        text-transform:uppercase;
+        color:rgba(255,255,255,.35);">Explorar</span>
+        <div style="width:1px;height:36px;background:linear-gradient(to bottom,rgba(255,255,255,.35),transparent);"></div>
+    </div>
+</section>
+
+<?php /* ─── KEYFRAMES ───────────────────────────────────────────────── */ ?>
+<style>
+    @keyframes fadeUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+
+<?php /* ─── SECCIÓN 2: NIVELES ACADÉMICOS ─────────────────────────── */ ?>
+<section
+    class="relative overflow-hidden " 
+    style="background:var(--cream); padding:7rem 1.5rem;">
+    <div class="max-w-7xl mx-auto"> <!-- grain -->
+
+        <?php /* Cabecera de sección — layout asimétrico */ ?>
+        <div class="reveal flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-20">
+            <div>
+                <p
+                    style="
+            font-size:.72rem;
+            font-weight:500;
+            letter-spacing:.22em;
+            text-transform:uppercase;
+            color:var(--azulunsl);
+            margin-bottom:.8rem;">Oferta académica</p>
+                <h2
+                    style="
+            font-weight:800;
+            font-size:clamp(32px,5vw,54px);
+            line-height:1.05;
+            letter-spacing:-.025em;
+            color:var(--navy);">Descubrí tu camino académico</h2>
+            </div>
+            <p
+                style="
+          font-weight:300;
+          font-size:1rem;
+          color:var(--mid);
+          max-width:380px;
+          line-height:1.7;">Seleccioná el nivel académico de tu interés para explorar la oferta completa de la UNSL.</p>
+        </div>
+
+        <?php /* Tarjetas de nivel — layout con números grandes */ ?>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6" style="background:var(--line);">
+
+            <?php
+            $niveles = [
+                [
+                    'num'    => 'a',
+                    'tipo'   => 'pregrado',
+                    'titulo' => 'Pregrado',
+                    'desc'   => 'Tecnicaturas universitarias y carreras cortas orientadas al ejercicio profesional inmediato.',
+                    'tags'   => ['Tecnicaturas', 'Ciclos cortos'],
+                ],
+                [
+                    'num'    => 'b',
+                    'tipo'   => 'grado',
+                    'titulo' => 'Grado',
+                    'desc'   => 'Licenciaturas, ingenierías, profesorados y otras carreras de grado universitario pleno.',
+                    'tags'   => ['Licenciaturas', 'Ingenierías', 'Profesorados'],
+                ],
+                [
+                    'num'    => 'c',
+                    'tipo'   => 'posgrado',
+                    'titulo' => 'Posgrado',
+                    'desc'   => 'Especializaciones, maestrías y doctorados para la formación avanzada e investigación.',
+                    'tags'   => ['Especializaciones', 'Maestrías', 'Doctorados'],
+                ],
+            ];
+            foreach ($niveles as $i => $n) : ?>
+                <a
+                    href="<?php echo home_url('/carreras/?tipo=' . $n['tipo']); ?>"
+                    class="reveal reveal-d<?php echo $i + 1; ?> group block"
+                    style="background:#fff;
+            text-decoration:none;
+            padding:3rem 2.5rem;
+            position:relative;
+            overflow:hidden;
+            transition:background .3s;"
+                    onmouseover="this.style.background='var(--navy)'"
+                    onmouseout="this.style.background='#fff'">
+                    <?php /* Número editorial grande */ ?>
+                    <!--span
+                        class="group-hover-number"
+                        style="
+            font-weight:800;
+            font-size:5rem;
+            line-height:1;
+            letter-spacing:-.04em;
+            color:var(--cream);
+            position:absolute;
+            top:1.5rem;
+            right:2rem;
+            transition:color .3s, opacity .3s;
+            user-select:none;"
+                        aria-hidden="true"><?php echo $n['num']; ?></span-->
+
+                    <!--p
+                        style="
+            font-size:.72rem;
+            font-weight:500;
+            letter-spacing:.18em;
+            text-transform:uppercase;
+            color:var(--azulunsl);
+            margin-bottom:1.2rem;
+            position:relative;z-index:1;
+            transition:color .3s;"><?php echo $n['num']; ?></p-->
+
+                    <h3
+                        style="
+            font-weight:700;
+            font-size:1.9rem;
+            letter-spacing:-.02em;
+            color:var(--navy);
+            margin-bottom:1rem;
+            position:relative;z-index:1;
+            transition:color .3s;"><?php echo $n['titulo']; ?></h3>
+
+                    <p
+                        style="
+            font-weight:300;
+            font-size:.93rem;
+            color:var(--mid);
+            line-height:1.65;
+            margin-bottom:2rem;
+            position:relative;z-index:1;
+            transition:color .3s;"><?php echo $n['desc']; ?></p>
+
+                    <?php /* Tags */ ?>
+                    <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.5rem;position:relative;z-index:1;">
+                        <?php foreach ($n['tags'] as $tag) : ?>
+                            <span
+                                style="
+                  font-size:.72rem;
+                  font-weight:500;
+                  color:var(--navy);
+                  background:var(--ice);
+                  padding:.25rem .75rem;
+                  transition:background .3s, color .3s;"
+                                class="tag-chip"><?php echo $tag; ?></span>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <?php /* CTA flecha */ ?>
+                    <div
+                        style="display:flex;
+              align-items:center;
+              gap:.5rem;
+              
+              font-size:.82rem;
+              font-weight:500;
+              color:var(--navy);
+              position:relative;z-index:1;
+              transition:color .3s;">
+                        <span>Ver carreras</span>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                        </svg>
+                    </div>
+
+                </a>
+            <?php endforeach; ?>
+        </div>
+
+        <?php /* Nota al pie */ ?>
+        <div class="reveal reveal-d4 flex items-center justify-center gap-4 mt-12">
+            <span style="display:block;height:1px;width:40px;background:var(--line);"></span>
+            <a
+                href="<?php echo home_url('/carreras/'); ?>"
+                style="
+          font-size:.82rem;
+          font-weight:500;
+          color:var(--mid);
+          text-decoration:none;
+          letter-spacing:.04em;
+          transition:color .2s;"
+                onmouseover="this.style.color='var(--navy)'"
+                onmouseout="this.style.color='var(--mid)'">Ver todas las carreras (A–Z)</a>
+            <span style="display:block;height:1px;width:40px;background:var(--line);"></span>
+        </div>
+
+    </div>
+</section>
+
+<?php /* Hover inline styles para las tarjetas */ ?>
+<style>
+    a[href*="tipo"]:hover .tag-chip {
+        background: rgba(255, 255, 255, .12) !important;
+        color: #fff !important;
+    }
+
+    a[href*="tipo"]:hover h3 {
+        color: #fff !important;
+    }
+
+    a[href*="tipo"]:hover p {
+        color: rgba(255, 255, 255, .65) !important;
+    }
+
+    a[href*="tipo"]:hover>div:last-child {
+        color: #fff !important;
+    }
+
+    a[href*="tipo"]:hover .group-hover-number {
+        color: rgba(255, 255, 255, .08) !important;
+    }
+</style>
+
+
+<?php /* ─── SECCIÓN 3: OVO — ORIENTACIÓN VOCACIONAL ─────────────────── */ ?>
+<section
+    class="relative overflow-hidden"
+    style="background:var(--navy); padding:7rem 1.5rem;">
+    <?php /* Línea decorativa lateral */ ?>
+    <div
+        aria-hidden="true"
+        style="position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(to bottom, transparent, var(--azulunsl), transparent);"></div>
+
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+
+            <?php /* Columna izquierda: texto */ ?>
+            <div>
+                <p
+                    class="reveal"
+                    style="
+            font-size:.72rem;
+            font-weight:500;
+            letter-spacing:.22em;
+            text-transform:uppercase;
+            color:var(--azulunsl);
+            margin-bottom:1.2rem;">Servicio gratuito · UNSL</p>
+
+                <h2
+                    class="reveal reveal-d1"
+                    style="
+            font-weight:800;
+            font-size:clamp(30px,4.5vw,52px);
+            line-height:1.05;
+            letter-spacing:-.025em;
+            color:#fff;
+            margin-bottom:1.5rem;">¿Todavía no sabés qué estudiar?</h2>
+
+                <p
+                    class="reveal reveal-d2"
+                    style="
+            font-weight:300;
+            font-size:1rem;
+            color:rgba(255,255,255,.6);
+            line-height:1.75;
+            max-width:440px;
+            margin-bottom:2.5rem;">
+                    El <strong style="color:#fff;font-weight:500;">Servicio de Orientación Vocacional Ocupacional (OVO)</strong> es permanente, abierto y gratuito para toda la comunidad, dependiente de la Secretaría Académica de la UNSL.
+                </p>
+
+                <div class="reveal reveal-d3">
+                    <a
+                        href="https://secretariaacademica.unsl.edu.ar/categoria/ovo"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style="display:inline-flex;
+              align-items:center;
+              gap:.6rem;
+              
+              font-weight:500;
+              font-size:.88rem;
+              letter-spacing:.06em;
+              text-transform:uppercase;
+              color:var(--navy);
+              background:var(--azulunsl);
+              padding:.9rem 1.8rem;
+              text-decoration:none;
+              transition:background .2s;"
+                        onmouseover="this.style.background='#A87820'"
+                        onmouseout="this.style.background='var(--azulunsl)'">
+                        Ingresá al programa OVO
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <?php /* Columna derecha: contacto */ ?>
+            <div class="reveal reveal-d2">
+                <p
+                    style="
+            font-size:.72rem;
+            font-weight:500;
+            letter-spacing:.16em;
+            text-transform:uppercase;
+            color:rgba(255,255,255,.3);
+            margin-bottom:1.5rem;
+            padding-bottom:1.5rem;
+            border-bottom:1px solid rgba(255,255,255,.08);">Canales de contacto</p>
+
+                <?php
+                $contactos = [
+                    [
+                        'tipo'   => 'email',
+                        'href'   => 'mailto:ovounsl@gmail.com',
+                        'label'  => 'ovounsl@gmail.com',
+                        'target' => '_self',
+                        'icon'   => '<path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/>',
+                    ],
+                    [
+                        'tipo'   => 'facebook',
+                        'href'   => 'https://www.facebook.com/people/Orientaci%C3%B3n-Vocacional-Unsl/100054513097602/',
+                        'label'  => 'Facebook',
+                        'target' => '_blank',
+                        'icon'   => '<path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="currentColor"/>',
+                    ],
+                    [
+                        'tipo'   => 'instagram',
+                        'href'   => 'https://www.instagram.com/programa_ovo_unsl/',
+                        'label'  => '@programa_ovo_unsl',
+                        'target' => '_blank',
+                        'icon'   => '<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm4.846-10.405c0 .795.645 1.44 1.44 1.44s1.44-.645 1.44-1.44-.645-1.44-1.44-1.44-1.44.645-1.44 1.44z" fill="currentColor"/>',
+                    ],
+                ];
+                foreach ($contactos as $c) :
+                    $icon_props = $c['tipo'] === 'email'
+                        ? 'fill="none" stroke="currentColor" stroke-width="1.5"'
+                        : '';
+                ?>
+                    <a
+                        href="<?php echo $c['href']; ?>"
+                        target="<?php echo $c['target']; ?>"
+                        rel="noopener noreferrer"
+                        style="display:flex;
+              align-items:center;
+              gap:1.2rem;
+              padding:1.2rem 0;
+              border-bottom:1px solid rgba(255,255,255,.07);
+              text-decoration:none;
+              group:true;
+              transition:padding-left .2s;"
+                        onmouseover="this.style.paddingLeft='.5rem'"
+                        onmouseout="this.style.paddingLeft='0'">
+                        <span
+                            style="width:36px;height:36px;
+                display:flex;align-items:center;justify-content:center;
+                border:1px solid rgba(255,255,255,.15);
+                color:rgba(255,255,255,.5);
+                flex-shrink:0;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" <?php echo $icon_props; ?>>
+                                <?php echo $c['icon']; ?>
+                            </svg>
+                        </span>
+                        <span
+                            style="
+                font-size:.9rem;
+                font-weight:400;
+                color:rgba(255,255,255,.75);"><?php echo $c['label']; ?></span>
+                        <svg style="margin-left:auto;color:rgba(255,255,255,.25);" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                        </svg>
+                    </a>
+                <?php endforeach; ?>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<?php /* ─── SECCIÓN 4: FACULTADES ──────────────────────────────────── */ ?>
+<section
+    class=""
+    style="background:var(--cream); padding:7rem 1.5rem;"> <!-- grain -->
+    <div class="max-w-7xl mx-auto">
+
+        <?php /* Encabezado */ ?>
+        <div class="reveal flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
+            <div>
+                <p
+                    style="
+            font-size:.72rem;
+            font-weight:500;
+            letter-spacing:.22em;
+            text-transform:uppercase;
+            color:var(--azulunsl);
+            margin-bottom:.8rem;">Estructura académica</p>
+                <h2
+                    style="
+            font-weight:800;
+            font-size:clamp(28px,4vw,46px);
+            line-height:1.05;
+            letter-spacing:-.025em;
+            color:var(--navy);">Facultades<br>e institutos</h2>
+            </div>
+            <p
+                style="
+          font-weight:300;
+          font-size:.95rem;
+          color:var(--mid);
+          max-width:340px;
+          line-height:1.7;">Nueve unidades académicas distribuidas en tres sedes: San Luis, Villa Mercedes y Merlo.</p>
+        </div>
+
+        <?php /* Grilla de facultades — estilo editorial con borde izquierdo de color */ ?>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <?php
             $facultades = [
-                ['sigla' => 'FQBYF', 'nombre' => 'Facultad de Química, Bioquímica y Farmacia', 'sede' => 'San Luis', 'color_bg' => 'bg-[#dfffed]', 'color_txt' => 'text-[#008e3b]', 'img' => 'fqbyf.png'],
-                ['sigla' => 'FCFMYN', 'nombre' => 'Facultad de Ciencias Físico Matemáticas y Naturales', 'sede' => 'San Luis', 'color_bg' => 'bg-[#fff1f0]', 'color_txt' => 'text-[#d2231f]', 'img' => 'fcfmyn.png'],
-                ['sigla' => 'FICA', 'nombre' => 'Facultad de Ingeniería y Ciencias Agropecuarias', 'sede' => 'Villa Mercedes', 'color_bg' => 'bg-[#dcf0f8]', 'color_txt' => 'text-[#466876]', 'img' => 'fica.png'],
-                ['sigla' => 'FCEJS', 'nombre' => 'Facultad de Ciencias Económicas, Jurídicas y Sociales', 'sede' => 'Villa Mercedes', 'color_bg' => 'bg-[#f4e7ff]', 'color_txt' => 'text-[#4b256b]', 'img' => 'fcejs.png'],
-                ['sigla' => 'FCH', 'nombre' => 'Facultad de Ciencias Humanas', 'sede' => 'San Luis', 'color_bg' => 'bg-[#fbdac7]', 'color_txt' => 'text-[#e5641c]', 'img' => 'fch.png'],
-                ['sigla' => 'FAPSI', 'nombre' => 'Facultad de Psicología', 'sede' => 'San Luis', 'color_bg' => 'bg-[#fff4df]', 'color_txt' => 'text-[#F2BB52]', 'img' => 'fapsi.png'],
-                ['sigla' => 'FCS', 'nombre' => 'Facultad de Ciencias de la Salud', 'sede' => 'San Luis · Villa Mercedes', 'color_bg' => 'bg-[#f0ffca]', 'color_txt' => 'text-[#88ae2a]', 'img' => 'fcs.png'],
-                ['sigla' => 'FTU', 'nombre' => 'Facultad de Turismo y Urbanismo', 'sede' => 'Merlo', 'color_bg' => 'bg-[#fff9e5]', 'color_txt' => 'text-[#996b16]', 'img' => 'ftu.png'],
+                ['sigla' => 'FQBYF',  'nombre' => 'Química, Bioquímica y Farmacia',             'sede' => 'San Luis',                  'hex' => '#008e3b', 'img' => 'fqbyf.png'],
+                ['sigla' => 'FCFMyN', 'nombre' => 'Ciencias Físico Matemáticas y Naturales',    'sede' => 'San Luis',                  'hex' => '#d2231f', 'img' => 'fcfmyn.png'],
+                ['sigla' => 'FICA',   'nombre' => 'Ingeniería y Ciencias Agropecuarias',        'sede' => 'Villa Mercedes',            'hex' => '#2e6fa5', 'img' => 'fica.png'],
+                ['sigla' => 'FCEJS',  'nombre' => 'Ciencias Económicas, Jurídicas y Sociales',  'sede' => 'Villa Mercedes',            'hex' => '#6b2fa0', 'img' => 'fcejs.png'],
+                ['sigla' => 'FCH',    'nombre' => 'Ciencias Humanas',                           'sede' => 'San Luis',                  'hex' => '#e5641c', 'img' => 'fch.png'],
+                ['sigla' => 'FAPSI',  'nombre' => 'Psicología',                                 'sede' => 'San Luis',                  'hex' => '#c89a00', 'img' => 'fapsi.png'],
+                ['sigla' => 'FCS',    'nombre' => 'Ciencias de la Salud',                       'sede' => 'San Luis · Villa Mercedes', 'hex' => '#5a8f1e', 'img' => 'fcs.png'],
+                ['sigla' => 'FTU',    'nombre' => 'Turismo y Urbanismo',                        'sede' => 'Merlo',                     'hex' => '#8a6200', 'img' => 'ftu.png'],
             ];
-            foreach ($facultades as $fac) : ?>
-                <a href="<?php echo home_url('/facultad/' . strtolower($fac['sigla']) . '/'); ?>" class="group bg-white rounded-xl border border-[#e5e0d8] hover:border-[#88CAFC] hover:shadow-lg hover:shadow-[#0b1f4a08] transition-all duration-300 p-6 flex items-center gap-5">
-                    <div class="w-16 h-16 rounded-xl <?php echo $fac['color_bg']; ?> flex items-center justify-center shrink-0  transition-transform duration-300">
-                        <img src="<?php echo get_template_directory_uri() . '/imagenes/' . $fac['img']; ?>" alt="<?php echo $fac['sigla']; ?>" class="w-11 h-11 object-contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-                        <span class="hidden w-11 h-11 items-center justify-center font-['Libre_Baskerville',serif] font-bold text-sm <?php echo $fac['color_txt']; ?> leading-tight text-center"><?php echo substr($fac['sigla'], 0, 2); ?></span>
+
+            foreach ($facultades as $i => $fac) :
+                $slug = strtolower($fac['sigla']);
+                $delay = ($i % 3) + 1;
+            ?>
+                <a
+                    href="<?php echo home_url('/facultad/' . $slug . '/'); ?>"
+                    class="reveal reveal-d<?php echo $delay; ?> group"
+                    style="display:flex;
+            align-items:center;
+            gap:1.2rem;
+            background:#fff;
+            padding:1.5rem;
+            border-left:3px solid <?php echo $fac['hex']; ?>;
+            text-decoration:none;
+            transition:transform .2s, box-shadow .2s;"
+                    onmouseover="this.style.transform='translateX(4px)';this.style.boxShadow='0 4px 20px rgba(8,24,58,.08)'"
+                    onmouseout="this.style.transform='translateX(0)';this.style.boxShadow='none'">
+                    <?php /* Ícono/logo de facultad */ ?>
+                    <div
+                        style="width:44px;height:44px;
+              display:flex;align-items:center;justify-content:center;
+              flex-shrink:0;
+              background:<?php echo $fac['hex']; ?>14;">
+                        <img
+                            src="<?php echo get_template_directory_uri() . '/imagenes/' . $fac['img']; ?>"
+                            alt="<?php echo $fac['sigla']; ?>"
+                            width="28" height="28"
+                            style="object-fit:contain;"
+                            onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                        <span
+                            style="display:none;
+                
+                font-weight:700;
+                font-size:.7rem;
+                color:<?php echo $fac['hex']; ?>;"><?php echo substr($fac['sigla'], 0, 2); ?></span>
                     </div>
-                    <div class="flex-1 min-w-0">
-                        <p class="<?php echo $fac['color_txt']; ?> text-[10px] font-black tracking-[0.2em] uppercase mb-1"><?php echo $fac['sigla']; ?></p>
-                        <h3 class="text-[#1a1a2e] font-bold text-sm leading-snug group-hover:text-[#0b1f4a] transition-colors"><?php echo $fac['nombre']; ?></h3>
-                        <p class="text-[#1a1a2e55] text-xs mt-2 flex items-center gap-1.5 font-medium">
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+
+                    <div style="min-width:0;">
+                        <p
+                            style="
+                font-size:.68rem;
+                font-weight:500;
+                letter-spacing:.18em;
+                text-transform:uppercase;
+                color:<?php echo $fac['hex']; ?>;
+                margin-bottom:.25rem;"><?php echo $fac['sigla']; ?></p>
+
+                        <p
+                            style="
+                font-weight:500;
+                font-size:.88rem;
+                color:var(--ink);
+                line-height:1.35;
+                margin-bottom:.4rem;"><?php echo $fac['nombre']; ?></p>
+
+                        <p
+                            style="
+                font-size:.75rem;
+                color:var(--mid);
+                display:flex;
+                align-items:center;
+                gap:.3rem;">
+                            <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                 <path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
                                 <path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0z" />
                             </svg>
@@ -246,16 +756,61 @@ get_header();
                 </a>
             <?php endforeach; ?>
 
-            <a href="<?php echo home_url('/carreras/?facultad=IPAU'); ?>" class="group col-span-1 sm:col-span-2 lg:col-span-1 bg-[#0b1f4a] rounded-xl border border-[#0b1f4a] hover:border-[#88CAFC] hover:shadow-xl transition-all duration-300 p-6 flex items-center gap-5">
-                <div class="w-16 h-16 rounded-xl bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-[#88CAFC20] transition-colors  duration-300">
-                    <img src="<?php echo get_template_directory_uri(); ?>/imagenes/ipau.png" alt="IPAU" class="w-11 h-11 object-contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-                    <span class="hidden w-11 h-11 items-center justify-center font-['Libre_Baskerville',serif] font-bold text-sm text-[#88CAFC] leading-tight text-center">IP</span>
+            <?php /* IPAU — destacado */ ?>
+            <a
+                href="<?php echo home_url('/carreras/?facultad=IPAU'); ?>"
+                class="reveal reveal-d3 md:col-span-2 lg:col-span-1 group"
+                style="display:flex;
+          align-items:center;
+          gap:1.2rem;
+          background:var(--navy);
+          padding:1.5rem;
+          border-left:3px solid var(--azulunsl);
+          text-decoration:none;
+          transition:transform .2s;"
+                onmouseover="this.style.transform='translateX(4px)'"
+                onmouseout="this.style.transform='translateX(0)'">
+                <div
+                    style="width:44px;height:44px;
+            display:flex;align-items:center;justify-content:center;
+            flex-shrink:0;
+            background:rgba(200,146,42,.15);">
+                    <img
+                        src="<?php echo get_template_directory_uri(); ?>/imagenes/ipau.png"
+                        alt="IPAU"
+                        width="28" height="28"
+                        style="object-fit:contain;"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                    <span
+                        style="display:none;
+              
+              font-weight:700;
+              font-size:.7rem;
+              color:var(--azulunsl);">IP</span>
                 </div>
-                <div class="flex-1 min-w-0">
-                    <p class="text-[#88CAFC] text-[10px] font-black tracking-[0.2em] uppercase mb-1">IPAU</p>
-                    <h3 class="text-white font-bold text-sm leading-snug">Instituto Politécnico y Artístico Universitario</h3>
-                    <p class="text-white/50 text-xs mt-2 flex items-center gap-1.5 font-medium">
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+
+                <div>
+                    <p
+                        style="
+              font-size:.68rem;
+              font-weight:500;
+              letter-spacing:.18em;
+              text-transform:uppercase;
+              color:var(--azulunsl);
+              margin-bottom:.25rem;">IPAU</p>
+                    <p
+                        style="
+              font-weight:500;
+              font-size:.88rem;
+              color:#fff;
+              line-height:1.35;
+              margin-bottom:.4rem;">Instituto Politécnico y Artístico Universitario</p>
+                    <p
+                        style="
+              font-size:.75rem;
+              color:rgba(255,255,255,.4);
+              display:flex;align-items:center;gap:.3rem;">
+                        <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
                             <path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0z" />
                         </svg>
@@ -263,8 +818,28 @@ get_header();
                     </p>
                 </div>
             </a>
+
         </div>
     </div>
 </section>
+
+<?php /* ─── SCRIPT: SCROLL REVEAL ─────────────────────────────────── */ ?>
+<script>
+    (function() {
+        const els = document.querySelectorAll('.reveal');
+        if (!els.length) return;
+        const io = new IntersectionObserver(
+            (entries) => entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    io.unobserve(e.target);
+                }
+            }), {
+                threshold: .12
+            }
+        );
+        els.forEach(el => io.observe(el));
+    })();
+</script>
 
 <?php get_footer(); ?>

@@ -47,19 +47,7 @@ while (have_posts()) : the_post();
 
 
 
-    <div class="bg-white border-b border-[#e5e0d8]">
-        <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-xs text-[#1a1a2e55]">
-            <a href="<?php echo home_url(); ?>" class="hover:text-[#0b1f4a] transition-colors">Inicio</a>
-            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-            </svg>
-            <a href="<?php echo home_url('/carreras/'); ?>" class="hover:text-[#0b1f4a] transition-colors">Carreras</a>
-            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-            </svg>
-            <span class="text-[#1a1a2e]"><?php the_title(); ?></span>
-        </div>
-    </div>
+  
 
 
     <div class="relative bg-[#0b1f4a] overflow-hidden">
@@ -131,7 +119,19 @@ while (have_posts()) : the_post();
         </div>
     </div>
 
-
+  <div class="bg-white border-b border-[#e5e0d8]">
+        <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-xs text-[#1a1a2e55]">
+            <a href="<?php echo home_url(); ?>" class="hover:text-[#0b1f4a] transition-colors">Inicio</a>
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            </svg>
+            <a href="<?php echo home_url('/carreras/'); ?>" class="hover:text-[#0b1f4a] transition-colors">Carreras</a>
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            </svg>
+            <span class="text-[#1a1a2e]"><?php the_title(); ?></span>
+        </div>
+    </div>
 
     <div class="max-w-7xl mx-auto px-6 py-12">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -176,13 +176,13 @@ while (have_posts()) : the_post();
                             <h2 class=" text-[#0b1f4a] font-bold text-lg">Organización Curricular</h2> <!-- font-['Libre_Baskerville',serif] -->
                         </div>
                         <div class="p-7">
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="grid grid-cols-1  gap-4"> <!-- sm:grid-cols-2 --> <!-- sm:col-span-2 -->
                                 <?php foreach ($plan_de_estudios as $numero_anio => $materias) :
                                     $es_final = ($numero_anio === $ultimo_anio);
-                                    $col_span_class = $es_final ? 'sm:col-span-2' : '';
-                                    $ul_class = $es_final ? 'grid grid-cols-2 sm:grid-cols-3 divide-x divide-y divide-[#f0ece4]' : 'divide-y divide-[#f0ece4]';
+                                    $col_span_class =   '';
+                                    $ul_class = $es_final ? 'grid grid-cols-1  divide-x divide-y divide-[#f0ece4]' : 'divide-y divide-[#f0ece4]'; 
                                     $li_class = $es_final ? 'px-4 py-3 text-xs text-[#1a1a2e88] flex items-center gap-2' : 'px-4 py-2.5 text-xs text-[#1a1a2e88] flex items-center gap-2';
-                                ?>
+                                ?> <!-- sm:grid-cols-3 -->
                                     <div class="border border-[#e5e0d8] overflow-hidden <?php echo esc_attr($col_span_class); ?>">
                                         <div class="bg-[#0b1f4a] px-4 py-3 flex items-center gap-2">
                                             <span class="w-6 h-6 rounded-full bg-[#88CAFC] flex items-center justify-center shrink-0">

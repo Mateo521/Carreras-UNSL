@@ -1,4 +1,24 @@
 <?php
+
+
+function mi_script_header()
+{
+    wp_enqueue_script(
+        'mi-script',
+        get_template_directory_uri() . '/js/a11y-toolbar-master/js/a11y-custom.js',
+        array(),
+        null,
+        true
+    );
+
+    wp_localize_script('mi-script', 'miThemeData', array(
+        'imgAccesibilidad' => get_template_directory_uri() . '/imagenes/accesibilidad-blanco.png'
+    ));
+}
+add_action('wp_enqueue_scripts', 'mi_script_header');
+
+
+
 function unsl_registrar_cpt_taxonomias()
 {
 
@@ -113,12 +133,6 @@ add_action('init', 'unsl_registrar_cpt_taxonomias', 0);
 
 
 
-
-
-/**
- * BOT NATIVO DE WORDPRESS PARA SCRAPING E IMPORTACIÓN DE CARRERAS UNSL
- * Uso: Visita http://tusitio.com/?ejecutar_scraping=unsl
- */
 add_action('init', 'unsl_scraping_e_importacion_directa');
 
 function unsl_scraping_e_importacion_directa()
@@ -205,10 +219,13 @@ function unsl_scraping_e_importacion_directa()
         $nodo_fb = $xpath_c->query("//a[contains(@href, 'facebook.com') and not(contains(@href, 'sharer.php'))]")->item(0);
         $facebook = $nodo_fb ? $nodo_fb->getAttribute('href') : '';
 
-        // --- LÓGICA DE SEPARACIÓN Y LIMPIEZA DE CONTENIDO ---
+
+
+
         $html_objetivos = '';
         $html_alcances = '';
-        $seccion_actual = 'objetivos'; // Empezamos asumiendo que el texto inicial son los objetivos
+        $seccion_actual = 'objetivos';
+
 
         $nodo_contenido_titulo = $xpath_c->query("//h6[contains(text(), 'Contenido')]")->item(0);
         if ($nodo_contenido_titulo && $nodo_contenido_titulo->parentNode) {
@@ -252,7 +269,8 @@ function unsl_scraping_e_importacion_directa()
             }
         }
 
-        // --- LÓGICA DE MATERIAS CON SALTO DE LÍNEA ---
+
+
         $materias_por_ano = [];
         $nodos_anios = $xpath_c->query("//div[contains(@class, 'card border box-shadow')]");
         foreach ($nodos_anios as $nodo_anio) {
@@ -268,13 +286,14 @@ function unsl_scraping_e_importacion_directa()
                     foreach ($nodos_li as $li) {
                         $materias_tmp[] = trim($li->nodeValue);
                     }
-                    // Usamos \r\n para forzar el salto de línea en el panel de WordPress
+
+
                     $materias_por_ano["materias_anio_" . $numero_ano] = implode("\r\n", $materias_tmp);
                 }
             }
         }
 
-        // --- INSERCIÓN EN WORDPRESS ---
+
         $post_existente = get_page_by_title($nombre, OBJECT, 'carrera');
 
         if (!$post_existente) {
@@ -298,11 +317,9 @@ function unsl_scraping_e_importacion_directa()
             if (!empty($tipo)) wp_set_object_terms($post_id, str_replace(['licenciaturas', 'ingenierías', 'tecnicaturas'], ['grado', 'grado', 'pregrado'], $tipo), 'nivel', false);
 
 
-            // Extraer la facultad directamente desde la ruta de la imagen en el título (h1)
             $nodo_img_facu = $xpath_c->query("//h1//img")->item(0);
             if ($nodo_img_facu) {
                 $src_facu = $nodo_img_facu->getAttribute('src');
-                // Busca algo como "/static/facultades/fch.png" y extrae "fch"
                 preg_match('/facultades\/([a-z]+)\.(png|jpg|jpeg)/i', $src_facu, $matches_facu);
                 if (isset($matches_facu[1])) {
                     wp_set_object_terms($post_id, strtoupper($matches_facu[1]), 'facultad', false);
@@ -324,7 +341,6 @@ function unsl_scraping_e_importacion_directa()
             update_field('instagram_contacto', $instagram, $post_id);
             update_field('facebook_contacto', $facebook, $post_id);
 
-            // Asignamos las variables limpias a sus respectivos campos
             update_field('objetivos_carrera', $html_objetivos, $post_id);
             update_field('alcances_titulo', $html_alcances, $post_id);
 
@@ -349,18 +365,10 @@ function unsl_scraping_e_importacion_directa()
 
 
 
-
-
-
-/**
- * SCRIPT DE IMPORTACIÓN TEMPORAL DE CARRERAS
- * Uso: Visita http://tusitio.com/?importar_carreras=secreto estando logueado como administrador.
- */
 add_action('init', 'unsl_importar_carreras_desde_json');
 
 function unsl_importar_carreras_desde_json()
 {
-    // 1. Medidas de seguridad: Solo corre si se llama por URL y si eres administrador
     if (!isset($_GET['importar_carreras']) || $_GET['importar_carreras'] !== 'secreto') {
         return;
     }
@@ -368,55 +376,42 @@ function unsl_importar_carreras_desde_json()
         wp_die('No tienes permisos para ejecutar este script.');
     }
 
-    // 2. Aquí pegas el JSON gigante que te devolvió tu CodeIgniter
-    // Pongo un par de carreras de ejemplo de tu array estático:
+
     $json_crudo = '[
         {"nombre":"Doctorado en Ciencias de la Computación","facultad":"FCFMYN","duracion":"5 años","tipo":"posgrado","modalidad":"presencial","sede":"San Luis"},
         {"nombre":"Licenciatura en Psicología","facultad":"FAPSI","duracion":"5 años","tipo":"grado","modalidad":"presencial","sede":"San Luis"}
     ]';
 
-    // (Nota: asegúrate de que tu CodeIgniter incluya los campos "tipo", "modalidad" y "sede" en el array antes de generar el JSON).
 
     $carreras = json_decode($json_crudo, true);
     $contador_creadas = 0;
 
     foreach ($carreras as $carrera) {
 
-        // 3. Comprobar si la carrera ya existe para no duplicarla
         $existe = get_page_by_title($carrera['nombre'], OBJECT, 'carrera');
 
         if (!$existe) {
 
-            // A. Crear el Post (La Carrera)
             $post_id = wp_insert_post(array(
                 'post_title'  => $carrera['nombre'],
                 'post_type'   => 'carrera',
-                'post_status' => 'publish', // Publicar directamente
+                'post_status' => 'publish',
             ));
 
             if (!is_wp_error($post_id)) {
 
-                // B. Asignar Taxonomías (Filtros)
-                // wp_set_object_terms( ID, nombre_o_array, taxonomía, append )
                 wp_set_object_terms($post_id, $carrera['tipo'], 'nivel', false);
                 wp_set_object_terms($post_id, $carrera['facultad'], 'facultad', false);
 
-                // Si tu JSON incluye sede y modalidad, descomenta estas líneas:
-                // wp_set_object_terms( $post_id, $carrera['sede'], 'sede', false );
-                // wp_set_object_terms( $post_id, $carrera['modalidad'], 'modalidad', false );
 
-                // C. Guardar campos de ACF (update_field es mágico, busca el ID del campo por ti)
                 update_field('duracion_carrera', $carrera['duracion'], $post_id);
 
-                // Si en el scraping también obtienes el título que otorga:
-                // update_field( 'titulo_otorgado', $carrera['titulo_que_otorga'], $post_id );
 
                 $contador_creadas++;
             }
         }
     }
 
-    // 4. Detener la carga de la página y mostrar el resultado
     echo "<h1>Migración Completada</h1>";
     echo "<p>Se crearon " . $contador_creadas . " carreras nuevas exitosamente.</p>";
     echo "<p>Revisa tu panel de administración.</p>";

@@ -7,6 +7,22 @@
 get_header();
 ?>
 
+
+
+<header class="bg-[#0b1f4a] pb-6 pt-24 relative overflow-hidden ">
+    <div class="absolute inset-0 bg-gradient-to-r from-[#0b1f4a] to-[#1e3a8a] opacity-90"></div>
+    <div class="relative max-w-7xl mx-auto px-6 text-left">
+        <h1 class="text-white text-3xl md:text-4xl font-bold  mb-4"> <!-- font-['Libre_Baskerville',serif] -->
+            Carreras UNSL
+        </h1>
+        <!--p class="text-slate-300 text-base max-w-2xl mx-auto">
+            Utiliza los filtros a continuación para explorar nuestra oferta académica y encontrar el plan de estudios ideal para tu futuro.
+        </p-->
+    </div>
+    <div class="max-w-7xl mx-auto relative" style="">
+        <p class="absolute  bottom-[-23px] text-[#152659] leading-[0.7] font-[800] right-0 px-12 text-[7vw]">UNSL</p>
+    </div>
+</header>
 <div class="bg-white border-b border-[#e5e0d8]">
     <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-xs text-[#1a1a2e55]">
         <a href="<?php echo home_url(); ?>" class="hover:text-[#0b1f4a] transition-colors">Inicio</a>
@@ -16,20 +32,7 @@ get_header();
         <span class="text-[#1a1a2e]">Explorador de carreras</span>
     </div>
 </div>
-
-<header class="bg-[#0b1f4a] py-12 relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-r from-[#0b1f4a] to-[#1e3a8a] opacity-90"></div>
-    <div class="relative max-w-7xl mx-auto px-6 text-center">
-        <h1 class="text-white text-3xl md:text-4xl font-bold  mb-4"> <!-- font-['Libre_Baskerville',serif] -->
-            Carreras UNSL
-        </h1>
-        <!--p class="text-slate-300 text-base max-w-2xl mx-auto">
-            Utiliza los filtros a continuación para explorar nuestra oferta académica y encontrar el plan de estudios ideal para tu futuro.
-        </p-->
-    </div>
-</header>
-
-<div class="bg-white border-b border-[#e5e0d8] sticky top-[80px] z-40 shadow-sm">
+<div class="bg-white border-b border-[#e5e0d8] sticky top-[65px] z-40 shadow-sm">
     <div class="max-w-7xl mx-auto px-6 py-3">
 
         <div class="flex justify-between items-center lg:hidden">
@@ -97,9 +100,9 @@ get_header();
                 <option value="tecnicatura">Tecnicaturas</option>
             </select>
 
-            <button id="clearFilters" class="mt-2 lg:mt-0 lg:ml-auto w-full lg:w-auto text-center text-xs text-[#1a1a2e55] hover:text-[#88CAFC] font-medium transition-colors underline underline-offset-2 py-2">
+            <!--button id="clearFilters" class="mt-2 lg:mt-0 lg:ml-auto w-full lg:w-auto text-center text-xs text-[#1a1a2e55] hover:text-[#88CAFC] font-medium transition-colors underline underline-offset-2 py-2">
                 Limpiar filtros
-            </button>
+            </button-->
 
         </div>
     </div>
@@ -164,7 +167,7 @@ if ($query_carreras->have_posts()) {
 
     <div class="flex items-center justify-between mb-6">
         <h2 class="text-lg font-bold text-[#0b1f4a] ">Catálogo</h2> <!-- font-['Libre_Baskerville',serif] -->
-        <p class="text-sm font-medium text-[#1a1a2e66] bg-white px-3 py-1 rounded-full shadow-sm border border-[#e5e0d8]"><span id="resultCount">—</span> carreras listadas</p>
+        <p class="text-sm font-medium text-[#1a1a2e66] bg-white px-3 py-1  shadow-sm border border-[#e5e0d8]"><span id="resultCount">—</span> carreras listadas</p>
     </div>
 
     <div id="carrerasGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
@@ -416,11 +419,11 @@ if ($query_carreras->have_posts()) {
 
         if (toggleMobileFilters && filtersWrapper) {
             toggleMobileFilters.addEventListener("click", () => {
-                
+
                 filtersWrapper.classList.toggle("hidden");
                 filtersWrapper.classList.toggle("flex");
 
-                
+
                 if (filtersWrapper.classList.contains("hidden")) {
                     toggleMobileFilters.textContent = "Mostrar";
                 } else {

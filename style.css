@@ -7,3 +7,90 @@ Description: Tema personalizado para la oferta académica de la Universidad Naci
 Version: 1.0.0
 Text Domain: unsl-carreras
 */
+
+
+       
+body.a11y-reading-mode {
+    background-color: #fcfcfc !important;
+    color: #1a1a1a !important;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+    line-height: 1.8 !important;
+    margin: 0 auto !important;
+    max-width: 800px !important; 
+    padding: 40px 20px !important;
+    display: block !important;
+}
+
+
+body.a11y-reading-mode header:not(#ci-a11y-custom-panel),
+body.a11y-reading-mode footer,
+body.a11y-reading-mode nav,
+body.a11y-reading-mode aside,
+body.a11y-reading-mode .sidebar,
+body.a11y-reading-mode .banner,
+body.a11y-reading-mode .ads,
+body.a11y-reading-mode .social-share {
+    display: none !important;
+}
+
+
+body.a11y-reading-mode * {
+    float: none !important;
+    position: static !important;
+    width: auto !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    text-shadow: none !important;
+}
+
+
+body.a11y-reading-mode #ci-a11y-custom-panel,
+body.a11y-reading-mode #ci-a11y-custom-panel *,
+body.a11y-reading-mode #ci-a11y-toggle,
+body.a11y-reading-mode #ci-a11y-toggle * {
+    display: block !important;
+    position: fixed !important;
+    visibility: visible !important;
+}
+
+
+body.a11y-reading-mode img,
+body.a11y-reading-mode video,
+body.a11y-reading-mode iframe,
+body.a11y-reading-mode svg:not(#ci-a11y-main-toggle svg) {
+    display: none !important;
+}
+
+
+body.a11y-reading-mode h1, 
+body.a11y-reading-mode h2, 
+body.a11y-reading-mode h3 {
+    margin-top: 1.5em !important;
+    margin-bottom: 0.5em !important;
+    color: #000 !important;
+    font-weight: bold !important;
+}
+
+
+
+
+
+.a11y-filter-protanopia { -webkit-filter: url(#protanopia) !important; filter: url(#protanopia) !important; }
+.a11y-filter-deuteranopia { -webkit-filter: url(#deuteranopia) !important; filter: url(#deuteranopia) !important; }
+.a11y-filter-tritanopia { -webkit-filter: url(#tritanopia) !important; filter: url(#tritanopia) !important; }
+.a11y-filter-monocromo { -webkit-filter: grayscale(100%) !important; filter: grayscale(100%) !important; }
+
+
+#ci-a11y-custom-panel, #ci-a11y-toggle {
+    -webkit-filter: none !important;
+            filter: none !important;
+}
+
+.a11y-tts-highlight:active {
+    background-color: rgba(37, 99, 235, 0.3) !important;
+    transform: scale(0.98);
+}

@@ -1,28 +1,23 @@
 <?php
+
 /**
  * Template Name: Nuestras Facultades
  * Description: Plantilla para mostrar la grilla de Facultades de la UNSL.
  */
-get_header(); 
+get_header();
 ?>
 
-<div class="bg-white border-b border-[#e5e0d8]">
-    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-xs text-[#1a1a2e55]">
-        <a href="<?php echo home_url(); ?>" class="hover:text-[#0b1f4a] transition-colors">Inicio</a>
-        <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
-        <span class="text-[#1a1a2e]">Facultades</span>
-    </div>
-</div>
+
 
 <header class="bg-[#0b1f4a] py-16 lg:py-20 relative overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-[#0b1f4a] to-[#1e3a8a] opacity-90"></div>
     <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent bg-[length:20px_20px]"></div>
-    
+
     <div class="relative max-w-7xl mx-auto px-6 text-center z-10">
-        <span class="inline-block py-1.5 px-4 rounded-full bg-white/10 backdrop-blur-md text-[#88CAFC] text-xs font-bold tracking-widest uppercase mb-4 border border-white/20">
+        <span class="inline-block py-1.5 px-4  bg-white/10 backdrop-blur-md text-[#88CAFC] text-xs font-bold tracking-widest uppercase mb-4 border border-white/20"> <!-- rounded-full -->
             Estructura Institucional
         </span>
-        <h1 class="text-white text-4xl md:text-5xl lg:text-6xl font-bold font-['Libre_Baskerville',serif] mb-6">
+        <h1 class="text-white text-4xl md:text-5xl lg:text-6xl font-bold  mb-6"> <!-- font-['Libre_Baskerville',serif] -->
             Facultades
         </h1>
         <p class="text-slate-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-light">
@@ -31,23 +26,34 @@ get_header();
     </div>
 </header>
 
+
+<div class="bg-white border-b border-[#e5e0d8]">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-xs text-[#1a1a2e55]">
+        <a href="<?php echo home_url(); ?>" class="hover:text-[#0b1f4a] transition-colors">Inicio</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+        </svg>
+        <span class="text-[#1a1a2e]">Facultades</span>
+    </div>
+</div>
+
+
 <main class="px-6 py-24 bg-[#EEF1F5]">
     <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <?php
             $facultades = [
-                ['sigla' => 'FQBYF', 'nombre' => 'Facultad de Química, Bioquímica y Farmacia', 'sede' => 'San Luis', 'color_bg' => 'bg-[#ecfdf5]', 'color_txt' => 'text-[#065f46]', 'img' => 'fqbyf.png'],
-                ['sigla' => 'FCFMYN', 'nombre' => 'Facultad de Ciencias Físico Matemáticas y Naturales', 'sede' => 'San Luis', 'color_bg' => 'bg-[#eff6ff]', 'color_txt' => 'text-[#1e40af]', 'img' => 'fcfmyn.png'],
-                ['sigla' => 'FICA', 'nombre' => 'Facultad de Ingeniería y Ciencias Agropecuarias', 'sede' => 'Villa Mercedes', 'color_bg' => 'bg-[#fff7ed]', 'color_txt' => 'text-[#92400e]', 'img' => 'fica.png'],
-                ['sigla' => 'FCEJS', 'nombre' => 'Facultad de Ciencias Económicas, Jurídicas y Sociales', 'sede' => 'Villa Mercedes', 'color_bg' => 'bg-[#eef2ff]', 'color_txt' => 'text-[#3730a3]', 'img' => 'fcejs.png'],
-                ['sigla' => 'FCH', 'nombre' => 'Facultad de Ciencias Humanas', 'sede' => 'San Luis', 'color_bg' => 'bg-[#fdf4ff]', 'color_txt' => 'text-[#6b21a8]', 'img' => 'fch.png'],
-                ['sigla' => 'FAPSI', 'nombre' => 'Facultad de Psicología', 'sede' => 'San Luis', 'color_bg' => 'bg-[#fff1f2]', 'color_txt' => 'text-[#9f1239]', 'img' => 'fapsi.png'],
-                ['sigla' => 'FCS', 'nombre' => 'Facultad de Ciencias de la Salud', 'sede' => 'San Luis · Villa Mercedes', 'color_bg' => 'bg-[#f0fdfa]', 'color_txt' => 'text-[#0f766e]', 'img' => 'fcs.png'],
-                ['sigla' => 'FTU', 'nombre' => 'Facultad de Turismo y Urbanismo', 'sede' => 'Merlo', 'color_bg' => 'bg-[#f0fdf4]', 'color_txt' => 'text-[#166534]', 'img' => 'ftu.png'],
+                ['sigla' => 'FQBYF', 'nombre' => 'Facultad de Química, Bioquímica y Farmacia', 'sede' => 'San Luis', 'color_bg' => 'bg-[#dfffed]', 'color_txt' => 'text-[#008e3b]', 'img' => 'fqbyf.png'],
+                ['sigla' => 'FCFMYN', 'nombre' => 'Facultad de Ciencias Físico Matemáticas y Naturales', 'sede' => 'San Luis', 'color_bg' => 'bg-[#fff1f0]', 'color_txt' => 'text-[#d2231f]', 'img' => 'fcfmyn.png'],
+                ['sigla' => 'FICA', 'nombre' => 'Facultad de Ingeniería y Ciencias Agropecuarias', 'sede' => 'Villa Mercedes', 'color_bg' => 'bg-[#dcf0f8]', 'color_txt' => 'text-[#466876]', 'img' => 'fica.png'],
+                ['sigla' => 'FCEJS', 'nombre' => 'Facultad de Ciencias Económicas, Jurídicas y Sociales', 'sede' => 'Villa Mercedes', 'color_bg' => 'bg-[#f4e7ff]', 'color_txt' => 'text-[#4b256b]', 'img' => 'fcejs.png'],
+                ['sigla' => 'FCH', 'nombre' => 'Facultad de Ciencias Humanas', 'sede' => 'San Luis', 'color_bg' => 'bg-[#fbdac7]', 'color_txt' => 'text-[#e5641c]', 'img' => 'fch.png'],
+                ['sigla' => 'FAPSI', 'nombre' => 'Facultad de Psicología', 'sede' => 'San Luis', 'color_bg' => 'bg-[#fff4df]', 'color_txt' => 'text-[#F2BB52]', 'img' => 'fapsi.png'],
+                ['sigla' => 'FCS', 'nombre' => 'Facultad de Ciencias de la Salud', 'sede' => 'San Luis · Villa Mercedes', 'color_bg' => 'bg-[#f0ffca]', 'color_txt' => 'text-[#88ae2a]', 'img' => 'fcs.png'],
+                ['sigla' => 'FTU', 'nombre' => 'Facultad de Turismo y Urbanismo', 'sede' => 'Merlo', 'color_bg' => 'bg-[#fff9e5]', 'color_txt' => 'text-[#996b16]', 'img' => 'ftu.png'],
             ];
+            foreach ($facultades as $fac) :
 
-            foreach ($facultades as $fac) : 
-               
                 $enlace_seo = home_url('/facultad/' . strtolower($fac['sigla']) . '/');
             ?>
                 <a href="<?php echo esc_url($enlace_seo); ?>" class="group bg-white rounded-xl border border-[#e5e0d8] hover:border-[#88CAFC] hover:shadow-lg hover:shadow-[#0b1f4a08] transition-all duration-300 p-6 flex items-center gap-5">

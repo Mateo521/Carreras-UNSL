@@ -36,14 +36,14 @@ $descripciones = array(
 );
 
 $colores_facultades = array(
-    'fqbyf'  => array('bg' => 'bg-[#ecfdf5]', 'text' => 'text-[#065f46]'),
-    'fcfmyn' => array('bg' => 'bg-[#eff6ff]', 'text' => 'text-[#1e40af]'),
-    'fica'   => array('bg' => 'bg-[#fff7ed]', 'text' => 'text-[#92400e]'),
-    'fcejs'  => array('bg' => 'bg-[#eef2ff]', 'text' => 'text-[#3730a3]'),
-    'fch'    => array('bg' => 'bg-[#fdf4ff]', 'text' => 'text-[#6b21a8]'),
-    'fapsi'  => array('bg' => 'bg-[#fff1f2]', 'text' => 'text-[#9f1239]'),
-    'fcs'    => array('bg' => 'bg-[#f0fdfa]', 'text' => 'text-[#0f766e]'),
-    'ftu'    => array('bg' => 'bg-[#f0fdf4]', 'text' => 'text-[#166534]'),
+    'fqbyf'  => array('bg' => 'bg-[#dfffed]', 'text' => 'text-[#008e3b]'),
+    'fcfmyn' => array('bg' => 'bg-[#fff1f0]', 'text' => 'text-[#d2231f]'),
+    'fica'   => array('bg' => 'bg-[#dcf0f8]', 'text' => 'text-[#466876]'),
+    'fcejs'  => array('bg' => 'bg-[#f4e7ff]', 'text' => 'text-[#4b256b]'),
+    'fch'    => array('bg' => 'bg-[#fbdac7]', 'text' => 'text-[#e5641c]'),
+    'fapsi'  => array('bg' => 'bg-[#fff4df]', 'text' => 'text-[#F2BB52]'),
+    'fcs'    => array('bg' => 'bg-[#f0ffca]', 'text' => 'text-[#88ae2a]'),
+    'ftu'    => array('bg' => 'bg-[#fff9e5]', 'text' => 'text-[#996b16]'),
     'ipau'   => array('bg' => 'bg-[#f0f4f8]', 'text' => 'text-[#0b1f4a]')
 );
 
@@ -76,7 +76,7 @@ $logo_url = get_template_directory_uri() . '/imagenes/' . $slug . '.png';
 
     <div class="relative max-w-7xl mx-auto px-6 z-10 flex flex-col items-center text-center">
 
-        <div class="w-24 h-24 md:w-32 md:h-32 rounded-2xl <?php echo esc_attr($color_bg); ?> flex items-center justify-center mb-8 shadow-2xl transform hover:scale-105 transition-transform duration-300">
+        <div class="w-24 h-24 md:w-32 md:h-32 rounded-2xl <?php echo esc_attr($color_bg); ?> flex items-center justify-center mb-8 shadow-2xl transform  transition-transform duration-300"> <!-- hover:scale-105 -->
             <img src="<?php echo esc_url($logo_url); ?>" alt="Logo <?php echo esc_attr($sigla); ?>" class="w-16 md:w-20 object-contain" onerror="this.src='<?php echo get_template_directory_uri(); ?>/logo-unsl-negativo2.svg'; this.classList.add('opacity-40', 'invert');">
         </div>
 
@@ -84,7 +84,7 @@ $logo_url = get_template_directory_uri() . '/imagenes/' . $slug . '.png';
             Unidad Académica
         </span>
 
-        <h1 class="text-white text-3xl md:text-5xl font-bold font-['Libre_Baskerville',serif] mb-6 max-w-4xl leading-tight">
+        <h1 class="text-white text-3xl md:text-5xl font-bold  mb-6 max-w-4xl leading-tight"> <!-- font-['Libre_Baskerville',serif] -->
             <?php echo esc_html($nombre_completo); ?>
         </h1>
 
@@ -149,7 +149,7 @@ $logo_url = get_template_directory_uri() . '/imagenes/' . $slug . '.png';
                     $tc_label = ucfirst($tipo_slug);
             ?>
 
-                    <a href="<?php the_permalink(); ?>" class="group bg-white rounded-xl overflow-hidden border-x border-b border-[#e5e0d8] border-t-4 border-t-[<?php echo $colores_facultades[$slug]['text']; ?>] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col cursor-pointer">
+                    <a href="<?php the_permalink(); ?>" class="group bg-white  overflow-hidden border-x border-t border-[#e5e0d8] border-b-4 border-t-[<?php echo $colores_facultades[$slug]['text']; ?>] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col cursor-pointer">
                         <div class="p-6 flex flex-col gap-4 flex-1">
                             <div class="flex items-start justify-between gap-2">
                                 <span class="<?php echo esc_attr($tc_bg . ' ' . $tc_text); ?> text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded flex items-center gap-1.5 shrink-0">
