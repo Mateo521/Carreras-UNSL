@@ -94,3 +94,9 @@ body.a11y-reading-mode h3 {
     background-color: rgba(37, 99, 235, 0.3) !important;
     transform: scale(0.98);
 }
+
+
+
+ol, ul, menu{
+    list-style: disc !important;
+}

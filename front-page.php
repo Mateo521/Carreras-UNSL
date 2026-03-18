@@ -76,7 +76,7 @@ get_header();
 
 <?php /* ─── SECCIÓN 1: HERO ─────────────────────────────────────────── */ ?>
 <section
-    class="relative min-h-screen flex flex-col justify-end overflow-hidden " 
+    class="relative min-h-screen flex flex-col justify-end overflow-hidden "
     style="background: var(--navy);">
     <?php /* Video de fondo */ ?> <!-- grain -->
     <video
@@ -124,8 +124,8 @@ get_header();
                 style="
           font-size:.75rem;
           font-weight:500;
-          letter-spacing:.2em;
-          text-transform:uppercase;
+      
+        text-transform:uppercase;
           color:rgba(255,255,255,.6);">Universidad Nacional de San Luis</span>
         </div>
 
@@ -146,11 +146,11 @@ get_header();
         <?php /* Bajada */ ?>
         <p
             style="
-        font-weight:300;
+    
         font-size:clamp(16px,2vw,20px);
         color:rgba(255,255,255,.65);
         max-width:520px;
-        line-height:1.7;
+    
         margin-bottom:2.5rem;
         animation: fadeUp .8s .3s both cubic-bezier(.22,1,.36,1);">
             Explorá la oferta académica 2026 de la UNSL: pregrado, grado y posgrado en tres sedes de San Luis.
@@ -280,7 +280,7 @@ get_header();
 
 <?php /* ─── SECCIÓN 2: NIVELES ACADÉMICOS ─────────────────────────── */ ?>
 <section
-    class="relative overflow-hidden " 
+    class="relative overflow-hidden "
     style="background:var(--cream); padding:7rem 1.5rem;">
     <div class="max-w-7xl mx-auto"> <!-- grain -->
 
@@ -313,7 +313,7 @@ get_header();
         </div>
 
         <?php /* Tarjetas de nivel — layout con números grandes */ ?>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6" style="background:var(--line);">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 rounded-xl" > <!-- style="background:var(--line);" -->
 
             <?php
             $niveles = [
@@ -342,7 +342,7 @@ get_header();
             foreach ($niveles as $i => $n) : ?>
                 <a
                     href="<?php echo home_url('/carreras/?tipo=' . $n['tipo']); ?>"
-                    class="reveal reveal-d<?php echo $i + 1; ?> group block"
+                    class="reveal rounded-xl reveal-d<?php echo $i + 1; ?> group block"
                     style="background:#fff;
             text-decoration:none;
             padding:3rem 2.5rem;
@@ -673,6 +673,8 @@ get_header();
         <?php /* Grilla de facultades — estilo editorial con borde izquierdo de color */ ?>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <?php
+
+
             $facultades = [
                 ['sigla' => 'FQBYF',  'nombre' => 'Química, Bioquímica y Farmacia',             'sede' => 'San Luis',                  'hex' => '#008e3b', 'img' => 'fqbyf.png'],
                 ['sigla' => 'FCFMyN', 'nombre' => 'Ciencias Físico Matemáticas y Naturales',    'sede' => 'San Luis',                  'hex' => '#d2231f', 'img' => 'fcfmyn.png'],
@@ -704,9 +706,9 @@ get_header();
                     <?php /* Ícono/logo de facultad */ ?>
                     <div
                         style="width:44px;height:44px;
-              display:flex;align-items:center;justify-content:center;
-              flex-shrink:0;
-              background:<?php echo $fac['hex']; ?>14;">
+            display:flex;align-items:center;justify-content:center;
+            flex-shrink:0;
+            background:<?php echo $fac['hex']; ?>14;">
                         <img
                             src="<?php echo get_template_directory_uri() . '/imagenes/' . $fac['img']; ?>"
                             alt="<?php echo $fac['sigla']; ?>"
@@ -761,13 +763,13 @@ get_header();
                 href="<?php echo home_url('/carreras/?facultad=IPAU'); ?>"
                 class="reveal reveal-d3 md:col-span-2 lg:col-span-1 group"
                 style="display:flex;
-          align-items:center;
-          gap:1.2rem;
-          background:var(--navy);
-          padding:1.5rem;
-          border-left:3px solid var(--azulunsl);
-          text-decoration:none;
-          transition:transform .2s;"
+        align-items:center;
+        gap:1.2rem;
+        background:var(--navy);
+        padding:1.5rem;
+        border-left:3px solid var(--azulunsl);
+        text-decoration:none;
+        transition:transform .2s;"
                 onmouseover="this.style.transform='translateX(4px)'"
                 onmouseout="this.style.transform='translateX(0)'">
                 <div

@@ -55,21 +55,7 @@ $logo_url = get_template_directory_uri() . '/imagenes/' . $slug . '.png';
 
 ?>
 
-<div class="bg-white border-b border-[#e5e0d8]">
-    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-xs text-[#1a1a2e55]">
-        <a href="<?php echo home_url(); ?>" class="hover:text-[#0b1f4a] transition-colors">Inicio</a>
-        <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-        </svg>
-        <a href="<?php echo home_url("facultades"); ?>" class="hover:text-[#0b1f4a] transition-colors">
-            <span class="text-[#1a1a2e]">Facultades</span>
-        </a>
-        <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-        </svg>
-        <span class="text-[#1a1a2e] font-semibold"><?php echo esc_html($sigla); ?></span>
-    </div>
-</div>
+
 
 <header class="bg-[#0b1f4a] py-16 lg:py-24 relative overflow-hidden">
     <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent bg-[length:20px_20px]"></div>
@@ -94,6 +80,22 @@ $logo_url = get_template_directory_uri() . '/imagenes/' . $slug . '.png';
 
     </div>
 </header>
+
+<div class="bg-white border-b border-[#e5e0d8]">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-xs text-[#1a1a2e55]">
+        <a href="<?php echo home_url(); ?>" class="hover:text-[#0b1f4a] transition-colors">Inicio</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+        </svg>
+        <a href="<?php echo home_url("facultades"); ?>" class="hover:text-[#0b1f4a] transition-colors">
+            <span class="text-[#1a1a2e]">Facultades</span>
+        </a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+        </svg>
+        <span class="text-[#1a1a2e] font-semibold"><?php echo esc_html($sigla); ?></span>
+    </div>
+</div>
 
 <main class="bg-[#EEF1F5] py-16 lg:py-20">
     <div class="max-w-7xl mx-auto px-6">

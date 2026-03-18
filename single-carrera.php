@@ -12,16 +12,20 @@ $nombres_facultades = array(
     'ipau'   => 'Instituto Politécnico y Artístico Universitario'
 );
 $colores_facultades = array(
-    'fqbyf'  => array('bg' => 'bg-[#ecfdf5]', 'text' => 'text-[#065f46]'),
-    'fcfmyn' => array('bg' => 'bg-[#eff6ff]', 'text' => 'text-[#1e40af]'),
-    'fica'   => array('bg' => 'bg-[#fff7ed]', 'text' => 'text-[#92400e]'),
-    'fcejs'  => array('bg' => 'bg-[#eef2ff]', 'text' => 'text-[#3730a3]'),
-    'fch'    => array('bg' => 'bg-[#fdf4ff]', 'text' => 'text-[#6b21a8]'),
-    'fapsi'  => array('bg' => 'bg-[#fff1f2]', 'text' => 'text-[#9f1239]'),
-    'fcs'    => array('bg' => 'bg-[#f0fdfa]', 'text' => 'text-[#0f766e]'),
-    'ftu'    => array('bg' => 'bg-[#f0fdf4]', 'text' => 'text-[#166534]'),
-    'ipau'   => array('bg' => 'bg-[#f0f4f8]', 'text' => 'text-[#0b1f4a]')
+    'fqbyf'  => array('bg' => 'bg-[#fff]', 'text' => 'text-[#008e3b]'),
+    'fcfmyn' => array('bg' => 'bg-[#fff]', 'text' => 'text-[#d2231f]'),
+    'fica'   => array('bg' => 'bg-[#fff]', 'text' => 'text-[#2e6fa5]'),
+    'fcejs'  => array('bg' => 'bg-[#fff]', 'text' => 'text-[#6b2fa0]'),
+    'fch'    => array('bg' => 'bg-[#fff]', 'text' => 'text-[#e5641c]'),
+    'fapsi'  => array('bg' => 'bg-[#fff]', 'text' => 'text-[#c89a00]'),
+    'fcs'    => array('bg' => 'bg-[#fff]', 'text' => 'text-[#92c021]'),
+    'ftu'    => array('bg' => 'bg-[#fff]', 'text' => 'text-[#8a6200]'),
+    'ipau'   => array('bg' => 'bg-[#fff]', 'text' => 'text-[#972f70]')
 );
+
+
+
+
 while (have_posts()) : the_post();
 
     $terms_nivel = get_the_terms(get_the_ID(), 'nivel');
@@ -42,12 +46,13 @@ while (have_posts()) : the_post();
     $enlace_plan = get_field('enlace_plan_estudios') ?: '#';
     $imagen_fondo = get_field('imagen_fondo_hero');
     $url_fondo = $imagen_fondo ? esc_url($imagen_fondo) : get_template_directory_uri() . '/imagenes/default-hero.jpg';
+    $sin_inscripciones = get_field('sin_inscripciones');
 ?>
 
 
 
 
-  
+
 
 
     <div class="relative bg-[#0b1f4a] overflow-hidden">
@@ -64,9 +69,19 @@ while (have_posts()) : the_post();
                         <span class="w-1.5 h-1.5 rounded-full bg-[#3730a3]"></span>
                         <?php echo esc_html($nivel_nombre); ?>
                     </span>
+
                     <?php if ($acreditada_coneau) : ?>
                         <span class="inline-flex items-center gap-1.5 bg-white border border-[#88CAFC30] text-black text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded">
                             Acreditada CONEAU
+                        </span>
+                    <?php endif; ?>
+
+                    <?php if ($sin_inscripciones) : ?>
+                        <span class="inline-flex items-center gap-1.5 bg-[#CC2A0E] border border-red-500 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded shadow-sm">
+                            <!--svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                            </svg-->
+                            Sin inscripciones habilitadas
                         </span>
                     <?php endif; ?>
                 </div>
@@ -101,9 +116,9 @@ while (have_posts()) : the_post();
                         <span class="text-white text-sm font-medium"><?php echo esc_html($sede_nombre); ?></span>
                     </div>
                     <div class="flex items-center gap-2 bg-[#ffffff0d] border border-[#ffffff12] px-4 py-2.5 rounded-lg backdrop-blur-sm">
-                        <svg class="w-4 h-4 text-[#88CAFC] shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <!--svg class="w-4 h-4 text-[#88CAFC] shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                        </svg>
+                        </svg-->
                         <span class="text-white text-sm font-medium"><?php echo esc_html($modalidad_nombre); ?></span>
                     </div>
                     <?php if ($enlace_plan !== '#') : ?>
@@ -119,7 +134,7 @@ while (have_posts()) : the_post();
         </div>
     </div>
 
-  <div class="bg-white border-b border-[#e5e0d8]">
+    <div class="bg-white border-b border-[#e5e0d8]">
         <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-xs text-[#1a1a2e55]">
             <a href="<?php echo home_url(); ?>" class="hover:text-[#0b1f4a] transition-colors">Inicio</a>
             <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -180,7 +195,7 @@ while (have_posts()) : the_post();
                                 <?php foreach ($plan_de_estudios as $numero_anio => $materias) :
                                     $es_final = ($numero_anio === $ultimo_anio);
                                     $col_span_class =   '';
-                                    $ul_class = $es_final ? 'grid grid-cols-1  divide-x divide-y divide-[#f0ece4]' : 'divide-y divide-[#f0ece4]'; 
+                                    $ul_class = $es_final ? 'grid grid-cols-1  divide-x divide-y divide-[#f0ece4]' : 'divide-y divide-[#f0ece4]';
                                     $li_class = $es_final ? 'px-4 py-3 text-xs text-[#1a1a2e88] flex items-center gap-2' : 'px-4 py-2.5 text-xs text-[#1a1a2e88] flex items-center gap-2';
                                 ?> <!-- sm:grid-cols-3 -->
                                     <div class="border border-[#e5e0d8] overflow-hidden <?php echo esc_attr($col_span_class); ?>">
@@ -310,14 +325,31 @@ while (have_posts()) : the_post();
                         <?php endif; ?>
                     </div>
                 </div>
-                <div class="bg-[#0b1f4a] p-6 relative overflow-hidden">
-                    <div class="absolute -top-8 -right-8 w-32 h-32 rounded-full bg-[#88CAFC] opacity-10 pointer-events-none"></div>
-                    <h3 class="  text-white font-bold text-base mb-2 relative">¿Te interesa esta carrera?</h3> <!-- font-['Libre_Baskerville',serif] -->
-                    <p class="text-[#ffffff77] text-sm mb-5 relative">Realizá tu preinscripción y comenzá tu camino en la UNSL.</p>
-                    <a href="/preinscripcion" class="relative flex items-center justify-center gap-2 bg-[#88CAFC] hover:bg-white text-[#0b1f4a] font-bold text-sm px-5 py-3.5 transition-all">
-                        Preinscripción 2026
-                    </a>
-                </div>
+                <?php if ($sin_inscripciones) : ?>
+                    <div class="bg-red-50 border border-red-200 p-6 relative overflow-hidden">
+                        <h3 class="text-red-800 font-bold text-base mb-2 relative flex items-center gap-2">
+                            <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                            </svg>
+                            Inscripciones cerradas
+                        </h3>
+                        <p class="text-red-[#F0755D]/80 text-sm relative font-medium">
+                            Actualmente no se encuentran habilitadas las inscripciones para esta carrera.
+                        </p>
+                    </div>
+                <?php else : ?>
+                    <div class="bg-[#0b1f4a] p-6 relative overflow-hidden">
+                        <div class="absolute -top-8 -right-8 w-32 h-32 rounded-full bg-[#88CAFC] opacity-10 pointer-events-none"></div>
+                        <h3 class="text-white font-bold text-base mb-2 relative">¿Te interesa esta carrera?</h3>
+                        <p class="text-[#ffffff77] text-sm mb-5 relative">Realizá tu preinscripción y comenzá tu camino en la UNSL.</p>
+                        <a href="/preinscripcion" class="relative flex items-center justify-center gap-2 bg-[#88CAFC] hover:bg-white text-[#0b1f4a] font-bold text-sm px-5 py-3.5 transition-all">
+                            Preinscripción 2026
+                        </a>
+                    </div>
+                <?php endif; ?>
+            </aside>
+
+
             </aside>
         </div>
     </div>

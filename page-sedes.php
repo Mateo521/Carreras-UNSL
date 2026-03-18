@@ -7,15 +7,7 @@
 get_header();
 ?>
 
-<div class="bg-white border-b border-[#e5e0d8]">
-    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-xs text-[#1a1a2e55]">
-        <a href="<?php echo home_url(); ?>" class="hover:text-[#0b1f4a] transition-colors">Inicio</a>
-        <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-        </svg>
-        <span class="text-[#1a1a2e]">Nuestras Sedes</span>
-    </div>
-</div>
+
 
 <header class="bg-[#0b1f4a] py-16 lg:py-20 relative overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-[#0b1f4a] to-[#1e3a8a] opacity-90"></div>
@@ -33,6 +25,16 @@ get_header();
         </p>
     </div>
 </header>
+
+<div class="bg-white border-b border-[#e5e0d8]">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-xs text-[#1a1a2e55]">
+        <a href="<?php echo home_url(); ?>" class="hover:text-[#0b1f4a] transition-colors">Inicio</a>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+        </svg>
+        <span class="text-[#1a1a2e]">Nuestras Sedes</span>
+    </div>
+</div>
 
 <main class="bg-[#EEF1F5] py-16 lg:py-24">
     <div class="max-w-7xl mx-auto px-6 flex flex-col gap-24">

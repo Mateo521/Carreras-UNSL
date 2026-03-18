@@ -133,6 +133,13 @@ add_action('init', 'unsl_registrar_cpt_taxonomias', 0);
 
 
 
+
+
+
+
+
+/*
+
 add_action('init', 'unsl_scraping_e_importacion_directa');
 
 function unsl_scraping_e_importacion_directa()
@@ -363,8 +370,8 @@ function unsl_scraping_e_importacion_directa()
     exit;
 }
 
-
-
+*/
+/*
 add_action('init', 'unsl_importar_carreras_desde_json');
 
 function unsl_importar_carreras_desde_json()
@@ -417,3 +424,4 @@ function unsl_importar_carreras_desde_json()
     echo "<p>Revisa tu panel de administración.</p>";
     exit;
 }
+*/
