@@ -24,7 +24,7 @@ get_header();
     </div>
 </header>
 <div class="bg-white border-b border-[#e5e0d8]">
-    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-xs text-[#1a1a2e55]">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-xs text-[#061C2E]">
         <a href="<?php echo home_url(); ?>" class="hover:text-[#0b1f4a] transition-colors">Inicio</a>
         <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
@@ -32,7 +32,9 @@ get_header();
         <span class="text-[#1a1a2e]">Explorador de carreras</span>
     </div>
 </div>
-<div class="bg-white border-b border-[#e5e0d8] sticky top-[65px] z-40 shadow-sm">
+
+
+<div class="bg-white/95 backdrop-blur-sm border-b border-[#e5e0d8] sticky top-[65px] z-40 shadow-sm transition-all">
     <div class="max-w-7xl mx-auto px-6 py-3">
 
         <div class="flex justify-between items-center lg:hidden">
@@ -42,22 +44,23 @@ get_header();
                 </svg>
                 Filtros de búsqueda
             </span>
-            <button id="toggleMobileFilters" class="bg-[#f5f3ee] hover:bg-[#e5e0d8] text-[#0b1f4a] px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition-colors">
+            <button id="toggleMobileFilters" class="bg-[#EEF2F5] hover:bg-[#e5e0d8] text-[#0b1f4a] px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition-colors shadow-sm">
                 Mostrar
             </button>
         </div>
 
-        <div id="filtersWrapper" class="hidden lg:flex flex-col lg:flex-row flex-wrap gap-3 items-stretch lg:items-center mt-4 lg:mt-0">
+        <div id="filtersWrapper" class="hidden lg:flex flex-col lg:flex-row lg:flex-nowrap gap-3 items-stretch lg:items-center mt-4 lg:mt-0 lg:overflow-x-auto lg:pb-1 lg:-mb-1 [&::-webkit-scrollbar]:hidden" style="scrollbar-width: none;">
 
-            <div class="flex flex-wrap items-center gap-1.5 bg-[#f5f3ee] p-1 rounded-lg w-full lg:w-auto">
-                <button data-filter="tipo" data-value="" class="flex-1 lg:flex-none filter-btn active-tipo px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 bg-[#0b1f4a] text-white shadow-sm">Todos</button>
-                <button data-filter="tipo" data-value="pregrado" class="flex-1 lg:flex-none filter-btn px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 text-[#1a1a2e66] hover:text-[#1a1a2e]">Pregrado</button>
-                <button data-filter="tipo" data-value="grado" class="flex-1 lg:flex-none filter-btn px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 text-[#1a1a2e66] hover:text-[#1a1a2e]">Grado</button>
-                <button data-filter="tipo" data-value="posgrado" class="flex-1 lg:flex-none filter-btn px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 text-[#1a1a2e66] hover:text-[#1a1a2e]">Posgrado</button>
+            <div class="flex items-center gap-1 bg-[#EEF2F5] p-1.5 rounded-lg flex-shrink-0 border border-[#e5e0d8]/50">
+                <button data-filter="tipo" data-value="" class="filter-btn active-tipo px-4 py-1.5 rounded-md text-sm font-semibold transition-all duration-200 bg-[#0b1f4a] text-white shadow-sm">Todos</button>
+                <button data-filter="tipo" data-value="pregrado" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-all duration-200 text-[#0b1f4a]/70 hover:text-[#0b1f4a] hover:bg-white/50">Pregrado</button>
+                <button data-filter="tipo" data-value="grado" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-all duration-200 text-[#0b1f4a]/70 hover:text-[#0b1f4a] hover:bg-white/50">Grado</button>
+                <button data-filter="tipo" data-value="posgrado" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-all duration-200 text-[#0b1f4a]/70 hover:text-[#0b1f4a] hover:bg-white/50">Posgrado</button>
             </div>
 
             <?php
-            function imprimir_opciones_taxonomia_archivo($taxonomia, $placeholder)
+            // 1. Añadimos un tercer parámetro: $width_classes
+            function imprimir_opciones_taxonomia_archivo($taxonomia, $placeholder, $width_classes)
             {
                 $nombres_facultades = array(
                     'fqbyf'  => 'Facultad de Química, Bioquímica y Farmacia',
@@ -73,8 +76,10 @@ get_header();
 
                 $terms = get_terms(array('taxonomy' => $taxonomia, 'hide_empty' => false));
 
-
-                echo '<select id="filter' . ucfirst($taxonomia) . '" class="w-full lg:w-auto bg-[#f5f3ee] border-0 px-4 py-2.5 rounded-lg text-sm font-medium text-[#1a1a2e] outline-none focus:ring-2 focus:ring-[#88CAFC] cursor-pointer appearance-none pr-8 lg:max-w-xs truncate">';
+                // 2. Imprimimos el div usando las clases de ancho personalizadas ($width_classes)
+                echo '<div class="relative flex-shrink-0 w-full ' . esc_attr($width_classes) . ' group">';
+                
+                echo '<select id="filter' . ucfirst($taxonomia) . '" class="w-full bg-white border border-[#e5e0d8] hover:border-[#88CAFC] px-3 py-2.5 rounded-lg text-sm font-medium text-[#0b1f4a] outline-none focus:ring-2 focus:ring-[#88CAFC]/30 cursor-pointer appearance-none pr-8 transition-colors shadow-sm truncate" title="Filtrar por ' . esc_html($placeholder) . '">';
                 echo '<option value="">' . esc_html($placeholder) . '</option>';
 
                 foreach ($terms as $term) {
@@ -85,24 +90,39 @@ get_header();
                     echo '<option value="' . esc_attr($term->name) . '" title="' . $texto_visible . '">' . $texto_visible . '</option>';
                 }
                 echo '</select>';
+                
+                // Ícono de flecha
+                echo '<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-[#0b1f4a]/40 group-hover:text-[#88CAFC] transition-colors">';
+                echo '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>';
+                echo '</div>';
+                echo '</div>';
             }
             ?>
 
-            <?php imprimir_opciones_taxonomia_archivo('modalidad', 'Modalidad'); ?>
-            <?php imprimir_opciones_taxonomia_archivo('sede', 'Sede'); ?>
-            <?php imprimir_opciones_taxonomia_archivo('facultad', 'Unidad Académica'); ?>
+            <?php imprimir_opciones_taxonomia_archivo('modalidad', 'Modalidad', 'lg:w-[120px] xl:w-[140px]'); ?>
+            
+            <?php imprimir_opciones_taxonomia_archivo('sede', 'Sede', 'lg:w-[90px] xl:w-[110px]'); ?>
+            
+            <?php imprimir_opciones_taxonomia_archivo('facultad', 'Unidad Académica', 'lg:w-[180px] xl:w-[220px]'); ?>
 
-            <select id="filterProfesion" class="w-full lg:w-auto bg-[#f5f3ee] border-0 px-4 py-2.5 rounded-lg text-sm font-medium text-[#1a1a2e] outline-none focus:ring-2 focus:ring-[#88CAFC] cursor-pointer appearance-none pr-8">
-                <option value="">Tipo de Profesión</option>
-                <option value="licenciatura">Licenciaturas</option>
-                <option value="ingenieria">Ingenierías</option>
-                <option value="profesorado">Profesorados</option>
-                <option value="tecnicatura">Tecnicaturas</option>
-            </select>
-
-            <!--button id="clearFilters" class="mt-2 lg:mt-0 lg:ml-auto w-full lg:w-auto text-center text-xs text-[#1a1a2e55] hover:text-[#88CAFC] font-medium transition-colors underline underline-offset-2 py-2">
-                Limpiar filtros
-            </button-->
+            <div class="relative flex-shrink-0 w-full lg:w-[150px] xl:w-[170px] group">
+                <select id="filterProfesion" class="w-full bg-white border border-[#e5e0d8] hover:border-[#88CAFC] px-3 py-2.5 rounded-lg text-sm font-medium text-[#0b1f4a] outline-none focus:ring-2 focus:ring-[#88CAFC]/30 cursor-pointer appearance-none pr-8 transition-colors shadow-sm truncate">
+                    <option value="">Tipo de Profesión</option>
+                    <option value="licenciatura">Licenciaturas</option>
+                    <option value="ingenieria">Ingenierías</option>
+                    <option value="profesorado">Profesorados</option>
+                    <option value="tecnicatura">Tecnicaturas</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-[#0b1f4a]/40 group-hover:text-[#88CAFC] transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+            </div>
+            <button id="clearFilters" class="flex-shrink-0 lg:ml-auto group flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg text-sm font-medium text-red-500 hover:text-red-600 hover:bg-red-50 transition-all border border-transparent hover:border-red-100">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+                <span>Limpiar</span>
+            </button>
 
         </div>
     </div>
@@ -161,13 +181,13 @@ if ($query_carreras->have_posts()) {
                 <circle cx="11" cy="11" r="8" />
                 <path d="m21 21-4.35-4.35" />
             </svg>
-            <input id="searchInput" type="search" placeholder="Búsqueda rápida por nombre..." class="w-full bg-[#f5f3ee] pl-14 pr-5 py-3.5 rounded text-[#1a1a2e] text-base placeholder:text-[#1a1a2e66] outline-none focus:ring-2 focus:ring-[#88CAFC] focus:bg-white transition-all" />
+            <input id="searchInput" type="search" placeholder="Búsqueda rápida por nombre..." class="w-full bg-[#EEF2F5] pl-14 pr-5 py-3.5 rounded text-[#1a1a2e] text-base placeholder:text-[#061C2E] outline-none focus:ring-2 focus:ring-[#88CAFC] focus:bg-white transition-all" />
         </div>
     </div>
 
     <div class="flex items-center justify-between mb-6">
         <h2 class="text-lg font-bold text-[#0b1f4a] ">Catálogo</h2> <!-- font-['Libre_Baskerville',serif] -->
-        <p class="text-sm font-medium text-[#1a1a2e66] bg-white px-3 py-1  shadow-sm border border-[#e5e0d8]"><span id="resultCount">—</span> carreras listadas</p>
+        <p class="text-sm font-medium text-[#061C2E] bg-white px-3 py-1  shadow-sm border border-[#e5e0d8]"><span id="resultCount">—</span> carreras listadas</p>
     </div>
 
     <div id="carrerasGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
@@ -177,7 +197,7 @@ if ($query_carreras->have_posts()) {
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
         </svg>
         <p class="text-[#0b1f4a] text-lg font-bold ">No se encontraron carreras</p> <!-- font-['Libre_Baskerville',serif] -->
-        <p class="text-[#1a1a2e66] text-sm mt-2 max-w-sm mx-auto">No hay resultados que coincidan con la combinación de filtros seleccionada.</p>
+        <p class="text-[#061C2E] text-sm mt-2 max-w-sm mx-auto">No hay resultados que coincidan con la combinación de filtros seleccionada.</p>
         <button onclick="document.getElementById('clearFilters').click()" class="mt-4 text-[#88CAFC] font-medium hover:text-[#0b1f4a] transition-colors">Limpiar búsqueda</button>
     </div>
 </main>
@@ -229,14 +249,14 @@ if ($query_carreras->have_posts()) {
             textPill: 'text-[#fff]'
         },
         'fch': {
-            border: 'border-b-[#e5641c]',
-            bgPill: 'bg-[#e5641c]',
+            border: 'border-b-[#C24A08]',
+            bgPill: 'bg-[#C24A08]',
             textPill: 'text-[#fff]'
         },
         'fapsi': {
             border: 'border-b-[#f4ce85]',
-            bgPill: 'bg-[#F2BB52]',
-            textPill: 'text-[#fff]'
+            bgPill: 'bg-[#F0A113]',
+            textPill: 'text-[#000]'
         },
         'fcs': {
             border: 'border-b-[#88ae2a]',
@@ -288,7 +308,7 @@ if ($query_carreras->have_posts()) {
         const fc = FACU_CONFIG[c.facultad_slug] || {
             border: 'border-b-[#e5e0d8]',
             bgPill: 'bg-[#EEF1F5]',
-            textPill: 'text-[#1a1a2e66]'
+            textPill: 'text-[#061C2E]'
         };
         const nombreFacultad = NOMBRES_FACULTADES[c.facultad_slug] || c.facultad;
 
@@ -315,17 +335,17 @@ if ($query_carreras->have_posts()) {
                     </div>
                     <div class="flex flex-col gap-2 mt-auto pt-4 border-b border-dashed border-[#e5e0d8]">
                         <div class="flex items-center justify-between text-xs">
-                            <span class="text-[#1a1a2e66] font-medium">Facultad</span>
+                            <span class="text-[#061C2E] font-medium">Facultad</span>
                             <span class="font-bold ${fc.textPill} ${fc.bgPill} px-2 py-1 rounded text-right max-w-[65%] truncate" title="${nombreFacultad}">
                                 ${nombreFacultad}
                             </span>
                         </div>
                         <div class="flex items-center justify-between text-xs mt-1">
-                            <span class="text-[#1a1a2e66] font-medium">Sede</span>
+                            <span class="text-[#061C2E] font-medium">Sede</span>
                             <span class="font-medium text-[#1a1a2e]">${c.sede}</span>
                         </div>
                         <div class="flex items-center justify-between text-xs mt-1">
-                            <span class="text-[#1a1a2e66] font-medium">Duración</span>
+                            <span class="text-[#061C2E] font-medium">Duración</span>
                             <span class="font-medium text-[#1a1a2e]">${c.duracion}</span>
                         </div>
                     </div>
@@ -384,10 +404,10 @@ if ($query_carreras->have_posts()) {
             document.querySelectorAll("[data-filter='tipo']").forEach(b => {
                 if (b.dataset.value === state.tipo) {
                     b.classList.add("bg-[#0b1f4a]", "text-white", "shadow-sm");
-                    b.classList.remove("text-[#1a1a2e66]");
+                    b.classList.remove("text-[#061C2E]");
                 } else {
                     b.classList.remove("bg-[#0b1f4a]", "text-white", "shadow-sm");
-                    b.classList.add("text-[#1a1a2e66]");
+                    b.classList.add("text-[#061C2E]");
                 }
             });
         }
@@ -438,10 +458,10 @@ if ($query_carreras->have_posts()) {
                 state.tipo = btn.dataset.value;
                 document.querySelectorAll("[data-filter='tipo']").forEach(b => {
                     b.classList.remove("bg-[#0b1f4a]", "text-white", "shadow-sm");
-                    b.classList.add("text-[#1a1a2e66]");
+                    b.classList.add("text-[#061C2E]");
                 });
                 btn.classList.add("bg-[#0b1f4a]", "text-white", "shadow-sm");
-                btn.classList.remove("text-[#1a1a2e66]");
+                btn.classList.remove("text-[#061C2E]");
                 render();
             });
         });
@@ -495,10 +515,10 @@ if ($query_carreras->have_posts()) {
                 document.querySelectorAll("[data-filter='tipo']").forEach((b, i) => {
                     if (i === 0) {
                         b.classList.add("bg-[#0b1f4a]", "text-white", "shadow-sm");
-                        b.classList.remove("text-[#1a1a2e66]");
+                        b.classList.remove("text-[#061C2E]");
                     } else {
                         b.classList.remove("bg-[#0b1f4a]", "text-white", "shadow-sm");
-                        b.classList.add("text-[#1a1a2e66]");
+                        b.classList.add("text-[#061C2E]");
                     }
                 });
                 render();

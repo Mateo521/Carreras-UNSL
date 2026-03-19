@@ -14,7 +14,7 @@ get_header();
     :root {
         --navy: #08183A;
         --navy-2: #0D2452;
-        --azulunsl: #1B93F5;
+        --azulunsl: #164270;
         --cream: #F5FCFF;
         --ice: #EAF2FF;
         --blue: #4A82DC;
@@ -96,23 +96,33 @@ get_header();
       rgba(8,24,58,1) 100%
     );"></div>
 
+
+
     <?php /* Año fantasma en esquina superior derecha — elemento editorial */ ?>
-    <span
-        class="absolute bottom-0 right-0 select-none pointer-events-none"
-        aria-hidden="true"
-        style="z-index:2;
-      
-      font-weight:800;
-      font-size:clamp(140px,20vw,280px);
-      line-height:0.7;
-      color:white;
-      opacity:.04;
-      letter-spacing:-.02em;
-      padding:.1em .15em 0 0;">2026</span>
+    <div
+    id="year-parallax"
+    class="absolute bottom-0 right-0 select-none pointer-events-none"
+    aria-hidden="true"
+    style="
+      z-index: 2;
+      font-weight: 800;
+      font-size: clamp(140px,20vw,280px);
+      line-height: 0.7;
+      color: white;
+      letter-spacing: -.02em;
+      padding: .1em .15em 0 0;
+      display: flex; 
+    ">
+    <div class="scroll-mover"><span class="digit block" style="--delay: 0.1s;">2</span></div>
+    <div class="scroll-mover"><span class="digit block" style="--delay: 0.25s;">0</span></div>
+    <div class="scroll-mover"><span class="digit block" style="--delay: 0.4s;">2</span></div>
+    <div class="scroll-mover"><span class="digit block" style="--delay: 0.55s;">6</span></div>
+</div>
+
 
     <?php /* Contenido del hero */ ?> <!--  sm:px-12 lg:px-16 pb-20 -->
     <div
-        class="absolute top-1/2 -translate-y-1/2 px-24 w-full max-w-7xl mx-auto "
+        class="absolute top-1/2 -translate-y-1/2 px-6 md:px-24 w-full max-w-7xl mx-auto "
         style="z-index:3;">
 
         <?php /* Eyebrow — etiqueta institucional */ ?>
@@ -212,7 +222,7 @@ get_header();
             color:#fff;
             transition:background .2s;
             white-space:nowrap;"
-                    onmouseover="this.style.background='#145596'"
+                    onmouseover="this.style.background='#0B2B4D'"
                     onmouseout="this.style.background='var(--azulunsl)'">Buscar</button>
             </form>
         </div>
@@ -275,6 +285,43 @@ get_header();
             transform: translateY(0);
         }
     }
+
+    /* Animación inicial para el 2026 */
+    @keyframes fadeInScale {
+        0% {
+            opacity: 0;
+            transform: scale(0.95) translateY(20px);
+        }
+
+        100% {
+            opacity: 0.04;
+            /* La opacidad final que tenías */
+            transform: scale(1) translateY(0);
+        }
+    }
+
+    .fade-in-scale {
+        animation: fadeInScale 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        /* El delay opcional si quieres que aparezca un poquito después de cargar */
+        animation-delay: 0.2s;
+    }
+
+
+    .digit {
+        opacity: 0;
+        transform: translateY(30px);
+        /* Usamos la variable --delay que definimos en el HTML */
+        animation: fadeUpDigit 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        animation-delay: var(--delay);
+    }
+
+    @keyframes fadeUpDigit {
+        to {
+            opacity: 0.04;
+            /* El nivel de transparencia que querías */
+            transform: translateY(0);
+        }
+    }
 </style>
 
 
@@ -313,7 +360,7 @@ get_header();
         </div>
 
         <?php /* Tarjetas de nivel — layout con números grandes */ ?>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 rounded-xl" > <!-- style="background:var(--line);" -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 rounded-xl"> <!-- style="background:var(--line);" -->
 
             <?php
             $niveles = [
@@ -543,7 +590,7 @@ get_header();
               padding:.9rem 1.8rem;
               text-decoration:none;
               transition:background .2s;"
-                        onmouseover="this.style.background='#A87820'"
+                        onmouseover="this.style.background='#126F99'"
                         onmouseout="this.style.background='var(--azulunsl)'">
                         Ingresá al programa OVO
                         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
@@ -842,6 +889,33 @@ get_header();
         );
         els.forEach(el => io.observe(el));
     })();
+
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const movers = document.querySelectorAll('#year-parallax .scroll-mover');
+
+        if (movers.length === 0) {
+            console.error("x");
+            return;
+        }
+
+        window.addEventListener('scroll', function() {
+            let scrollPosition = window.scrollY;
+
+            movers.forEach((mover, index) => {
+                let scrollThreshold = index * 45;
+                let effectiveScroll = Math.max(0, scrollPosition - scrollThreshold);
+
+                let moveX = -(effectiveScroll * 1);
+                let moveY = 0; //-(effectiveScroll * 0.15)
+
+                mover.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            });
+        });
+    });
+
 </script>
+
 
 <?php get_footer(); ?>

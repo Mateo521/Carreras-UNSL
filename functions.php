@@ -138,7 +138,7 @@ add_action('init', 'unsl_registrar_cpt_taxonomias', 0);
 
 
 
-/*
+
 
 add_action('init', 'unsl_scraping_e_importacion_directa');
 
@@ -195,6 +195,19 @@ function unsl_scraping_e_importacion_directa()
 
         $nodo_titulo = $xpath_c->query("//h5[contains(text(), 'Te egresas como:')]//strong")->item(0);
         $titulo_otorgado = $nodo_titulo ? trim($nodo_titulo->nodeValue) : '';
+
+
+        $titulo_intermedio = '';
+        $nodo_curioso = $xpath_c->query("//div[contains(@class, 'alert-primary')]//p")->item(0);
+
+
+        
+
+        if ($nodo_curioso) {
+            $texto_curioso = trim(strip_tags($nodo_curioso->nodeValue));
+            $titulo_limpio = str_ireplace(['Esta carrera posee el titulo intermedio de', 'Esta carrera posee el título intermedio de'], '', $texto_curioso);
+            $titulo_intermedio = trim($titulo_limpio);
+        }
 
         $nodo_duracion = $xpath_c->query("//small[contains(text(), 'Duración:')]//b")->item(0);
         $duracion = $nodo_duracion ? trim($nodo_duracion->nodeValue) : '';
@@ -347,7 +360,7 @@ function unsl_scraping_e_importacion_directa()
             update_field('sitio_web_contacto', $sitio_web, $post_id);
             update_field('instagram_contacto', $instagram, $post_id);
             update_field('facebook_contacto', $facebook, $post_id);
-
+            update_field('titulo_intermedio', $titulo_intermedio, $post_id);
             update_field('objetivos_carrera', $html_objetivos, $post_id);
             update_field('alcances_titulo', $html_alcances, $post_id);
 
@@ -370,7 +383,92 @@ function unsl_scraping_e_importacion_directa()
     exit;
 }
 
-*/
+
+
+
+/**
+ * BOT TEMPORAL PARA IMPORTAR DATOS DE EXCEL (CSV)
+ * Uso: Visita http://tusitio.com/?importar_excel=true
+ */
+add_action('init', 'unsl_importar_datos_excel');
+function unsl_importar_datos_excel() {
+    if ( !isset($_GET['importar_excel']) || $_GET['importar_excel'] !== 'true' ) return;
+    if ( !current_user_can('manage_options') ) wp_die('Acceso denegado.');
+
+    $csv_file = get_template_directory() . '/planes.csv';
+    if (!file_exists($csv_file)) wp_die('No se encontró planes.csv en la carpeta del tema.');
+
+    echo '<div style="font-family:sans-serif; padding:20px;"><h2>Importando datos académicos...</h2>';
+
+    // 1. Obtener todas las carreras de WP para hacer una búsqueda más eficiente (ignorando mayúsculas)
+    $carreras_wp = get_posts(array('post_type' => 'carrera', 'posts_per_page' => -1));
+    $mapa_carreras = [];
+    foreach ($carreras_wp as $c) {
+        $mapa_carreras[mb_strtolower(trim($c->post_title), 'UTF-8')] = $c->ID;
+    }
+
+    // 2. Diccionario Traductor (Excel -> WordPress)
+    // Corrige diferencias de tipeo, singulares/plurales y abreviaturas
+    $diccionario = array(
+        'INGENIERÍA ELECTRÓNICA CON ORIENTACIÓN EN SISTEMA DIGITALES' => 'Ingeniería Electrónica con Orientación en Sistemas Digitales',
+        'TECNICATURA UNIVERISTARIA EN TELEDETECCIÓN (T-SIG.)' => 'Tecnicatura Universitaria en Teledetección y Sistemas de Información Geográfica (T-SIG)',
+        'TECNICATURA UNIVERSITARIA WEB' => 'Tecnicatura Universitaria en Web',
+        'PROFESORADO DE EDUCACIÓN ESPECIAL' => 'Profesorado en Educación Especial',
+        'PROFESORADO EN EDUCACIÓN INICIAL' => 'Profesorado de Educación Inicial',
+        'LICENCIATURA EN PRODUCCIÓN DE RADIO Y TV' => 'Licenciatura en Producción de Radio y Televisión',
+        'GUÍA UNIVERISTARIO DE TURISMO' => 'Guía Universitario de Turismo',
+        'MARTILLERO Y CORREDOR PUBLICO NACIONAL' => 'Martillero y Corredor Público',
+        'LIC. HIGIENE Y SEG. EN EL TRABAJO' => 'Licenciatura en Higiene y Seguridad - Ciclo de Complementación Curricular',
+        'TEC. UNIVERSITARIA EN ADMINISTRACION Y GESTION JUDICIAL' => 'Tecnicatura Universitaria en Administración y Gestión Judicial',
+        'TEC. EN ADM. Y GESTION DE INSTITUCIONES UNIVERSITARIAS' => 'Tecnicatura en Administración y Gestión de Instituciones Universitarias',
+        'TEC. UNIV. EN GESTION DE ORGANIZACIONES DEPORTIVAS' => 'Tecnicatura Universitaria en Gestión de Organizaciones Deportivas',
+        'TEC. UNIV. EN SECRETARIADO EJECUTIVO' => 'Tecnicatura Universitaria en Secretariado Ejecutivo'
+    );
+
+    $handle = fopen($csv_file, "r");
+    $header = fgetcsv($handle, 1000, ","); // Leer cabeceras
+
+    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+        $nombre_excel = trim($data[0]); 
+        
+        // Evitamos las filas vacías, las cabeceras de tabla o los títulos de facultades
+        if (empty($nombre_excel) || $nombre_excel === 'CARRERA') continue;
+        if (strpos($nombre_excel, 'FACULTAD') === 0 || strpos($nombre_excel, 'INSTITUTO') === 0) continue;
+
+        // Traducimos el nombre si está en nuestro diccionario
+        $nombre_buscar = isset($diccionario[$nombre_excel]) ? $diccionario[$nombre_excel] : $nombre_excel;
+        
+        // Lo pasamos a minúsculas para buscarlo en nuestro mapa de WordPress
+        $nombre_key = mb_strtolower(trim($nombre_buscar), 'UTF-8');
+
+        if (isset($mapa_carreras[$nombre_key])) {
+            $post_id = $mapa_carreras[$nombre_key];
+            
+            // Asumiendo el orden de tu CSV: CARRERA(0), NIVEL(1), OCD(2), OCS(3), RES_MIN(4), CONEAU(5), OBS(6)
+            $ordenanzas = trim($data[2]) . ' | ' . trim($data[3]);
+            $res_min = trim($data[4]);
+            $coneau = trim($data[5]);
+            $obs = trim($data[6]);
+
+            // Limpiamos los " | " si faltaba un dato
+            if ($ordenanzas === ' | ') $ordenanzas = '';
+
+            update_field('ordenanzas_unsl', $ordenanzas, $post_id);
+            update_field('resolucion_ministerial', $res_min, $post_id);
+            update_field('resolucion_coneau', $coneau, $post_id);
+            update_field('observaciones_academicas', $obs, $post_id);
+
+            echo "<p style='color:green'>✔ Datos vinculados: <strong>{$nombre_buscar}</strong></p>";
+        } else {
+            // Si llega aquí, es porque la carrera realmente no está en la web pública (ej: Terapia Ocupacional)
+            echo "<p style='color:red'>✖ Carrera no publicada en WP: {$nombre_excel}</p>";
+        }
+    }
+    fclose($handle);
+    echo "<h3>¡Proceso finalizado!</h3></div>";
+    exit;
+}
+
 /*
 add_action('init', 'unsl_importar_carreras_desde_json');
 

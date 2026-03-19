@@ -50,11 +50,6 @@ while (have_posts()) : the_post();
 ?>
 
 
-
-
-
-
-
     <div class="relative bg-[#0b1f4a] overflow-hidden">
         <div class="absolute inset-0">
             <img src="<?php echo $url_fondo; ?>" alt="Fondo de <?php the_title(); ?>" class="w-full h-full object-cover opacity-100" />
@@ -71,9 +66,14 @@ while (have_posts()) : the_post();
                     </span>
 
                     <?php if ($acreditada_coneau) : ?>
+
                         <span class="inline-flex items-center gap-1.5 bg-white border border-[#88CAFC30] text-black text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded">
                             Acreditada CONEAU
+
+                            <img class="h-5" src="<?php echo get_template_directory_uri(); ?>/imagenes/coneau.png" alt="">
                         </span>
+
+
                     <?php endif; ?>
 
                     <?php if ($sin_inscripciones) : ?>
@@ -99,6 +99,15 @@ while (have_posts()) : the_post();
                     <?php the_title(); ?>
                 </h1>
                 <p class="text-[#ffffff88] text-base">Te egresas como: <strong class="text-white font-semibold"><?php echo esc_html($titulo_otorgado); ?></strong></p>
+
+                <?php if (get_field('titulo_intermedio')) : ?>
+                    <div class="bg-gradient-to-r from-white to-transparent rounded-xl  px-4 py-2 my-3 flex flex-col sm:flex-row items-start sm:items-center gap-5 shadow-sm">
+                        <div>
+                            <h4 class="text-[#3730a3] font-bold text-base mb-1">¡Dato curioso!</h4>
+                            <p class="text-[#1a1a2e] text-base">Esta carrera posee el título intermedio de <strong class="font-bold bg-white px-2 rounded-xl text-black"><?php echo esc_html(get_field('titulo_intermedio')); ?></strong>.</p>
+                        </div>
+                    </div>
+                <?php endif; ?>
 
                 <div class="flex flex-wrap gap-3 mt-8">
                     <div class="flex items-center gap-2 bg-[#ffffff0d] border border-[#ffffff12] px-4 py-2.5 rounded-lg backdrop-blur-sm">
@@ -153,7 +162,7 @@ while (have_posts()) : the_post();
             <div class="lg:col-span-2 flex flex-col gap-8">
                 <?php if (get_field('objetivos_carrera')) : ?>
                     <section class="bg-white border border-[#e5e0d8] overflow-hidden">
-                        <div class="border-b border-[#f0ece4] px-7 py-5 flex items-center gap-3">
+                        <div class="border-b border-[#DADBED] px-7 py-5 flex items-center gap-3">
                             <h2 class=" text-[#0b1f4a] font-bold text-lg">Objetivos de la carrera</h2> <!-- font-['Libre_Baskerville',serif] -->
                         </div>
                         <div class="px-7 py-6 text-[#1a1a2e88] text-sm leading-relaxed wp-content-format">
@@ -163,7 +172,7 @@ while (have_posts()) : the_post();
                 <?php endif; ?>
                 <?php if (get_field('alcances_titulo')) : ?>
                     <section class="bg-white border border-[#e5e0d8] overflow-hidden">
-                        <div class="border-b border-[#f0ece4] px-7 py-5 flex items-center gap-3">
+                        <div class="border-b border-[#DADBED] px-7 py-5 flex items-center gap-3">
                             <h2 class=" text-[#0b1f4a] font-bold text-lg">Alcances e incumbencias del título</h2> <!-- font-['Libre_Baskerville',serif] -->
                         </div>
                         <div class="px-7 py-6 text-[#1a1a2e88] text-sm leading-relaxed wp-content-format">
@@ -187,7 +196,7 @@ while (have_posts()) : the_post();
                     $ultimo_anio = max(array_keys($plan_de_estudios));
                 ?>
                     <section class="bg-white border border-[#e5e0d8] overflow-hidden">
-                        <div class="border-b border-[#f0ece4] px-7 py-5 flex items-center gap-3">
+                        <div class="border-b border-[#DADBED] px-7 py-5 flex items-center gap-3">
                             <h2 class=" text-[#0b1f4a] font-bold text-lg">Organización Curricular</h2> <!-- font-['Libre_Baskerville',serif] -->
                         </div>
                         <div class="p-7">
@@ -195,7 +204,7 @@ while (have_posts()) : the_post();
                                 <?php foreach ($plan_de_estudios as $numero_anio => $materias) :
                                     $es_final = ($numero_anio === $ultimo_anio);
                                     $col_span_class =   '';
-                                    $ul_class = $es_final ? 'grid grid-cols-1  divide-x divide-y divide-[#f0ece4]' : 'divide-y divide-[#f0ece4]';
+                                    $ul_class = $es_final ? 'grid grid-cols-1  divide-x divide-y divide-[#DADBED]' : 'divide-y divide-[#DADBED]';
                                     $li_class = $es_final ? 'px-4 py-3 text-xs text-[#1a1a2e88] flex items-center gap-2' : 'px-4 py-2.5 text-xs text-[#1a1a2e88] flex items-center gap-2';
                                 ?> <!-- sm:grid-cols-3 -->
                                     <div class="border border-[#e5e0d8] overflow-hidden <?php echo esc_attr($col_span_class); ?>">
@@ -231,7 +240,13 @@ while (have_posts()) : the_post();
                                 </a>
                             <?php endif; ?>
                         </div>
+
+
+
                     </section>
+
+
+
                 <?php endif; ?>
             </div>
             <aside class="flex flex-col gap-6">
@@ -301,7 +316,7 @@ while (have_posts()) : the_post();
                             </div>
                         <?php endif; ?>
                         <?php if (get_field('instagram_contacto') || get_field('facebook_contacto')) : ?>
-                            <div class="pt-4 border-t border-[#f0ece4]">
+                            <div class="pt-4 border-t border-[#DADBED]">
                                 <p class="text-[#1a1a2e55] text-[11px] uppercase tracking-widest font-bold mb-3">Redes sociales</p>
                                 <div class="flex flex-col gap-2">
                                     <?php if (get_field('instagram_contacto')) : ?>
@@ -325,6 +340,55 @@ while (have_posts()) : the_post();
                         <?php endif; ?>
                     </div>
                 </div>
+
+
+
+                <?php if (get_field('resolucion_ministerial') || get_field('ordenanzas_unsl')) : ?>
+                    <div class="bg-white border border-[#e5e0d8] overflow-hidden ">
+                        <div class="bg-[#f5f3ee] px-6 py-4 border-b border-[#e5e0d8]">
+                            <h3 class="text-[#0b1f4a] font-bold   tracking-wider flex items-center gap-2">
+
+                                Respaldo académico
+                            </h3>
+                        </div>
+                        <div class="p-6 flex flex-col gap-4">
+
+                            <?php if (get_field('resolucion_ministerial')) : ?>
+                                <div>
+                                    <p class="text-[#1a1a2e55] text-[10px] uppercase tracking-widest font-bold mb-1">Resolución Ministerial</p>
+                                    <p class="text-[#1a1a2e] text-sm font-medium"><?php echo esc_html(get_field('resolucion_ministerial')); ?></p>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if (get_field('resolucion_coneau')) : ?>
+                                <div class="pt-3 border-t border-[#f0ece4]">
+                                    <p class="text-[#1a1a2e55] text-[10px] uppercase tracking-widest font-bold mb-1">Acreditación CONEAU</p>
+                                    <p class="text-[#1a1a2e] text-sm font-medium"><?php echo esc_html(get_field('resolucion_coneau')); ?></p>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if (get_field('ordenanzas_unsl')) : ?>
+                                <div class="pt-3 border-t border-[#f0ece4]">
+                                    <p class="text-[#1a1a2e55] text-[10px] uppercase tracking-widest font-bold mb-1">Ordenanzas UNSL (OCD/OCS)</p>
+                                    <p class="text-[#1a1a2e] text-xs leading-relaxed"><?php echo esc_html(get_field('ordenanzas_unsl')); ?></p>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if (get_field('observaciones_academicas')) : ?>
+                                <div class="pt-3 border-t border-[#f0ece4] bg-yellow-50 p-3 mt-2">
+                                    <p class="text-yellow-800 text-xs font-medium italic">
+                                        <?php echo esc_html(get_field('observaciones_academicas')); ?>
+                                    </p>
+                                </div>
+                            <?php endif; ?>
+
+                        </div>
+                    </div>
+                <?php endif; ?>
+
+
+
+
                 <?php if ($sin_inscripciones) : ?>
                     <div class="bg-red-50 border border-red-200 p-6 relative overflow-hidden">
                         <h3 class="text-red-800 font-bold text-base mb-2 relative flex items-center gap-2">
@@ -341,16 +405,18 @@ while (have_posts()) : the_post();
                     <div class="bg-[#0b1f4a] p-6 relative overflow-hidden">
                         <div class="absolute -top-8 -right-8 w-32 h-32 rounded-full bg-[#88CAFC] opacity-10 pointer-events-none"></div>
                         <h3 class="text-white font-bold text-base mb-2 relative">¿Te interesa esta carrera?</h3>
-                        <p class="text-[#ffffff77] text-sm mb-5 relative">Realizá tu preinscripción y comenzá tu camino en la UNSL.</p>
+                        <p class="text-[#ffffff77] text-sm mb-5 relative">Hacé tu preinscripción y comenzá tu camino en la UNSL.</p>
                         <a href="/preinscripcion" class="relative flex items-center justify-center gap-2 bg-[#88CAFC] hover:bg-white text-[#0b1f4a] font-bold text-sm px-5 py-3.5 transition-all">
                             Preinscripción 2026
                         </a>
                     </div>
                 <?php endif; ?>
-            </aside>
 
 
             </aside>
+
+
+
         </div>
     </div>
 <?php

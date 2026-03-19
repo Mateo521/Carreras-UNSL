@@ -4,7 +4,7 @@
 <head>
   <meta charset="<?php bloginfo('charset'); ?>" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title><?php wp_title('|', true, 'right'); ?></title>
+  <title>Carreras UNSL <?php wp_title('-', true, 'left'); ?></title>
 
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -225,7 +225,7 @@
   </style>
 </head>
 
-<body <?php body_class(); ?> style="font-family:'DM Sans',sans-serif; background:#F5F2EB; color:#111827;">
+<body <?php body_class(); ?> style="font-family:'DM Sans',sans-serif; background:#E3F0FF; color:#111827;">
 
   <?php /* Skip to content — accesibilidad */ ?>
   <a class="skip-link" href="#main-content">Saltar al contenido principal</a>

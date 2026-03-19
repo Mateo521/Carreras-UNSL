@@ -351,7 +351,7 @@ get_header();
 
             <!-- INSCRIPCION PRESENCIAL -->
             <div class="bg-white rounded border border-[#D8DEE5] overflow-hidden">
-                <div class="border-b border-[#f0ece4] px-7 py-5 flex items-center gap-3">
+                <div class="border-b border-[#DADBED] px-7 py-5 flex items-center gap-3">
                     <!--div class="w-8 h-8 rounded-lg bg-[#fff7ed] flex items-center justify-center shrink-0">
                         <svg class="w-4 h-4 text-[#92400e]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -392,7 +392,7 @@ get_header();
 
             <!-- DOCUMENTACION -->
             <div class="bg-white rounded border border-[#D8DEE5] overflow-hidden">
-                <div class="border-b border-[#f0ece4] px-7 py-5 flex items-center gap-3">
+                <div class="border-b border-[#DADBED] px-7 py-5 flex items-center gap-3">
                     <!--div class="w-8 h-8 rounded-lg bg-[#eff6ff] flex items-center justify-center shrink-0">
                         <svg class="w-4 h-4 text-[#1e40af]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round"
