@@ -144,7 +144,7 @@ while (have_posts()) : the_post();
     </div>
 
     <div class="bg-white border-b border-[#e5e0d8]">
-        <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-xs text-[#1a1a2e55]">
+        <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-xs text-[#1A1A3B]">
             <a href="<?php echo home_url(); ?>" class="hover:text-[#0b1f4a] transition-colors">Inicio</a>
             <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
@@ -280,7 +280,7 @@ while (have_posts()) : the_post();
                                     </svg>
                                 </div>
                                 <div>
-                                    <p class="text-[#1a1a2e55] text-[11px] uppercase tracking-widest font-bold mb-0.5">Teléfono</p>
+                                    <p class="text-[#1A1A3B] text-[11px] uppercase tracking-widest font-bold mb-0.5">Teléfono</p>
                                     <a href="tel:<?php echo get_field('telefono_contacto'); ?>" class="text-[#0b1f4a] text-sm font-semibold hover:text-[#88CAFC] transition-colors"><?php echo get_field('telefono_contacto'); ?></a>
                                     <?php if (get_field('interno_contacto')) : ?>
                                         <p class="text-[#1a1a2e44] text-xs mt-0.5">Interno: <?php echo get_field('interno_contacto'); ?></p>
@@ -296,7 +296,7 @@ while (have_posts()) : the_post();
                                     </svg>
                                 </div>
                                 <div>
-                                    <p class="text-[#1a1a2e55] text-[11px] uppercase tracking-widest font-bold mb-0.5">Sitio web</p>
+                                    <p class="text-[#1A1A3B] text-[11px] uppercase tracking-widest font-bold mb-0.5">Sitio web</p>
                                     <a href="<?php echo esc_url(get_field('sitio_web_contacto')); ?>" target="_blank" class="text-[#0b1f4a] text-sm font-semibold hover:text-[#88CAFC] transition-colors break-all">Visitar sitio web</a>
                                 </div>
                             </div>
@@ -309,7 +309,7 @@ while (have_posts()) : the_post();
                                     </svg>
                                 </div>
                                 <div>
-                                    <p class="text-[#1a1a2e55] text-[11px] uppercase tracking-widest font-bold mb-0.5">Correo electrónico</p>
+                                    <p class="text-[#1A1A3B] text-[11px] uppercase tracking-widest font-bold mb-0.5">Correo electrónico</p>
                                     <?php $correo = get_field('correo_contacto'); ?>
                                     <a href="mailto:<?php echo antispambot($correo); ?>" class="text-[#0b1f4a] text-sm font-semibold hover:text-[#88CAFC] transition-colors break-all"><?php echo antispambot($correo); ?></a>
                                 </div>
@@ -317,7 +317,7 @@ while (have_posts()) : the_post();
                         <?php endif; ?>
                         <?php if (get_field('instagram_contacto') || get_field('facebook_contacto')) : ?>
                             <div class="pt-4 border-t border-[#DADBED]">
-                                <p class="text-[#1a1a2e55] text-[11px] uppercase tracking-widest font-bold mb-3">Redes sociales</p>
+                                <p class="text-[#1A1A3B] text-[11px] uppercase tracking-widest font-bold mb-3">Redes sociales</p>
                                 <div class="flex flex-col gap-2">
                                     <?php if (get_field('instagram_contacto')) : ?>
                                         <a href="<?php echo esc_url(get_field('instagram_contacto')); ?>" target="_blank" class="flex items-center gap-2 text-sm text-[#1a1a2e88] hover:text-[#E1306C] transition-colors">
@@ -355,21 +355,21 @@ while (have_posts()) : the_post();
 
                             <?php if (get_field('resolucion_ministerial')) : ?>
                                 <div>
-                                    <p class="text-[#1a1a2e55] text-[10px] uppercase tracking-widest font-bold mb-1">Resolución Ministerial</p>
+                                    <p class="text-[#1A1A3B] text-[10px] uppercase tracking-widest font-bold mb-1">Resolución Ministerial</p>
                                     <p class="text-[#1a1a2e] text-sm font-medium"><?php echo esc_html(get_field('resolucion_ministerial')); ?></p>
                                 </div>
                             <?php endif; ?>
 
                             <?php if (get_field('resolucion_coneau')) : ?>
                                 <div class="pt-3 border-t border-[#f0ece4]">
-                                    <p class="text-[#1a1a2e55] text-[10px] uppercase tracking-widest font-bold mb-1">Acreditación CONEAU</p>
+                                    <p class="text-[#1A1A3B] text-[10px] uppercase tracking-widest font-bold mb-1">Acreditación CONEAU</p>
                                     <p class="text-[#1a1a2e] text-sm font-medium"><?php echo esc_html(get_field('resolucion_coneau')); ?></p>
                                 </div>
                             <?php endif; ?>
 
                             <?php if (get_field('ordenanzas_unsl')) : ?>
                                 <div class="pt-3 border-t border-[#f0ece4]">
-                                    <p class="text-[#1a1a2e55] text-[10px] uppercase tracking-widest font-bold mb-1">Ordenanzas UNSL (OCD/OCS)</p>
+                                    <p class="text-[#1A1A3B] text-[10px] uppercase tracking-widest font-bold mb-1">Ordenanzas UNSL (OCD/OCS)</p>
                                     <p class="text-[#1a1a2e] text-xs leading-relaxed"><?php echo esc_html(get_field('ordenanzas_unsl')); ?></p>
                                 </div>
                             <?php endif; ?>
