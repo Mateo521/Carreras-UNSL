@@ -9,18 +9,21 @@ get_header();
 
 
 
-<header class="bg-[#0b1f4a] pb-6 pt-24 relative overflow-hidden ">
-    <div class="absolute inset-0 bg-gradient-to-r from-[#0b1f4a] to-[#1e3a8a] opacity-90"></div>
-    <div class="relative max-w-7xl mx-auto px-6 text-left">
+<header class="bg-[#0b1f4a] pb-6 pt-24  relative overflow-hidden ">
+
+    <div class="absolute inset-0 bg-gradient-to-r  from-[#0b1f4a] z-1 to-[#000]/60 opacity-90"></div>
+    <img class="absolute top-0 size-full object-cover z-0" src="<?php echo get_template_directory_uri(); ?>/imagenes/default-hero.jpg" alt="">
+
+    <div class="relative max-w-7xl mx-auto px-6 z-10 text-left">
         <h1 class="text-white text-3xl md:text-4xl font-bold  mb-4"> <!-- font-['Libre_Baskerville',serif] -->
-            Carreras UNSL
+            Carreras
         </h1>
         <!--p class="text-slate-300 text-base max-w-2xl mx-auto">
             Utiliza los filtros a continuación para explorar nuestra oferta académica y encontrar el plan de estudios ideal para tu futuro.
         </p-->
     </div>
-    <div class="max-w-7xl mx-auto relative" style="">
-        <p class="absolute  bottom-[-23px] text-[#152659] leading-[0.7] font-[800] right-0 px-12 text-[7vw]">UNSL</p>
+    <div class="max-w-7xl mx-auto relative z-10" style="">
+        <p class="absolute  bottom-[-24px] text-[#fff]/60 leading-[0.7] font-[800] right-0 px-12 text-[7vw]">UNSL</p>
     </div>
 </header>
 <div class="bg-white border-b border-[#e5e0d8]">
@@ -52,10 +55,10 @@ get_header();
         <div id="filtersWrapper" class="hidden lg:flex flex-col lg:flex-row lg:flex-nowrap gap-3 items-stretch lg:items-center mt-4 lg:mt-0 lg:overflow-x-auto lg:pb-1 lg:-mb-1 [&::-webkit-scrollbar]:hidden" style="scrollbar-width: none;">
 
             <div class="flex items-center gap-1 bg-[#EEF2F5] p-1.5 rounded-lg flex-shrink-0 border border-[#e5e0d8]/50">
-                <button data-filter="tipo" data-value="" class="filter-btn active-tipo px-4 py-1.5 rounded-md text-sm font-semibold transition-all duration-200 bg-[#0b1f4a] text-white shadow-sm">Todos</button>
-                <button data-filter="tipo" data-value="pregrado" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-all duration-200 text-[#0b1f4a]/70 hover:text-[#0b1f4a] hover:bg-white/50">Pregrado</button>
-                <button data-filter="tipo" data-value="grado" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-all duration-200 text-[#0b1f4a]/70 hover:text-[#0b1f4a] hover:bg-white/50">Grado</button>
-                <button data-filter="tipo" data-value="posgrado" class="filter-btn px-4 py-1.5 rounded-md text-sm font-medium transition-all duration-200 text-[#0b1f4a]/70 hover:text-[#0b1f4a] hover:bg-white/50">Posgrado</button>
+                <button data-filter="tipo" data-value="" class="filter-btn active-tipo px-1 md:px-4 py-1.5 rounded-md text-sm font-semibold transition-all duration-200 bg-[#0b1f4a] text-white shadow-sm">Todos</button>
+                <button data-filter="tipo" data-value="pregrado" class="filter-btn px-1 md:px-4 py-1.5 rounded-md text-sm font-medium transition-all duration-200 text-[#0b1f4a]/70 hover:text-[#0b1f4a] hover:bg-white/50">Pregrado</button>
+                <button data-filter="tipo" data-value="grado" class="filter-btn px-1 md:px-4 py-1.5 rounded-md text-sm font-medium transition-all duration-200 text-[#0b1f4a]/70 hover:text-[#0b1f4a] hover:bg-white/50">Grado</button>
+                <button data-filter="tipo" data-value="posgrado" class="filter-btn px-1 md:px-4 py-1.5 rounded-md text-sm font-medium transition-all duration-200 text-[#0b1f4a]/70 hover:text-[#0b1f4a] hover:bg-white/50">Posgrado</button>
             </div>
 
             <?php
@@ -78,7 +81,7 @@ get_header();
 
                 // 2. Imprimimos el div usando las clases de ancho personalizadas ($width_classes)
                 echo '<div class="relative flex-shrink-0 w-full ' . esc_attr($width_classes) . ' group">';
-                
+
                 echo '<select id="filter' . ucfirst($taxonomia) . '" class="w-full bg-white border border-[#e5e0d8] hover:border-[#88CAFC] px-3 py-2.5 rounded-lg text-sm font-medium text-[#0b1f4a] outline-none focus:ring-2 focus:ring-[#88CAFC]/30 cursor-pointer appearance-none pr-8 transition-colors shadow-sm truncate" title="Filtrar por ' . esc_html($placeholder) . '">';
                 echo '<option value="">' . esc_html($placeholder) . '</option>';
 
@@ -90,7 +93,7 @@ get_header();
                     echo '<option value="' . esc_attr($term->name) . '" title="' . $texto_visible . '">' . $texto_visible . '</option>';
                 }
                 echo '</select>';
-                
+
                 // Ícono de flecha
                 echo '<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-[#0b1f4a]/40 group-hover:text-[#88CAFC] transition-colors">';
                 echo '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>';
@@ -100,9 +103,9 @@ get_header();
             ?>
 
             <?php imprimir_opciones_taxonomia_archivo('modalidad', 'Modalidad', 'lg:w-[120px] xl:w-[140px]'); ?>
-            
+
             <?php imprimir_opciones_taxonomia_archivo('sede', 'Sede', 'lg:w-[90px] xl:w-[110px]'); ?>
-            
+
             <?php imprimir_opciones_taxonomia_archivo('facultad', 'Unidad Académica', 'lg:w-[180px] xl:w-[220px]'); ?>
 
             <div class="relative flex-shrink-0 w-full lg:w-[150px] xl:w-[170px] group">
@@ -114,7 +117,9 @@ get_header();
                     <option value="tecnicatura">Tecnicaturas</option>
                 </select>
                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-[#0b1f4a]/40 group-hover:text-[#88CAFC] transition-colors">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
                 </div>
             </div>
             <button id="clearFilters" class="flex-shrink-0 lg:ml-auto group flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg text-sm font-medium text-red-500 hover:text-red-600 hover:bg-red-50 transition-all border border-transparent hover:border-red-100">
@@ -147,8 +152,18 @@ if ($query_carreras->have_posts()) {
         $tipo_slug = ($terms_nivel && !is_wp_error($terms_nivel)) ? $terms_nivel[0]->slug : '';
 
         $terms_facultad = get_the_terms(get_the_ID(), 'facultad');
-        $facultad_name = ($terms_facultad && !is_wp_error($terms_facultad)) ? $terms_facultad[0]->name : '';
-        $facultad_slug = ($terms_facultad && !is_wp_error($terms_facultad)) ? $terms_facultad[0]->slug : '';
+        $facultades_nombres = array();
+        $facultades_slugs = array();
+
+        if ($terms_facultad && !is_wp_error($terms_facultad)) {
+            foreach ($terms_facultad as $term_fac) {
+                $facultades_nombres[] = html_entity_decode($term_fac->name);
+                $facultades_slugs[]   = strtolower($term_fac->slug);
+            }
+        }
+
+        // Usamos la primera para el color principal de la tarjeta
+        $facultad_slug = !empty($facultades_slugs) ? $facultades_slugs[0] : '';
 
         $terms_sede = get_the_terms(get_the_ID(), 'sede');
         $sede_name = ($terms_sede && !is_wp_error($terms_sede)) ? $terms_sede[0]->name : '';
@@ -159,14 +174,15 @@ if ($query_carreras->have_posts()) {
         $duracion = get_field('duracion_carrera') ? get_field('duracion_carrera') : 'No especificada';
 
         $array_carreras[] = array(
-            'nombre'        => html_entity_decode(get_the_title()),
-            'link'          => get_permalink(),
-            'tipo'          => $tipo_slug,
-            'facultad'      => html_entity_decode($facultad_name),
-            'facultad_slug' => strtolower($facultad_slug),
-            'duracion'      => $duracion,
-            'sede'          => html_entity_decode($sede_name),
-            'modalidad'     => html_entity_decode($modalidad_name)
+            'nombre'             => html_entity_decode(get_the_title()),
+            'link'               => get_permalink(),
+            'tipo'               => $tipo_slug,
+            'facultad_slug'      => $facultad_slug,
+            'facultades_nombres' => $facultades_nombres,
+            'facultades_slugs'   => $facultades_slugs,
+            'duracion'           => $duracion,
+            'sede'               => html_entity_decode($sede_name),
+            'modalidad'          => html_entity_decode($modalidad_name)
         );
     }
     wp_reset_postdata();
@@ -298,6 +314,7 @@ if ($query_carreras->have_posts()) {
     };
 
 
+
     function buildCard(c) {
         const tc = TIPO_CONFIG[c.tipo] || {
             label: "General",
@@ -305,19 +322,38 @@ if ($query_carreras->have_posts()) {
             text: "text-gray-700",
             dot: "bg-gray-700"
         };
+
+        // Color del borde principal de la tarjeta (usa la primera facultad de la lista)
         const fc = FACU_CONFIG[c.facultad_slug] || {
-            border: 'border-b-[#e5e0d8]',
-            bgPill: 'bg-[#EEF1F5]',
-            textPill: 'text-[#061C2E]'
+            border: 'border-b-[#e5e0d8]'
         };
-        const nombreFacultad = NOMBRES_FACULTADES[c.facultad_slug] || c.facultad;
 
         const modalidadText = c.modalidad.toLowerCase().includes("virtual") ? "Virtual" : "Presencial";
         const modalidadIcon = modalidadText === "Virtual" ? '<path d="M9.75 17 9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/>' : '<path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0z"/>';
         const modalidadClass = modalidadText === "Virtual" ? "text-[#0b1f4a] bg-[#0b1f4a14]" : "text-[#1a6b52] bg-[#1a6b5214]";
 
+        // --- LÓGICA DE MÚLTIPLES FACULTADES ---
+        const labelFacultad = (c.facultades_slugs && c.facultades_slugs.length > 1) ? "Facultades" : "Facultad";
+        let facultadesPills = "";
+
+        if (c.facultades_slugs && c.facultades_slugs.length > 0) {
+            // Creamos una pastilla (pill) individual para cada facultad
+            facultadesPills = c.facultades_slugs.map(slug => {
+                const conf = FACU_CONFIG[slug] || {
+                    bgPill: 'bg-[#EEF1F5]',
+                    textPill: 'text-[#061C2E]'
+                };
+                const name = NOMBRES_FACULTADES[slug] || slug.toUpperCase();
+                return `<span class="font-bold ${conf.textPill} ${conf.bgPill} px-2 py-1 rounded max-w-full text-right truncate" title="${name}">${name}</span>`;
+            }).join('');
+        } else {
+            // Respaldo por si no tiene facultad asignada
+            facultadesPills = `<span class="font-bold text-[#061C2E] bg-[#EEF1F5] px-2 py-1 rounded max-w-full text-right truncate">UNSL</span>`;
+        }
+        // ---------------------------------------
+
         return `
-            <a href="${c.link}" class="group bg-white  overflow-hidden border-x border-b border-[#e5e0d8] border-b-4 ${fc.border} hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col cursor-pointer">
+            <a href="${c.link}" class="group bg-white overflow-hidden border-x border-b border-[#e5e0d8] border-b-4 ${fc.border} hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col cursor-pointer">
                 <div class="p-6 flex flex-col gap-4 flex-1">
                     <div class="flex items-start justify-between gap-2">
                         <span class="${tc.bg} ${tc.text} text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded flex items-center gap-1.5 shrink-0">
@@ -333,13 +369,15 @@ if ($query_carreras->have_posts()) {
                             ${c.nombre}
                         </h3>
                     </div>
-                    <div class="flex flex-col gap-2 mt-auto pt-4 border-b border-dashed border-[#e5e0d8]">
-                        <div class="flex items-center justify-between text-xs">
-                            <span class="text-[#061C2E] font-medium">Facultad</span>
-                            <span class="font-bold ${fc.textPill} ${fc.bgPill} px-2 py-1 rounded text-right max-w-[65%] truncate" title="${nombreFacultad}">
-                                ${nombreFacultad}
-                            </span>
+                    <div class="flex flex-col gap-2 mt-auto pt-4 border-t border-dashed border-[#e5e0d8]">
+                        
+                        <div class="flex items-start justify-between text-xs gap-3">
+                            <span class="text-[#061C2E] font-medium shrink-0 mt-1">${labelFacultad}</span>
+                            <div class="flex flex-col items-end gap-1.5 min-w-0 flex-1">
+                                ${facultadesPills}
+                            </div>
                         </div>
+
                         <div class="flex items-center justify-between text-xs mt-1">
                             <span class="text-[#061C2E] font-medium">Sede</span>
                             <span class="font-medium text-[#1a1a2e]">${c.sede}</span>
@@ -360,7 +398,7 @@ if ($query_carreras->have_posts()) {
             if (state.tipo && c.tipo !== state.tipo) return false;
             if (state.modalidad && c.modalidad !== state.modalidad) return false;
             if (state.sede && c.sede !== state.sede) return false;
-            if (state.facultad && c.facultad !== state.facultad) return false;
+            if (state.facultad && (!c.facultades_nombres || !c.facultades_nombres.includes(state.facultad))) return false;
             if (state.profesion) {
                 const prof = state.profesion.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
                 if (!name.includes(prof)) return false;

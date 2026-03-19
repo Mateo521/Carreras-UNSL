@@ -8,8 +8,6 @@ Version: 1.0.0
 Text Domain: unsl-carreras
 */
 
-
-       
 body.a11y-reading-mode {
     background-color: #fcfcfc !important;
     color: #1a1a1a !important;
@@ -19,6 +17,10 @@ body.a11y-reading-mode {
     max-width: 800px !important; 
     padding: 40px 20px !important;
     display: block !important;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 
@@ -74,9 +76,6 @@ body.a11y-reading-mode h3 {
     color: #000 !important;
     font-weight: bold !important;
 }
-
-
-
 
 
 .a11y-filter-protanopia { -webkit-filter: url(#protanopia) !important; filter: url(#protanopia) !important; }

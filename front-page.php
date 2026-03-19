@@ -267,7 +267,7 @@ get_header();
         font-size:.7rem;
         letter-spacing:.2em;
         text-transform:uppercase;
-        color:rgba(255,255,255,.35);">Explorar</span>
+        color:rgba(255,255,255,.35);"><a href="#seleccion">Explorar</a> </span>
         <div style="width:1px;height:36px;background:linear-gradient(to bottom,rgba(255,255,255,.35),transparent);"></div>
     </div>
 </section>
@@ -334,7 +334,7 @@ get_header();
         <?php /* Cabecera de sección — layout asimétrico */ ?>
         <div class="reveal flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-20">
             <div>
-                <p
+                <p id="seleccion"
                     style="
             font-size:.72rem;
             font-weight:500;
@@ -342,7 +342,7 @@ get_header();
             text-transform:uppercase;
             color:var(--azulunsl);
             margin-bottom:.8rem;">Oferta académica</p>
-                <h2
+                <h2 
                     style="
             font-weight:800;
             font-size:clamp(32px,5vw,54px);
