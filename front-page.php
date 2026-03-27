@@ -7,7 +7,6 @@
 get_header();
 ?>
 
-<?php /* ─── ESTILOS GLOBALES ─────────────────────────────────────────── */ ?>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
 
@@ -24,7 +23,7 @@ get_header();
         --line: rgba(8, 24, 58, 0.12);
     }
 
-    /* Noise texture — grain sutil sobre fondos claros */
+
     .grain::after {
         content: '';
         position: absolute;
@@ -34,7 +33,7 @@ get_header();
         z-index: 1;
     }
 
-    /* Reveal animado en scroll */
+
     .reveal {
         opacity: 0;
         transform: translateY(24px);
@@ -62,7 +61,7 @@ get_header();
         transition-delay: .4s;
     }
 
-    /* Línea decorativa diagonal */
+
     .slash {
         display: inline-block;
         width: 2px;
@@ -74,7 +73,6 @@ get_header();
     }
 </style>
 
-<?php /* ─── SECCIÓN 1: HERO ─────────────────────────────────────────── */ ?>
 <section
     class="relative min-h-screen flex flex-col justify-end overflow-hidden "
     style="background: var(--navy);">
@@ -85,7 +83,7 @@ get_header();
         autoplay muted loop playsinline
         src="<?php echo get_template_directory_uri(); ?>/videos/video-2.mp4"></video>
 
-    <?php /* Gradiente: más opaco abajo para legibilidad del texto */ ?>
+
     <div
         class="absolute inset-0"
         style="z-index:1; background: linear-gradient(
@@ -98,12 +96,11 @@ get_header();
 
 
 
-    <?php /* Año fantasma en esquina superior derecha — elemento editorial */ ?>
     <div
-    id="year-parallax"
-    class="absolute bottom-0 right-0 select-none pointer-events-none"
-    aria-hidden="true"
-    style="
+        id="year-parallax"
+        class="absolute bottom-0 right-0 select-none pointer-events-none"
+        aria-hidden="true"
+        style="
       z-index: 2;
       font-weight: 800;
       font-size: clamp(140px,20vw,280px);
@@ -113,19 +110,19 @@ get_header();
       padding: .1em .15em 0 0;
       display: flex; 
     ">
-    <div class="scroll-mover"><span class="digit block" style="--delay: 0.1s;">2</span></div>
-    <div class="scroll-mover"><span class="digit block" style="--delay: 0.25s;">0</span></div>
-    <div class="scroll-mover"><span class="digit block" style="--delay: 0.4s;">2</span></div>
-    <div class="scroll-mover"><span class="digit block" style="--delay: 0.55s;">6</span></div>
-</div>
+        <div class="scroll-mover"><span class="digit block" style="--delay: 0.1s;">2</span></div>
+        <div class="scroll-mover"><span class="digit block" style="--delay: 0.25s;">0</span></div>
+        <div class="scroll-mover"><span class="digit block" style="--delay: 0.4s;">2</span></div>
+        <div class="scroll-mover"><span class="digit block" style="--delay: 0.55s;">6</span></div>
+    </div>
 
 
-    <?php /* Contenido del hero */ ?> <!--  sm:px-12 lg:px-16 pb-20 -->
+    <!--  sm:px-12 lg:px-16 pb-20 -->
     <div
         class="absolute top-1/2 -translate-y-1/2 px-6 md:px-24 w-full max-w-7xl mx-auto "
         style="z-index:3;">
 
-        <?php /* Eyebrow — etiqueta institucional */ ?>
+
         <div
             class="flex items-center gap-3 mb-7"
             style="animation: fadeUp .8s .1s both cubic-bezier(.22,1,.36,1);">
@@ -227,7 +224,6 @@ get_header();
             </form>
         </div>
 
-        <?php /* Badges de acceso rápido */ ?>
         <div
             class="flex flex-wrap gap-3 mt-6"
             style="animation: fadeUp .8s .5s both cubic-bezier(.22,1,.36,1);">
@@ -257,7 +253,6 @@ get_header();
 
     </div>
 
-    <?php /* Indicador de scroll */ ?>
     <div
         class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
         style="z-index:3; animation: fadeUp .8s .8s both cubic-bezier(.22,1,.36,1);"
@@ -272,7 +267,6 @@ get_header();
     </div>
 </section>
 
-<?php /* ─── KEYFRAMES ───────────────────────────────────────────────── */ ?>
 <style>
     @keyframes fadeUp {
         from {
@@ -286,7 +280,7 @@ get_header();
         }
     }
 
-    /* Animación inicial para el 2026 */
+
     @keyframes fadeInScale {
         0% {
             opacity: 0;
@@ -295,14 +289,14 @@ get_header();
 
         100% {
             opacity: 0.04;
-            /* La opacidad final que tenías */
+
             transform: scale(1) translateY(0);
         }
     }
 
     .fade-in-scale {
         animation: fadeInScale 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-        /* El delay opcional si quieres que aparezca un poquito después de cargar */
+
         animation-delay: 0.2s;
     }
 
@@ -310,7 +304,7 @@ get_header();
     .digit {
         opacity: 0;
         transform: translateY(30px);
-        /* Usamos la variable --delay que definimos en el HTML */
+
         animation: fadeUpDigit 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         animation-delay: var(--delay);
     }
@@ -318,20 +312,20 @@ get_header();
     @keyframes fadeUpDigit {
         to {
             opacity: 0.04;
-            /* El nivel de transparencia que querías */
+
             transform: translateY(0);
         }
     }
 </style>
 
 
-<?php /* ─── SECCIÓN 2: NIVELES ACADÉMICOS ─────────────────────────── */ ?>
+
 <section
     class="relative overflow-hidden "
     style="background:var(--cream); padding:7rem 1.5rem;">
     <div class="max-w-7xl mx-auto"> <!-- grain -->
 
-        <?php /* Cabecera de sección — layout asimétrico */ ?>
+
         <div class="reveal flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-20">
             <div>
                 <p id="seleccion"
@@ -342,7 +336,7 @@ get_header();
             text-transform:uppercase;
             color:var(--azulunsl);
             margin-bottom:.8rem;">Oferta académica</p>
-                <h2 
+                <h2
                     style="
             font-weight:800;
             font-size:clamp(32px,5vw,54px);
@@ -359,7 +353,7 @@ get_header();
           line-height:1.7;">Seleccioná el nivel académico de tu interés para explorar la oferta completa de la UNSL.</p>
         </div>
 
-        <?php /* Tarjetas de nivel — layout con números grandes */ ?>
+
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 rounded-xl"> <!-- style="background:var(--line);" -->
 
             <?php
@@ -388,17 +382,14 @@ get_header();
             ];
             foreach ($niveles as $i => $n) : ?>
                 <a
-                    href="<?php echo home_url('/carreras/?tipo=' . $n['tipo']); ?>"
-                    class="reveal rounded-xl reveal-d<?php echo $i + 1; ?> group block"
-                    style="background:#fff;
-            text-decoration:none;
-            padding:3rem 2.5rem;
-            position:relative;
-            overflow:hidden;
-            transition:background .3s;"
-                    onmouseover="this.style.background='var(--navy)'"
-                    onmouseout="this.style.background='#fff'">
-                    <?php /* Número editorial grande */ ?>
+    href="<?php echo home_url('/carreras/?tipo=' . $n['tipo']); ?>"
+    class="reveal rounded-xl reveal-d<?php echo $i + 1; ?> block tarjeta-carrera"
+    style="
+        text-decoration: none;
+        padding: 3rem 2.5rem;
+        position: relative;
+        overflow: hidden;
+    ">
                     <!--span
                         class="group-hover-number"
                         style="
@@ -445,7 +436,7 @@ get_header();
             position:relative;z-index:1;
             transition:color .3s;"><?php echo $n['desc']; ?></p>
 
-                    <?php /* Tags */ ?>
+
                     <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.5rem;position:relative;z-index:1;">
                         <?php foreach ($n['tags'] as $tag) : ?>
                             <span
@@ -460,7 +451,7 @@ get_header();
                         <?php endforeach; ?>
                     </div>
 
-                    <?php /* CTA flecha */ ?>
+
                     <div
                         style="display:flex;
               align-items:center;
@@ -481,7 +472,7 @@ get_header();
             <?php endforeach; ?>
         </div>
 
-        <?php /* Nota al pie */ ?>
+
         <div class="reveal reveal-d4 flex items-center justify-center gap-4 mt-12">
             <span style="display:block;height:1px;width:40px;background:var(--line);"></span>
             <a
@@ -501,8 +492,43 @@ get_header();
     </div>
 </section>
 
-<?php /* Hover inline styles para las tarjetas */ ?>
 <style>
+
+ 
+    .tarjeta-carrera {
+        background-color: #ffffff !important;
+        transition: all 0.3s ease !important;
+    }
+
+ 
+    .tarjeta-carrera:hover,
+    .tarjeta-carrera:active {
+        background-color: var(--navy) !important;
+    }
+
+ 
+    .tarjeta-carrera:hover .tag-chip,
+    .tarjeta-carrera:active .tag-chip {
+        background: rgba(255, 255, 255, .12) !important;
+        color: #ffffff !important;
+    }
+
+    .tarjeta-carrera:hover h3,
+    .tarjeta-carrera:active h3 {
+        color: #ffffff !important;
+    }
+
+    .tarjeta-carrera:hover p,
+    .tarjeta-carrera:active p {
+        color: rgba(255, 255, 255, .65) !important;
+    }
+
+    .tarjeta-carrera:hover > div:last-child,
+    .tarjeta-carrera:active > div:last-child {
+        color: #ffffff !important;
+    }
+
+
     a[href*="tipo"]:hover .tag-chip {
         background: rgba(255, 255, 255, .12) !important;
         color: #fff !important;
@@ -526,11 +552,10 @@ get_header();
 </style>
 
 
-<?php /* ─── SECCIÓN 3: OVO — ORIENTACIÓN VOCACIONAL ─────────────────── */ ?>
 <section
     class="relative overflow-hidden"
     style="background:var(--navy); padding:7rem 1.5rem;">
-    <?php /* Línea decorativa lateral */ ?>
+ 
     <div
         aria-hidden="true"
         style="position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(to bottom, transparent, var(--azulunsl), transparent);"></div>
@@ -538,7 +563,7 @@ get_header();
     <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
 
-            <?php /* Columna izquierda: texto */ ?>
+           
             <div>
                 <p
                     class="reveal"
@@ -600,7 +625,6 @@ get_header();
                 </div>
             </div>
 
-            <?php /* Columna derecha: contacto */ ?>
             <div class="reveal reveal-d2">
                 <p
                     style="
@@ -647,13 +671,13 @@ get_header();
                         target="<?php echo $c['target']; ?>"
                         rel="noopener noreferrer"
                         style="display:flex;
-              align-items:center;
-              gap:1.2rem;
-              padding:1.2rem 0;
-              border-bottom:1px solid rgba(255,255,255,.07);
-              text-decoration:none;
-              group:true;
-              transition:padding-left .2s;"
+            align-items:center;
+            gap:1.2rem;
+            padding:1.2rem 0;
+            border-bottom:1px solid rgba(255,255,255,.07);
+            text-decoration:none;
+            group:true;
+            transition:padding-left .2s;"
                         onmouseover="this.style.paddingLeft='.5rem'"
                         onmouseout="this.style.paddingLeft='0'">
                         <span
@@ -676,20 +700,14 @@ get_header();
                         </svg>
                     </a>
                 <?php endforeach; ?>
-
             </div>
         </div>
     </div>
 </section>
-
-
-<?php /* ─── SECCIÓN 4: FACULTADES ──────────────────────────────────── */ ?>
 <section
     class=""
-    style="background:var(--cream); padding:7rem 1.5rem;"> <!-- grain -->
+    style="background:var(--cream); padding:7rem 1.5rem;">  
     <div class="max-w-7xl mx-auto">
-
-        <?php /* Encabezado */ ?>
         <div class="reveal flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
             <div>
                 <p
@@ -716,12 +734,8 @@ get_header();
           max-width:340px;
           line-height:1.7;">Nueve unidades académicas distribuidas en tres sedes: San Luis, Villa Mercedes y Merlo.</p>
         </div>
-
-        <?php /* Grilla de facultades — estilo editorial con borde izquierdo de color */ ?>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <?php
-
-
             $facultades = [
                 ['sigla' => 'FQBYF',  'nombre' => 'Química, Bioquímica y Farmacia',             'sede' => 'San Luis',                  'hex' => '#008e3b', 'img' => 'fqbyf.png'],
                 ['sigla' => 'FCFMyN', 'nombre' => 'Ciencias Físico Matemáticas y Naturales',    'sede' => 'San Luis',                  'hex' => '#d2231f', 'img' => 'fcfmyn.png'],
@@ -732,7 +746,6 @@ get_header();
                 ['sigla' => 'FCS',    'nombre' => 'Ciencias de la Salud',                       'sede' => 'San Luis · Villa Mercedes', 'hex' => '#5a8f1e', 'img' => 'fcs.png'],
                 ['sigla' => 'FTU',    'nombre' => 'Turismo y Urbanismo',                        'sede' => 'Merlo',                     'hex' => '#8a6200', 'img' => 'ftu.png'],
             ];
-
             foreach ($facultades as $i => $fac) :
                 $slug = strtolower($fac['sigla']);
                 $delay = ($i % 3) + 1;
@@ -769,7 +782,6 @@ get_header();
                 font-size:.7rem;
                 color:<?php echo $fac['hex']; ?>;"><?php echo substr($fac['sigla'], 0, 2); ?></span>
                     </div>
-
                     <div style="min-width:0;">
                         <p
                             style="
@@ -779,7 +791,6 @@ get_header();
                 text-transform:uppercase;
                 color:<?php echo $fac['hex']; ?>;
                 margin-bottom:.25rem;"><?php echo $fac['sigla']; ?></p>
-
                         <p
                             style="
                 font-weight:500;
@@ -805,7 +816,6 @@ get_header();
                 </a>
             <?php endforeach; ?>
 
-            <?php /* IPAU — destacado */ ?>
             <a
                 href="<?php echo home_url('/carreras/?facultad=IPAU'); ?>"
                 class="reveal reveal-d3 md:col-span-2 lg:col-span-1 group"
@@ -872,7 +882,6 @@ get_header();
     </div>
 </section>
 
-<?php /* ─── SCRIPT: SCROLL REVEAL ─────────────────────────────────── */ ?>
 <script>
     (function() {
         const els = document.querySelectorAll('.reveal');
@@ -914,7 +923,6 @@ get_header();
             });
         });
     });
-
 </script>
 
 

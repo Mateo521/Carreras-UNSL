@@ -102,7 +102,7 @@ $logo_url = get_template_directory_uri() . '/imagenes/' . $slug . '.png';
 
         <div class="flex items-center justify-between mb-8 pb-4 border-b border-[#e5e0d8]">
             <div>
-                <h2 class="text-2xl font-bold text-[#0b1f4a] font-['Libre_Baskerville',serif]">Oferta Académica</h2>
+                <h2 class="text-2xl font-bold text-[#0b1f4a] ">Oferta Académica</h2>
                 <p class="text-[#1a1a2e66] text-sm mt-1">Todas las carreras dictadas en la <?php echo esc_html($sigla); ?></p>
             </div>
             <a href="<?php echo home_url('/carreras/'); ?>" class="hidden sm:flex items-center gap-2 text-sm font-semibold text-[#88CAFC] hover:text-[#0b1f4a] transition-colors">

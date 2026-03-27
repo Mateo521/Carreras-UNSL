@@ -9,19 +9,19 @@ get_header();
 
 
 
-<header class="bg-[#0b1f4a] py-16 lg:py-20 relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-[#0b1f4a] to-[#1e3a8a] opacity-90"></div>
-    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent bg-[length:20px_20px]"></div>
-
+<header class="bg-[#0b1f4a] py-16 lg:py-24 relative overflow-hidden">
+    <div class="absolute inset-0 top-0 z-10 bg-gradient-to-b from-[#0b1f4a] to-[#1e3a8a] opacity-80"></div>
+    <div class="absolute inset-0 opacity-10 z-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent bg-[length:20px_20px]"></div>
+    <img class="absolute object-cover size-full top-0 z-0" src="<?php echo  get_template_directory_uri() . '/imagenes/carreras.jpg'?>" alt="">
     <div class="relative max-w-7xl mx-auto px-6 text-center z-10">
-        <!--span class="inline-block py-1.5 px-4 rounded-full bg-white/10 backdrop-blur-md text-[#88CAFC] text-xs font-bold tracking-widest uppercase mb-4 border border-white/20">
-            Presencia Regional
+        <!--span class="inline-block py-1.5 px-4  bg-white/10 backdrop-blur-md text-[#88CAFC] text-xs font-bold tracking-widest uppercase mb-4 border border-white/20"> 
+            Estructura Institucional
         </span-->
         <h1 class="text-white text-4xl md:text-5xl lg:text-6xl font-bold  mb-6"> <!-- font-['Libre_Baskerville',serif] -->
-            Nuestras Sedes
+            Nuestras sedes
         </h1>
         <p class="text-slate-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-light">
-            La Universidad Nacional de San Luis cuenta con un fuerte anclaje territorial. Nuestras tres sedes provinciales están estratégicamente ubicadas para potenciar el desarrollo académico, científico y productivo de la región.
+            La Universidad Nacional de San Luis está organizada en ocho facultades y un instituto, distribuidos estratégicamente en nuestras tres sedes provinciales para garantizar el acceso a la educación superior.
         </p>
     </div>
 </header>

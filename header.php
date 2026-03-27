@@ -19,46 +19,47 @@
 
   <style>
     :root {
-      --navy:   #08183A;
-      --navy2:  #0D2452;
-      --gold:   #BAE4FF;
+      --navy: #08183A;
+      --navy2: #0D2452;
+      --gold: #BAE4FF;
       --blue-l: #A8C8F4;
     }
 
-    /* ── Header base ─────────────────────────────────────────── */
+
     #site-header {
-      position: fixed;          /* ← fixed, no sticky */
+      position: fixed;
+      /* ← fixed, no sticky */
       top: 0;
       left: 0;
       right: 0;
       z-index: 50;
       transition:
-        background  .4s cubic-bezier(.4,0,.2,1),
-        border-color .4s cubic-bezier(.4,0,.2,1),
-        box-shadow   .4s cubic-bezier(.4,0,.2,1),
+        background .4s cubic-bezier(.4, 0, .2, 1),
+        border-color .4s cubic-bezier(.4, 0, .2, 1),
+        box-shadow .4s cubic-bezier(.4, 0, .2, 1),
         backdrop-filter .4s;
       will-change: background;
     }
 
-    /* Estado: en el tope → completamente transparente */
+
     #site-header.at-top {
-      background:   transparent;
+      background: transparent;
       border-bottom: 1px solid transparent;
-      box-shadow:   none;
+      box-shadow: none;
       backdrop-filter: none;
       -webkit-backdrop-filter: none;
     }
 
-    /* Estado: scrolled → navy sólido con blur */
+
     #site-header.scrolled {
-      background:   rgba(8, 24, 58, .97);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      box-shadow:   0 4px 24px rgba(0,0,0,.25);
+      background: rgba(8, 24, 58, .97);
+      border-bottom: 1px solid rgba(255, 255, 255, .08);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, .25);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
 
-    /* ── Inner layout ────────────────────────────────────────── */
+
     .header-inner {
       max-width: 88rem;
       margin: 0 auto;
@@ -67,36 +68,38 @@
       align-items: center;
       justify-content: space-between;
       height: 72px;
-      transition: height .4s cubic-bezier(.4,0,.2,1);
+      transition: height .4s cubic-bezier(.4, 0, .2, 1);
     }
+
     #site-header.scrolled .header-inner {
       height: 64px;
     }
 
-    /* ── Logo ────────────────────────────────────────────────── */
     .header-logo img {
       height: 2.75rem;
       width: auto;
       object-fit: contain;
       transition: height .4s;
     }
+
     #site-header.scrolled .header-logo img {
       height: 2.4rem;
     }
 
-    /* ── Nav links ───────────────────────────────────────────── */
+
     .header-nav a {
       font-family: 'DM Sans', sans-serif;
       font-size: .82rem;
       font-weight: 500;
       letter-spacing: .06em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.7);
+      color: rgba(255, 255, 255, .7);
       text-decoration: none;
       position: relative;
       padding-bottom: 3px;
       transition: color .2s;
     }
+
     .header-nav a::after {
       content: '';
       position: absolute;
@@ -105,35 +108,38 @@
       width: 0;
       height: 1px;
       background: var(--gold);
-      transition: width .25s cubic-bezier(.4,0,.2,1);
+      transition: width .25s cubic-bezier(.4, 0, .2, 1);
     }
+
     .header-nav a:hover,
     .header-nav a.active {
       color: #fff;
     }
+
     .header-nav a:hover::after,
     .header-nav a.active::after {
       width: 100%;
     }
 
-    /* ── Botones CTA ─────────────────────────────────────────── */
+
     .btn-ghost {
       font-family: 'DM Sans', sans-serif;
       font-size: .78rem;
       font-weight: 500;
       letter-spacing: .06em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.75);
+      color: rgba(255, 255, 255, .75);
       text-decoration: none;
       padding: .5rem 1.1rem;
-      border: 1px solid rgba(255,255,255,.22);
+      border: 1px solid rgba(255, 255, 255, .22);
       transition: background .2s, color .2s, border-color .2s;
       white-space: nowrap;
     }
+
     .btn-ghost:hover {
-      background: rgba(255,255,255,.1);
+      background: rgba(255, 255, 255, .1);
       color: #fff;
-      border-color: rgba(255,255,255,.4);
+      border-color: rgba(255, 255, 255, .4);
     }
 
     .btn-primary {
@@ -150,12 +156,13 @@
       transition: background .2s, color .2s;
       white-space: nowrap;
     }
+
     .btn-primary:hover {
       background: #145596;
       border-color: #145596;
     }
 
-    /* ── Focus ring accesible ────────────────────────────────── */
+
     .header-logo a:focus-visible,
     .header-nav a:focus-visible,
     .btn-ghost:focus-visible,
@@ -165,39 +172,117 @@
       outline-offset: 3px;
     }
 
-    /* ── Menú móvil ──────────────────────────────────────────── */
+
     #mobile-menu {
       display: none;
       background: var(--navy);
-      border-top: 1px solid rgba(255,255,255,.08);
+      border-top: 1px solid rgba(255, 255, 255, .08);
     }
+
     #mobile-menu.open {
       display: block;
-      animation: slideDown .25s cubic-bezier(.4,0,.2,1);
+      animation: slideDown .25s cubic-bezier(.4, 0, .2, 1);
     }
+
     @keyframes slideDown {
-      from { opacity:0; transform:translateY(-8px); }
-      to   { opacity:1; transform:translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
+
     .mobile-nav-link {
       display: block;
       padding: .85rem 1rem;
       font-family: 'DM Sans', sans-serif;
       font-size: .9rem;
       font-weight: 400;
-      color: rgba(255,255,255,.7);
+      color: rgba(255, 255, 255, .7);
       text-decoration: none;
       border-left: 2px solid transparent;
       transition: color .15s, border-color .15s, background .15s;
     }
+
     .mobile-nav-link:hover,
     .mobile-nav-link.active {
       color: #fff;
-      background: rgba(255,255,255,.04);
+      background: rgba(255, 255, 255, .04);
       border-left-color: var(--gold);
     }
 
-    /* ── Barra de accesibilidad ──────────────────────────────── */
+
+
+
+
+
+    .search-form {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .search-input {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 9999px;
+      padding: 0.45rem 2.2rem 0.45rem 1rem;
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      width: 180px;
+      transition: background 0.2s, border-color 0.2s, width 0.3s;
+    }
+
+    .search-input::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--gold);
+      background: rgba(255, 255, 255, 0.12);
+      width: 220px;
+    }
+
+    .search-btn {
+      position: absolute;
+      right: 0.5rem;
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, 0.6);
+      cursor: pointer;
+      padding: 0.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s;
+    }
+
+    .search-btn:hover,
+    .search-input:focus+.search-btn {
+      color: var(--gold);
+    }
+
+
+    .mobile-search-container {
+      padding: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 0.5rem;
+    }
+
+    .mobile-search-container .search-input {
+      width: 100%;
+    }
+
+
+
+
+
     .skip-link {
       position: absolute;
       top: -100%;
@@ -212,13 +297,16 @@
       text-decoration: none;
       transition: top .2s;
     }
-    .skip-link:focus { top: 1rem; }
 
-    /* ── Separador decorativo en nav ─────────────────────────── */
+    .skip-link:focus {
+      top: 1rem;
+    }
+
+
     .nav-sep {
       width: 1px;
       height: 14px;
-      background: rgba(255,255,255,.15);
+      background: rgba(255, 255, 255, .15);
       display: inline-block;
       flex-shrink: 0;
     }
@@ -227,29 +315,27 @@
 
 <body <?php body_class(); ?> style="font-family:'DM Sans',sans-serif; background:#E3F0FF; color:#111827;">
 
-  <?php /* Skip to content — accesibilidad */ ?>
+
   <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
 
   <header id="site-header" class="at-top" role="banner">
     <div class="header-inner">
 
-      <?php /* ── Logo ── */ ?>
+
       <div class="header-logo">
         <a href="<?php echo home_url(); ?>" aria-label="Inicio — Universidad Nacional de San Luis">
           <img
             src="<?php echo get_template_directory_uri(); ?>/logo-unsl-negativo2.svg"
-            alt="Universidad Nacional de San Luis"
-          />
+            alt="Universidad Nacional de San Luis" />
         </a>
       </div>
 
-      <?php /* ── Navegación desktop ── */ ?>
+
       <nav
         class="header-nav"
         aria-label="Navegación principal"
         style="display:none; align-items:center; gap:2rem;"
-        id="desktop-nav"
-      >
+        id="desktop-nav">
         <?php
         $nav_items = [
           ['label' => 'Inicio',      'url' => home_url('/')],
@@ -264,30 +350,43 @@
           <a
             href="<?php echo esc_url($item['url']); ?>"
             class="<?php echo trim($is_active); ?>"
-            <?php if ($is_active) echo 'aria-current="page"'; ?>
-          ><?php echo esc_html($item['label']); ?></a>
+            <?php if ($is_active) echo 'aria-current="page"'; ?>><?php echo esc_html($item['label']); ?></a>
         <?php endforeach; ?>
       </nav>
 
-      <?php /* ── CTAs desktop ── */ ?>
+
+
       <div
         style="display:none; align-items:center; gap:.75rem;"
-        id="desktop-ctas"
-      >
+        id="desktop-ctas">
+
+        <form role="search" method="get" class="search-form" action="<?php echo esc_url(home_url('/carreras/')); ?>">
+          <input
+            type="search"
+            class="search-input"
+            placeholder="Buscar carrera..."
+            value="<?php echo isset($_GET['q']) ? esc_attr($_GET['q']) : ''; ?>"
+            name="q"
+            aria-label="Buscar carrera" />
+          <button type="submit" class="search-btn" aria-label="Enviar búsqueda">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 10.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" />
+            </svg>
+          </button>
+        </form>
+
         <a
           href="https://campus.unsl.edu.ar/"
           target="_blank"
           rel="noopener noreferrer"
-          class="btn-ghost"
-        >Campus Virtual</a>
+          class="btn-ghost rounded-full">Campus Virtual</a>
 
         <a
           href="<?php echo home_url('/preinscripcion/'); ?>"
-          class="btn-primary"
-        >Ingreso 2026</a>
+          class="btn-primary rounded-full">Ingreso 2026</a>
       </div>
 
-      <?php /* ── Botón hamburguesa (móvil) ── */ ?>
+
       <button
         id="mobile-menu-btn"
         type="button"
@@ -302,21 +401,38 @@
           color:rgba(255,255,255,.8);
           transition:background .2s, border-color .2s;"
         onmouseover="this.style.background='rgba(255,255,255,.08)'"
-        onmouseout="this.style.background='transparent'"
-        
-      >
+        onmouseout="this.style.background='transparent'">
         <svg id="icon-menu" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
         <svg id="icon-close" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" style="display:none;">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
 
-    </div><!-- /.header-inner -->
+    </div>
 
-    <?php /* ── Menú móvil ── */ ?>
+
+
     <nav id="mobile-menu" role="navigation" aria-label="Menú móvil">
+
+      <div class="mobile-search-container">
+        <form role="search" method="get" class="search-form" action="<?php echo esc_url(home_url('/carreras/')); ?>">
+          <input
+            type="search"
+            class="search-input"
+            placeholder="Buscar carrera..."
+            value="<?php echo isset($_GET['q']) ? esc_attr($_GET['q']) : ''; ?>"
+            name="q"
+            aria-label="Buscar carrera" />
+          <button type="submit" class="search-btn" aria-label="Enviar búsqueda">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 10.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" />
+            </svg>
+          </button>
+        </form>
+      </div>
+
       <div style="padding:.5rem 1rem 1.5rem;">
         <?php foreach ($nav_items as $item) :
           $is_active = trailingslashit($item['url']) === $current ? ' active' : '';
@@ -324,8 +440,7 @@
           <a
             href="<?php echo esc_url($item['url']); ?>"
             class="mobile-nav-link<?php echo $is_active; ?>"
-            <?php if ($is_active) echo 'aria-current="page"'; ?>
-          ><?php echo esc_html($item['label']); ?></a>
+            <?php if ($is_active) echo 'aria-current="page"'; ?>><?php echo esc_html($item['label']); ?></a>
         <?php endforeach; ?>
 
         <div style="margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:.6rem;">
@@ -339,8 +454,7 @@
               color:rgba(255,255,255,.7);
               border:1px solid rgba(255,255,255,.2);
               padding:.7rem 1rem;
-              text-decoration:none;"
-          >Campus Virtual</a>
+              text-decoration:none;">Campus Virtual</a>
           <a
             href="<?php echo home_url('/preinscripcion/'); ?>"
             style="display:block;text-align:center;
@@ -348,94 +462,92 @@
               letter-spacing:.06em;text-transform:uppercase;
               color:var(--navy);background:var(--gold);
               padding:.75rem 1rem;
-              text-decoration:none;"
-          >Ingreso 2026</a>
+              text-decoration:none;">Ingreso 2026</a>
         </div>
       </div>
     </nav>
 
-  </header><!-- /#site-header -->
+  </header>
 
 
-  <?php /* ─────────────────────────────────────────────────────────
-         SCRIPTS DEL HEADER
-         ───────────────────────────────────────────────────────── */ ?>
   <script>
-  (function () {
-    const header   = document.getElementById('site-header');
-    const btnMenu  = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const iconMenu = document.getElementById('icon-menu');
-    const iconClose = document.getElementById('icon-close');
-    const desktopNav  = document.getElementById('desktop-nav');
-    const desktopCtas = document.getElementById('desktop-ctas');
-    const desktopBtn = document.getElementById('mobile-menu-btn');
+    (function() {
+      const header = document.getElementById('site-header');
+      const btnMenu = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const iconMenu = document.getElementById('icon-menu');
+      const iconClose = document.getElementById('icon-close');
+      const desktopNav = document.getElementById('desktop-nav');
+      const desktopCtas = document.getElementById('desktop-ctas');
+      const desktopBtn = document.getElementById('mobile-menu-btn');
 
-    // ── Breakpoint responsive ─────────────────────────────────
-    function applyBreakpoint() {
-      const wide = window.innerWidth >= 1024;
-      desktopNav.style.display  = wide ? 'flex' : 'none';
-      desktopCtas.style.display = wide ? 'flex' : 'none';
-      desktopBtn.style.display  = wide ? 'none' : 'flex';
-    }
-    applyBreakpoint();
-    window.addEventListener('resize', applyBreakpoint);
 
-    // ── Scroll: transparente ↔ sólido ────────────────────────
-    const THRESHOLD = 48;           // px desde el tope
-
-    function onScroll() {
-      if (window.scrollY > THRESHOLD) {
-        header.classList.remove('at-top');
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-        header.classList.add('at-top');
+      function applyBreakpoint() {
+        const wide = window.innerWidth >= 1024;
+        desktopNav.style.display = wide ? 'flex' : 'none';
+        desktopCtas.style.display = wide ? 'flex' : 'none';
+        desktopBtn.style.display = wide ? 'none' : 'flex';
       }
-    }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll(); // estado inicial
+      applyBreakpoint();
+      window.addEventListener('resize', applyBreakpoint);
 
-    // ── Menú móvil toggle ─────────────────────────────────────
-    btnMenu.addEventListener('click', function () {
-      const isOpen = mobileMenu.classList.toggle('open');
-      iconMenu.style.display  = isOpen ? 'none'   : 'block';
-      iconClose.style.display = isOpen ? 'block'  : 'none';
-      btnMenu.setAttribute('aria-expanded', isOpen);
-      if (isOpen) {
-        // Cuando abrimos el menú: header siempre sólido
-        header.classList.remove('at-top');
-        header.classList.add('scrolled');
-      } else {
-        // Al cerrar: re-evaluar posición de scroll
-        onScroll();
+
+      const THRESHOLD = 48;
+
+      function onScroll() {
+        if (window.scrollY > THRESHOLD) {
+          header.classList.remove('at-top');
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+          header.classList.add('at-top');
+        }
       }
-    });
-
-    // ── Cerrar menú al hacer clic en un enlace (móvil) ────────
-    mobileMenu.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        mobileMenu.classList.remove('open');
-        iconMenu.style.display  = 'block';
-        iconClose.style.display = 'none';
-        btnMenu.setAttribute('aria-expanded', 'false');
-        onScroll();
+      window.addEventListener('scroll', onScroll, {
+        passive: true
       });
-    });
+      onScroll();
 
-    // ── Cerrar con Escape ─────────────────────────────────────
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
-        mobileMenu.classList.remove('open');
-        iconMenu.style.display  = 'block';
-        iconClose.style.display = 'none';
-        btnMenu.setAttribute('aria-expanded', 'false');
-        btnMenu.focus();
-        onScroll();
-      }
-    });
-  })();
+      btnMenu.addEventListener('click', function() {
+        const isOpen = mobileMenu.classList.toggle('open');
+        iconMenu.style.display = isOpen ? 'none' : 'block';
+        iconClose.style.display = isOpen ? 'block' : 'none';
+        btnMenu.setAttribute('aria-expanded', isOpen);
+        if (isOpen) {
+
+
+          header.classList.remove('at-top');
+          header.classList.add('scrolled');
+        } else {
+
+          onScroll();
+        }
+      });
+
+
+      mobileMenu.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          mobileMenu.classList.remove('open');
+          iconMenu.style.display = 'block';
+          iconClose.style.display = 'none';
+          btnMenu.setAttribute('aria-expanded', 'false');
+          onScroll();
+        });
+      });
+
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+          mobileMenu.classList.remove('open');
+          iconMenu.style.display = 'block';
+          iconClose.style.display = 'none';
+          btnMenu.setAttribute('aria-expanded', 'false');
+          btnMenu.focus();
+          onScroll();
+        }
+      });
+    })();
   </script>
 
-  <?php /* ── Punto de anclaje para "saltar al contenido" ── */ ?>
+
   <main id="main-content" tabindex="-1" style="outline:none;">

@@ -9,23 +9,38 @@ get_header();
 
 
 
-<header class="bg-[#0b1f4a] pb-6 pt-24  relative overflow-hidden ">
+<!--header class="bg-[#0b1f4a] pb-6 pt-24  relative overflow-hidden ">
 
     <div class="absolute inset-0 bg-gradient-to-r  from-[#0b1f4a] z-1 to-[#000]/60 opacity-90"></div>
     <img class="absolute top-0 size-full object-cover z-0" src="<?php echo get_template_directory_uri(); ?>/imagenes/default-hero.jpg" alt="">
 
     <div class="relative max-w-7xl mx-auto px-6 z-10 text-left">
-        <h1 class="text-white text-3xl md:text-4xl font-bold  mb-4"> <!-- font-['Libre_Baskerville',serif] -->
+        <h1 class="text-white text-3xl md:text-4xl font-bold  mb-4"> <!-- font-['Libre_Baskerville',serif] >
             Carreras
         </h1>
-        <!--p class="text-slate-300 text-base max-w-2xl mx-auto">
-            Utiliza los filtros a continuación para explorar nuestra oferta académica y encontrar el plan de estudios ideal para tu futuro.
-        </p-->
+    
     </div>
     <div class="max-w-7xl mx-auto relative z-10" style="">
         <p class="absolute  bottom-[-24px] text-[#fff]/60 leading-[0.7] font-[800] right-0 px-12 text-[7vw]">UNSL</p>
     </div>
+</header-->
+<header class="bg-[#0b1f4a] py-16 lg:py-24 relative overflow-hidden">
+    <div class="absolute inset-0 top-0 z-10 bg-gradient-to-b from-[#0b1f4a] to-[#1e3a8a] opacity-80"></div>
+    <div class="absolute inset-0 opacity-10 z-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent bg-[length:20px_20px]"></div>
+    <img class="absolute object-cover size-full top-0 z-0" src="<?php echo  get_template_directory_uri() . '/imagenes/carreras.jpg' ?>" alt="">
+    <div class="relative max-w-7xl mx-auto px-6 text-center z-10">
+        <!--span class="inline-block py-1.5 px-4  bg-white/10 backdrop-blur-md text-[#88CAFC] text-xs font-bold tracking-widest uppercase mb-4 border border-white/20"> 
+            Estructura Institucional
+        </span-->
+        <h1 class="text-white text-4xl md:text-5xl lg:text-6xl font-bold  mb-6"> <!-- font-['Libre_Baskerville',serif] -->
+            Carreras UNSL
+        </h1>
+        <p class="text-slate-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-light">
+            Descubrí tu camino académico
+        </p>
+    </div>
 </header>
+
 <div class="bg-white border-b border-[#e5e0d8]">
     <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-xs text-[#061C2E]">
         <a href="<?php echo home_url(); ?>" class="hover:text-[#0b1f4a] transition-colors">Inicio</a>
@@ -62,7 +77,7 @@ get_header();
             </div>
 
             <?php
-            // 1. Añadimos un tercer parámetro: $width_classes
+
             function imprimir_opciones_taxonomia_archivo($taxonomia, $placeholder, $width_classes)
             {
                 $nombres_facultades = array(
@@ -79,7 +94,7 @@ get_header();
 
                 $terms = get_terms(array('taxonomy' => $taxonomia, 'hide_empty' => false));
 
-                // 2. Imprimimos el div usando las clases de ancho personalizadas ($width_classes)
+
                 echo '<div class="relative flex-shrink-0 w-full ' . esc_attr($width_classes) . ' group">';
 
                 echo '<select id="filter' . ucfirst($taxonomia) . '" class="w-full bg-white border border-[#e5e0d8] hover:border-[#88CAFC] px-3 py-2.5 rounded-lg text-sm font-medium text-[#0b1f4a] outline-none focus:ring-2 focus:ring-[#88CAFC]/30 cursor-pointer appearance-none pr-8 transition-colors shadow-sm truncate" title="Filtrar por ' . esc_html($placeholder) . '">';
@@ -94,7 +109,7 @@ get_header();
                 }
                 echo '</select>';
 
-                // Ícono de flecha
+
                 echo '<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-[#0b1f4a]/40 group-hover:text-[#88CAFC] transition-colors">';
                 echo '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>';
                 echo '</div>';
@@ -162,7 +177,7 @@ if ($query_carreras->have_posts()) {
             }
         }
 
-        // Usamos la primera para el color principal de la tarjeta
+
         $facultad_slug = !empty($facultades_slugs) ? $facultades_slugs[0] : '';
 
         $terms_sede = get_the_terms(get_the_ID(), 'sede');
@@ -172,7 +187,7 @@ if ($query_carreras->have_posts()) {
         $modalidad_name = ($terms_modalidad && !is_wp_error($terms_modalidad)) ? $terms_modalidad[0]->name : '';
 
         $duracion = get_field('duracion_carrera') ? get_field('duracion_carrera') : 'No especificada';
-
+        $titulo_intermedio = get_field('titulo_intermedio') ? get_field('titulo_intermedio') : '';
         $array_carreras[] = array(
             'nombre'             => html_entity_decode(get_the_title()),
             'link'               => get_permalink(),
@@ -182,14 +197,15 @@ if ($query_carreras->have_posts()) {
             'facultades_slugs'   => $facultades_slugs,
             'duracion'           => $duracion,
             'sede'               => html_entity_decode($sede_name),
-            'modalidad'          => html_entity_decode($modalidad_name)
+            'modalidad'          => html_entity_decode($modalidad_name),
+            'titulo_intermedio'  => html_entity_decode($titulo_intermedio)
         );
     }
     wp_reset_postdata();
 }
 ?>
 
-<main class="max-w-7xl mx-auto px-6 py-10 bg-[#EEF1F5]">
+<main class="max-w-7xl mx-auto px-6 py-10 ">
 
     <div class="bg-white p-6 rounded shadow-sm border border-[#e5e0d8] mb-8">
         <div class="relative w-full">
@@ -323,7 +339,6 @@ if ($query_carreras->have_posts()) {
             dot: "bg-gray-700"
         };
 
-        // Color del borde principal de la tarjeta (usa la primera facultad de la lista)
         const fc = FACU_CONFIG[c.facultad_slug] || {
             border: 'border-b-[#e5e0d8]'
         };
@@ -332,12 +347,10 @@ if ($query_carreras->have_posts()) {
         const modalidadIcon = modalidadText === "Virtual" ? '<path d="M9.75 17 9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/>' : '<path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0z"/>';
         const modalidadClass = modalidadText === "Virtual" ? "text-[#0b1f4a] bg-[#0b1f4a14]" : "text-[#1a6b52] bg-[#1a6b5214]";
 
-        // --- LÓGICA DE MÚLTIPLES FACULTADES ---
         const labelFacultad = (c.facultades_slugs && c.facultades_slugs.length > 1) ? "Facultades" : "Facultad";
         let facultadesPills = "";
 
         if (c.facultades_slugs && c.facultades_slugs.length > 0) {
-            // Creamos una pastilla (pill) individual para cada facultad
             facultadesPills = c.facultades_slugs.map(slug => {
                 const conf = FACU_CONFIG[slug] || {
                     bgPill: 'bg-[#EEF1F5]',
@@ -347,13 +360,30 @@ if ($query_carreras->have_posts()) {
                 return `<span class="font-bold ${conf.textPill} ${conf.bgPill} px-2 py-1 rounded max-w-full text-right truncate" title="${name}">${name}</span>`;
             }).join('');
         } else {
-            // Respaldo por si no tiene facultad asignada
-            facultadesPills = `<span class="font-bold text-[#061C2E] bg-[#EEF1F5] px-2 py-1 rounded max-w-full text-right truncate">UNSL</span>`;
+            facultadesPills = `<span class="font-bold text-[#061C2E] px-2 py-1 rounded max-w-full text-right truncate">UNSL</span>`;
         }
-        // ---------------------------------------
+
+
+        let tituloIntermedioHTML = "";
+        if (c.titulo_intermedio && c.titulo_intermedio.trim() !== "") {
+            tituloIntermedioHTML = `
+                <div class="mt-3 bg-[#f8fbff] border border-[#e5e0d8] px-3 py-2 rounded flex items-center gap-2">
+                    
+                    <svg class="w-6 h-6 text-[#88CAFC]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.78552 9.5 12.7855 14l9-4.5-9-4.5-8.99998 4.5Zm0 0V17m3-6v6.2222c0 .3483 2 1.7778 5.99998 1.7778 4 0 6-1.3738 6-1.7778V11"/>
+</svg>
+
+                
+                    <div class="flex flex-col min-w-0">
+                        <span class="text-[#061C2E] text-[9px] uppercase tracking-widest font-bold leading-none mb-0.5">Título intermedio</span>
+                        <span class="text-[#1a1a2e] text-xs font-semibold " title="${c.titulo_intermedio}">${c.titulo_intermedio}</span>
+                    </div>
+                </div>
+            `;
+        }
 
         return `
-            <a href="${c.link}" class="group bg-white overflow-hidden border-x border-b border-[#e5e0d8] border-b-4 ${fc.border} hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col cursor-pointer">
+            <a href="${c.link}" class="group bg-white overflow-hidden border-x border-b rounded border-[#e5e0d8] border-b-4 ${fc.border} hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col cursor-pointer">
                 <div class="p-6 flex flex-col gap-4 flex-1">
                     <div class="flex items-start justify-between gap-2">
                         <span class="${tc.bg} ${tc.text} text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded flex items-center gap-1.5 shrink-0">
@@ -364,13 +394,17 @@ if ($query_carreras->have_posts()) {
                             ${modalidadText}
                         </span>
                     </div>
-                    <div class="flex items-start gap-4 mt-2">
-                        <h3 class="text-[#1a1a2e] text-base font-bold leading-snug group-hover:text-[#0b1f4a] transition-colors flex-1 mt-1">
+                    
+                    <div class="flex flex-col items-start mt-2">
+                        <h3 class="text-[#1a1a2e] text-base font-bold leading-snug group-hover:text-[#0b1f4a] transition-colors mt-1 w-full">
                             ${c.nombre}
                         </h3>
-                    </div>
-                    <div class="flex flex-col gap-2 mt-auto pt-4 border-t border-dashed border-[#e5e0d8]">
                         
+                        ${tituloIntermedioHTML}
+                        
+                    </div>
+                    
+                    <div class="flex flex-col gap-2 mt-auto pt-4 border-t border-dashed border-[#e5e0d8]">
                         <div class="flex items-start justify-between text-xs gap-3">
                             <span class="text-[#061C2E] font-medium shrink-0 mt-1">${labelFacultad}</span>
                             <div class="flex flex-col items-end gap-1.5 min-w-0 flex-1">

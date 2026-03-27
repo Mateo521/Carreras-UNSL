@@ -9,14 +9,14 @@ get_header();
 
 
 
-<header class="bg-[#0b1f4a] py-16 lg:py-20 relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-[#0b1f4a] to-[#1e3a8a] opacity-90"></div>
-    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent bg-[length:20px_20px]"></div>
-
+<header class="bg-[#0b1f4a] py-16 lg:py-24 relative overflow-hidden">
+    <div class="absolute inset-0 top-0 z-10 bg-gradient-to-b from-[#0b1f4a] to-[#1e3a8a] opacity-80"></div>
+    <div class="absolute inset-0 opacity-10 z-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent bg-[length:20px_20px]"></div>
+    <img class="absolute object-cover size-full top-0 z-0" src="<?php echo  get_template_directory_uri() . '/imagenes/carreras.jpg'?>" alt="">
     <div class="relative max-w-7xl mx-auto px-6 text-center z-10">
-        <span class="inline-block py-1.5 px-4  bg-white/10 backdrop-blur-md text-[#88CAFC] text-xs font-bold tracking-widest uppercase mb-4 border border-white/20"> <!-- rounded-full -->
+        <!--span class="inline-block py-1.5 px-4  bg-white/10 backdrop-blur-md text-[#88CAFC] text-xs font-bold tracking-widest uppercase mb-4 border border-white/20"> 
             Estructura Institucional
-        </span>
+        </span-->
         <h1 class="text-white text-4xl md:text-5xl lg:text-6xl font-bold  mb-6"> <!-- font-['Libre_Baskerville',serif] -->
             Facultades
         </h1>
@@ -56,8 +56,8 @@ get_header();
 
                 $enlace_seo = home_url('/facultad/' . strtolower($fac['sigla']) . '/');
             ?>
-                <a href="<?php echo esc_url($enlace_seo); ?>" class="group bg-white rounded-xl border border-[#e5e0d8] hover:border-[#88CAFC] hover:shadow-lg hover:shadow-[#0b1f4a08] transition-all duration-300 p-6 flex items-center gap-5">
-                    <div class="w-16 h-16 rounded-xl <?php echo esc_attr($fac['color_bg']); ?> flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105">
+                <a href="<?php echo esc_url($enlace_seo); ?>" class="group bg-white rounded border border-[#e5e0d8] hover:border-[#88CAFC] hover:shadow-lg hover:shadow-[#0b1f4a08] transition-all duration-300 p-6 flex items-center gap-5">
+                    <div class="w-16 h-16 rounded <?php echo esc_attr($fac['color_bg']); ?> flex items-center justify-center shrink-0 transition-transform duration-300 ">
                         <img src="<?php echo get_template_directory_uri() . '/imagenes/' . esc_attr($fac['img']); ?>" alt="<?php echo esc_attr($fac['sigla']); ?>" class="w-11 h-11 object-contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
                         <span class="hidden w-11 h-11 items-center justify-center font-['Libre_Baskerville',serif] font-bold text-sm <?php echo esc_attr($fac['color_txt']); ?> leading-tight text-center"><?php echo substr($fac['sigla'], 0, 2); ?></span>
                     </div>
@@ -75,8 +75,8 @@ get_header();
                 </a>
             <?php endforeach; ?>
 
-            <a href="<?php echo home_url('/facultad/ipau/'); ?>" class="group col-span-1 sm:col-span-2 lg:col-span-1 bg-[#0b1f4a] rounded-xl border border-[#0b1f4a] hover:border-[#88CAFC] hover:shadow-xl transition-all duration-300 p-6 flex items-center gap-5">
-                <div class="w-16 h-16 rounded-xl bg-white/10 flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:bg-[#88CAFC20] group-hover:scale-105">
+            <a href="<?php echo home_url('/facultad/ipau/'); ?>" class="group col-span-1 sm:col-span-2 lg:col-span-1 bg-[#0b1f4a] rounded border border-[#0b1f4a] hover:border-[#88CAFC] hover:shadow-xl transition-all duration-300 p-6 flex items-center gap-5">
+                <div class="w-16 h-16 rounded bg-white/10 flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:bg-[#88CAFC20] ">
                     <img src="<?php echo get_template_directory_uri(); ?>/imagenes/ipau.png" alt="IPAU" class="w-11 h-11 object-contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
                     <span class="hidden w-11 h-11 items-center justify-center font-['Libre_Baskerville',serif] font-bold text-sm text-[#88CAFC] leading-tight text-center">IP</span>
                 </div>

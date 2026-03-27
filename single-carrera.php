@@ -30,7 +30,6 @@ while (have_posts()) : the_post();
     $terms_nivel = get_the_terms(get_the_ID(), 'nivel');
     $nivel_nombre = ($terms_nivel && !is_wp_error($terms_nivel)) ? $terms_nivel[0]->name : 'Grado';
     
-    // Obtenemos TODAS las facultades
     $terms_facultad = get_the_terms(get_the_ID(), 'facultad');
     
     $terms_sede = get_the_terms(get_the_ID(), 'sede');
@@ -87,11 +86,11 @@ while (have_posts()) : the_post();
                             $f_text = isset($colores_facultades[$f_slug]) ? $colores_facultades[$f_slug]['text'] : 'text-[#0b1f4a]';
                             $f_logo = get_template_directory_uri() . '/imagenes/' . $f_slug . '.png';
                     ?>
-                            <div class="flex items-center gap-3">
+                            <div class="flex items-center gap-1">
                                 <div class="w-12 h-12 rounded-xl <?php echo esc_attr($f_bg); ?> flex items-center justify-center shrink-0 shadow-lg">
                                     <img src="<?php echo esc_url($f_logo); ?>" alt="Logo <?php echo esc_attr($f_slug); ?>" class="w-8 h-8 object-contain" onerror="this.src='<?php echo get_template_directory_uri(); ?>/logo-unsl-negativo2.svg'; this.classList.add('opacity-40', 'invert');" />
                                 </div>
-                                <p class="<?php echo esc_attr($f_bg); ?> <?php echo esc_attr($f_text); ?> px-3 py-1.5 rounded text-sm font-bold shadow-md">
+                                <p class="text-white px-3 py-1.5 rounded text-sm font-bold shadow-md"> <!-- <?php echo esc_attr($f_bg); ?>  <?php echo esc_attr($f_text); ?> -->
                                     <?php echo esc_html($f_nombre); ?>
                                 </p>
                             </div>
@@ -154,7 +153,7 @@ while (have_posts()) : the_post();
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div class="lg:col-span-2 flex flex-col gap-8">
                 <?php if (get_field('objetivos_carrera')) : ?>
-                    <section class="bg-white border border-[#e5e0d8] overflow-hidden">
+                    <section class="bg-white border border-[#e5e0d8] overflow-hidden rounded-xl">
                         <div class="border-b border-[#DADBED] px-7 py-5 flex items-center gap-3">
                             <h2 class=" text-[#0b1f4a] font-bold text-lg">Objetivos de la carrera</h2> 
                         </div>
@@ -165,7 +164,7 @@ while (have_posts()) : the_post();
                 <?php endif; ?>
                 
                 <?php if (get_field('alcances_titulo')) : ?>
-                    <section class="bg-white border border-[#e5e0d8] overflow-hidden">
+                    <section class="bg-white border border-[#e5e0d8] overflow-hidden rounded-xl">
                         <div class="border-b border-[#DADBED] px-7 py-5 flex items-center gap-3">
                             <h2 class=" text-[#0b1f4a] font-bold text-lg">Alcances e incumbencias del título</h2> 
                         </div>
@@ -190,7 +189,7 @@ while (have_posts()) : the_post();
                 if (!empty($plan_de_estudios)) :
                     $ultimo_anio = max(array_keys($plan_de_estudios));
                 ?>
-                    <section class="bg-white border border-[#e5e0d8] overflow-hidden">
+                    <section class="bg-white border border-[#e5e0d8] overflow-hidden rounded-xl">
                         <div class="border-b border-[#DADBED] px-7 py-5 flex items-center gap-3">
                             <h2 class=" text-[#0b1f4a] font-bold text-lg">Organización Curricular</h2>
                         </div>
@@ -201,7 +200,7 @@ while (have_posts()) : the_post();
                                     $ul_class = $es_final ? 'grid grid-cols-1  divide-x divide-y divide-[#DADBED]' : 'divide-y divide-[#DADBED]';
                                     $li_class = $es_final ? 'px-4 py-3 text-xs text-[#1a1a2e88] flex items-center gap-2' : 'px-4 py-2.5 text-xs text-[#1a1a2e88] flex items-center gap-2';
                                 ?> 
-                                    <div class="border border-[#e5e0d8] overflow-hidden">
+                                    <div class="border border-[#e5e0d8] overflow-hidden rounded-t-xl">
                                         <div class="bg-[#0b1f4a] px-4 py-3 flex items-center gap-2">
                                             <span class="w-6 h-6 rounded-full bg-[#88CAFC] flex items-center justify-center shrink-0">
                                                 <span class="text-[#0b1f4a] text-[10px] font-black"><?php echo esc_html($numero_anio); ?></span>
@@ -235,7 +234,7 @@ while (have_posts()) : the_post();
             </div>
             
             <aside class="flex flex-col gap-6">
-                <div class="bg-white border border-[#e5e0d8] p-6">
+                <div class="bg-white border border-[#e5e0d8] p-6 rounded-xl">
                     <h3 class=" text-[#0b1f4a] font-bold text-base mb-4">Compartí esta carrera</h3>
                     <div class="flex gap-3">
                         <?php $url_actual = urlencode(get_permalink()); ?>
@@ -248,7 +247,7 @@ while (have_posts()) : the_post();
                     </div>
                 </div>
 
-                <div class="bg-white border border-[#e5e0d8] overflow-hidden">
+                <div class="bg-white border border-[#e5e0d8] overflow-hidden rounded-xl">
                     <div class="bg-[#0b1f4a] px-6 py-4">
                         <h3 class=" text-white font-bold text-base">Contacto</h3>
                         <?php 
@@ -261,10 +260,10 @@ while (have_posts()) : the_post();
                         }
                         ?>
                     </div>
-                    <div class="p-6 flex flex-col gap-4">
+                    <div class="p-6 flex flex-col gap-4 ">
                         <?php if (get_field('telefono_contacto')) : ?>
                             <div class="flex items-start gap-3">
-                                <div class="w-8 h-8 bg-[#EEF1F5] flex items-center justify-center shrink-0 mt-0.5">
+                                <div class="w-8 h-8 bg-[#EEF1F5] flex items-center justify-center shrink-0 mt-0.5 rounded-lg">
                                     <svg class="w-4 h-4 text-[#0b1f4a]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 6z" /></svg>
                                 </div>
                                 <div>
@@ -278,7 +277,7 @@ while (have_posts()) : the_post();
                         <?php endif; ?>
                         <?php if (get_field('sitio_web_contacto')) : ?>
                             <div class="flex items-start gap-3">
-                                <div class="w-8 h-8 bg-[#EEF1F5] flex items-center justify-center shrink-0 mt-0.5">
+                                <div class="w-8 h-8 bg-[#EEF1F5] flex items-center justify-center shrink-0 mt-0.5 rounded-lg">
                                     <svg class="w-4 h-4 text-[#0b1f4a]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253M3 12a8.96 8.96 0 0 0 .284 2.253" /></svg>
                                 </div>
                                 <div>
@@ -289,7 +288,7 @@ while (have_posts()) : the_post();
                         <?php endif; ?>
                         <?php if (get_field('correo_contacto')) : ?>
                             <div class="flex items-start gap-3">
-                                <div class="w-8 h-8 bg-[#EEF1F5] flex items-center justify-center shrink-0 mt-0.5">
+                                <div class="w-8 h-8 bg-[#EEF1F5] flex items-center justify-center shrink-0 mt-0.5 rounded-lg">
                                     <svg class="w-4 h-4 text-[#0b1f4a]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" /></svg>
                                 </div>
                                 <div>
@@ -322,7 +321,7 @@ while (have_posts()) : the_post();
                 </div>
 
                 <?php if (get_field('resolucion_ministerial') || get_field('ordenanzas_unsl')) : ?>
-                    <div class="bg-white border border-[#e5e0d8] overflow-hidden ">
+                    <div class="bg-white border border-[#e5e0d8] overflow-hidden rounded-xl">
                         <div class="bg-[#f5f3ee] px-6 py-4 border-b border-[#e5e0d8]">
                             <h3 class="text-[#0b1f4a] font-bold   tracking-wider flex items-center gap-2">
                                 Respaldo académico
@@ -369,11 +368,11 @@ while (have_posts()) : the_post();
                         </p>
                     </div>
                 <?php else : ?>
-                    <div class="bg-[#0b1f4a] p-6 relative overflow-hidden">
+                    <div class="bg-[#0b1f4a] p-6 relative overflow-hidden rounded-xl">
                         <div class="absolute -top-8 -right-8 w-32 h-32 rounded-full bg-[#88CAFC] opacity-10 pointer-events-none"></div>
                         <h3 class="text-white font-bold text-base mb-2 relative">¿Te interesa esta carrera?</h3>
                         <p class="text-[#ffffff77] text-sm mb-5 relative">Hacé tu preinscripción y comenzá tu camino en la UNSL.</p>
-                        <a href="/preinscripcion" class="relative flex items-center justify-center gap-2 bg-[#88CAFC] hover:bg-white text-[#0b1f4a] font-bold text-sm px-5 py-3.5 transition-all">
+                        <a href="/preinscripcion" class="relative flex items-center justify-center rounded-lg gap-2 bg-[#88CAFC] hover:bg-white text-[#0b1f4a] font-bold text-sm px-5 py-3.5 transition-all">
                             Preinscripción 2026
                         </a>
                     </div>
