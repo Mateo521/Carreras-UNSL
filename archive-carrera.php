@@ -329,7 +329,29 @@ if ($query_carreras->have_posts()) {
         search: ""
     };
 
+/*
+    function formatearTitulo(str) {
+        if (!str) return "";
 
+
+        const textoMinusculas = str.toLowerCase();
+
+
+        const palabrasMenores = ['de', 'del', 'en', 'y', 'a', 'la', 'las', 'el', 'los', 'por', 'para', 'con'];
+
+        return textoMinusculas.split(' ').map((palabra, index) => {
+            if (palabra.length === 0) return palabra;
+
+
+            if (index === 0 || !palabrasMenores.includes(palabra)) {
+                return palabra.charAt(0).toUpperCase() + palabra.slice(1);
+            }
+
+
+            return palabra;
+        }).join(' ');
+    }
+*/
 
     function buildCard(c) {
         const tc = TIPO_CONFIG[c.tipo] || {
@@ -397,7 +419,7 @@ if ($query_carreras->have_posts()) {
                     
                     <div class="flex flex-col items-start mt-2">
                         <h3 class="text-[#1a1a2e] text-base font-bold leading-snug group-hover:text-[#0b1f4a] transition-colors mt-1 w-full">
-                            ${c.nombre}
+                            ${formatearTitulo(c.nombre)}
                         </h3>
                         
                         ${tituloIntermedioHTML}
@@ -427,6 +449,7 @@ if ($query_carreras->have_posts()) {
 
     function render() {
         const q = state.search.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
         const filtered = CARRERAS.filter(c => {
             const name = c.nombre.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
             if (state.tipo && c.tipo !== state.tipo) return false;
@@ -440,7 +463,10 @@ if ($query_carreras->have_posts()) {
 
             if (q && !name.includes(q)) return false;
             return true;
-        });
+        }).sort((a, b) => a.nombre.localeCompare(b.nombre, 'es', {
+            sensitivity: 'base'
+        }));
+
 
         const grid = document.getElementById("carrerasGrid");
         const empty = document.getElementById("emptyState");

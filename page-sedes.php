@@ -58,10 +58,10 @@ get_header();
                     <h2 class="text-3xl lg:text-4xl font-bold text-[#0b1f4a] ">Sede San Luis</h2> <!-- font-['Libre_Baskerville',serif] -->
                 </div>
 
-                <h3 class="text-lg font-semibold text-[#1a1a2e] mb-4 mt-2">Centro administrativo, científico y cultural</h3>
+                <h3 class="text-lg font-semibold text-[#1a1a2e] mb-4 mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
 
                 <p class="text-[#1a1a2e88] leading-relaxed mb-6">
-                    Situada en la capital provincial, es la sede central y fundacional de la institución. Estudiar aquí significa sumergirse en una vibrante vida universitaria, con acceso a laboratorios de primer nivel, bibliotecas centrales, residencias estudiantiles, el comedor universitario y un gran complejo deportivo.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in dolor bibendum, posuere lectus vel, gravida elit. Morbi at urna mauris. Nunc scelerisque fringilla ornare. Vestibulum sed aliquam lorem. Nunc hendrerit lorem ut lacus lacinia convallis sed in est.
                 </p>
 
                 <div class="bg-white border border-[#e5e0d8] rounded p-5 mb-8">
@@ -105,11 +105,10 @@ get_header();
                     <h2 class="text-3xl lg:text-4xl font-bold text-[#0b1f4a] ">Sede Villa Mercedes</h2> <!-- font-['Libre_Baskerville',serif] -->
                 </div>
 
-                <h3 class="text-lg font-semibold text-[#1a1a2e] mb-4 mt-2">Vínculo industrial y socioproductivo</h3>
+                <h3 class="text-lg font-semibold text-[#1a1a2e] mb-4 mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
 
                 <p class="text-[#1a1a2e88] leading-relaxed mb-6">
-                    Ubicada en el corazón industrial, económico y agropecuario de la provincia. La sede de Villa Mercedes se caracteriza por su estrecha relación con el sector productivo local, ofreciendo prácticas profesionales en entornos reales de alta exigencia, dotando a sus egresados de un perfil altamente competitivo.
-                </p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in dolor bibendum, posuere lectus vel, gravida elit. Morbi at urna mauris. Nunc scelerisque fringilla ornare. Vestibulum sed aliquam lorem.                 </p>
 
                 <div class="bg-white border border-[#e5e0d8] rounded p-5 mb-8">
                     <p class="text-xs font-bold uppercase tracking-widest text-[#1a1a2e55] mb-3">Facultades</p>
@@ -147,11 +146,10 @@ get_header();
                     <h2 class="text-3xl lg:text-4xl font-bold text-[#0b1f4a] ">Sede Villa de Merlo</h2> <!-- font-['Libre_Baskerville',serif] -->
                 </div>
 
-                <h3 class="text-lg font-semibold text-[#1a1a2e] mb-4 mt-2">Sinergia entre educación y turismo</h3>
+                <h3 class="text-lg font-semibold text-[#1a1a2e] mb-4 mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
 
                 <p class="text-[#1a1a2e88] leading-relaxed mb-6">
-                    Establecida en el principal polo turístico de la provincia y poseedora de un microclima reconocido a nivel mundial. La sede ofrece un entorno natural privilegiado para el aprendizaje, con un enfoque académico centrado en el desarrollo turístico sustentable, el urbanismo y la preservación del ecosistema regional.
-                </p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in dolor bibendum, posuere lectus vel, gravida elit. Morbi at urna mauris. Nunc scelerisque fringilla ornare. Vestibulum sed aliquam lorem.                 </p>
 
                 <div class="bg-white border border-[#e5e0d8] rounded p-5 mb-8">
                     <p class="text-xs font-bold uppercase tracking-widest text-[#1a1a2e55] mb-3">Facultades</p>

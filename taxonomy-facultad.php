@@ -24,15 +24,15 @@ $nombres_facultades = array(
 );
 
 $descripciones = array(
-    'fqbyf'  => 'Pionera en investigación científica, enfocada en la salud, el medio ambiente y la innovación tecnológica en procesos químicos y bioquímicos.',
-    'fcfmyn' => 'Centro de excelencia en ciencias exactas y tecnología, formando profesionales líderes en informática, física, matemáticas y geología.',
-    'fica'   => 'Impulsando el desarrollo agroindustrial de la región mediante la formación de ingenieros y técnicos altamente capacitados para los desafíos productivos actuales.',
-    'fcejs'  => 'Formando líderes con visión estratégica, ética y compromiso social en los campos de la economía, el derecho y la administración pública y privada.',
-    'fch'    => 'Dedicada a la comprensión del ser humano, la educación y la sociedad, formando profesionales críticos y comprometidos con el desarrollo cultural.',
-    'fapsi'  => 'Referente regional en el estudio del comportamiento humano, promoviendo la salud mental y el bienestar integral de la comunidad.',
-    'fcs'    => 'Comprometida con la formación de profesionales de la salud con profunda vocación de servicio, excelencia clínica y enfoque preventivo.',
-    'ftu'    => 'Aprovechando el entorno privilegiado de la región para formar expertos en gestión turística sostenible y desarrollo urbano planificado.',
-    'ipau'   => 'Espacio de innovación que entrelaza la técnica, el arte y los oficios, brindando formaciones ágiles y con rápida salida laboral.'
+    'fqbyf'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in dolor bibendum, posuere lectus vel, gravida elit. Morbi at urna mauris. Nunc scelerisque fringilla ornare. Vestibulum sed aliquam lorem. Nunc hendrerit lorem ut lacus lacinia convallis sed in est.',
+    'fcfmyn' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in dolor bibendum, posuere lectus vel, gravida elit. Morbi at urna mauris. Nunc scelerisque fringilla ornare. Vestibulum sed aliquam lorem. .',
+    'fica'   => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in dolor bibendum, posuere lectus vel, gravida elit. Morbi at urna mauris. Nunc scelerisque fringilla ornare. Vestibulum sed aliquam lorem. .',
+    'fcejs'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in dolor bibendum, posuere lectus vel, gravida elit. Morbi at urna mauris. Nunc scelerisque fringilla ornare. Vestibulum sed aliquam lorem. .',
+    'fch'    => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in dolor bibendum, posuere lectus vel, gravida elit. Morbi at urna mauris. Nunc scelerisque fringilla ornare. Vestibulum sed aliquam lorem. .',
+    'fapsi'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in dolor bibendum, posuere lectus vel, gravida elit. Morbi at urna mauris. Nunc scelerisque fringilla ornare. Vestibulum sed aliquam lorem. .',
+    'fcs'    => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in dolor bibendum, posuere lectus vel, gravida elit. Morbi at urna mauris. Nunc scelerisque fringilla ornare. Vestibulum sed aliquam lorem. .',
+    'ftu'    => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in dolor bibendum, posuere lectus vel, gravida elit. Morbi at urna mauris. Nunc scelerisque fringilla ornare. Vestibulum sed aliquam lorem. .',
+    'ipau'   => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in dolor bibendum, posuere lectus vel, gravida elit. Morbi at urna mauris. Nunc scelerisque fringilla ornare. Vestibulum sed aliquam lorem. .'
 );
 
 $colores_facultades = array(

@@ -11,16 +11,20 @@ get_header();
     @import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
 
     :root {
-        --navy: #08183A;
+        --navy: #232c77;
+
         --navy-2: #0D2452;
-        --azulunsl: #164270;
+
+        --azulunsl: #2a3e8a;
+
+
         --cream: #F5FCFF;
         --ice: #EAF2FF;
         --blue: #4A82DC;
         --blue-l: #A8C8F4;
-        --ink: #111827;
+        --ink: #2A3E8A;
         --mid: #6B7280;
-        --line: rgba(8, 24, 58, 0.12);
+        --line: rgba(35, 44, 119, 0.12);
     }
 
 
@@ -81,17 +85,17 @@ get_header();
         class="absolute inset-0 w-full h-full object-cover"
         style="z-index:0; opacity:.38;"
         autoplay muted loop playsinline
-        src="<?php echo get_template_directory_uri(); ?>/videos/video-2.mp4"></video>
+        src="<?php echo get_template_directory_uri(); ?>/videos/video-4.mp4"></video>
 
 
     <div
         class="absolute inset-0"
         style="z-index:1; background: linear-gradient(
       to bottom,
-      rgba(8,24,58,.2) 0%,
-      rgba(8,24,58,.5) 40%,
-      rgba(8,24,58,.92) 80%,
-      rgba(8,24,58,1) 100%
+      rgba(35, 44, 119,.1) 0%,
+      rgba(35, 44, 119,.1) 40%,
+      rgba(35, 44, 119,.2) 80%,
+      rgba(35, 44, 119,.7) 100%
     );"></div>
 
 
@@ -124,12 +128,12 @@ get_header();
 
 
         <div
-            class="flex items-center gap-3 mb-7"
+            class="flex items-center gap-3 mb-0"
             style="animation: fadeUp .8s .1s both cubic-bezier(.22,1,.36,1);">
 
             <span
                 style="
-          font-size:.75rem;
+          font-size:1rem;
           font-weight:500;
       
         text-transform:uppercase;
@@ -138,6 +142,7 @@ get_header();
 
         <?php /* Titular principal */ ?>
         <h1
+         class="relative left-[-4px]"
             style="
         font-weight:800;
         font-size:clamp(44px,7vw,96px);
@@ -610,7 +615,7 @@ get_header();
               font-size:.88rem;
               letter-spacing:.06em;
               text-transform:uppercase;
-              color:var(--navy);
+              color:white;
               background:var(--azulunsl);
               padding:.9rem 1.8rem;
               text-decoration:none;

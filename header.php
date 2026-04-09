@@ -52,7 +52,7 @@
 
 
     #site-header.scrolled {
-      background: rgba(8, 24, 58, .97);
+      background: #2A3E8A;
       border-bottom: 1px solid rgba(255, 255, 255, .08);
       box-shadow: 0 4px 24px rgba(0, 0, 0, .25);
       backdrop-filter: blur(12px);
@@ -246,7 +246,7 @@
       outline: none;
       border-color: var(--gold);
       background: rgba(255, 255, 255, 0.12);
-      width: 220px;
+      width: 320px;
     }
 
     .search-btn {
@@ -360,26 +360,32 @@
         style="display:none; align-items:center; gap:.75rem;"
         id="desktop-ctas">
 
-        <form role="search" method="get" class="search-form" action="<?php echo esc_url(home_url('/carreras/')); ?>">
+        <form role="search" method="get" class="search-form relative" action="<?php echo esc_url(home_url('/carreras/')); ?>">
           <input
             type="search"
-            class="search-input"
+            id="searchInputHeader"
+            class="search-input w-full"
             placeholder="Buscar carrera..."
             value="<?php echo isset($_GET['q']) ? esc_attr($_GET['q']) : ''; ?>"
             name="q"
+            autocomplete="off"
             aria-label="Buscar carrera" />
-          <button type="submit" class="search-btn" aria-label="Enviar búsqueda">
+
+          <button type="submit" class="search-btn absolute right-0 top-0 bottom-0 px-3" aria-label="Enviar búsqueda">
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 10.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" />
             </svg>
           </button>
+
+          <ul id="searchResultsList" class="absolute z-50 w-full bg-white border border-gray-200 rounded-md shadow-lg hidden max-h-60 overflow-y-auto mt-1 top-full left-0">
+          </ul>
         </form>
 
-        <a
+        <!--a
           href="https://campus.unsl.edu.ar/"
           target="_blank"
           rel="noopener noreferrer"
-          class="btn-ghost rounded-full">Campus Virtual</a>
+          class="btn-ghost rounded-full">Campus Virtual</a-->
 
         <a
           href="<?php echo home_url('/preinscripcion/'); ?>"
@@ -417,19 +423,25 @@
     <nav id="mobile-menu" role="navigation" aria-label="Menú móvil">
 
       <div class="mobile-search-container">
-        <form role="search" method="get" class="search-form" action="<?php echo esc_url(home_url('/carreras/')); ?>">
+        <form role="search" method="get" class="search-form relative" action="<?php echo esc_url(home_url('/carreras/')); ?>">
           <input
             type="search"
-            class="search-input"
+            id="searchInputHeader"
+            class="search-input w-full"
             placeholder="Buscar carrera..."
             value="<?php echo isset($_GET['q']) ? esc_attr($_GET['q']) : ''; ?>"
             name="q"
+            autocomplete="off"
             aria-label="Buscar carrera" />
-          <button type="submit" class="search-btn" aria-label="Enviar búsqueda">
+
+          <button type="submit" class="search-btn absolute right-0 top-0 bottom-0 px-3" aria-label="Enviar búsqueda">
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 10.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" />
             </svg>
           </button>
+
+          <ul id="searchResultsList" class="absolute z-50 w-full bg-white border border-gray-200 rounded-md shadow-lg hidden max-h-60 overflow-y-auto mt-1 top-full left-0">
+          </ul>
         </form>
       </div>
 
@@ -444,7 +456,7 @@
         <?php endforeach; ?>
 
         <div style="margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:.6rem;">
-          <a
+          <!--a
             href="https://campus.unsl.edu.ar/"
             target="_blank"
             rel="noopener noreferrer"
@@ -454,7 +466,7 @@
               color:rgba(255,255,255,.7);
               border:1px solid rgba(255,255,255,.2);
               padding:.7rem 1rem;
-              text-decoration:none;">Campus Virtual</a>
+              text-decoration:none;">Campus Virtual</a-->
           <a
             href="<?php echo home_url('/preinscripcion/'); ?>"
             style="display:block;text-align:center;
@@ -547,6 +559,126 @@
         }
       });
     })();
+
+
+
+
+
+    function formatearTitulo(str) {
+      if (!str) return "";
+      const textoMinusculas = str.toLowerCase();
+      const palabrasMenores = ['de', 'del', 'en', 'y', 'a', 'la', 'las', 'el', 'los', 'por', 'para', 'con'];
+
+      return textoMinusculas.split(' ').map((palabra, index) => {
+        if (palabra.length === 0) return palabra;
+        if (index === 0 || !palabrasMenores.includes(palabra)) {
+          return palabra.charAt(0).toUpperCase() + palabra.slice(1);
+        }
+        return palabra;
+      }).join(' ');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('searchInputHeader');
+      const resultsList = document.getElementById('searchResultsList');
+      let timeoutId;
+
+      if (!searchInput || !resultsList) return;
+
+
+      const TIPO_COLORS = {
+        'pregrado': {
+          bg: 'bg-[#e8f4f0]',
+          text: 'text-[#1a6b52]',
+          label: 'Pregrado'
+        },
+        'grado': {
+          bg: 'bg-[#eef2ff]',
+          text: 'text-[#3730a3]',
+          label: 'Grado'
+        },
+        'posgrado': {
+          bg: 'bg-[#fff7ed]',
+          text: 'text-[#92400e]',
+          label: 'Posgrado'
+        }
+      };
+
+
+      const wpRestUrl = "<?php echo esc_url(rest_url('wp/v2/carrera')); ?>?per_page=5&search=";
+
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.trim();
+        clearTimeout(timeoutId);
+
+        if (query.length < 2) {
+          resultsList.innerHTML = '';
+          resultsList.classList.add('hidden');
+          return;
+        }
+
+        timeoutId = setTimeout(() => {
+          fetch(wpRestUrl + encodeURIComponent(query))
+            .then(response => response.json())
+            .then(carreras => {
+              resultsList.innerHTML = '';
+
+              if (carreras.length > 0) {
+                carreras.forEach(carrera => {
+                  const li = document.createElement('li');
+
+
+                  const tempDiv = document.createElement('div');
+                  tempDiv.innerHTML = carrera.title.rendered;
+                  const tituloCrudo = tempDiv.textContent || tempDiv.innerText || "";
+
+
+                  const tituloLimpio = formatearTitulo(tituloCrudo);
+
+
+                  const tipo = carrera.tipo_nivel || 'general';
+                  const configColor = TIPO_COLORS[tipo] || {
+                    bg: 'bg-gray-100',
+                    text: 'text-gray-700',
+                    label: 'General'
+                  };
+
+
+                  li.className = 'px-4 py-3 hover:bg-slate-50 cursor-pointer border-b border-gray-100 last:border-0 transition-colors flex flex-col sm:flex-row sm:items-center gap-2';
+
+                  li.innerHTML = `
+                                <span class="${configColor.bg} ${configColor.text} text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded w-max shrink-0">
+                                    ${configColor.label}
+                                </span>
+                                <span class="text-sm font-medium text-[#1a1a2e] truncate"><a title="${carrera.title.rendered}" href="#" class="block w-full h-full">
+                                    ${tituloLimpio}
+                                </a></span>
+                            `;
+
+                  li.addEventListener('click', () => {
+                    window.location.href = carrera.link;
+                  });
+
+                  resultsList.appendChild(li);
+                });
+                resultsList.classList.remove('hidden');
+              } else {
+                resultsList.innerHTML = '<li class="px-4 py-3 text-sm text-gray-500 italic">No se encontraron carreras</li>';
+                resultsList.classList.remove('hidden');
+              }
+            })
+            .catch(error => console.error('Error:', error));
+        }, 300);
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!searchInput.contains(e.target) && !resultsList.contains(e.target)) {
+          resultsList.classList.add('hidden');
+        }
+      });
+    });
+  </script>
+
   </script>
 
 

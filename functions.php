@@ -255,26 +255,26 @@ function unsl_scraping_e_importacion_directa()
                 if ($hermano->nodeName !== 'hr') {
                     $texto_plano = trim($hermano->nodeValue);
 
-                    // Detectamos si el párrafo es un título de "Alcances" o "Perfil"
+
                     if (stripos($texto_plano, 'alcance') !== false || stripos($texto_plano, 'perfil del egresado') !== false) {
                         $seccion_actual = 'alcances';
                         $hermano = $hermano->nextSibling;
-                        continue; // Saltamos este nodo para no imprimir el título basura
+                        continue;
                     }
 
-                    // Detectamos si es el título "Objetivos" (para borrarlo)
+
                     if (stripos($texto_plano, 'objetivo') !== false && strlen($texto_plano) < 60) {
                         $seccion_actual = 'objetivos';
                         $hermano = $hermano->nextSibling;
                         continue;
                     }
 
-                    // Obtenemos el HTML del nodo
+
                     $raw_html = $dom_c->saveHTML($hermano);
 
-                    // MAGIA: Borramos todos los estilos raros y dejamos solo etiquetas básicas
+
                     $clean_html = strip_tags($raw_html, '<p><ul><li><ol><br><strong><b><em><i>');
-                    // Por si quedó algún atributo style o class pegado en las etiquetas permitidas
+
                     $clean_html = preg_replace('/(style|class)="[^"]*"/i', '', $clean_html);
 
                     if (trim($clean_html) !== '') {
@@ -501,6 +501,27 @@ function unsl_importar_posgrados_excel()
 }
 
 
+
+
+add_action('rest_api_init', function () {
+    register_rest_field('carrera', 'tipo_nivel', array(
+        'get_callback' => function ($carrera_arr) {
+
+            $terminos = wp_get_post_terms($carrera_arr['id'], 'nivel');
+
+            if (!empty($terminos) && !is_wp_error($terminos)) {
+
+                return strtolower($terminos[0]->name);
+            }
+
+            // Opcional: Si en lugar de taxonomía usas un campo personalizado (post meta / ACF), 
+            // borra lo de arriba y descomenta esta línea:
+            // return strtolower(get_post_meta($carrera_arr['id'], 'tu_campo_tipo', true));
+
+            return 'general';
+        }
+    ));
+});
 
 /*
 add_action('init', 'unsl_importar_carreras_desde_json');
