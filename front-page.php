@@ -11,14 +11,10 @@ get_header();
     @import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
 
     :root {
-        --navy: #232c77;
-
+        --navy: #151B4D;
         --navy-2: #0D2452;
-
         --azulunsl: #2a3e8a;
-
-
-        --cream: #F5FCFF;
+        --cream: #C9E0FF;
         --ice: #EAF2FF;
         --blue: #4A82DC;
         --blue-l: #A8C8F4;
@@ -92,10 +88,10 @@ get_header();
         class="absolute inset-0"
         style="z-index:1; background: linear-gradient(
       to bottom,
-      rgba(35, 44, 119,.1) 0%,
-      rgba(35, 44, 119,.1) 40%,
-      rgba(35, 44, 119,.2) 80%,
-      rgba(35, 44, 119,.7) 100%
+      rgba(8, 13, 56,.1) 0%,
+      rgba(8, 13, 56,.1) 40%,
+      rgba(8, 13, 56,.2) 80%,
+      rgba(8, 13, 56,.7) 100%
     );"></div>
 
 
@@ -117,7 +113,7 @@ get_header();
         <div class="scroll-mover"><span class="digit block" style="--delay: 0.1s;">2</span></div>
         <div class="scroll-mover"><span class="digit block" style="--delay: 0.25s;">0</span></div>
         <div class="scroll-mover"><span class="digit block" style="--delay: 0.4s;">2</span></div>
-        <div class="scroll-mover"><span class="digit block" style="--delay: 0.55s;">6</span></div>
+        <div class="scroll-mover"><span class="digit block" style="--delay: 0.55s;">7</span></div>
     </div>
 
 
@@ -165,7 +161,7 @@ get_header();
     
         margin-bottom:2.5rem;
         animation: fadeUp .8s .3s both cubic-bezier(.22,1,.36,1);">
-            Explorá la oferta académica 2026 de la UNSL: pregrado, grado y posgrado en tres sedes de San Luis.
+            Explorá la oferta académica 2027 de la UNSL: pregrado, grado y posgrado en tres sedes de San Luis.
         </p>
 
         <?php /* Buscador */ ?>
@@ -731,13 +727,7 @@ get_header();
             letter-spacing:-.025em;
             color:var(--navy);">Facultades<br>e institutos</h2>
             </div>
-            <p
-                style="
-          font-weight:300;
-          font-size:.95rem;
-          color:var(--mid);
-          max-width:340px;
-          line-height:1.7;">Nueve unidades académicas distribuidas en tres sedes: San Luis, Villa Mercedes y Merlo.</p>
+            
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <?php
@@ -827,9 +817,9 @@ get_header();
                 style="display:flex;
         align-items:center;
         gap:1.2rem;
-        background:var(--navy);
+        background:#fff;
         padding:1.5rem;
-        border-left:3px solid var(--azulunsl);
+        border-left:3px solid #972f70;
         text-decoration:none;
         transition:transform .2s;"
                 onmouseover="this.style.transform='translateX(4px)'"
@@ -860,19 +850,19 @@ get_header();
               font-weight:500;
               letter-spacing:.18em;
               text-transform:uppercase;
-              color:var(--azulunsl);
+              color:##972f70;
               margin-bottom:.25rem;">IPAU</p>
                     <p
                         style="
               font-weight:500;
               font-size:.88rem;
-              color:#fff;
+              color: var(--ink);
               line-height:1.35;
               margin-bottom:.4rem;">Instituto Politécnico y Artístico Universitario</p>
                     <p
                         style="
               font-size:.75rem;
-              color:rgba(255,255,255,.4);
+              color:##972f70;
               display:flex;align-items:center;gap:.3rem;">
                         <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />

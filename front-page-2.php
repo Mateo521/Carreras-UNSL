@@ -204,7 +204,7 @@ get_header();
                 ['sigla' => 'FTU', 'nombre' => 'Facultad de Turismo y Urbanismo', 'sede' => 'Merlo', 'color_bg' => 'bg-[#fff9e5]', 'color_txt' => 'text-[#996b16]', 'img' => 'ftu.png'],
             ];
             foreach ($facultades as $fac) : ?>
-                <a href="<?php echo home_url('/facultad/' . strtolower($fac['sigla']) . '/'); ?>" class="group bg-white rounded-xl border border-[#e5e0d8] hover:border-[#88CAFC] hover:shadow-lg hover:shadow-[#0b1f4a08] transition-all duration-300 p-6 flex items-center gap-5">
+                <a href="<?php echo home_url('/facultad/' . strtolower($fac['sigla']) . '/'); ?>" class="group bg-white rounded-xl border border-[#ACCEF2] hover:border-[#88CAFC] hover:shadow-lg hover:shadow-[#0b1f4a08] transition-all duration-300 p-6 flex items-center gap-5">
                     <div class="w-16 h-16 rounded-xl <?php echo $fac['color_bg']; ?> flex items-center justify-center shrink-0  transition-transform duration-300">
                         <img src="<?php echo get_template_directory_uri() . '/imagenes/' . $fac['img']; ?>" alt="<?php echo $fac['sigla']; ?>" class="w-11 h-11 object-contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
                         <span class="hidden w-11 h-11 items-center justify-center font-['Libre_Baskerville',serif] font-bold text-sm <?php echo $fac['color_txt']; ?> leading-tight text-center"><?php echo substr($fac['sigla'], 0, 2); ?></span>

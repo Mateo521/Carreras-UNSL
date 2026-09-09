@@ -4,6 +4,18 @@
  * Plantilla de Archivo para el listado de todas las Carreras
  * URL: /carreras/
  */
+
+if (isset($_GET['sede'])) {
+    $sede_url = sanitize_text_field(wp_unslash($_GET['sede']));
+    if (in_array($sede_url, array('san-luis', 'villa-mercedes', 'merlo'), true)) {
+        global $wp_query;
+        unset($wp_query->query_vars['sede']);
+        $wp_query->is_404 = false;
+        $wp_query->is_archive = true;
+        status_header(200);
+    }
+}
+
 get_header();
 ?>
 
@@ -41,7 +53,7 @@ get_header();
     </div>
 </header>
 
-<div class="bg-white border-b border-[#e5e0d8]">
+<div class="bg-white border-b border-[#ACCEF2]">
     <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-xs text-[#061C2E]">
         <a href="<?php echo home_url(); ?>" class="hover:text-[#0b1f4a] transition-colors">Inicio</a>
         <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -52,7 +64,7 @@ get_header();
 </div>
 
 
-<div class="bg-white/95 backdrop-blur-sm border-b border-[#e5e0d8] sticky top-[65px] z-40 shadow-sm transition-all">
+<div class="bg-white/95 backdrop-blur-sm border-b border-[#ACCEF2] sticky top-[65px] z-40 shadow-sm transition-all">
     <div class="max-w-7xl mx-auto px-6 py-3">
 
         <div class="flex justify-between items-center lg:hidden">
@@ -69,7 +81,7 @@ get_header();
 
         <div id="filtersWrapper" class="hidden lg:flex flex-col lg:flex-row lg:flex-nowrap gap-3 items-stretch lg:items-center mt-4 lg:mt-0 lg:overflow-x-auto lg:pb-1 lg:-mb-1 [&::-webkit-scrollbar]:hidden" style="scrollbar-width: none;">
 
-            <div class="flex items-center gap-1 bg-[#EEF2F5] p-1.5 rounded-lg flex-shrink-0 border border-[#e5e0d8]/50">
+            <div class="flex items-center gap-1 bg-[#EEF2F5] p-1.5 rounded-lg flex-shrink-0 border border-[#ACCEF2]/50">
                 <button data-filter="tipo" data-value="" class="filter-btn active-tipo px-1 md:px-4 py-1.5 rounded-md text-sm font-semibold transition-all duration-200 bg-[#0b1f4a] text-white shadow-sm">Todos</button>
                 <button data-filter="tipo" data-value="pregrado" class="filter-btn px-1 md:px-4 py-1.5 rounded-md text-sm font-medium transition-all duration-200 text-[#0b1f4a]/70 hover:text-[#0b1f4a] hover:bg-white/50">Pregrado</button>
                 <button data-filter="tipo" data-value="grado" class="filter-btn px-1 md:px-4 py-1.5 rounded-md text-sm font-medium transition-all duration-200 text-[#0b1f4a]/70 hover:text-[#0b1f4a] hover:bg-white/50">Grado</button>
@@ -97,7 +109,7 @@ get_header();
 
                 echo '<div class="relative flex-shrink-0 w-full ' . esc_attr($width_classes) . ' group">';
 
-                echo '<select id="filter' . ucfirst($taxonomia) . '" class="w-full bg-white border border-[#e5e0d8] hover:border-[#88CAFC] px-3 py-2.5 rounded-lg text-sm font-medium text-[#0b1f4a] outline-none focus:ring-2 focus:ring-[#88CAFC]/30 cursor-pointer appearance-none pr-8 transition-colors shadow-sm truncate" title="Filtrar por ' . esc_html($placeholder) . '">';
+                echo '<select id="filter' . ucfirst($taxonomia) . '" class="w-full bg-white border border-[#ACCEF2] hover:border-[#88CAFC] px-3 py-2.5 rounded-lg text-sm font-medium text-[#0b1f4a] outline-none focus:ring-2 focus:ring-[#88CAFC]/30 cursor-pointer appearance-none pr-8 transition-colors shadow-sm truncate" title="Filtrar por ' . esc_html($placeholder) . '">';
                 echo '<option value="">' . esc_html($placeholder) . '</option>';
 
                 foreach ($terms as $term) {
@@ -117,14 +129,14 @@ get_header();
             }
             ?>
 
-            <?php imprimir_opciones_taxonomia_archivo('modalidad', 'Modalidad', 'lg:w-[120px] xl:w-[140px]'); ?>
+            <?php imprimir_opciones_taxonomia_archivo('modalidad', 'Todas', 'lg:w-[120px] xl:w-[140px]'); ?>
 
             <?php imprimir_opciones_taxonomia_archivo('sede', 'Sede', 'lg:w-[90px] xl:w-[110px]'); ?>
 
             <?php imprimir_opciones_taxonomia_archivo('facultad', 'Unidad Académica', 'lg:w-[180px] xl:w-[220px]'); ?>
 
             <div class="relative flex-shrink-0 w-full lg:w-[150px] xl:w-[170px] group">
-                <select id="filterProfesion" class="w-full bg-white border border-[#e5e0d8] hover:border-[#88CAFC] px-3 py-2.5 rounded-lg text-sm font-medium text-[#0b1f4a] outline-none focus:ring-2 focus:ring-[#88CAFC]/30 cursor-pointer appearance-none pr-8 transition-colors shadow-sm truncate">
+                <select id="filterProfesion" class="w-full bg-white border border-[#ACCEF2] hover:border-[#88CAFC] px-3 py-2.5 rounded-lg text-sm font-medium text-[#0b1f4a] outline-none focus:ring-2 focus:ring-[#88CAFC]/30 cursor-pointer appearance-none pr-8 transition-colors shadow-sm truncate">
                     <option value="">Tipo de Profesión</option>
                     <option value="licenciatura">Licenciaturas</option>
                     <option value="ingenieria">Ingenierías</option>
@@ -207,7 +219,7 @@ if ($query_carreras->have_posts()) {
 
 <main class="max-w-7xl mx-auto px-6 py-10 ">
 
-    <div class="bg-white p-6 rounded shadow-sm border border-[#e5e0d8] mb-8">
+    <div class="bg-white p-6 rounded shadow-sm border border-[#ACCEF2] mb-8">
         <div class="relative w-full">
             <svg class="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-[#0b1f4a] opacity-50 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <circle cx="11" cy="11" r="8" />
@@ -218,17 +230,17 @@ if ($query_carreras->have_posts()) {
     </div>
 
     <div class="flex items-center justify-between mb-6">
-        <h2 class="text-lg font-bold text-[#0b1f4a] ">Catálogo</h2> <!-- font-['Libre_Baskerville',serif] -->
-        <p class="text-sm font-medium text-[#061C2E] bg-white px-3 py-1  shadow-sm border border-[#e5e0d8]"><span id="resultCount">—</span> carreras listadas</p>
+        <h2 class="text-lg font-bold text-[#0b1f4a] ">Catálogo</h2>  
+        <p class="text-sm font-medium text-[#061C2E] bg-white px-3 py-1  shadow-sm border border-[#ACCEF2]"><span id="resultCount">—</span> carreras listadas</p>
     </div>
 
     <div id="carrerasGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
 
-    <div id="emptyState" class="hidden text-center py-24 bg-white rounded border border-[#e5e0d8]">
+    <div id="emptyState" class="hidden text-center py-24 bg-white rounded border border-[#ACCEF2]">
         <svg class="w-16 h-16 mx-auto text-[#1a1a2e22] mb-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
         </svg>
-        <p class="text-[#0b1f4a] text-lg font-bold ">No se encontraron carreras</p> <!-- font-['Libre_Baskerville',serif] -->
+        <p class="text-[#0b1f4a] text-lg font-bold ">No se encontraron carreras</p>  
         <p class="text-[#061C2E] text-sm mt-2 max-w-sm mx-auto">No hay resultados que coincidan con la combinación de filtros seleccionada.</p>
         <button onclick="document.getElementById('clearFilters').click()" class="mt-4 text-[#88CAFC] font-medium hover:text-[#0b1f4a] transition-colors">Limpiar búsqueda</button>
     </div>
@@ -329,29 +341,29 @@ if ($query_carreras->have_posts()) {
         search: ""
     };
 
-/*
-    function formatearTitulo(str) {
-        if (!str) return "";
+    /*
+        function formatearTitulo(str) {
+            if (!str) return "";
 
 
-        const textoMinusculas = str.toLowerCase();
+            const textoMinusculas = str.toLowerCase();
 
 
-        const palabrasMenores = ['de', 'del', 'en', 'y', 'a', 'la', 'las', 'el', 'los', 'por', 'para', 'con'];
+            const palabrasMenores = ['de', 'del', 'en', 'y', 'a', 'la', 'las', 'el', 'los', 'por', 'para', 'con'];
 
-        return textoMinusculas.split(' ').map((palabra, index) => {
-            if (palabra.length === 0) return palabra;
-
-
-            if (index === 0 || !palabrasMenores.includes(palabra)) {
-                return palabra.charAt(0).toUpperCase() + palabra.slice(1);
-            }
+            return textoMinusculas.split(' ').map((palabra, index) => {
+                if (palabra.length === 0) return palabra;
 
 
-            return palabra;
-        }).join(' ');
-    }
-*/
+                if (index === 0 || !palabrasMenores.includes(palabra)) {
+                    return palabra.charAt(0).toUpperCase() + palabra.slice(1);
+                }
+
+
+                return palabra;
+            }).join(' ');
+        }
+    */
 
     function buildCard(c) {
         const tc = TIPO_CONFIG[c.tipo] || {
@@ -389,7 +401,7 @@ if ($query_carreras->have_posts()) {
         let tituloIntermedioHTML = "";
         if (c.titulo_intermedio && c.titulo_intermedio.trim() !== "") {
             tituloIntermedioHTML = `
-                <div class="mt-3 bg-[#f8fbff] border border-[#e5e0d8] px-3 py-2 rounded flex items-center gap-2">
+                <div class="mt-3 bg-[#f8fbff] border border-[#ACCEF2] px-3 py-2 rounded flex items-center gap-2">
                     
                     <svg class="w-6 h-6 text-[#88CAFC]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.78552 9.5 12.7855 14l9-4.5-9-4.5-8.99998 4.5Zm0 0V17m3-6v6.2222c0 .3483 2 1.7778 5.99998 1.7778 4 0 6-1.3738 6-1.7778V11"/>
@@ -405,7 +417,7 @@ if ($query_carreras->have_posts()) {
         }
 
         return `
-            <a href="${c.link}" class="group bg-white overflow-hidden border-x border-b rounded border-[#e5e0d8] border-b-4 ${fc.border} hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col cursor-pointer">
+            <a href="${c.link}" class="group bg-white overflow-hidden border-x border-b rounded border-[#ACCEF2] border-b-4 ${fc.border} hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col cursor-pointer">
                 <div class="p-6 flex flex-col gap-4 flex-1">
                     <div class="flex items-start justify-between gap-2">
                         <span class="${tc.bg} ${tc.text} text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded flex items-center gap-1.5 shrink-0">
@@ -426,7 +438,7 @@ if ($query_carreras->have_posts()) {
                         
                     </div>
                     
-                    <div class="flex flex-col gap-2 mt-auto pt-4 border-t border-dashed border-[#e5e0d8]">
+                    <div class="flex flex-col gap-2 mt-auto pt-4 border-t border-dashed border-[#ACCEF2]">
                         <div class="flex items-start justify-between text-xs gap-3">
                             <span class="text-[#061C2E] font-medium shrink-0 mt-1">${labelFacultad}</span>
                             <div class="flex flex-col items-end gap-1.5 min-w-0 flex-1">
@@ -450,6 +462,13 @@ if ($query_carreras->have_posts()) {
     function render() {
         const q = state.search.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
+
+        const ordenTipo = {
+            "pregrado": 1,
+            "grado": 2,
+            "posgrado": 3
+        };
+
         const filtered = CARRERAS.filter(c => {
             const name = c.nombre.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
             if (state.tipo && c.tipo !== state.tipo) return false;
@@ -463,10 +482,21 @@ if ($query_carreras->have_posts()) {
 
             if (q && !name.includes(q)) return false;
             return true;
-        }).sort((a, b) => a.nombre.localeCompare(b.nombre, 'es', {
-            sensitivity: 'base'
-        }));
+        }).sort((a, b) => {
 
+            const pesoA = ordenTipo[a.tipo.toLowerCase()] || 4;
+            const pesoB = ordenTipo[b.tipo.toLowerCase()] || 4;
+
+
+            if (pesoA !== pesoB) {
+                return pesoA - pesoB;
+            }
+
+
+            return a.nombre.localeCompare(b.nombre, 'es', {
+                sensitivity: 'base'
+            });
+        });
 
         const grid = document.getElementById("carrerasGrid");
         const empty = document.getElementById("emptyState");
@@ -517,8 +547,19 @@ if ($query_carreras->have_posts()) {
         }
 
         if (urlParams.has('sede')) {
-            state.sede = urlParams.get('sede');
             const selectSede = document.getElementById('filterSede');
+            const sedeSolicitada = (urlParams.get('sede') || '').trim();
+            const normalizarSede = valor => (valor || '')
+                .trim()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .replace(/-/g, ' ')  
+                .toLocaleLowerCase('es');
+            const opcionSede = selectSede ? Array.from(selectSede.options).find(opcion =>
+                normalizarSede(opcion.value) === normalizarSede(sedeSolicitada)
+            ) : null;
+
+            state.sede = opcionSede ? opcionSede.value : sedeSolicitada;
             if (selectSede) selectSede.value = state.sede;
         }
 

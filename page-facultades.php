@@ -20,14 +20,14 @@ get_header();
         <h1 class="text-white text-4xl md:text-5xl lg:text-6xl font-bold  mb-6"> <!-- font-['Libre_Baskerville',serif] -->
             Facultades
         </h1>
-        <p class="text-slate-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-light">
-            La Universidad Nacional de San Luis está organizada en ocho facultades y un instituto, distribuidos estratégicamente en nuestras tres sedes provinciales para garantizar el acceso a la educación superior.
-        </p>
+        <!--p class="text-slate-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-light">
+           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+        </p-->
     </div>
 </header>
 
 
-<div class="bg-white border-b border-[#e5e0d8]">
+<div class="bg-white border-b border-[#ACCEF2]">
     <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-xs text-[#1a1a2e55]">
         <a href="<?php echo home_url(); ?>" class="hover:text-[#0b1f4a] transition-colors">Inicio</a>
         <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -56,7 +56,7 @@ get_header();
 
                 $enlace_seo = home_url('/facultad/' . strtolower($fac['sigla']) . '/');
             ?>
-                <a href="<?php echo esc_url($enlace_seo); ?>" class="group bg-white rounded border border-[#e5e0d8] hover:border-[#88CAFC] hover:shadow-lg hover:shadow-[#0b1f4a08] transition-all duration-300 p-6 flex items-center gap-5">
+                <a href="<?php echo esc_url($enlace_seo); ?>" class="group bg-white rounded border border-[#ACCEF2] hover:border-[#88CAFC] hover:shadow-lg hover:shadow-[#0b1f4a08] transition-all duration-300 p-6 flex items-center gap-5">
                     <div class="w-16 h-16 rounded <?php echo esc_attr($fac['color_bg']); ?> flex items-center justify-center shrink-0 transition-transform duration-300 ">
                         <img src="<?php echo get_template_directory_uri() . '/imagenes/' . esc_attr($fac['img']); ?>" alt="<?php echo esc_attr($fac['sigla']); ?>" class="w-11 h-11 object-contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
                         <span class="hidden w-11 h-11 items-center justify-center font-['Libre_Baskerville',serif] font-bold text-sm <?php echo esc_attr($fac['color_txt']); ?> leading-tight text-center"><?php echo substr($fac['sigla'], 0, 2); ?></span>
@@ -75,15 +75,15 @@ get_header();
                 </a>
             <?php endforeach; ?>
 
-            <a href="<?php echo home_url('/facultad/ipau/'); ?>" class="group col-span-1 sm:col-span-2 lg:col-span-1 bg-[#0b1f4a] rounded border border-[#0b1f4a] hover:border-[#88CAFC] hover:shadow-xl transition-all duration-300 p-6 flex items-center gap-5">
+            <!--a href="<?php echo home_url('/facultad/ipau/'); ?>" class="group col-span-1 sm:col-span-2 lg:col-span-1 bg-white rounded border border-[#972f70] hover:border-[#88CAFC] hover:shadow-xl transition-all duration-300 p-6 flex items-center gap-5">
                 <div class="w-16 h-16 rounded bg-white/10 flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:bg-[#88CAFC20] ">
                     <img src="<?php echo get_template_directory_uri(); ?>/imagenes/ipau.png" alt="IPAU" class="w-11 h-11 object-contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
                     <span class="hidden w-11 h-11 items-center justify-center font-['Libre_Baskerville',serif] font-bold text-sm text-[#88CAFC] leading-tight text-center">IP</span>
                 </div>
                 <div class="flex-1 min-w-0">
-                    <p class="text-[#88CAFC] text-[10px] font-black tracking-[0.2em] uppercase mb-1">IPAU</p>
-                    <h3 class="text-white font-bold text-sm leading-snug">Instituto Politécnico y Artístico Universitario</h3>
-                    <p class="text-white/50 text-xs mt-2 flex items-center gap-1.5 font-medium">
+                    <p class="text-[#972f70] text-[10px] font-black tracking-[0.2em] uppercase mb-1">IPAU</p>
+                    <h3 class="text-black font-bold text-sm leading-snug">Instituto Politécnico y Artístico Universitario</h3>
+                    <p class="text-black/50 text-xs mt-2 flex items-center gap-1.5 font-medium">
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0z" />
@@ -91,7 +91,9 @@ get_header();
                         San Luis
                     </p>
                 </div>
-            </a>
+            </a-->
+
+
         </div>
     </div>
 </main>

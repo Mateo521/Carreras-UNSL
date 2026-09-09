@@ -28,7 +28,7 @@
 
     #site-header {
       position: fixed;
-      /* ← fixed, no sticky */
+      /*  fixed, no sticky */
       top: 0;
       left: 0;
       right: 0;
@@ -52,7 +52,7 @@
 
 
     #site-header.scrolled {
-      background: #2A3E8A;
+      background: #172044;
       border-bottom: 1px solid rgba(255, 255, 255, .08);
       box-shadow: 0 4px 24px rgba(0, 0, 0, .25);
       backdrop-filter: blur(12px);
@@ -76,14 +76,14 @@
     }
 
     .header-logo img {
-      height: 2.75rem;
+      height: 3.7rem;
       width: auto;
       object-fit: contain;
       transition: height .4s;
     }
 
     #site-header.scrolled .header-logo img {
-      height: 2.4rem;
+      height: 3.5rem;
     }
 
 
@@ -325,7 +325,7 @@
       <div class="header-logo">
         <a href="<?php echo home_url(); ?>" aria-label="Inicio — Universidad Nacional de San Luis">
           <img
-            src="<?php echo get_template_directory_uri(); ?>/logo-unsl-negativo2.svg"
+            src="<?php echo get_template_directory_uri(); ?>/logo-n-unsl.png"
             alt="Universidad Nacional de San Luis" />
         </a>
       </div>
@@ -389,7 +389,7 @@
 
         <a
           href="<?php echo home_url('/preinscripcion/'); ?>"
-          class="btn-primary rounded-full">Ingreso 2026</a>
+          class="btn-primary rounded-full">Ingreso 2027</a>
       </div>
 
 
@@ -474,7 +474,7 @@
               letter-spacing:.06em;text-transform:uppercase;
               color:var(--navy);background:var(--gold);
               padding:.75rem 1rem;
-              text-decoration:none;">Ingreso 2026</a>
+              text-decoration:none;">Ingreso 2027</a>
         </div>
       </div>
     </nav>

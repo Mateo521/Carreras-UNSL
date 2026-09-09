@@ -139,7 +139,7 @@ while (have_posts()) : the_post();
         </div>
     </div>
 
-    <div class="bg-white border-b border-[#e5e0d8]">
+    <div class="bg-white border-b border-[#ACCEF2]">
         <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-xs text-[#1A1A3B]">
             <a href="<?php echo home_url(); ?>" class="hover:text-[#0b1f4a] transition-colors">Inicio</a>
             <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" /></svg>
@@ -153,7 +153,7 @@ while (have_posts()) : the_post();
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div class="lg:col-span-2 flex flex-col gap-8">
                 <?php if (get_field('objetivos_carrera')) : ?>
-                    <section class="bg-white border border-[#e5e0d8] overflow-hidden rounded-xl">
+                    <section class="bg-white border border-[#ACCEF2] overflow-hidden rounded-xl">
                         <div class="border-b border-[#DADBED] px-7 py-5 flex items-center gap-3">
                             <h2 class=" text-[#0b1f4a] font-bold text-lg">Objetivos de la carrera</h2> 
                         </div>
@@ -164,7 +164,7 @@ while (have_posts()) : the_post();
                 <?php endif; ?>
                 
                 <?php if (get_field('alcances_titulo')) : ?>
-                    <section class="bg-white border border-[#e5e0d8] overflow-hidden rounded-xl">
+                    <section class="bg-white border border-[#ACCEF2] overflow-hidden rounded-xl">
                         <div class="border-b border-[#DADBED] px-7 py-5 flex items-center gap-3">
                             <h2 class=" text-[#0b1f4a] font-bold text-lg">Alcances e incumbencias del título</h2> 
                         </div>
@@ -189,7 +189,7 @@ while (have_posts()) : the_post();
                 if (!empty($plan_de_estudios)) :
                     $ultimo_anio = max(array_keys($plan_de_estudios));
                 ?>
-                    <section class="bg-white border border-[#e5e0d8] overflow-hidden rounded-xl">
+                    <section class="bg-white border border-[#ACCEF2] overflow-hidden rounded-xl">
                         <div class="border-b border-[#DADBED] px-7 py-5 flex items-center gap-3">
                             <h2 class=" text-[#0b1f4a] font-bold text-lg">Organización Curricular</h2>
                         </div>
@@ -200,7 +200,7 @@ while (have_posts()) : the_post();
                                     $ul_class = $es_final ? 'grid grid-cols-1  divide-x divide-y divide-[#DADBED]' : 'divide-y divide-[#DADBED]';
                                     $li_class = $es_final ? 'px-4 py-3 text-xs text-[#1a1a2e88] flex items-center gap-2' : 'px-4 py-2.5 text-xs text-[#1a1a2e88] flex items-center gap-2';
                                 ?> 
-                                    <div class="border border-[#e5e0d8] overflow-hidden rounded-t-xl">
+                                    <div class="border border-[#ACCEF2] overflow-hidden rounded-t-xl">
                                         <div class="bg-[#0b1f4a] px-4 py-3 flex items-center gap-2">
                                             <span class="w-6 h-6 rounded-full bg-[#88CAFC] flex items-center justify-center shrink-0">
                                                 <span class="text-[#0b1f4a] text-[10px] font-black"><?php echo esc_html($numero_anio); ?></span>
@@ -234,7 +234,7 @@ while (have_posts()) : the_post();
             </div>
             
             <aside class="flex flex-col gap-6">
-                <div class="bg-white border border-[#e5e0d8] p-6 rounded-xl">
+                <div class="bg-white border border-[#ACCEF2] p-6 rounded-xl">
                     <h3 class=" text-[#0b1f4a] font-bold text-base mb-4">Compartí esta carrera</h3>
                     <div class="flex gap-3">
                         <?php $url_actual = urlencode(get_permalink()); ?>
@@ -247,7 +247,7 @@ while (have_posts()) : the_post();
                     </div>
                 </div>
 
-                <div class="bg-white border border-[#e5e0d8] overflow-hidden rounded-xl">
+                <div class="bg-white border border-[#ACCEF2] overflow-hidden rounded-xl">
                     <div class="bg-[#0b1f4a] px-6 py-4">
                         <h3 class=" text-white font-bold text-base">Contacto</h3>
                         <?php 
@@ -321,8 +321,8 @@ while (have_posts()) : the_post();
                 </div>
 
                 <?php if (get_field('resolucion_ministerial') || get_field('ordenanzas_unsl')) : ?>
-                    <div class="bg-white border border-[#e5e0d8] overflow-hidden rounded-xl">
-                        <div class="bg-[#f5f3ee] px-6 py-4 border-b border-[#e5e0d8]">
+                    <div class="bg-white border border-[#ACCEF2] overflow-hidden rounded-xl">
+                        <div class="bg-[#f5f3ee] px-6 py-4 border-b border-[#ACCEF2]">
                             <h3 class="text-[#0b1f4a] font-bold   tracking-wider flex items-center gap-2">
                                 Respaldo académico
                             </h3>

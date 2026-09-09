@@ -1,7 +1,3 @@
-/* public/assets/js/a11y-custom.js
-   Extiende la toolbar (a11y-toolbar.js) con controles avanzados.
-   Cargar después de a11y-toolbar.js (usar defer)
-*/
 (function () {
   'use strict';
 
@@ -19,9 +15,9 @@
     cursor: 'default',
     ttsActive: false,
     readingMode: false,
-    colorFilter: 'none' // 'none', 'protanopia', 'deuteranopia', 'tritanopia', 'monocromo'
+    colorFilter: 'none',
+    dyslexicFont: false
   };
-
 
   const TOOLBAR_SELECTORS = [
     '.a11y-toolbar',
@@ -56,33 +52,38 @@
 
   function applyState(state) {
     const doc = document.documentElement;
+
     doc.style.setProperty('--a11y-font-scale', state.fontScale);
     doc.style.setProperty('--a11y-line-height', state.lineHeight);
     doc.style.setProperty('--a11y-letter-spacing', state.letterSpacing + 'px');
     doc.style.setProperty('--a11y-text-align', state.textAlign);
-    doc.style.setProperty('--a11y-saturation', state.saturation);
-    doc.style.setProperty('--a11y-contrast', state.contrast);
-    doc.style.setProperty('--a11y-invert', state.invert ? 1 : 0);
+
+    let activeFilters = [];
+
+    if (state.colorFilter && state.colorFilter !== 'none') {
+      activeFilters.push(`url(#${state.colorFilter})`);
+    }
+
+    if (state.invert) {
+      activeFilters.push('invert(1)');
+    }
+
+    if (state.contrast !== 1) {
+      activeFilters.push(`contrast(${state.contrast})`);
+    }
+
+    if (state.saturation !== 1) {
+      activeFilters.push(`saturate(${state.saturation})`);
+    }
+
+    doc.style.filter = activeFilters.length > 0 ? activeFilters.join(' ') : 'none';
 
     document.body.classList.toggle('a11y-highlight-links', !!state.highlightLinks);
     document.body.classList.toggle('a11y-hide-media', !!state.hideMedia);
-    document.body.classList.remove('cursor-large', 'cursor-dot');
-
-
-    document.documentElement.classList.remove(
-      'a11y-filter-protanopia',
-      'a11y-filter-deuteranopia',
-      'a11y-filter-tritanopia',
-      'a11y-filter-monocromo'
-    );
-
-
-    if (state.colorFilter !== 'none') {
-      document.documentElement.classList.add(`a11y-filter-${state.colorFilter}`);
-    }
-
     document.body.classList.toggle('a11y-reading-mode', !!state.readingMode);
+    document.body.classList.toggle('a11y-dyslexic-mode', !!state.dyslexicFont);
 
+    document.body.classList.remove('cursor-large', 'cursor-dot');
     if (state.cursor === 'large') document.body.classList.add('cursor-large');
     if (state.cursor === 'dot') document.body.classList.add('cursor-dot');
 
@@ -93,11 +94,22 @@
       });
     }
 
-
-
     window.__CI_A11Y_STATE = state;
   }
 
+  function injectDyslexicStyle() {
+    if (document.getElementById('a11y-dyslexic-style')) return;
+    const style = document.createElement('style');
+    style.id = 'a11y-dyslexic-style';
+    style.innerHTML = `
+      @import url('https://fonts.cdnfonts.com/css/opendyslexic');
+      body.a11y-dyslexic-mode,
+      body.a11y-dyslexic-mode * {
+          font-family: 'OpenDyslexic', 'Comic Sans MS', sans-serif !important;
+      }
+    `;
+    document.head.appendChild(style);
+  }
 
   function injectColorFilters() {
     if (document.getElementById('a11y-filters-svg')) return;
@@ -113,11 +125,8 @@
     document.body.appendChild(svg);
   }
 
-
   let lastClickedElement = null;
   let lastClickTime = 0;
-
-
 
   function initTtsEngine() {
     const readableTags = ['P', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'A', 'LI', 'SPAN', 'IMG', 'TH', 'TD', 'LABEL', 'BUTTON'];
@@ -133,7 +142,6 @@
       const state = window.__CI_A11Y_STATE;
       if (!state || !state.ttsActive) return;
 
-
       if (e.target.closest('#ci-a11y-toggle') || e.target.closest('#ci-a11y-custom-panel')) return;
 
       const target = e.target.closest(readableTags.join(','));
@@ -144,7 +152,6 @@
     document.addEventListener('click', (e) => {
       const state = window.__CI_A11Y_STATE;
       if (!state || !state.ttsActive) return;
-
 
       if (e.target.closest('#ci-a11y-toggle') || e.target.closest('#ci-a11y-custom-panel')) {
         return;
@@ -157,16 +164,13 @@
       const isSameElement = (target === lastClickedElement);
       const isSecondClick = isSameElement && (currentTime - lastClickTime < 1000);
 
-
       const interactive = target.closest('a, button');
 
       if (isSecondClick && interactive) {
         window.speechSynthesis.cancel();
         lastClickedElement = null;
-
         return;
       }
-
 
       e.preventDefault();
       e.stopPropagation();
@@ -176,7 +180,6 @@
 
       let text = "";
       const tag = target.tagName;
-
 
       if (tag === 'TH') {
         const dias = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
@@ -212,10 +215,6 @@
     }, true);
   }
 
-
-
-
-
   function createControlsPanel() {
     const panelId = 'ci-a11y-custom-panel';
 
@@ -226,8 +225,13 @@
 
     const panel = document.createElement('div');
     panel.id = panelId;
-    panel.className =
-      'a11y-custom-panel fixed bottom-28 left-4 w-80 max-w-[90vw] bg-white dark:bg-slate-800 p-3 rounded shadow-lg ring-1 ring-slate-200 z-[9999]';
+
+    panel.className = 'a11y-custom-panel fixed bottom-28 left-4 w-80 bg-white dark:bg-slate-800 p-3 rounded shadow-lg ring-1 ring-slate-200';
+
+    panel.style.maxHeight = 'calc(100vh - 8.5rem)';
+    panel.style.overflowY = 'auto';
+    panel.style.maxWidth = '90vw';
+    panel.style.zIndex = '9999';
     panel.setAttribute('role', 'dialog');
     panel.setAttribute('aria-modal', 'false');
     panel.setAttribute('aria-hidden', 'true');
@@ -235,77 +239,77 @@
     panel.innerHTML = `
       <div class="flex items-center justify-between mb-2">
         <strong class="text-sm">Preferencias de accesibilidad</strong>
-        <button id="ci-a11y-close" aria-label="Cerrar panel" class="ml-2 p-1 rounded focus:outline-none">✕</button>
+        <button id="ci-a11y-close" aria-label="Cerrar panel" class="ml-2 p-1 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">✕</button>
       </div>
       <div id="ci-a11y-controls" class="text-sm space-y-2">
-      <div class="control-row">
-    <label><input id="ci-a11y-tts" type="checkbox"> Texto a voz (clic para leer)</label>
-</div>
-<!--div class="control-row">
-    <label><input id="ci-a11y-read-mode" type="checkbox"> Activar modo lectura</label>
-</div-->
-<div class="control-row">
-    <label for="ci-a11y-filter">Modo de color (Daltonismo)</label>
-    <select id="ci-a11y-filter" class="ml-2 border rounded">
-        <option value="none">Normal</option>
-        <option value="protanopia">Protanopía (Rojo)</option>
-        <option value="deuteranopia">Deuteranopía (Verde)</option>
-        <option value="tritanopia">Tritanopía (Azul)</option>
-        <option value="monocromo">Monocromo</option>
-    </select>
-</div>
+        <div class="control-row">
+            <label><input id="ci-a11y-tts" type="checkbox" class="focus:ring-2 focus:ring-blue-500"> Texto a voz (clic para leer)</label>
+        </div>
+        
+        <div class="control-row">
+            <label for="ci-a11y-filter">Modo de color (Daltonismo)</label>
+            <select id="ci-a11y-filter" class="ml-2 border rounded focus:ring-2 focus:ring-blue-500 bg-white dark:bg-slate-700 dark:text-white dark:border-slate-600">
+                <option style="background-color: #ffffff; color: #1a1a1a;" value="none">Normal</option>
+                <option style="background-color: #ffffff; color: #1a1a1a;" value="protanopia">Protanopía (Rojo)</option>
+                <option style="background-color: #ffffff; color: #1a1a1a;" value="deuteranopia">Deuteranopía (Verde)</option>
+                <option style="background-color: #ffffff; color: #1a1a1a;" value="tritanopia">Tritanopía (Azul)</option>
+            </select>
+        </div>
+        
+        <div class="control-row"><label><input id="ci-a11y-dyslexic" type="checkbox" class="focus:ring-2 focus:ring-blue-500"> Tipografía para dislexia</label></div>
+
         <div class="control-row">
           <label for="ci-a11y-sat">Saturación</label>
-          <input id="ci-a11y-sat" type="range" min="0" max="2" step="0.01">
+          <input id="ci-a11y-sat" type="range" min="0" max="2" step="0.01" class="focus:ring-2 focus:ring-blue-500">
         </div>
 
-        <div class="control-row"><label><input id="ci-a11y-inv" type="checkbox"> Invertir colores</label></div>
-        <div class="control-row"><label><input id="ci-a11y-hl" type="checkbox"> Enlaces resaltados</label></div>
+        <div class="control-row"><label><input id="ci-a11y-inv" type="checkbox" class="focus:ring-2 focus:ring-blue-500"> Invertir colores</label></div>
+        <div class="control-row"><label><input id="ci-a11y-hl" type="checkbox" class="focus:ring-2 focus:ring-blue-500"> Enlaces resaltados</label></div>
 
         <div class="control-row">
           <label for="ci-a11y-font">Tamaño fuente</label>
-          <input id="ci-a11y-font" type="range" min="0.8" max="1.6" step="0.01">
+          <input id="ci-a11y-font" type="range" min="0.8" max="1.6" step="0.01" class="focus:ring-2 focus:ring-blue-500">
         </div>
 
         <div class="control-row">
           <label for="ci-a11y-line">Altura línea</label>
-          <input id="ci-a11y-line" type="range" min="1" max="2" step="0.01">
+          <input id="ci-a11y-line" type="range" min="1" max="2" step="0.01" class="focus:ring-2 focus:ring-blue-500">
         </div>
 
         <div class="control-row">
           <label for="ci-a11y-letter">Espaciado letras</label>
-          <input id="ci-a11y-letter" type="range" min="0" max="5" step="0.1">
+          <input id="ci-a11y-letter" type="range" min="0" max="5" step="0.1" class="focus:ring-2 focus:ring-blue-500">
         </div>
 
         <div class="control-row">
           <label for="ci-a11y-align">Alinear</label>
-          <select id="ci-a11y-align" class="ml-2">
-            <option value="left">Izquierda</option>
-            <option value="center">Centrado</option>
-            <option value="justify">Justificar</option>
-            <option value="right">Derecha</option>
+          <select id="ci-a11y-align" class="ml-2 border rounded focus:ring-2 focus:ring-blue-500 bg-white dark:bg-slate-700 dark:text-white dark:border-slate-600">
+            <option style="background-color: #ffffff; color: #1a1a1a;" value="left">Izquierda</option>
+            <option style="background-color: #ffffff; color: #1a1a1a;" value="center">Centrado</option>
+            <option style="background-color: #ffffff; color: #1a1a1a;" value="justify">Justificar</option>
+            <option style="background-color: #ffffff; color: #1a1a1a;" value="right">Derecha</option>
           </select>
         </div>
-
+        
         <div class="control-row">
           <label for="ci-a11y-contrast">Contraste</label>
-          <input id="ci-a11y-contrast" type="range" min="0.5" max="2" step="0.01">
+          <input id="ci-a11y-contrast" type="range" min="0.5" max="2" step="0.01" class="focus:ring-2 focus:ring-blue-500">
         </div>
-
-        <div class="control-row"><label><input id="ci-a11y-hide-media" type="checkbox"> Ocultar imágenes / videos</label></div>
-
+        
+        <div class="control-row"><label><input id="ci-a11y-hide-media" type="checkbox" class="focus:ring-2 focus:ring-blue-500"> Ocultar imágenes / videos</label></div>
+        
         <div class="control-row">
           <label for="ci-a11y-cursor">Cursor</label>
-          <select id="ci-a11y-cursor" class="ml-2">
-            <option value="default">Normal</option>
-            <option value="large">Grande</option>
-            <option value="dot">Punto</option>
+          <select id="ci-a11y-cursor" class="ml-2 border rounded focus:ring-2 focus:ring-blue-500 bg-white dark:bg-slate-700 dark:text-white dark:border-slate-600">
+            <option style="background-color: #ffffff; color: #1a1a1a;" value="default">Normal</option>
+            <option style="background-color: #ffffff; color: #1a1a1a;" value="large">Grande</option>
+            <option style="background-color: #ffffff; color: #1a1a1a;" value="dot">Punto</option>
           </select>
         </div>
-
+        
         <div class="flex gap-2 mt-3">
-          <button id="ci-a11y-reset" class="flex-1 bg-red-600 text-white p-2 rounded">Reestablecer</button>
-          <button id="ci-a11y-save" class="flex-1 bg-slate-200 dark:bg-blue-900 p-2 rounded">Guardar</button>
+          <button id="ci-a11y-reset" class="flex-1 bg-red-600 text-white p-2 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">Reestablecer</button>
+          <button id="ci-a11y-save" class="flex-1 bg-slate-200 dark:bg-slate-600 dark:text-white p-2 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">Guardar</button>
         </div>
       </div>
     `;
@@ -330,10 +334,15 @@
     }
     const btn = document.createElement('button');
     btn.id = 'ci-a11y-toggle';
-    btn.className = 'fixed bottom-4 flex justify-center items-center left-4 z-[9998] bg-blue-600 text-white rounded-full p-3 shadow-lg focus:outline-none';
+    btn.className = 'fixed bottom-4 flex justify-center items-center left-4 z-[9998] bg-blue-600 text-white rounded-full p-3 shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300';
+
+
+    btn.title = "Opciones de accesibilidad (Alt + M)";
+    btn.setAttribute('aria-label', 'Abrir panel de accesibilidad. Atajo de teclado: Alt + M');
+
     btn.setAttribute('aria-controls', 'ci-a11y-custom-panel');
     btn.setAttribute('aria-expanded', 'false');
-    btn.innerHTML = `<img src="${miThemeData}" alt="Accesibilidad" class="w-6 h-6">`;
+    btn.innerHTML = `<img src="${miThemeData}" alt="" class="w-6 h-6">`;
     document.body.appendChild(btn);
 
     return btn;
@@ -350,6 +359,16 @@
     panel.setAttribute('aria-hidden', show ? 'false' : 'true');
     btn.setAttribute('aria-expanded', show ? 'true' : 'false');
     panel.classList.toggle('hidden', !show);
+
+
+    if (show) {
+
+      const closeBtn = document.getElementById('ci-a11y-close');
+      if (closeBtn) closeBtn.focus();
+    } else {
+
+      btn.focus();
+    }
   }
 
   function wireUi(panel) {
@@ -360,7 +379,6 @@
 
     const state = loadState();
 
-    // Mapear elementos
     const elementMap = {
       'ci-a11y-sat': document.getElementById('ci-a11y-sat'),
       'ci-a11y-inv': document.getElementById('ci-a11y-inv'),
@@ -372,17 +390,16 @@
       'ci-a11y-contrast': document.getElementById('ci-a11y-contrast'),
       'ci-a11y-hide-media': document.getElementById('ci-a11y-hide-media'),
       'ci-a11y-cursor': document.getElementById('ci-a11y-cursor'),
-      'ci-a11y-filter': document.getElementById('ci-a11y-filter')
+      'ci-a11y-filter': document.getElementById('ci-a11y-filter'),
+      'ci-a11y-dyslexic': document.getElementById('ci-a11y-dyslexic')
     };
 
-    // Verificar que todos los elementos existen
     const missingElements = Object.keys(elementMap).filter(key => !elementMap[key]);
     if (missingElements.length > 0) {
       console.error('ERROR: Elementos faltantes:', missingElements);
       return;
     }
 
-    // Función para sincronizar valores del estado con el UI
     const syncValues = () => {
       elementMap['ci-a11y-sat'].value = state.saturation;
       elementMap['ci-a11y-inv'].checked = state.invert;
@@ -395,6 +412,7 @@
       elementMap['ci-a11y-hide-media'].checked = state.hideMedia;
       elementMap['ci-a11y-cursor'].value = state.cursor;
       elementMap['ci-a11y-filter'].value = state.colorFilter;
+      elementMap['ci-a11y-dyslexic'].checked = state.dyslexicFont;
 
       const ttsInput = document.getElementById('ci-a11y-tts');
       if (ttsInput) ttsInput.checked = !!state.ttsActive;
@@ -403,18 +421,15 @@
     const readModeInput = document.getElementById('ci-a11y-read-mode');
     if (readModeInput) readModeInput.checked = !!state.readingMode;
 
-
     syncValues();
     applyState(state);
 
-    // Remover listeners anteriores si existen
     if (panel._a11yHandler) {
       panel.removeEventListener('input', panel._a11yHandler);
       panel.removeEventListener('change', panel._a11yHandler);
       panel.removeEventListener('click', panel._a11yHandler);
     }
 
-    // Crear el handler único con delegación de eventos
     const handleEvent = (e) => {
       const target = e.target;
       const id = target.id;
@@ -470,6 +485,11 @@
           applyState(state);
           saveState(state);
           break;
+        case 'ci-a11y-dyslexic':
+          state.dyslexicFont = target.checked;
+          applyState(state);
+          saveState(state);
+          break;
         case 'ci-a11y-reset':
           localStorage.removeItem(KEY);
           Object.assign(state, DEFAULTS);
@@ -500,12 +520,12 @@
           break;
         case 'ci-a11y-save':
           saveState(state);
-          // Verificar si ya existe una notificación
+
           const existingNotif = document.getElementById('a11y-save-notification');
           if (existingNotif) {
             existingNotif.remove();
           }
-          // Crear notificación temporal con estilos inline completos
+
           const notif = document.createElement('div');
           notif.id = 'a11y-save-notification';
           notif.textContent = ' Preferencias guardadas';
@@ -525,12 +545,10 @@
     transition: opacity 0.3s ease;
   `;
           document.body.appendChild(notif);
-          // Fade in
           requestAnimationFrame(() => {
             notif.style.opacity = '1';
           });
 
-          // Fade out y remover
           setTimeout(() => {
             notif.style.opacity = '0';
             setTimeout(() => {
@@ -542,24 +560,29 @@
       }
     };
 
-    // Guardar referencia del handler en el panel
     panel._a11yHandler = handleEvent;
 
-    // Agregar listeners con delegación
     panel.addEventListener('input', handleEvent);
     panel.addEventListener('change', handleEvent);
     panel.addEventListener('click', handleEvent);
 
-    // Listener para ESC (solo agregar una vez)
-    if (!document._a11yEscHandler) {
-      document._a11yEscHandler = (ev) => {
-        if (ev.key === 'Escape') togglePanel(false);
+
+    if (!document._a11yKeyboardHandler) {
+      document._a11yKeyboardHandler = (ev) => {
+
+        if (ev.key === 'Escape' && panel.getAttribute('aria-hidden') === 'false') {
+          togglePanel(false);
+        }
+
+        if (ev.altKey && ev.key.toLowerCase() === 'm') {
+          ev.preventDefault();
+          togglePanel();
+        }
       };
-      document.addEventListener('keydown', document._a11yEscHandler);
+      document.addEventListener('keydown', document._a11yKeyboardHandler);
     }
   }
 
-  // Función de inicialización
   function initializeA11y() {
     try {
       const panel = createControlsPanel();
@@ -580,12 +603,12 @@
         wireUi(panel);
         initTtsEngine();
         injectColorFilters();
-        // Remover listener anterior del toggle si existe
+        injectDyslexicStyle();
+
         if (toggle._toggleHandler) {
           toggle.removeEventListener('click', toggle._toggleHandler);
         }
 
-        // Crear y guardar el handler
         toggle._toggleHandler = () => togglePanel();
         toggle.addEventListener('click', toggle._toggleHandler);
 
@@ -600,7 +623,6 @@
     }
   }
 
-  // Inicialización
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializeA11y);
   } else {

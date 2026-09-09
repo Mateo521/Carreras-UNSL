@@ -19,7 +19,7 @@ get_header();
     <div class="relative max-w-7xl mx-auto py-20 lg:py-28">
         <!--p class="text-[#88CAFC] text-xs font-bold  uppercase mb-4 flex items-center gap-3"> 
         
-            Ingreso 2026
+            Ingreso 2027
         </p-->
         <h1 class=" text-white text-4xl lg:text-5xl font-bold leading-tight mb-4"> <!-- font-['Libre_Baskerville',serif] -->
             Preinscripción

@@ -78,7 +78,7 @@
             Campus Virtual
           </a>
           <a href="<?php echo home_url('/preinscripcion/'); ?>" class="block text-center w-full bg-[#88CAFC] text-[#0b1f4a] px-5 py-3 rounded-lg font-bold">
-            Ingreso 2026
+            Ingreso 2027
           </a>
         </div>
       </div>

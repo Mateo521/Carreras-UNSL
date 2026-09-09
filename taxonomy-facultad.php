@@ -74,14 +74,14 @@ $logo_url = get_template_directory_uri() . '/imagenes/' . $slug . '.png';
             <?php echo esc_html($nombre_completo); ?>
         </h1>
 
-        <p class="text-slate-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-light">
+        <!--p class="text-slate-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-light">
             <?php echo esc_html($descripcion_seo); ?>
-        </p>
+        </p-->
 
     </div>
 </header>
 
-<div class="bg-white border-b border-[#e5e0d8]">
+<div class="bg-white border-b border-[#ACCEF2]">
     <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-xs text-[#1a1a2e55]">
         <a href="<?php echo home_url(); ?>" class="hover:text-[#0b1f4a] transition-colors">Inicio</a>
         <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -100,7 +100,7 @@ $logo_url = get_template_directory_uri() . '/imagenes/' . $slug . '.png';
 <main class="bg-[#EEF1F5] py-16 lg:py-20">
     <div class="max-w-7xl mx-auto px-6">
 
-        <div class="flex items-center justify-between mb-8 pb-4 border-b border-[#e5e0d8]">
+        <div class="flex items-center justify-between mb-8 pb-4 border-b border-[#ACCEF2]">
             <div>
                 <h2 class="text-2xl font-bold text-[#0b1f4a] ">Oferta Académica</h2>
                 <p class="text-[#1a1a2e66] text-sm mt-1">Todas las carreras dictadas en la <?php echo esc_html($sigla); ?></p>
@@ -151,7 +151,7 @@ $logo_url = get_template_directory_uri() . '/imagenes/' . $slug . '.png';
                     $tc_label = ucfirst($tipo_slug);
             ?>
 
-                    <a href="<?php the_permalink(); ?>" class="group bg-white  overflow-hidden border-x border-t border-[#e5e0d8] border-b-4 border-t-[<?php echo $colores_facultades[$slug]['text']; ?>] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col cursor-pointer">
+                    <a href="<?php the_permalink(); ?>" class="group bg-white  overflow-hidden border-x border-t border-[#ACCEF2] border-b-4 border-t-[<?php echo $colores_facultades[$slug]['text']; ?>] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col cursor-pointer">
                         <div class="p-6 flex flex-col gap-4 flex-1">
                             <div class="flex items-start justify-between gap-2">
                                 <span class="<?php echo esc_attr($tc_bg . ' ' . $tc_text); ?> text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded flex items-center gap-1.5 shrink-0">
@@ -170,7 +170,7 @@ $logo_url = get_template_directory_uri() . '/imagenes/' . $slug . '.png';
                                     <?php the_title(); ?>
                                 </h3>
                             </div>
-                            <div class="flex flex-col gap-2 mt-auto pt-4 border-t border-dashed border-[#e5e0d8]">
+                            <div class="flex flex-col gap-2 mt-auto pt-4 border-t border-dashed border-[#ACCEF2]">
                                 <div class="flex items-center justify-between text-xs">
                                     <span class="text-[#1a1a2e66] font-medium">Sede</span>
                                     <span class="font-medium text-[#1a1a2e]"><?php echo esc_html($sede_name); ?></span>
