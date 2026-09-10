@@ -14,7 +14,7 @@ get_header();
     <div class="absolute inset-0 opacity-10 z-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent bg-[length:20px_20px]"></div>
     <img class="absolute object-cover size-full top-0 z-0" src="<?php echo  get_template_directory_uri() . '/imagenes/carreras.jpg'?>" alt="">
     <div class="relative max-w-7xl mx-auto px-6 text-center z-10">
-        <!--span class="inline-block py-1.5 px-4  bg-white/10 backdrop-blur-md text-[#88CAFC] text-xs font-bold tracking-widest uppercase mb-4 border border-white/20"> 
+        <!--span class="inline-block py-1.5 px-4  bg-white/10 backdrop-blur-md text-[#88CAFC] text-md font-bold tracking-widest uppercase mb-4 border border-white/20"> 
             Estructura Institucional
         </span-->
         <h1 class="text-white text-4xl md:text-5xl lg:text-6xl font-bold  mb-6"> <!-- font-['Libre_Baskerville',serif] -->
@@ -28,7 +28,7 @@ get_header();
 
 
 <div class="bg-white border-b border-[#ACCEF2]">
-    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-xs text-[#1a1a2e55]">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-md text-[#1a1a2e55]">
         <a href="<?php echo home_url(); ?>" class="hover:text-[#0b1f4a] transition-colors">Inicio</a>
         <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
@@ -64,7 +64,7 @@ get_header();
                     <div class="flex-1 min-w-0">
                         <p class="<?php echo esc_attr($fac['color_txt']); ?> text-[10px] font-black tracking-[0.2em] uppercase mb-1"><?php echo esc_html($fac['sigla']); ?></p>
                         <h3 class="text-[#1a1a2e] font-bold text-sm leading-snug group-hover:text-[#0b1f4a] transition-colors"><?php echo esc_html($fac['nombre']); ?></h3>
-                        <p class="text-[#1a1a2e55] text-xs mt-2 flex items-center gap-1.5 font-medium">
+                        <p class="text-[#1a1a2e55] text-md mt-2 flex items-center gap-1.5 font-medium">
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0z" />
@@ -83,7 +83,7 @@ get_header();
                 <div class="flex-1 min-w-0">
                     <p class="text-[#972f70] text-[10px] font-black tracking-[0.2em] uppercase mb-1">IPAU</p>
                     <h3 class="text-black font-bold text-sm leading-snug">Instituto Politécnico y Artístico Universitario</h3>
-                    <p class="text-black/50 text-xs mt-2 flex items-center gap-1.5 font-medium">
+                    <p class="text-black/50 text-md mt-2 flex items-center gap-1.5 font-medium">
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0z" />

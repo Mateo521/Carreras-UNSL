@@ -185,7 +185,7 @@ get_header();
 <section class="px-6 py-24 bg-[#EEF1F5]">
     <div class="max-w-7xl mx-auto">
         <div class="text-center mb-16">
-            <!--p class="text-[#88CAFC] text-xs font-bold uppercase tracking-widest mb-3">Estructura académica</p-->
+            <!--p class="text-[#88CAFC] text-md font-bold uppercase tracking-widest mb-3">Estructura académica</p-->
             <h2 class=" text-[#0b1f4a] text-3xl md:text-4xl font-bold">Facultades</h2> <!-- font-['Libre_Baskerville',serif] -->
             <p class="text-gray-700 text-base mt-4 max-w-2xl mx-auto leading-relaxed">
                 La Universidad Nacional de San Luis está organizada en nueve Facultades distribuidas en sus tres sedes.
@@ -212,7 +212,7 @@ get_header();
                     <div class="flex-1 min-w-0">
                         <p class="<?php echo $fac['color_txt']; ?> text-[10px] font-black tracking-[0.2em] uppercase mb-1"><?php echo $fac['sigla']; ?></p>
                         <h3 class="text-[#1a1a2e] font-bold text-sm leading-snug group-hover:text-[#0b1f4a] transition-colors"><?php echo $fac['nombre']; ?></h3>
-                        <p class="text-[#1a1a2e55] text-xs mt-2 flex items-center gap-1.5 font-medium">
+                        <p class="text-[#1a1a2e55] text-md mt-2 flex items-center gap-1.5 font-medium">
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                 <path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
                                 <path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0z" />
@@ -230,7 +230,7 @@ get_header();
                 <div class="flex-1 min-w-0">
                     <p class="text-[#88CAFC] text-[10px] font-black tracking-[0.2em] uppercase mb-1">IPAU</p>
                     <h3 class="text-white font-bold text-sm leading-snug">Instituto Politécnico y Artístico Universitario</h3>
-                    <p class="text-white/50 text-xs mt-2 flex items-center gap-1.5 font-medium">
+                    <p class="text-white/50 text-md mt-2 flex items-center gap-1.5 font-medium">
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
                             <path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0z" />

@@ -17,7 +17,7 @@ get_header();
     <div class="absolute inset-0 bg-gradient-to-r from-[#0b1f4a] via-[#0b1f4acc] to-[#0b1f4a55]"></div>
 
     <div class="relative max-w-7xl mx-auto py-20 lg:py-28">
-        <!--p class="text-[#88CAFC] text-xs font-bold  uppercase mb-4 flex items-center gap-3"> 
+        <!--p class="text-[#88CAFC] text-md font-bold  uppercase mb-4 flex items-center gap-3"> 
         
             Ingreso 2027
         </p-->
@@ -33,7 +33,7 @@ get_header();
         <div class="flex flex-wrap gap-4 mt-10">
             <div class="flex items-center gap-3 bg-[#ffffff0d] border border-[#ffffff12] rounded px-4 py-3">
                 <span
-                    class="w-7 h-7 rounded-full bg-[#88CAFC] text-[#0b1f4a] text-xs font-black flex items-center justify-center shrink-0">1</span>
+                    class="w-7 h-7 rounded-full bg-[#88CAFC] text-[#0b1f4a] text-md font-black flex items-center justify-center shrink-0">1</span>
                 <span class="text-white text-sm font-medium">Completá la preinscripción online</span>
             </div>
             <div class="flex items-center gap-2 text-[#ffffff44] self-center">
@@ -43,7 +43,7 @@ get_header();
             </div>
             <div class="flex items-center gap-3 bg-[#ffffff0d] border border-[#ffffff12] rounded px-4 py-3">
                 <span
-                    class="w-7 h-7 rounded-full bg-[#ffffff22] text-white text-xs font-black flex items-center justify-center shrink-0">2</span>
+                    class="w-7 h-7 rounded-full bg-[#ffffff22] text-white text-md font-black flex items-center justify-center shrink-0">2</span>
                 <span class="text-white text-sm font-medium">Reuní la documentación</span>
             </div>
             <div class="flex items-center gap-2 text-[#ffffff44] self-center">
@@ -53,7 +53,7 @@ get_header();
             </div>
             <div class="flex items-center gap-3 bg-[#ffffff0d] border border-[#ffffff12] rounded px-4 py-3">
                 <span
-                    class="w-7 h-7 rounded-full bg-[#ffffff22] text-white text-xs font-black flex items-center justify-center shrink-0">3</span>
+                    class="w-7 h-7 rounded-full bg-[#ffffff22] text-white text-md font-black flex items-center justify-center shrink-0">3</span>
                 <span class="text-white text-sm font-medium">Presentate a inscripción presencial</span>
             </div>
         </div>
@@ -63,7 +63,7 @@ get_header();
 
 <!-- BREADCRUMB -->
 <div class="bg-white border-b border-[#D8DEE5]">
-    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-xs text-[#1a1a2e55]">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-md text-[#1a1a2e55]">
         <a href="/" class="hover:text-[#0b1f4a] transition-colors">Inicio</a>
         <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
@@ -106,7 +106,7 @@ get_header();
 
 
                 <div class="px-7 py-6">
-                    <p class="text-[#1a1a2e88] text-sm leading-relaxed mb-5">
+                    <p class="text-black text-sm leading-relaxed mb-5">
                         Seleccioná la facultad a la que pertenece tu carrera para realizar la preinscripción. En la ficha deberás
                         completar los datos requeridos y subir los requisitos solicitados. <strong class="text-[#1a1a2e]">Podés
                             realizarlo en etapas.</strong>
@@ -320,7 +320,7 @@ get_header();
                 </div>
 
                 <div class="px-7 py-6">
-                    <p class="text-[#1a1a2e88] text-sm leading-relaxed mb-5">
+                    <p class="text-black text-sm leading-relaxed mb-5">
                         Ingresá al <strong class="text-[#1a1a2e]">SIU Guaraní</strong> con tu usuario y contraseña. Elegí la opción
                         <em>Trámites → Preinscripción a Propuestas</em>, seleccioná la propuesta y subí los requisitos solicitados.
                     </p>
@@ -338,7 +338,7 @@ get_header();
                         <div class="flex-1">
                             <p class="text-[#0b1f4a] group-hover:text-white font-bold text-sm transition-colors">Acceder a SIU Guaraní
                             </p>
-                            <p class="text-[#0b1f4a88] group-hover:text-[#ffffff77] text-xs transition-colors">g3.unsl.edu.ar/g3</p>
+                            <p class="text-[#0b1f4a88] group-hover:text-[#ffffff77] text-md transition-colors">g3.unsl.edu.ar/g3</p>
                         </div>
                         <!--svg class="w-4 h-4 text-[#1a6b52] group-hover:text-white shrink-0 transition-colors" fill="none"
                             stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
@@ -361,7 +361,7 @@ get_header();
                     <h2 class=" text-[#0b1f4a] font-bold text-lg">Inscripción presencial</h2> <!-- font-['Libre_Baskerville',serif] -->
                 </div>
                 <div class="px-7 py-6">
-                    <p class="text-[#1a1a2e88] text-sm leading-relaxed mb-5">
+                    <p class="text-black text-sm leading-relaxed mb-5">
                         En el momento de la inscripción el postulante debe presentar la <strong class="text-[#1a1a2e]">ficha de
                             preinscripción impresa</strong> junto a toda la documentación respaldatoria, en las fechas que las
                         Facultades dispongan.
@@ -369,18 +369,18 @@ get_header();
 
                     <!-- Steps -->
                     <div class="flex flex-col gap-3">
-                        <div class="flex items-start gap-3 p-4 rounded bg-[#EEF1F5]">
+                        <div class="flex items-center gap-3 p-4 rounded bg-[#EEF1F5]">
                             <span
                                 class="w-12 h-12 rounded-full bg-[#0b1f4a] text-white text-[10px] font-black flex items-center justify-center shrink-0 mt-0.5">1</span>
                             <p class="text-[#1a1a2e] text-sm leading-relaxed">Completá la preinscripción online y descargá la ficha
                                 impresa.</p>
                         </div>
-                        <div class="flex items-start gap-3 p-4 rounded bg-[#EEF1F5]">
+                        <div class="flex items-center gap-3 p-4 rounded bg-[#EEF1F5]">
                             <span
                                 class="w-12 h-12 rounded-full bg-[#0b1f4a] text-white text-[10px] font-black flex items-center justify-center shrink-0 mt-0.5">2</span>
                             <p class="text-[#1a1a2e] text-sm leading-relaxed">Reuní la documentación requerida.</p>
                         </div>
-                        <div class="flex items-start gap-3 p-4 rounded bg-[#EEF1F5]">
+                        <div class="flex items-center gap-3 p-4 rounded bg-[#EEF1F5]">
                             <span
                                 class="w-12 h-12 rounded-full bg-[#0b1f4a] text-white text-[10px] font-black flex items-center justify-center shrink-0 mt-0.5">3</span>
                             <p class="text-[#1a1a2e] text-sm leading-relaxed">Presentate en tu facultad en las fechas establecidas.
@@ -409,7 +409,7 @@ get_header();
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
-                        <p class="text-[#1a1a2e88] text-sm leading-relaxed">
+                        <p class="text-black text-sm leading-relaxed">
                             <strong class="text-[#1a1a2e]">Certificado analítico</strong> que acredite la finalización del secundario
                             (legalizado). Si aún no fue emitido, presentar certificado de estudios en trámite.
                         </p>
@@ -421,7 +421,7 @@ get_header();
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
-                        <p class="text-[#1a1a2e88] text-sm leading-relaxed">
+                        <p class="text-black text-sm leading-relaxed">
                             <strong class="text-[#1a1a2e]">Documento Nacional de Identidad (DNI)</strong> original.
                         </p>
                     </div>
@@ -432,15 +432,15 @@ get_header();
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
-                        <p class="text-[#1a1a2e88] text-sm leading-relaxed">
+                        <p class="text-black text-sm leading-relaxed">
                             <strong class="text-[#1a1a2e]">Certificado de salud</strong> emitido por entidad de Salud Pública visado
                             por el Centro de Salud Estudiantil, o emitido directamente por el Centro según sede.
                         </p>
                     </div>
 
-                    <!-- Alerta centros de salud -->
+                
                     <div class="mt-2 rounded border border-[#88CAFC44] bg-[#EFF7FF] p-4">
-                        <p class="text-[#0b1f4a] text-xs font-bold uppercase tracking-widest mb-3 flex items-center gap-2">
+                        <p class="text-[#0b1f4a] text-md font-bold uppercase tracking-widest mb-3 flex items-center gap-2">
                             <svg class="w-4 h-4 text-[#88CAFC]" fill="none" stroke="currentColor" stroke-width="2"
                                 viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -450,8 +450,8 @@ get_header();
                         </p>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             <div class="bg-white rounded-lg border border-[#D8DEE5] p-3">
-                                <p class="text-[#0b1f4a] text-xs font-bold mb-1">CESEU — San Luis</p>
-                                <p class="text-[#1a1a2e66] text-xs">Rivadavia 1359</p>
+                                <p class="text-[#0b1f4a] text-md font-bold mb-1">CESEU — San Luis</p>
+                                <p class="text-gray-800 text-md">Rivadavia 1359</p>
                                 <a href="https://goo.gl/maps/wKGhLjFMxyokpvGK6" target="_blank"
                                     class="text-[#88CAFC] text-[10px] font-semibold hover:underline mt-1 flex items-center gap-1">
                                     <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -462,8 +462,8 @@ get_header();
                                 </a>
                             </div>
                             <div class="bg-white rounded-lg border border-[#D8DEE5] p-3">
-                                <p class="text-[#0b1f4a] text-xs font-bold mb-1">CUSE — Villa Mercedes</p>
-                                <p class="text-[#1a1a2e66] text-xs">Junín 269</p>
+                                <p class="text-[#0b1f4a] text-md font-bold mb-1">CUSE — Villa Mercedes</p>
+                                <p class="text-gray-800 text-md">Junín 269</p>
                                 <a href="https://goo.gl/maps/Wh9MHNajyQKvBFEDA" target="_blank"
                                     class="text-[#88CAFC] text-[10px] font-semibold hover:underline mt-1 flex items-center gap-1">
                                     <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -474,7 +474,7 @@ get_header();
                                 </a>
                             </div>
                         </div>
-                        <p class="text-[#1a1a2e55] text-[10px] mt-3 leading-relaxed">
+                        <p class="text-black text-xs mt-3 leading-relaxed">
                             Para la sede Villa de Merlo no se requiere visado del Centro de Salud Estudiantil.
                         </p>
                     </div>

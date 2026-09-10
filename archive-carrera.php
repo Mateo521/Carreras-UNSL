@@ -41,7 +41,7 @@ get_header();
     <div class="absolute inset-0 opacity-10 z-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent bg-[length:20px_20px]"></div>
     <img class="absolute object-cover size-full top-0 z-0" src="<?php echo  get_template_directory_uri() . '/imagenes/carreras.jpg' ?>" alt="">
     <div class="relative max-w-7xl mx-auto px-6 text-center z-10">
-        <!--span class="inline-block py-1.5 px-4  bg-white/10 backdrop-blur-md text-[#88CAFC] text-xs font-bold tracking-widest uppercase mb-4 border border-white/20"> 
+        <!--span class="inline-block py-1.5 px-4  bg-white/10 backdrop-blur-md text-[#88CAFC] text-md font-bold tracking-widest uppercase mb-4 border border-white/20"> 
             Estructura Institucional
         </span-->
         <h1 class="text-white text-4xl md:text-5xl lg:text-6xl font-bold  mb-6"> <!-- font-['Libre_Baskerville',serif] -->
@@ -54,7 +54,7 @@ get_header();
 </header>
 
 <div class="bg-white border-b border-[#ACCEF2]">
-    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-xs text-[#061C2E]">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-md text-[#061C2E]">
         <a href="<?php echo home_url(); ?>" class="hover:text-[#0b1f4a] transition-colors">Inicio</a>
         <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
@@ -74,7 +74,7 @@ get_header();
                 </svg>
                 Filtros de búsqueda
             </span>
-            <button id="toggleMobileFilters" class="bg-[#EEF2F5] hover:bg-[#e5e0d8] text-[#0b1f4a] px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wide transition-colors shadow-sm">
+            <button id="toggleMobileFilters" class="bg-[#EEF2F5] hover:bg-[#e5e0d8] text-[#0b1f4a] px-4 py-2 rounded-lg text-md font-bold uppercase tracking-wide transition-colors shadow-sm">
                 Mostrar
             </button>
         </div>
@@ -413,7 +413,7 @@ if ($query_carreras->have_posts()) {
                 
                     <div class="flex flex-col min-w-0">
                         <span class="text-[#061C2E] text-[9px] uppercase tracking-widest font-bold leading-none mb-0.5">Título intermedio</span>
-                        <span class="text-[#1a1a2e] text-xs font-semibold " title="${c.titulo_intermedio}">${c.titulo_intermedio}</span>
+                        <span class="text-[#1a1a2e] text-md font-semibold " title="${c.titulo_intermedio}">${c.titulo_intermedio}</span>
                     </div>
                 </div>
             `;
@@ -442,18 +442,18 @@ if ($query_carreras->have_posts()) {
                     </div>
                     
                     <div class="flex flex-col gap-2 mt-auto pt-4 border-t border-dashed border-[#ACCEF2]">
-                        <div class="flex items-start justify-between text-xs gap-3">
+                        <div class="flex items-start justify-between text-md gap-3">
                             <span class="text-[#061C2E] font-medium shrink-0 mt-1">${labelFacultad}</span>
                             <div class="flex flex-col items-end gap-1.5 min-w-0 flex-1">
                                 ${facultadesPills}
                             </div>
                         </div>
 
-                        <div class="flex items-center justify-between text-xs mt-1">
+                        <div class="flex items-center justify-between text-md mt-1">
                             <span class="text-[#061C2E] font-medium">Sede</span>
                             <span class="font-medium text-[#1a1a2e]">${c.sede}</span>
                         </div>
-                        <div class="flex items-center justify-between text-xs mt-1">
+                        <div class="flex items-center justify-between text-md mt-1">
                             <span class="text-[#061C2E] font-medium">Duración</span>
                             <span class="font-medium text-[#1a1a2e]">${c.duracion}</span>
                         </div>

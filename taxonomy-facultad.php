@@ -82,7 +82,7 @@ $logo_url = get_template_directory_uri() . '/imagenes/' . $slug . '.png';
 </header>
 
 <div class="bg-white border-b border-[#ACCEF2]">
-    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-xs text-[#1a1a2e55]">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-md text-[#1a1a2e55]">
         <a href="<?php echo home_url(); ?>" class="hover:text-[#0b1f4a] transition-colors">Inicio</a>
         <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
@@ -171,11 +171,11 @@ $logo_url = get_template_directory_uri() . '/imagenes/' . $slug . '.png';
                                 </h3>
                             </div>
                             <div class="flex flex-col gap-2 mt-auto pt-4 border-t border-dashed border-[#ACCEF2]">
-                                <div class="flex items-center justify-between text-xs">
+                                <div class="flex items-center justify-between text-md">
                                     <span class="text-[#1a1a2e66] font-medium">Sede</span>
                                     <span class="font-medium text-[#1a1a2e]"><?php echo esc_html($sede_name); ?></span>
                                 </div>
-                                <div class="flex items-center justify-between text-xs mt-1">
+                                <div class="flex items-center justify-between text-md mt-1">
                                     <span class="text-[#1a1a2e66] font-medium">Duración</span>
                                     <span class="font-medium text-[#1a1a2e]"><?php echo esc_html($duracion); ?></span>
                                 </div>

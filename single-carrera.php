@@ -140,7 +140,7 @@ while (have_posts()) : the_post();
     </div>
 
     <div class="bg-white border-b border-[#ACCEF2]">
-        <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-xs text-[#1A1A3B]">
+        <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-md text-[#1A1A3B]">
             <a href="<?php echo home_url(); ?>" class="hover:text-[#0b1f4a] transition-colors">Inicio</a>
             <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" /></svg>
             <a href="<?php echo home_url('/carreras/'); ?>" class="hover:text-[#0b1f4a] transition-colors">Carreras</a>
@@ -157,7 +157,7 @@ while (have_posts()) : the_post();
                         <div class="border-b border-[#DADBED] px-7 py-5 flex items-center gap-3">
                             <h2 class=" text-[#0b1f4a] font-bold text-lg">Objetivos de la carrera</h2> 
                         </div>
-                        <div class="px-7 py-6 text-[#1a1a2e88] text-sm leading-relaxed wp-content-format">
+                        <div class="px-7 py-6 text-black text-sm leading-relaxed wp-content-format">
                             <?php echo get_field('objetivos_carrera'); ?>
                         </div>
                     </section>
@@ -168,7 +168,7 @@ while (have_posts()) : the_post();
                         <div class="border-b border-[#DADBED] px-7 py-5 flex items-center gap-3">
                             <h2 class=" text-[#0b1f4a] font-bold text-lg">Alcances e incumbencias del título</h2> 
                         </div>
-                        <div class="px-7 py-6 text-[#1a1a2e88] text-sm leading-relaxed wp-content-format">
+                        <div class="px-7 py-6 text-black text-sm leading-relaxed wp-content-format">
                             <?php echo get_field('alcances_titulo'); ?>
                         </div>
                     </section>
@@ -198,7 +198,7 @@ while (have_posts()) : the_post();
                                 <?php foreach ($plan_de_estudios as $numero_anio => $materias) :
                                     $es_final = ($numero_anio === $ultimo_anio);
                                     $ul_class = $es_final ? 'grid grid-cols-1  divide-x divide-y divide-[#DADBED]' : 'divide-y divide-[#DADBED]';
-                                    $li_class = $es_final ? 'px-4 py-3 text-xs text-[#1a1a2e88] flex items-center gap-2' : 'px-4 py-2.5 text-xs text-[#1a1a2e88] flex items-center gap-2';
+                                    $li_class = $es_final ? 'px-4 py-3 text-md text-black flex items-center gap-2' : 'px-4 py-2.5 text-md text-black flex items-center gap-2';
                                 ?> 
                                     <div class="border border-[#ACCEF2] overflow-hidden rounded-t-xl">
                                         <div class="bg-[#0b1f4a] px-4 py-3 flex items-center gap-2">
@@ -255,7 +255,7 @@ while (have_posts()) : the_post();
                             foreach ($terms_facultad as $term_fac) {
                                 $slug = strtolower($term_fac->slug);
                                 $n_completo = isset($nombres_facultades[$slug]) ? $nombres_facultades[$slug] : $term_fac->name;
-                                echo '<p class="text-[#88CAFC] text-xs mt-0.5">' . esc_html($n_completo) . '</p>';
+                                echo '<p class="text-[#88CAFC] text-md mt-0.5">' . esc_html($n_completo) . '</p>';
                             }
                         }
                         ?>
@@ -270,7 +270,7 @@ while (have_posts()) : the_post();
                                     <p class="text-[#1A1A3B] text-[11px] uppercase tracking-widest font-bold mb-0.5">Teléfono</p>
                                     <a href="tel:<?php echo get_field('telefono_contacto'); ?>" class="text-[#0b1f4a] text-sm font-semibold hover:text-[#88CAFC] transition-colors"><?php echo get_field('telefono_contacto'); ?></a>
                                     <?php if (get_field('interno_contacto')) : ?>
-                                        <p class="text-[#1a1a2e44] text-xs mt-0.5">Interno: <?php echo get_field('interno_contacto'); ?></p>
+                                        <p class="text-[#1a1a2e44] text-md mt-0.5">Interno: <?php echo get_field('interno_contacto'); ?></p>
                                     <?php endif; ?>
                                 </div>
                             </div>
@@ -303,13 +303,13 @@ while (have_posts()) : the_post();
                                 <p class="text-[#1A1A3B] text-[11px] uppercase tracking-widest font-bold mb-3">Redes sociales</p>
                                 <div class="flex flex-col gap-2">
                                     <?php if (get_field('instagram_contacto')) : ?>
-                                        <a href="<?php echo esc_url(get_field('instagram_contacto')); ?>" target="_blank" class="flex items-center gap-2 text-sm text-[#1a1a2e88] hover:text-[#E1306C] transition-colors">
+                                        <a href="<?php echo esc_url(get_field('instagram_contacto')); ?>" target="_blank" class="flex items-center gap-2 text-sm text-black hover:text-[#E1306C] transition-colors">
                                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" /></svg>
                                             Instagram
                                         </a>
                                     <?php endif; ?>
                                     <?php if (get_field('facebook_contacto')) : ?>
-                                        <a href="<?php echo esc_url(get_field('facebook_contacto')); ?>" target="_blank" class="flex items-center gap-2 text-sm text-[#1a1a2e88] hover:text-[#1877f2] transition-colors">
+                                        <a href="<?php echo esc_url(get_field('facebook_contacto')); ?>" target="_blank" class="flex items-center gap-2 text-sm text-black hover:text-[#1877f2] transition-colors">
                                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" /></svg>
                                             Facebook
                                         </a>
@@ -343,12 +343,12 @@ while (have_posts()) : the_post();
                             <?php if (get_field('ordenanzas_unsl')) : ?>
                                 <div class="pt-3 border-t border-[#f0ece4]">
                                     <p class="text-[#1A1A3B] text-[10px] uppercase tracking-widest font-bold mb-1">Ordenanzas UNSL (OCD/OCS)</p>
-                                    <p class="text-[#1a1a2e] text-xs leading-relaxed"><?php echo esc_html(get_field('ordenanzas_unsl')); ?></p>
+                                    <p class="text-[#1a1a2e] text-md leading-relaxed"><?php echo esc_html(get_field('ordenanzas_unsl')); ?></p>
                                 </div>
                             <?php endif; ?>
                             <?php if (get_field('observaciones_academicas')) : ?>
                                 <div class="pt-3 border-t border-[#f0ece4] bg-yellow-50 p-3 mt-2">
-                                    <p class="text-yellow-800 text-xs font-medium italic">
+                                    <p class="text-yellow-800 text-md font-medium italic">
                                         <?php echo esc_html(get_field('observaciones_academicas')); ?>
                                     </p>
                                 </div>
@@ -369,9 +369,8 @@ while (have_posts()) : the_post();
                     </div>
                 <?php else : ?>
                     <div class="bg-[#0b1f4a] p-6 relative overflow-hidden rounded-xl">
-                        <div class="absolute -top-8 -right-8 w-32 h-32 rounded-full bg-[#88CAFC] opacity-10 pointer-events-none"></div>
                         <h3 class="text-white font-bold text-base mb-2 relative">¿Te interesa esta carrera?</h3>
-                        <p class="text-[#ffffff77] text-sm mb-5 relative">Hacé tu preinscripción y comenzá tu camino en la UNSL.</p>
+                        <p class="text-white text-sm mb-5 relative">Hacé tu preinscripción y comenzá tu camino en la UNSL.</p>
                         <a href="/preinscripcion" class="relative flex items-center justify-center rounded-lg gap-2 bg-[#88CAFC] hover:bg-white text-[#0b1f4a] font-bold text-sm px-5 py-3.5 transition-all">
                             Preinscripción 2026
                         </a>
