@@ -110,8 +110,8 @@ get_header();
                 <div class="bg-white border border-[#ACCEF2] rounded p-5 mb-8">
                     <p class="text-xs font-bold uppercase tracking-widest text-[#1a1a2e55] mb-3">Facultades</p>
                     <ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 text-sm font-medium text-[#0b1f4a]">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#4B707F]"></span> Facultad de Ingeniería y Ciencias Agropecuarias</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#502773]"></span> Facultad de Ciencias Económicas, Jurídicas y Sociales</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 shrink-0 rounded-full bg-[#4B707F]"></span> Facultad de Ingeniería y Ciencias Agropecuarias</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 shrink-0 rounded-full bg-[#502773]"></span> Facultad de Ciencias Económicas, Jurídicas y Sociales</li>
                     </ul>
                 </div>
 
@@ -151,7 +151,7 @@ get_header();
                 <div class="bg-white border border-[#ACCEF2] rounded p-5 mb-8">
                     <p class="text-xs font-bold uppercase tracking-widest text-[#1a1a2e55] mb-3">Facultades</p>
                     <ul class="grid grid-cols-1 gap-2 text-sm font-medium text-[#0b1f4a]">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#996A16]"></span> Facultad de Turismo y Urbanismo</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 shrink-0 rounded-full bg-[#996A16]"></span> Facultad de Turismo y Urbanismo</li>
                     </ul>
                 </div>
 
