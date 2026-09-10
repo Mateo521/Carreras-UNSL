@@ -44,7 +44,7 @@ get_header();
 <section class="pb-24 pt-12 bg-white relative z-20">
     <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-[#0b1f4a]  mb-4">Descubrí tu camino</h2> <!-- font-['Libre_Baskerville',serif] -->
+            <h2 class="text-3xl md:text-4xl font-bold text-[#0b1f4a]  mb-4">Descubrí tu futuro</h2> <!-- font-['Libre_Baskerville',serif] -->
             <p class="text-slate-500 text-lg max-w-2xl mx-auto">Seleccioná el nivel académico de tu interés para explorar las opciones que la UNSL tiene preparadas para vos.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">

@@ -64,12 +64,12 @@ get_header();
                 <div class="bg-white border border-[#ACCEF2] rounded p-5 mb-8">
                     <p class="text-xs font-bold uppercase tracking-widest text-[#1a1a2e55] mb-3">Facultades en esta sede</p>
                     <ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 text-sm font-medium text-[#0b1f4a]">
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#008D3B]"></span>Facultad de Química, Bioquímica y Farmacia</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#E42420]"></span>Facultad de Ciencias Físico Matemáticas y Naturales</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#ED6F03]"></span>Facultad de Ciencias Humanas</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#F4B318]"></span>Facultad de Psicología</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#A5C614]"></span>Facultad de Ciencias de la Salud</li>
-                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#972F70]"></span>Instituto Politécnico y Artístico Universitario</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 shrink-0 rounded-full bg-[#008D3B]"></span>Facultad de Química, Bioquímica y Farmacia</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 shrink-0 rounded-full bg-[#E42420]"></span>Facultad de Ciencias Físico Matemáticas y Naturales</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 shrink-0 rounded-full bg-[#ED6F03]"></span>Facultad de Ciencias Humanas</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 shrink-0 rounded-full bg-[#F4B318]"></span>Facultad de Psicología</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 shrink-0 rounded-full bg-[#A5C614]"></span>Facultad de Ciencias de la Salud</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 shrink-0 rounded-full bg-[#972F70]"></span>Instituto Politécnico y Artístico Universitario</li>
                     </ul>
                 </div>
 
@@ -104,7 +104,7 @@ get_header();
 
 
                 <p class="text-[#1a1a2e88] leading-relaxed mb-6">
-                    Inserta en la segunda ciudad más poblada de la provincia, reconocida por su marcado perfil agroindustrial y su rica identidad cultural. En este escenario productivo, la sede enfoca su oferta académica en la ingeniería, las ciencias agropecuarias y el campo económico, jurídico y social, formando profesionales que interactúan de manera directa con las necesidades, las industrias y el desarrollo de la región.
+                    Inserta en la segunda ciudad más poblada de la provincia, reconocida por su marcado perfil agroindustrial y su rica identidad cultural. En este escenario productivo, la sede enfoca su propuesta académica en la ingeniería, las ciencias agropecuarias y el campo económico, jurídico y social, formando profesionales que interactúan de manera directa con las necesidades, las industrias y el desarrollo de la región.
 
 
                 <div class="bg-white border border-[#ACCEF2] rounded p-5 mb-8">

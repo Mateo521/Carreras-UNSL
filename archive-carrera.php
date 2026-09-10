@@ -48,7 +48,7 @@ get_header();
             Carreras UNSL
         </h1>
         <p class="text-slate-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-light">
-            Descubrí tu camino académico
+            Descubrí tu futuro en la UNSL
         </p>
     </div>
 </header>
@@ -230,7 +230,7 @@ if ($query_carreras->have_posts()) {
     </div>
 
     <div class="flex items-center justify-between mb-6">
-        <h2 class="text-lg font-bold text-[#0b1f4a] ">Catálogo</h2>  
+        <h2 class="text-lg font-bold text-[#0b1f4a] ">Catálogo</h2>
         <p class="text-sm font-medium text-[#061C2E] bg-white px-3 py-1  shadow-sm border border-[#ACCEF2]"><span id="resultCount">—</span> carreras listadas</p>
     </div>
 
@@ -240,7 +240,7 @@ if ($query_carreras->have_posts()) {
         <svg class="w-16 h-16 mx-auto text-[#1a1a2e22] mb-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
         </svg>
-        <p class="text-[#0b1f4a] text-lg font-bold ">No se encontraron carreras</p>  
+        <p class="text-[#0b1f4a] text-lg font-bold ">No se encontraron carreras</p>
         <p class="text-[#061C2E] text-sm mt-2 max-w-sm mx-auto">No hay resultados que coincidan con la combinación de filtros seleccionada.</p>
         <button onclick="document.getElementById('clearFilters').click()" class="mt-4 text-[#88CAFC] font-medium hover:text-[#0b1f4a] transition-colors">Limpiar búsqueda</button>
     </div>
@@ -404,8 +404,11 @@ if ($query_carreras->have_posts()) {
                 <div class="mt-3 bg-[#f8fbff] border border-[#ACCEF2] px-3 py-2 rounded flex items-center gap-2">
                     
                     <svg class="w-6 h-6 text-[#88CAFC]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.78552 9.5 12.7855 14l9-4.5-9-4.5-8.99998 4.5Zm0 0V17m3-6v6.2222c0 .3483 2 1.7778 5.99998 1.7778 4 0 6-1.3738 6-1.7778V11"/>
+  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.78552 9.5 12.7855 14l9-4.5-9-4.5-8.99998 4.5Zm0 0V17m3-6v6.2222c0 .3483 2 1.7778 5.99998 1.7778 4 0 6-1.3738 6-1.7778V11"/>
 </svg>
+
+
+
 
                 
                     <div class="flex flex-col min-w-0">
@@ -553,7 +556,7 @@ if ($query_carreras->have_posts()) {
                 .trim()
                 .normalize('NFD')
                 .replace(/[\u0300-\u036f]/g, '')
-                .replace(/-/g, ' ')  
+                .replace(/-/g, ' ')
                 .toLocaleLowerCase('es');
             const opcionSede = selectSede ? Array.from(selectSede.options).find(opcion =>
                 normalizarSede(opcion.value) === normalizarSede(sedeSolicitada)

@@ -48,7 +48,7 @@ $colores_facultades = array(
 );
 
 $nombre_completo = isset($nombres_facultades[$slug]) ? $nombres_facultades[$slug] : $sigla;
-$descripcion_seo = isset($descripciones[$slug]) ? $descripciones[$slug] : 'Conoce nuestra oferta académica y fórmate para el futuro.';
+$descripcion_seo = isset($descripciones[$slug]) ? $descripciones[$slug] : 'Conoce nuestra propuesta académica y fórmate para el futuro.';
 $color_bg = isset($colores_facultades[$slug]) ? $colores_facultades[$slug]['bg'] : 'bg-white';
 $color_text = isset($colores_facultades[$slug]) ? $colores_facultades[$slug]['text'] : 'text-[#0b1f4a]';
 $logo_url = get_template_directory_uri() . '/imagenes/' . $slug . '.png';

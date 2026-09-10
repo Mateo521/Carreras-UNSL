@@ -138,7 +138,7 @@ get_header();
 
         <?php /* Titular principal */ ?>
         <h1
-         class="relative left-[-4px]"
+            class="relative left-[-4px]"
             style="
         font-weight:800;
         font-size:clamp(44px,7vw,96px);
@@ -161,7 +161,7 @@ get_header();
     
         margin-bottom:2.5rem;
         animation: fadeUp .8s .3s both cubic-bezier(.22,1,.36,1);">
-            Explorá la oferta académica 2027 de la UNSL: pregrado, grado y posgrado en tres sedes de San Luis.
+            Explorá la propuesta académica 2027 de la UNSL: pregrado, grado y posgrado en tres sedes de San Luis.
         </p>
 
         <?php /* Buscador */ ?>
@@ -336,22 +336,15 @@ get_header();
             letter-spacing:.22em;
             text-transform:uppercase;
             color:var(--azulunsl);
-            margin-bottom:.8rem;">Oferta académica</p>
+            margin-bottom:.8rem;">Propuesta académica</p>
                 <h2
                     style="
             font-weight:800;
             font-size:clamp(32px,5vw,54px);
             line-height:1.05;
             letter-spacing:-.025em;
-            color:var(--navy);">Descubrí tu camino académico</h2>
+            color:var(--navy);">Descubrí tu futuro académico</h2>
             </div>
-            <p
-                style="
-          font-weight:300;
-          font-size:1rem;
-          color:var(--mid);
-          max-width:380px;
-          line-height:1.7;">Seleccioná el nivel académico de tu interés para explorar la oferta completa de la UNSL.</p>
         </div>
 
 
@@ -383,9 +376,9 @@ get_header();
             ];
             foreach ($niveles as $i => $n) : ?>
                 <a
-    href="<?php echo home_url('/carreras/?tipo=' . $n['tipo']); ?>"
-    class="reveal rounded-xl reveal-d<?php echo $i + 1; ?> block tarjeta-carrera"
-    style="
+                    href="<?php echo home_url('/carreras/?tipo=' . $n['tipo']); ?>"
+                    class="reveal rounded-xl reveal-d<?php echo $i + 1; ?> block tarjeta-carrera"
+                    style="
         text-decoration: none;
         padding: 3rem 2.5rem;
         position: relative;
@@ -494,20 +487,18 @@ get_header();
 </section>
 
 <style>
-
- 
     .tarjeta-carrera {
         background-color: #ffffff !important;
         transition: all 0.3s ease !important;
     }
 
- 
+
     .tarjeta-carrera:hover,
     .tarjeta-carrera:active {
         background-color: var(--navy) !important;
     }
 
- 
+
     .tarjeta-carrera:hover .tag-chip,
     .tarjeta-carrera:active .tag-chip {
         background: rgba(255, 255, 255, .12) !important;
@@ -524,8 +515,8 @@ get_header();
         color: rgba(255, 255, 255, .65) !important;
     }
 
-    .tarjeta-carrera:hover > div:last-child,
-    .tarjeta-carrera:active > div:last-child {
+    .tarjeta-carrera:hover>div:last-child,
+    .tarjeta-carrera:active>div:last-child {
         color: #ffffff !important;
     }
 
@@ -556,7 +547,7 @@ get_header();
 <section
     class="relative overflow-hidden"
     style="background:var(--navy); padding:7rem 1.5rem;">
- 
+
     <div
         aria-hidden="true"
         style="position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(to bottom, transparent, var(--azulunsl), transparent);"></div>
@@ -564,7 +555,7 @@ get_header();
     <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
 
-           
+
             <div>
                 <p
                     class="reveal"
@@ -707,7 +698,7 @@ get_header();
 </section>
 <section
     class=""
-    style="background:var(--cream); padding:7rem 1.5rem;">  
+    style="background:var(--cream); padding:7rem 1.5rem;">
     <div class="max-w-7xl mx-auto">
         <div class="reveal flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
             <div>
@@ -718,7 +709,7 @@ get_header();
             letter-spacing:.22em;
             text-transform:uppercase;
             color:var(--azulunsl);
-            margin-bottom:.8rem;">Estructura académica</p>
+            margin-bottom:.8rem;">Unidades académicas</p>
                 <h2
                     style="
             font-weight:800;
@@ -727,7 +718,7 @@ get_header();
             letter-spacing:-.025em;
             color:var(--navy);">Facultades<br>e institutos</h2>
             </div>
-            
+
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <?php
@@ -763,11 +754,11 @@ get_header();
                         style="width:44px;height:44px;
             display:flex;align-items:center;justify-content:center;
             flex-shrink:0;
-            background:<?php echo $fac['hex']; ?>14;">
+            ">
                         <img
                             src="<?php echo get_template_directory_uri() . '/imagenes/' . $fac['img']; ?>"
                             alt="<?php echo $fac['sigla']; ?>"
-                            width="28" height="28"
+                            width="35" height="35"
                             style="object-fit:contain;"
                             onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                         <span

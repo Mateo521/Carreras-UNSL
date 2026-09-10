@@ -94,7 +94,7 @@ get_header();
                             </svg>
                         </div-->
                         <div>
-                            <p class="text-[#88CAFC] text-[10px] font-black uppercase  mb-1">Primera vez en la UNSL <!-- tracking-[0.2em] -->
+                            <p class="text-[#24a1ff] text-base font-black uppercase  mb-1">Primera vez en la UNSL <!-- tracking-[0.2em] -->
                             </p>
                             <h2 class=" text-white text-xl font-bold leading-tight">Ingreso por <!-- font-['Libre_Baskerville',serif] --> primera vez</h2>
                             <p class="text-[#ffffff66] text-sm mt-1">Completá el formulario de preinscripción de tu facultad</p>
@@ -301,7 +301,7 @@ get_header();
 
 
             <div class="bg-white rounded border border-[#D8DEE5] overflow-hidden">
-                <div class="bg-[#1a6b52] px-7 py-6 relative overflow-hidden">
+                <div class="bg-[#0b1f4a] px-7 py-6 relative overflow-hidden">
                     <!--div class="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-white opacity-10 pointer-events-none"></div-->
                     <div class="flex items-start gap-4 relative">
                         <!--div
@@ -312,7 +312,7 @@ get_header();
                             </svg>
                         </div-->
                         <div>
-                            <p class="text-[#a7f3d0] text-[10px] font-black uppercase tracking-[0.2em] mb-1">Ya tengo usuario UNSL</p>
+                            <p class="text-white text-base font-black uppercase  mb-1">Ya tengo usuario UNSL</p>
                             <h2 class=" text-white text-xl font-bold leading-tight">Ya soy alumno de la UNSL</h2> <!-- font-['Libre_Baskerville',serif] -->
                             <p class="text-[#ffffff77] text-sm mt-1">Preinscribite por SIU Guaraní</p>
                         </div>
@@ -326,7 +326,7 @@ get_header();
                     </p>
 
                     <a href="http://g3.unsl.edu.ar/g3/" target="_blank"
-                        class="group flex items-center gap-3 w-full p-4 rounded border-2 border-[#1a6b52] hover:bg-[#1a6b52] transition-all duration-200">
+                        class="group flex items-center gap-3 w-full p-4 rounded border-2 border-[#0b1f4a] hover:bg-[#0b1f4a] transition-all duration-200">
                         <!--div
                             class="w-10 h-10 rounded-lg bg-[#ecfdf5] group-hover:bg-[#ffffff15] flex items-center justify-center shrink-0 transition-colors">
                             <svg class="w-5 h-5 text-[#1a6b52] group-hover:text-white transition-colors" fill="none"
@@ -336,9 +336,9 @@ get_header();
                             </svg>
                         </div-->
                         <div class="flex-1">
-                            <p class="text-[#1a6b52] group-hover:text-white font-bold text-sm transition-colors">Acceder a SIU Guaraní
+                            <p class="text-[#0b1f4a] group-hover:text-white font-bold text-sm transition-colors">Acceder a SIU Guaraní
                             </p>
-                            <p class="text-[#1a6b5288] group-hover:text-[#ffffff77] text-xs transition-colors">g3.unsl.edu.ar/g3</p>
+                            <p class="text-[#0b1f4a88] group-hover:text-[#ffffff77] text-xs transition-colors">g3.unsl.edu.ar/g3</p>
                         </div>
                         <!--svg class="w-4 h-4 text-[#1a6b52] group-hover:text-white shrink-0 transition-colors" fill="none"
                             stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
