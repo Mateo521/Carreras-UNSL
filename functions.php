@@ -523,6 +523,23 @@ add_action('rest_api_init', function () {
     ));
 });
 
+add_filter( 'wpseo_metadesc', 'dinamizar_meta_desc_carreras' );
+
+function dinamizar_meta_desc_carreras( $desc ) {
+
+    if ( is_singular( 'carrera' ) ) { 
+        $titulo_otorgado = get_field('titulo_otorgado') ?: get_the_title(); //
+        $duracion = get_field('duracion_carrera') ?: 'duración no especificada'; 
+        
+
+        $nueva_desc = "Estudiá para ser " . esc_attr($titulo_otorgado) . " en la UNSL. Formación de " . esc_attr($duracion) . ". Conocé los alcances del título, modalidad y el plan de estudios completo.";
+        
+
+        return wp_trim_words( $nueva_desc, 25, '...' );
+    }
+    return $desc;
+}
+
 /*
 add_action('init', 'unsl_importar_carreras_desde_json');
 
