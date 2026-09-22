@@ -34,8 +34,8 @@
         </div>
     </div>
     <div class="max-w-7xl mx-auto mt-10 pt-6 border-t border-[#ffffff0d] flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p class="text-[#fff] text-md">© 2026 Universidad Nacional de San Luis — Propuesta académica</p>
-        <p class="text-[#fff] text-md">Secretaría Académica</p>
+        <p class="text-[#fff] text-md">2026 Universidad Nacional de San Luis — Propuesta académica</p>
+        <p class="text-[#fff] text-md">Secretaría Académica, de Innovación Educativa y Posgrado</p>
     </div>
 </footer>
 

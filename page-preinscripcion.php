@@ -463,8 +463,8 @@ get_header();
                             </div>
                             <div class="bg-white rounded-lg border border-[#D8DEE5] p-3">
                                 <p class="text-[#0b1f4a] text-md font-bold mb-1">CUSE — Villa Mercedes</p>
-                                <p class="text-gray-800 text-md">Junín 269</p>
-                                <a href="https://goo.gl/maps/Wh9MHNajyQKvBFEDA" target="_blank"
+                                <p class="text-gray-800 text-md">Buenos Aires 122</p>
+                                <a href="https://maps.app.goo.gl/qDPPhwpANkbnzsk76" target="_blank"
                                     class="text-[#88CAFC] text-[10px] font-semibold hover:underline mt-1 flex items-center gap-1">
                                     <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                         <path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />

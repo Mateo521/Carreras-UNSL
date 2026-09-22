@@ -372,7 +372,7 @@ while (have_posts()) : the_post();
                         <h3 class="text-white font-bold text-base mb-2 relative">¿Te interesa esta carrera?</h3>
                         <p class="text-white text-sm mb-5 relative">Hacé tu preinscripción y comenzá tu camino en la UNSL.</p>
                         <a href="/preinscripcion" class="relative flex items-center justify-center rounded-lg gap-2 bg-[#88CAFC] hover:bg-white text-[#0b1f4a] font-bold text-sm px-5 py-3.5 transition-all">
-                            Preinscripción 2026
+                            Preinscripción 2027
                         </a>
                     </div>
                 <?php endif; ?>
