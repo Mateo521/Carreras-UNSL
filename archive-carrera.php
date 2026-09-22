@@ -106,6 +106,18 @@ get_header();
 
                 $terms = get_terms(array('taxonomy' => $taxonomia, 'hide_empty' => false));
 
+                if ($taxonomia === 'sede' && !is_wp_error($terms)) {
+                    $orden_sedes = array('San Luis', 'Villa Mercedes', 'Merlo', 'Villa de Merlo');
+                    usort($terms, function ($a, $b) use ($orden_sedes) {
+                        $pos_a = array_search($a->name, $orden_sedes, true);
+                        $pos_b = array_search($b->name, $orden_sedes, true);
+                        $pos_a = ($pos_a === false) ? PHP_INT_MAX : $pos_a;
+                        $pos_b = ($pos_b === false) ? PHP_INT_MAX : $pos_b;
+
+                        return $pos_a <=> $pos_b;
+                    });
+                }
+
 
                 echo '<div class="relative flex-shrink-0 w-full ' . esc_attr($width_classes) . ' group">';
 
@@ -114,6 +126,9 @@ get_header();
 
                 foreach ($terms as $term) {
                     $texto_visible = esc_html($term->name);
+                    if ($taxonomia === 'sede' && in_array($term->name, array('Merlo', 'Villa de Merlo'), true)) {
+                        $texto_visible = 'Villa de Merlo';
+                    }
                     if ($taxonomia === 'facultad' && isset($nombres_facultades[$term->slug])) {
                         $texto_visible = esc_html($term->name) . ' (' . esc_html($nombres_facultades[$term->slug]) . ')';
                     }
@@ -367,7 +382,7 @@ if ($query_carreras->have_posts()) {
 
     function buildCard(c) {
         const tc = TIPO_CONFIG[c.tipo] || {
-            label: "General",
+            label: "Profesorado",
             bg: "bg-gray-100",
             text: "text-gray-700",
             dot: "bg-gray-700"

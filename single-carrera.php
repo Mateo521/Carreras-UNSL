@@ -106,13 +106,13 @@ while (have_posts()) : the_post();
                 <p class="text-[#ffffff88] text-base">Te egresas como: <strong class="text-white font-semibold"><?php echo esc_html($titulo_otorgado); ?></strong></p>
 
                 <?php if (get_field('titulo_intermedio')) : ?>
-                    <div class="bg-gradient-to-r from-white to-transparent rounded  px-4 py-2 my-3 flex flex-col sm:flex-row items-start sm:items-center gap-5 shadow-sm w-fit">
-                        <div>
-                            <h4 class="text-[#3730a3] font-bold text-base mb-1">¡Dato curioso!</h4>
-                            <p class="text-[#1a1a2e] text-base">Esta carrera posee el título intermedio de <strong class="font-bold bg-gradient-to-l rounded from-white to-transparent px-2"><?php echo esc_html(get_field('titulo_intermedio')); ?></strong>.</p>
-                        </div>
-                    </div>
-                <?php endif; ?>
+                                    <div class="my-4 flex w-fit flex-col items-start gap-3 rounded-xl border border-white/30 bg-white/95 px-5 py-4 shadow-lg sm:flex-row sm:items-center sm:gap-4">
+                                        <div>
+                                            <h4 class="mb-1 text-sm font-bold uppercase tracking-wide text-[#3730a3]">¡Dato curioso!</h4>
+                                            <p class="text-base leading-relaxed text-[#1a1a2e]">Esta carrera posee el título intermedio de <strong class="font-bold text-[#3730a3]"><?php echo esc_html(get_field('titulo_intermedio')); ?></strong>.</p>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
 
                 <div class="flex flex-wrap gap-3 mt-8">
                     <div class="flex items-center gap-2 bg-[#ffffff0d] border border-[#ffffff12] px-4 py-2.5 rounded-lg backdrop-blur-sm">

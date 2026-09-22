@@ -18,7 +18,7 @@ get_header();
             Estructura Institucional
         </span-->
         <h1 class="text-white text-4xl md:text-5xl lg:text-6xl font-bold  mb-6"> <!-- font-['Libre_Baskerville',serif] -->
-            Facultades
+            Unidades Académicas
         </h1>
         <!--p class="text-slate-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-light">
            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
@@ -33,28 +33,30 @@ get_header();
         <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
         </svg>
-        <span class="text-[#1a1a2e]">Facultades</span>
+        <span class="text-[#1a1a2e]">Unidades Académicas</span>
     </div>
 </div>
 
 
 <main class="px-6 py-24 bg-[#EEF1F5]">
     <div class="max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <section aria-labelledby="facultades-title">
+            <h2 id="facultades-title" class="text-[#0b1f4a] text-2xl md:text-3xl font-bold mb-6">Facultades</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <?php
             $facultades = [
-                ['sigla' => 'FQBYF', 'nombre' => 'Facultad de Química, Bioquímica y Farmacia', 'sede' => 'San Luis', 'color_bg' => 'bg-[#dfffed]', 'color_txt' => 'text-[#008e3b]', 'img' => 'fqbyf.png'],
-                ['sigla' => 'FCFMYN', 'nombre' => 'Facultad de Ciencias Físico Matemáticas y Naturales', 'sede' => 'San Luis', 'color_bg' => 'bg-[#fff1f0]', 'color_txt' => 'text-[#d2231f]', 'img' => 'fcfmyn.png'],
-                ['sigla' => 'FICA', 'nombre' => 'Facultad de Ingeniería y Ciencias Agropecuarias', 'sede' => 'Villa Mercedes', 'color_bg' => 'bg-[#dcf0f8]', 'color_txt' => 'text-[#466876]', 'img' => 'fica.png'],
-                ['sigla' => 'FCEJS', 'nombre' => 'Facultad de Ciencias Económicas, Jurídicas y Sociales', 'sede' => 'Villa Mercedes', 'color_bg' => 'bg-[#f4e7ff]', 'color_txt' => 'text-[#4b256b]', 'img' => 'fcejs.png'],
-                ['sigla' => 'FCH', 'nombre' => 'Facultad de Ciencias Humanas', 'sede' => 'San Luis', 'color_bg' => 'bg-[#fbdac7]', 'color_txt' => 'text-[#e5641c]', 'img' => 'fch.png'],
-                ['sigla' => 'FAPSI', 'nombre' => 'Facultad de Psicología', 'sede' => 'San Luis', 'color_bg' => 'bg-[#fff4df]', 'color_txt' => 'text-[#F2BB52]', 'img' => 'fapsi.png'],
                 ['sigla' => 'FCS', 'nombre' => 'Facultad de Ciencias de la Salud', 'sede' => 'San Luis · Villa Mercedes', 'color_bg' => 'bg-[#f0ffca]', 'color_txt' => 'text-[#88ae2a]', 'img' => 'fcs.png'],
+                ['sigla' => 'FCEJS', 'nombre' => 'Facultad de Ciencias Económicas, Jurídicas y Sociales', 'sede' => 'Villa Mercedes', 'color_bg' => 'bg-[#f4e7ff]', 'color_txt' => 'text-[#4b256b]', 'img' => 'fcejs.png'],
+                ['sigla' => 'FCFMYN', 'nombre' => 'Facultad de Ciencias Físico Matemáticas y Naturales', 'sede' => 'San Luis', 'color_bg' => 'bg-[#fff1f0]', 'color_txt' => 'text-[#d2231f]', 'img' => 'fcfmyn.png'],
+                ['sigla' => 'FCH', 'nombre' => 'Facultad de Ciencias Humanas', 'sede' => 'San Luis', 'color_bg' => 'bg-[#fbdac7]', 'color_txt' => 'text-[#e5641c]', 'img' => 'fch.png'],
+                ['sigla' => 'FICA', 'nombre' => 'Facultad de Ingeniería y Ciencias Agropecuarias', 'sede' => 'Villa Mercedes', 'color_bg' => 'bg-[#dcf0f8]', 'color_txt' => 'text-[#466876]', 'img' => 'fica.png'],
+                ['sigla' => 'FAPSI', 'nombre' => 'Facultad de Psicología', 'sede' => 'San Luis', 'color_bg' => 'bg-[#fff4df]', 'color_txt' => 'text-[#F2BB52]', 'img' => 'fapsi.png'],
+                ['sigla' => 'FQBYF', 'nombre' => 'Facultad de Química, Bioquímica y Farmacia', 'sede' => 'San Luis', 'color_bg' => 'bg-[#dfffed]', 'color_txt' => 'text-[#008e3b]', 'img' => 'fqbyf.png'],
                 ['sigla' => 'FTU', 'nombre' => 'Facultad de Turismo y Urbanismo', 'sede' => 'Merlo', 'color_bg' => 'bg-[#fff9e5]', 'color_txt' => 'text-[#996b16]', 'img' => 'ftu.png'],
             ];
             foreach ($facultades as $fac) :
 
-                $enlace_seo = home_url('/facultad/' . strtolower($fac['sigla']) . '/');
+                $enlace_seo = home_url('/unidad-academica/' . strtolower($fac['sigla']) . '/');
             ?>
                 <a href="<?php echo esc_url($enlace_seo); ?>" class="group bg-white rounded border border-[#ACCEF2] hover:border-[#88CAFC] hover:shadow-lg hover:shadow-[#0b1f4a08] transition-all duration-300 p-6 flex items-center gap-5">
                     <div class="w-16 h-16 rounded  flex items-center justify-center shrink-0 transition-transform duration-300 ">
@@ -75,7 +77,13 @@ get_header();
                 </a>
             <?php endforeach; ?>
 
-            <!--a href="<?php echo home_url('/facultad/ipau/'); ?>" class="group col-span-1 sm:col-span-2 lg:col-span-1 bg-white rounded border border-[#972f70] hover:border-[#88CAFC] hover:shadow-xl transition-all duration-300 p-6 flex items-center gap-5">
+            </div>
+        </section>
+
+        <section aria-labelledby="institutos-title" class="mt-16">
+            <h2 id="institutos-title" class="text-[#0b1f4a] text-2xl md:text-3xl font-bold mb-6">Institutos</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <a href="<?php echo esc_url(home_url('/unidad-academica/ipau/')); ?>" class="group bg-white rounded border border-[#972f70] hover:border-[#88CAFC] hover:shadow-xl transition-all duration-300 p-6 flex items-center gap-5">
                 <div class="w-16 h-16 rounded bg-white/10 flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:bg-[#88CAFC20] ">
                     <img src="<?php echo get_template_directory_uri(); ?>/imagenes/ipau.png" alt="IPAU" class="w-11 h-11 object-contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
                     <span class="hidden w-11 h-11 items-center justify-center font-['Libre_Baskerville',serif] font-bold text-sm text-[#88CAFC] leading-tight text-center">IP</span>
@@ -91,7 +99,7 @@ get_header();
                         San Luis
                     </p>
                 </div>
-            </a-->
+            </a>
 
 
         </div>

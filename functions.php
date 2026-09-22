@@ -92,7 +92,7 @@ function unsl_registrar_cpt_taxonomias()
         'labels'            => $labels_facultad,
         'show_ui'           => true,
         'show_admin_column' => true,
-        'rewrite'           => array('slug' => 'facultad'),
+        'rewrite'           => array('slug' => 'unidad-academica'),  
         'show_in_rest'      => true
     ));
 

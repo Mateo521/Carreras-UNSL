@@ -131,7 +131,7 @@
         $nav_items = [
           ['label' => 'Inicio',      'url' => home_url('/')],
           ['label' => 'Carreras',    'url' => home_url('/carreras/')],
-          ['label' => 'Facultades',  'url' => home_url('/facultades/')],
+          ['label' => 'Unidades Académicas',  'url' => home_url('/unidades-academicas/')],
           ['label' => 'Sedes',       'url' => home_url('/sedes/')],
         ];
         $current = trailingslashit(esc_url(home_url(add_query_arg([], $GLOBALS['wp']->request))));

@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Plantilla para mostrar la información y carreras de una Facultad específica
- * URL típica: /facultad/fqbyf/
+ * Plantilla para mostrar la información y carreras de una unidad académica específica
+ * URL típica: /unidad-academica/fqbyf/
  */
 
 get_header();
@@ -12,13 +12,13 @@ $sigla = strtoupper($term->name);
 $slug = strtolower($term->slug);
 
 $nombres_facultades = array(
-    'fqbyf'  => 'Facultad de Química, Bioquímica y Farmacia',
-    'fcfmyn' => 'Facultad de Ciencias Físico Matemáticas y Naturales',
-    'fica'   => 'Facultad de Ingeniería y Ciencias Agropecuarias',
-    'fcejs'  => 'Facultad de Ciencias Económicas, Jurídicas y Sociales',
-    'fch'    => 'Facultad de Ciencias Humanas',
-    'fapsi'  => 'Facultad de Psicología',
     'fcs'    => 'Facultad de Ciencias de la Salud',
+    'fcejs'  => 'Facultad de Ciencias Económicas, Jurídicas y Sociales',
+    'fcfmyn' => 'Facultad de Ciencias Físico Matemáticas y Naturales',
+    'fch'    => 'Facultad de Ciencias Humanas',
+    'fica'   => 'Facultad de Ingeniería y Ciencias Agropecuarias',
+    'fapsi'  => 'Facultad de Psicología',
+    'fqbyf'  => 'Facultad de Química, Bioquímica y Farmacia',
     'ftu'    => 'Facultad de Turismo y Urbanismo',
     'ipau'   => 'Instituto Politécnico y Artístico Universitario'
 );
@@ -46,6 +46,7 @@ $colores_facultades = array(
     'ftu'    => array('bg' => 'bg-[#fff9e5]', 'text' => 'text-[#996b16]'),
     'ipau'   => array('bg' => 'bg-[#f0f4f8]', 'text' => 'text-[#0b1f4a]')
 );
+
 
 $nombre_completo = isset($nombres_facultades[$slug]) ? $nombres_facultades[$slug] : $sigla;
 $descripcion_seo = isset($descripciones[$slug]) ? $descripciones[$slug] : 'Conoce nuestra propuesta académica y fórmate para el futuro.';
@@ -87,8 +88,8 @@ $logo_url = get_template_directory_uri() . '/imagenes/' . $slug . '.png';
         <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
         </svg>
-        <a href="<?php echo home_url("facultades"); ?>" class="hover:text-[#0b1f4a] transition-colors">
-            <span class="text-[#1a1a2e]">Facultades</span>
+        <a href="<?php echo esc_url(home_url('/unidades-academicas/')); ?>" class="hover:text-[#0b1f4a] transition-colors">
+            <span class="text-[#1a1a2e]">Unidades académicas</span>
         </a>
         <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
@@ -103,7 +104,7 @@ $logo_url = get_template_directory_uri() . '/imagenes/' . $slug . '.png';
         <div class="flex items-center justify-between mb-8 pb-4 border-b border-[#ACCEF2]">
             <div>
                 <h2 class="text-2xl font-bold text-[#0b1f4a] ">Propuesta académica</h2>
-                <p class="text-[#1a1a2e66] text-sm mt-1">Todas las carreras dictadas en la <?php echo esc_html($sigla); ?></p>
+                <p class="text-[#1a1a2e66] text-sm mt-1">Todas las carreras dictadas en la unidad académica <?php echo esc_html($sigla); ?></p>
             </div>
             <a href="<?php echo home_url('/carreras/'); ?>" class="hidden sm:flex items-center gap-2 text-sm font-semibold text-[#88CAFC] hover:text-[#0b1f4a] transition-colors">
                 Ver todo el catálogo general
@@ -119,6 +120,8 @@ $logo_url = get_template_directory_uri() . '/imagenes/' . $slug . '.png';
             $args = array(
                 'post_type' => 'carrera',
                 'posts_per_page' => -1,
+                'orderby' => 'title',
+                'order' => 'ASC',
                 'tax_query' => array(
                     array(
                         'taxonomy' => 'facultad',
