@@ -284,6 +284,12 @@ if ($query_carreras->have_posts()) {
             text: "text-[#92400e]",
             dot: "bg-[#92400e]"
         },
+        profesorados: {
+            label: "Profesorado",
+            bg: "bg-[#fef3c7]",
+            text: "text-[#92400e]",
+            dot: "bg-[#92400e]"
+        },
     };
 
     const FACU_CONFIG = {
@@ -382,7 +388,7 @@ if ($query_carreras->have_posts()) {
 
     function buildCard(c) {
         const tc = TIPO_CONFIG[c.tipo] || {
-            label: "Profesorado",
+            label: "Otras profesiones",
             bg: "bg-gray-100",
             text: "text-gray-700",
             dot: "bg-gray-700"
@@ -562,6 +568,19 @@ if ($query_carreras->have_posts()) {
             state.facultad = urlParams.get('facultad');
             const selectFacultad = document.getElementById('filterFacultad');
             if (selectFacultad) selectFacultad.value = state.facultad;
+        }
+
+        if (urlParams.has('tipo-de-profesion')) {
+            const profesionSolicitada = (urlParams.get('tipo-de-profesion') || '').trim().toLowerCase();
+            const selectProfesion = document.getElementById('filterProfesion');
+            const opcionProfesion = selectProfesion ? Array.from(selectProfesion.options).find(opcion =>
+                opcion.value.toLowerCase() === profesionSolicitada
+            ) : null;
+
+            if (opcionProfesion) {
+                state.profesion = opcionProfesion.value;
+                selectProfesion.value = state.profesion;
+            }
         }
 
         if (urlParams.has('sede')) {

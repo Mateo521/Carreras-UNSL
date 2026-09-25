@@ -257,7 +257,7 @@ get_header();
                 $slug = strtolower($fac['sigla']);
                 $delay = ($i % 3) + 1;
             ?>
-                <a href="<?php echo home_url('/facultad/' . $slug . '/'); ?>" class="reveal reveal-d<?php echo $delay; ?> group flex items-center gap-[1.2rem] bg-white p-6 transition-all hover:translate-x-1 hover:shadow-[0_4px_20px_rgba(8,24,58,0.08)]" style="border-left: 3px solid <?php echo $fac['hex']; ?>;">
+                <a href="<?php echo home_url('/unidad-academica/' . $slug . '/'); ?>" class="reveal reveal-d<?php echo $delay; ?> group flex items-center gap-[1.2rem] bg-white p-6 transition-all hover:translate-x-1 hover:shadow-[0_4px_20px_rgba(8,24,58,0.08)]" style="border-left: 3px solid <?php echo $fac['hex']; ?>;">
                     <div class="w-[44px] h-[44px] flex items-center justify-center shrink-0">
                         <img src="<?php echo get_template_directory_uri() . '/imagenes/' . $fac['img']; ?>" alt="<?php echo $fac['sigla']; ?>" width="35" height="35" class="object-contain" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                         <span class="hidden font-bold text-[0.7rem]" style="color: <?php echo $fac['hex']; ?>;"><?php echo substr($fac['sigla'], 0, 2); ?></span>

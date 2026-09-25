@@ -133,16 +133,66 @@ $logo_url = get_template_directory_uri() . '/imagenes/' . $slug . '.png';
             $query_facultad = new WP_Query($args);
 
             if ($query_facultad->have_posts()) :
-                while ($query_facultad->have_posts()) : $query_facultad->the_post();
+                $carreras = $query_facultad->posts;
+                usort($carreras, function ($a, $b) {
+
+                    $orden_nivel = array(
+                        'pregrado'    => 1,
+                        'grado'       => 2,
+                        'posgrado'    => 3,
+                        'profesorado' => 4,
+                        'otras-profesiones'    => 5
+                    );
+
+                    $niveles_a = get_the_terms($a->ID, 'nivel');
+                    $niveles_b = get_the_terms($b->ID, 'nivel');
 
 
-                    $terms_nivel = get_the_terms(get_the_ID(), 'nivel');
+                    $peso_a = 99;
+                    $peso_b = 99;
+
+
+                    if ($niveles_a && !is_wp_error($niveles_a)) {
+                        foreach ($niveles_a as $nivel) {
+                            $nivel_slug = strtolower($nivel->slug);
+                            if (isset($orden_nivel[$nivel_slug])) {
+                                $peso_a = min($peso_a, $orden_nivel[$nivel_slug]);
+                            }
+                        }
+                    }
+
+
+                    if ($niveles_b && !is_wp_error($niveles_b)) {
+                        foreach ($niveles_b as $nivel) {
+                            $nivel_slug = strtolower($nivel->slug);
+                            if (isset($orden_nivel[$nivel_slug])) {
+                                $peso_b = min($peso_b, $orden_nivel[$nivel_slug]);
+                            }
+                        }
+                    }
+
+
+                    if ($peso_a !== $peso_b) {
+                        return $peso_a <=> $peso_b;
+                    }
+
+
+                    return strcasecmp($a->post_title, $b->post_title);
+                });
+
+                foreach ($carreras as $carrera) :
+                    // setup_postdata() necesita que el post también se asigne al global.
+                    $post = $carrera;
+                    setup_postdata($post);
+
+
+                    $terms_nivel = get_the_terms($carrera->ID, 'nivel');
                     $tipo_slug = ($terms_nivel && !is_wp_error($terms_nivel)) ? strtolower($terms_nivel[0]->slug) : 'grado';
 
-                    $terms_sede = get_the_terms(get_the_ID(), 'sede');
+                    $terms_sede = get_the_terms($carrera->ID, 'sede');
                     $sede_name = ($terms_sede && !is_wp_error($terms_sede)) ? $terms_sede[0]->name : 'San Luis';
 
-                    $terms_modalidad = get_the_terms(get_the_ID(), 'modalidad');
+                    $terms_modalidad = get_the_terms($carrera->ID, 'modalidad');
                     $modalidad_name = ($terms_modalidad && !is_wp_error($terms_modalidad)) ? $terms_modalidad[0]->name : 'Presencial';
 
                     $duracion = get_field('duracion_carrera') ?: 'N/A';
@@ -187,7 +237,7 @@ $logo_url = get_template_directory_uri() . '/imagenes/' . $slug . '.png';
                     </a>
 
             <?php
-                endwhile;
+                endforeach;
                 wp_reset_postdata();
             else :
                 echo '<p class="col-span-3 text-center text-slate-500 py-10">Aún no hay carreras cargadas para esta facultad.</p>';
