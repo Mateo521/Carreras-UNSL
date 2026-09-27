@@ -173,7 +173,8 @@ function unsl_legacy_url_redirects() {
         '/tipo-carrera/tecnicaturas'  => '/carreras/?tipo-de-profesion=tecnicatura',
 
         // Páginas sueltas
-        '/pages/preinscripcion'       => '/preinscripcion/'
+        '/pages/preinscripcion'       => '/preinscripcion/',
+        '/preinscripcion-online'      => '/preinscripcion/'  
     ];
 
     if ( array_key_exists( $path, $redirects ) ) {

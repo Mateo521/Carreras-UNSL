@@ -118,6 +118,18 @@ get_header();
                     });
                 }
 
+                if ($taxonomia === 'facultad' && !is_wp_error($terms)) {
+                    $orden_facultades = array('fqbyf', 'fch', 'fcfmyn', 'fica', 'fcejs', 'fapsi', 'fcs', 'ftu');
+                    usort($terms, function ($a, $b) use ($orden_facultades) {
+                        $pos_a = array_search($a->slug, $orden_facultades, true);
+                        $pos_b = array_search($b->slug, $orden_facultades, true);
+                        $pos_a = ($pos_a === false) ? PHP_INT_MAX : $pos_a;
+                        $pos_b = ($pos_b === false) ? PHP_INT_MAX : $pos_b;
+
+                        return $pos_a <=> $pos_b;
+                    });
+                }
+
 
                 echo '<div class="relative flex-shrink-0 w-full ' . esc_attr($width_classes) . ' group">';
 
